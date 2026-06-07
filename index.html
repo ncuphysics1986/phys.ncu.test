@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>系所簡介 — 國立中央大學物理學系</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+/* ── Reset ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── 變數 ── */
+:root{
+  --navy:#1a2f4a; --blue:#1f4e79; --sky:#2e7fc1;
+  --accent:#c8972b; --gold:#e4b84a;
+  --light:#f0f5fb; --lighter:#f8fafc;
+  --text:#1e2a38; --muted:#5a6a7a;
+  --border:#cddaeb; --white:#fff;
+  --serif:'Georgia','Times New Roman',serif;
+  --sans:'Segoe UI',system-ui,sans-serif;
+}
+
+/* ── Base ── */
+body{font-family:var(--sans);background:var(--lighter);color:var(--text);line-height:1.7}
+
+/* ── Welcome overlay ── */
+@keyframes spin{to{transform:rotate(360deg)}}
+#overlay{
+  position:fixed;inset:0;z-index:300;
+  background:linear-gradient(160deg,#0d1f33 0%,#1a3a5c 60%,#0d2640 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.welcome-box{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);
+  border-radius:20px;padding:3rem 3.5rem;text-align:center;color:var(--white);
+  max-width:460px;width:90%;backdrop-filter:blur(8px);
+  box-shadow:0 24px 80px rgba(0,0,0,.5);
+}
+.welcome-logo{
+  width:72px;height:72px;background:var(--accent);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2rem;font-weight:900;color:var(--navy);margin:0 auto 1.4rem;
+  box-shadow:0 8px 24px rgba(200,151,43,.4);
+}
+.welcome-box h2{font-size:1.25rem;font-weight:700;letter-spacing:.02em}
+.welcome-sub{font-size:.73rem;opacity:.5;letter-spacing:.1em;text-transform:uppercase;margin-top:.4rem}
+.welcome-divider{width:48px;height:2px;background:var(--accent);margin:1.6rem auto;border-radius:1px}
+.welcome-hint{font-size:.9rem;opacity:.8;margin-bottom:1.4rem}
+.welcome-spinner{
+  margin:1rem auto;width:32px;height:32px;
+  border:3px solid rgba(255,255,255,.2);border-top-color:var(--gold);
+  border-radius:50%;animation:spin .8s linear infinite;
+}
+.welcome-btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--accent);color:var(--navy);border-radius:10px;
+  padding:.85rem 2rem;font-size:1rem;font-weight:700;cursor:pointer;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  box-shadow:0 4px 16px rgba(200,151,43,.35);
+}
+.welcome-btn:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,151,43,.5)}
+.welcome-btn:active{transform:translateY(0)}
+.welcome-note{font-size:.72rem;opacity:.4;margin-top:1.4rem}
+
+/* ── Header ── */
+.site-header{
+  background:var(--navy);color:var(--white);
+  padding:0 2rem;display:flex;align-items:center;gap:1.2rem;
+  height:64px;position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 12px rgba(0,0,0,.3);
+}
+.logo-mark{
+  width:38px;height:38px;background:var(--accent);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:18px;color:var(--navy);flex-shrink:0;
+}
+.titles{flex:1;min-width:0}
+.titles h1{font-size:1rem;font-weight:700;letter-spacing:.04em}
+.titles p{font-size:.68rem;opacity:.7;letter-spacing:.08em;text-transform:uppercase}
+#excel-status{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  border-radius:20px;padding:.25rem .9rem;font-size:.72rem;
+  color:var(--gold);white-space:nowrap;flex-shrink:0;
+}
+
+/* ── Layout ── */
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 64px)}
+
+/* ── Sidebar ── */
+.sidebar{
+  background:var(--navy);padding:1.5rem 0;
+  position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto;
+}
+.sidebar-label{
+  font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;
+  color:rgba(255,255,255,.4);padding:0 1.4rem;margin-bottom:.6rem;
+}
+.nav-item{
+  display:flex;align-items:center;padding:.75rem 1.4rem;
+  color:rgba(255,255,255,.7);cursor:pointer;
+  border-left:3px solid transparent;transition:all .18s;font-size:.9rem;
+}
+.nav-item:hover{background:rgba(255,255,255,.07);color:var(--white)}
+.nav-item.active{background:rgba(200,151,43,.15);border-left-color:var(--accent);color:var(--gold);font-weight:600}
+
+/* ── Content ── */
+.content{padding:2.5rem 3rem;max-width:1100px}
+.page{display:none;animation:fadeIn .3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ── Page hero ── */
+.page-hero{
+  border-radius:12px;overflow:hidden;margin-bottom:2.4rem;
+  position:relative;min-height:160px;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);
+  display:flex;align-items:flex-end;
+}
+.page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
+.page-hero .hero-text{position:relative;z-index:1;padding:2rem 2.4rem;color:var(--white)}
+.page-hero h2{font-size:1.9rem;font-family:var(--serif);line-height:1.2}
+.page-hero p{font-size:.85rem;opacity:.75;margin-top:.3rem;letter-spacing:.06em;text-transform:uppercase}
+
+/* ── Text layout ── */
+.intro-box{
+  background:var(--white);border-radius:10px;padding:2rem 2.4rem;
+  border:1px solid var(--border);font-size:.95rem;line-height:1.85;white-space:pre-line;
+  margin-bottom:2rem;
+}
+
+/* ── Cards layout ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem}
+.card{
+  background:var(--white);border:1px solid var(--border);border-radius:10px;
+  padding:1.2rem;display:flex;flex-direction:column;gap:.5rem;transition:box-shadow .2s;
+}
+.card:hover{box-shadow:0 4px 16px rgba(31,78,121,.12)}
+.card img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--border)}
+.c-name{font-weight:700;font-size:1rem;color:var(--navy)}
+.c-period{font-size:.78rem;color:var(--muted)}
+.c-degree{font-size:.78rem;color:var(--sky)}
+.c-specialty{font-size:.78rem;color:var(--text);background:var(--light);border-radius:6px;padding:.3rem .6rem;line-height:1.5;margin-top:.2rem}
+
+/* ── Table layout ── */
+.data-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.data-table th{background:var(--navy);color:var(--white);padding:.65rem 1rem;text-align:left;font-weight:600;font-size:.82rem}
+.data-table td{padding:.6rem 1rem;border-bottom:1px solid var(--border);vertical-align:top}
+.data-table tr:hover td{background:var(--light)}
+.badge{display:inline-block;border-radius:4px;padding:.15rem .5rem;font-size:.75rem;font-weight:700}
+.badge-bs{background:#deeaf1;color:#1f4e79}
+.badge-ms{background:#e2efda;color:#375623}
+.badge-phd{background:#fce4d6;color:#7b2c2c}
+.en-sub{color:var(--sky);font-size:.8rem;display:block;margin-top:.15rem}
+
+/* ── Links layout ── */
+.link-group{margin-bottom:2rem}
+.link-cat-title{
+  font-size:.85rem;font-weight:700;color:var(--white);background:var(--blue);
+  padding:.35rem .8rem;border-radius:6px;display:inline-block;margin-bottom:.7rem;
+}
+.link-list{list-style:none}
+.link-list li{
+  border-bottom:1px solid var(--border);padding:.55rem 0;
+  display:flex;align-items:flex-start;gap:.6rem;font-size:.9rem;
+}
+.link-list li:last-child{border-bottom:none}
+.link-list a{color:var(--sky);text-decoration:none}
+.link-list a:hover{text-decoration:underline}
+
+/* ── 通用色塊標籤（file-tag & sub-tag 共用基礎） ── */
+.file-tag,
+.sub-tag{
+  flex-shrink:0;
+  font-size:.68rem;font-weight:700;
+  padding:.15rem .4rem;
+  border-radius:4px;
+  margin-top:.18rem;
+  white-space:nowrap;
+}
+/* 已知檔案類型 */
+.file-tag.PDF{background:#fce4d6;color:#c00000}
+.file-tag.DOC{background:#deeaf1;color:#1f4e79}
+.file-tag.連結{background:#e2efda;color:#375623}
+/* 未知類型 → 黃色 */
+.file-tag.OTHER{background:#fef9c3;color:#854d0e}
+/* 子分類標籤 → 紫色 */
+.sub-tag{background:#ede9fe;color:#5b21b6}
+
+/* ── Events layout ── */
+.events-section{margin-bottom:2.2rem}
+.events-cat-title{
+  font-size:.85rem;font-weight:700;color:var(--white);background:var(--navy);
+  padding:.35rem .8rem;border-radius:6px;display:inline-block;margin-bottom:.8rem;
+}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem}
+.event-card{
+  background:var(--white);border:1px solid var(--border);border-radius:8px;
+  padding:.9rem 1rem;display:flex;align-items:center;gap:.8rem;
+  text-decoration:none;color:var(--text);
+  transition:box-shadow .18s,border-color .18s;font-size:.88rem;
+}
+.event-card:hover{box-shadow:0 3px 12px rgba(31,78,121,.1);border-color:var(--sky);color:var(--sky)}
+.ev-icon{font-size:1.3rem;flex-shrink:0}
+.ev-tag{font-size:.7rem;color:var(--muted);display:block;margin-top:.1rem}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static;height:auto;display:flex;overflow-x:auto;padding:.5rem 0}
+  .nav-item{padding:.5rem .8rem;border-left:none;border-bottom:3px solid transparent;font-size:.8rem}
+  .nav-item.active{border-left:none;border-bottom-color:var(--accent)}
+  .content{padding:1.5rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Welcome overlay ── -->
+<div id="overlay">
+  <div class="welcome-box">
+    <div class="welcome-logo">物</div>
+    <h2>國立中央大學物理學系</h2>
+    <p class="welcome-sub">Department of Physics, National Central University</p>
+    <div class="welcome-divider"></div>
+    <p class="welcome-hint" id="overlay-hint">資料載入中...</p>
+    <div class="welcome-spinner" id="overlay-spinner"></div>
+    <label class="welcome-btn" id="overlay-btn" for="excel-file" style="display:none">
+      <span>📂</span> 選取 dept_intro_data.xlsx
+    </label>
+    <input type="file" id="excel-file" accept=".xlsx,.xls" style="display:none">
+    <p class="welcome-note" id="overlay-note" style="display:none">資料僅在本機讀取，不會上傳至任何伺服器</p>
+  </div>
+</div>
+
+<!-- ── Header ── -->
+<header class="site-header">
+  <div class="logo-mark">物</div>
+  <div class="titles">
+    <h1>國立中央大學物理學系</h1>
+    <p>Department of Physics, National Central University</p>
+  </div>
+  <span id="excel-status">載入中...</span>
+</header>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-label">系所簡介</div>
+  </nav>
+  <main class="content" id="main-content"></main>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════
+//  工具函式
+// ══════════════════════════════════════════════════════════════════════════
+
+// HTML 特殊字符 escape，防止 XSS 與 template literal 語法錯誤
+function esc(v) {
+  return String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+    .replace(/`/g, '&#96;');
+}
+
+// 讀取 SheetJS worksheet → 二維陣列（含空字串預設值）
+function sheetToRows(ws) {
+  return XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+}
+
+// 正規化檔案類型標籤：已知類型保留，其他統一為 OTHER（黃色）
+function normalizeTag(raw) {
+  const t = String(raw ?? '').trim().toUpperCase();
+  if (t === 'PDF')               return 'PDF';
+  if (t === 'DOC' || t === 'DOCX' || t === 'ODT' || t === 'OTD') return 'DOC';
+  if (t === '連結' || t === '')  return '連結';
+  return 'OTHER';  // 黃色，顯示原始類型文字
+}
+
+// 顯示色塊標籤 HTML（file-tag）
+function fileTagHtml(raw) {
+  const cls = normalizeTag(raw);
+  const label = (cls === 'OTHER') ? esc(raw) : cls;
+  return `<span class="file-tag ${cls}">${label}</span>`;
+}
+
+// base64 SVG 預設頭像（不含任何引號，避免破壞 innerHTML template literal）
+const PLACEHOLDER_IMG = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iMzIiIHk9IjQwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjI2IiBmaWxsPSIjOTk5Ij7wn5KYPC90ZXh0Pjwvc3ZnPg==';
+
+// ══════════════════════════════════════════════════════════════════════════
+//  版面渲染器
+// ══════════════════════════════════════════════════════════════════════════
+
+// text：純文字段落（說明文字欄即內容）
+function renderText(text) {
+  const box = document.createElement('div');
+  box.className = 'intro-box';
+  box.textContent = text;
+  return box;
+}
+
+// cards：人員卡片
+// Excel 欄位：姓名 / 服務起 / 服務迄 / 最高學歷 / 專長 / 照片URL
+function renderCards(rows) {
+  const grid = document.createElement('div');
+  grid.className = 'cards-grid';
+  rows.forEach(r => {
+    const [name, from, to, degree, specialty, photo] = r;
+    if (!name) return;
+    const period = String(to) === '迄今' ? `${esc(from)} 迄今` : `${esc(from)} — ${esc(to)}`;
+    const card = document.createElement('div');
+    card.className = 'card';
+    // 使用 textContent/setAttribute 逐欄設定，完全避免 innerHTML 引號衝突
+    const img = document.createElement('img');
+    img.src = photo || PLACEHOLDER_IMG;
+    img.alt = String(name);
+    img.width = 64; img.height = 64;
+    img.onerror = function() { this.src = PLACEHOLDER_IMG; this.onerror = null; };
+    card.appendChild(img);
+    const nm = document.createElement('div'); nm.className = 'c-name'; nm.textContent = name; card.appendChild(nm);
+    const pr = document.createElement('div'); pr.className = 'c-period'; pr.innerHTML = '🗓 ' + period; card.appendChild(pr);
+    if (degree)    { const d = document.createElement('div'); d.className = 'c-degree';    d.textContent = '🎓 ' + degree;    card.appendChild(d); }
+    if (specialty) { const s = document.createElement('div'); s.className = 'c-specialty'; s.textContent = specialty; card.appendChild(s); }
+    grid.appendChild(card);
+  });
+  return grid;
+}
+
+// table：分組表格（核心能力等）
+// Excel 欄位：群組標籤 / 名稱 / 英文名稱 / 說明
+function renderTable(rows) {
+  const BADGE = { '學士': 'bs', '碩士': 'ms', '博士': 'phd' };
+  let curGroup = '';
+  const wrap  = document.createElement('div');
+  const table = document.createElement('table');
+  table.className = 'data-table';
+  const tbody = document.createElement('tbody');
+  rows.forEach(r => {
+    if (!r.some(v => v)) return;
+    if (r[0]) curGroup = String(r[0]);
+    const cls = BADGE[curGroup] || '';
+    const tr = document.createElement('tr');
+    r.forEach((v, i) => {
+      const td = document.createElement('td');
+      if (i === 0) {
+        if (v) { const sp = document.createElement('span'); sp.className = `badge badge-${cls}`; sp.textContent = v; td.appendChild(sp); }
+      } else if (i === 1) {
+        const strong = document.createElement('strong'); strong.textContent = v; td.appendChild(strong);
+      } else if (i === 2) {
+        const sp = document.createElement('span'); sp.className = 'en-sub'; sp.textContent = v; td.appendChild(sp);
+      } else {
+        td.textContent = v;
+      }
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  wrap.appendChild(table);
+  return wrap;
+}
+
+// links：分類連結清單（系所規章等）
+// Excel 欄位（5欄）：分類 / 子分類 / 名稱 / URL / 檔案類型
+// 相容舊 4 欄格式：分類 / 名稱 / URL / 檔案類型
+function renderLinks(rows) {
+  const KNOWN_TYPES = new Set(['PDF', 'DOC', 'DOCX', 'ODT', 'OTD', '連結', '']);
+  const wrap   = document.createElement('div');
+  const groups = {};
+  const order  = [];
+
+  rows.forEach(r => {
+    // 判斷欄位格式
+    let cat, sub, name, url, type;
+    if (r.length >= 5 && !KNOWN_TYPES.has(String(r[1]).trim().toUpperCase()) ) {
+      // 第2欄不是已知類型 → 5欄格式（子分類在第2欄）
+      [cat, sub, name, url, type] = r;
+    } else if (r.length >= 5 && KNOWN_TYPES.has(String(r[4]).trim().toUpperCase())) {
+      // 第5欄是已知類型 → 5欄格式
+      [cat, sub, name, url, type] = r;
+    } else {
+      // 4欄格式（無子分類）
+      [cat, name, url, type] = r; sub = '';
+    }
+    cat  = String(cat  ?? '').trim();
+    sub  = String(sub  ?? '').trim();
+    name = String(name ?? '').trim();
+    url  = String(url  ?? '').trim();
+    type = String(type ?? '').trim();
+    if (!cat || (!name && !url)) return;
+    if (!groups[cat]) { groups[cat] = []; order.push(cat); }
+    groups[cat].push({ sub, name, url, type });
+  });
+
+  order.forEach(cat => {
+    const sec = document.createElement('div');
+    sec.className = 'link-group';
+    const title = document.createElement('div');
+    title.className = 'link-cat-title';
+    title.textContent = cat;
+    sec.appendChild(title);
+    const ul = document.createElement('ul');
+    ul.className = 'link-list';
+    groups[cat].forEach(it => {
+      const li = document.createElement('li');
+      // 檔案類型色塊
+      li.insertAdjacentHTML('beforeend', fileTagHtml(it.type));
+      // 子分類色塊
+      if (it.sub) {
+        const sp = document.createElement('span');
+        sp.className = 'sub-tag';
+        sp.textContent = it.sub;
+        li.appendChild(sp);
+      }
+      // 連結
+      const a = document.createElement('a');
+      a.href = it.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = it.name || it.url;
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    sec.appendChild(ul);
+    wrap.appendChild(sec);
+  });
+  return wrap;
+}
+
+// events：活動連結卡
+// Excel 欄位：分類 / 標題 / URL / 類型
+function renderEvents(rows) {
+  const ICONS = { 'YouTube': '▶️', 'Google相簿': '🖼️' };
+  const wrap   = document.createElement('div');
+  const groups = {};
+  const order  = [];
+
+  rows.forEach(r => {
+    const cat   = String(r[0] ?? '').trim();
+    const title = String(r[1] ?? '').trim();
+    const url   = String(r[2] ?? '').trim();
+    const type  = String(r[3] ?? '').trim();
+    if (!title) return;
+    if (!groups[cat]) { groups[cat] = []; order.push(cat); }
+    groups[cat].push({ title, url, type });
+  });
+
+  order.forEach(cat => {
+    const sec = document.createElement('div');
+    sec.className = 'events-section';
+    const catTitle = document.createElement('div');
+    catTitle.className = 'events-cat-title';
+    catTitle.textContent = cat;
+    sec.appendChild(catTitle);
+    const grid = document.createElement('div');
+    grid.className = 'events-grid';
+    groups[cat].forEach(it => {
+      const a = document.createElement('a');
+      a.className = 'event-card';
+      a.href = it.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      const icon = document.createElement('span');
+      icon.className = 'ev-icon';
+      icon.textContent = ICONS[it.type] || '🔗';
+      const txt = document.createElement('span');
+      const titleNode = document.createTextNode(it.title);
+      const tag = document.createElement('span');
+      tag.className = 'ev-tag';
+      tag.textContent = it.type;
+      txt.appendChild(titleNode);
+      txt.appendChild(tag);
+      a.appendChild(icon);
+      a.appendChild(txt);
+      grid.appendChild(a);
+    });
+    sec.appendChild(grid);
+    wrap.appendChild(sec);
+  });
+  return wrap;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  導覽切換
+// ══════════════════════════════════════════════════════════════════════════
+function switchPage(id) {
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const ni = document.querySelector(`.nav-item[data-page="${id}"]`);
+  const pg = document.getElementById('page-' + id);
+  if (ni) ni.classList.add('active');
+  if (pg) pg.classList.add('active');
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  Workbook 處理
+// ══════════════════════════════════════════════════════════════════════════
+function processWorkbook(wb) {
+  const cfgSheet = wb.Sheets['頁面設定'];
+  if (!cfgSheet) { alert('找不到「頁面設定」工作頁！'); return; }
+
+  const cfgRows = sheetToRows(cfgSheet);
+  const HEAD = cfgRows[0].map(h => String(h).trim());
+  const col  = k => HEAD.indexOf(k);
+  const C = {
+    id:        col('分頁ID'),
+    title:     col('分頁標題'),
+    heroImg:   col('頁首圖URL'),
+    heroH2:    col('頁首大標題'),
+    heroSub:   col('頁首副標題'),
+    layout:    col('版面類型'),
+    dataSheet: col('資料工作頁'),
+    intro:     col('說明文字'),
+    order:     col('排列順序'),
+    enabled:   col('啟用'),
+  };
+
+  // 過濾啟用分頁，依排列順序排序（R1 標題、R2 說明列跳過）
+  const pages = cfgRows.slice(2)
+    .filter(r => r[C.id] && String(r[C.enabled]).toUpperCase() !== 'FALSE')
+    .sort((a, b) => Number(a[C.order] || 99) - Number(b[C.order] || 99));
+
+  const sidebar = document.getElementById('sidebar');
+  const main    = document.getElementById('main-content');
+  sidebar.innerHTML = '<div class="sidebar-label">系所簡介</div>';
+  main.innerHTML    = '';
+
+  pages.forEach((row, idx) => {
+    const id        = String(row[C.id]        ?? '').trim();
+    const title     = String(row[C.title]     ?? '').trim();
+    const heroImg   = String(row[C.heroImg]   ?? '').trim();
+    const heroH2    = String(row[C.heroH2]    ?? title).trim();
+    const heroSub   = String(row[C.heroSub]   ?? '').trim();
+    const layout    = String(row[C.layout]    ?? '').trim().toLowerCase();
+    const dataSheet = String(row[C.dataSheet] ?? '').trim();
+    const introText = String(row[C.intro]     ?? '').trim();
+
+    // Sidebar nav item
+    const navItem = document.createElement('div');
+    navItem.className = 'nav-item' + (idx === 0 ? ' active' : '');
+    navItem.dataset.page = id;
+    navItem.textContent = title;
+    navItem.addEventListener('click', () => switchPage(id));
+    sidebar.appendChild(navItem);
+
+    // Page panel
+    const panel = document.createElement('div');
+    panel.className = 'page' + (idx === 0 ? ' active' : '');
+    panel.id = 'page-' + id;
+
+    // Hero banner
+    const heroEl = document.createElement('div');
+    heroEl.className = 'page-hero';
+    if (heroImg) {
+      const img = document.createElement('img');
+      img.src = heroImg; img.alt = '';
+      heroEl.appendChild(img);
+    }
+    const heroText = document.createElement('div');
+    heroText.className = 'hero-text';
+    const h2 = document.createElement('h2'); h2.textContent = heroH2; heroText.appendChild(h2);
+    if (heroSub) { const p = document.createElement('p'); p.textContent = heroSub; heroText.appendChild(p); }
+    heroEl.appendChild(heroText);
+    panel.appendChild(heroEl);
+
+    // 前置說明文字
+    if (introText) panel.appendChild(renderText(introText));
+
+    // 主要內容（依版面類型）
+    const dataRows = (dataSheet && wb.Sheets[dataSheet])
+      ? sheetToRows(wb.Sheets[dataSheet]).slice(1)
+      : [];
+
+    switch (layout) {
+      case 'cards':  panel.appendChild(renderCards(dataRows));  break;
+      case 'table':  panel.appendChild(renderTable(dataRows));  break;
+      case 'links':  panel.appendChild(renderLinks(dataRows));  break;
+      case 'events': panel.appendChild(renderEvents(dataRows)); break;
+    }
+
+    main.appendChild(panel);
+  });
+
+  document.getElementById('overlay').style.display = 'none';
+  document.getElementById('excel-status').style.color = '#a6e3a1';
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  GitHub API：取 Excel 最後 commit 時間（台灣時間 UTC+8）
+// ══════════════════════════════════════════════════════════════════════════
+async function getCommitDate(owner, repo, path) {
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/commits?path=${encodeURIComponent(path)}&per_page=1`,
+      { headers: { Accept: 'application/vnd.github.v3+json' } }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.length ? new Date(data[0].commit.committer.date) : null;
+  } catch { return null; }
+}
+
+function showCommitDate(date) {
+  if (!date) return;
+  const tw  = new Date(date.getTime() + 8 * 60 * 60 * 1000);
+  const pad = n => String(n).padStart(2, '0');
+  const str = `${tw.getUTCFullYear()}-${pad(tw.getUTCMonth()+1)}-${pad(tw.getUTCDate())} ${pad(tw.getUTCHours())}:${pad(tw.getUTCMinutes())}`;
+  document.getElementById('excel-status').textContent = '✓ 更新　' + str;
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  手動選取 Excel（fallback）
+// ══════════════════════════════════════════════════════════════════════════
+document.getElementById('excel-file').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  e.target.value = '';
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const wb = XLSX.read(ev.target.result, { type: 'binary' });
+      processWorkbook(wb);
+      document.getElementById('excel-status').textContent = '✓ 已載入（本機）';
+    } catch (err) {
+      alert('讀取 Excel 失敗：' + err.message);
+    }
+  };
+  reader.readAsBinaryString(file);
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+//  自動載入（GitHub Pages / 本機伺服器）
+// ══════════════════════════════════════════════════════════════════════════
+async function autoLoad() {
+  try {
+    const [res, commitDate] = await Promise.all([
+      fetch('dept_intro_data.xlsx?v=' + Date.now()),
+      getCommitDate('ncuphysics1986', 'phys.ncu.test', 'dept_intro_data.xlsx'),
+    ]);
+    if (!res.ok) throw new Error('not found');
+    const buf = await res.arrayBuffer();
+    const wb  = XLSX.read(buf, { type: 'array' });
+    processWorkbook(wb);
+    showCommitDate(commitDate);
+  } catch {
+    document.getElementById('overlay-hint').textContent = '找不到資料檔，請手動選取';
+    document.getElementById('overlay-spinner').style.display = 'none';
+    document.getElementById('overlay-btn').style.display = 'inline-flex';
+    document.getElementById('overlay-note').style.display = 'block';
+  }
+}
+
+window.addEventListener('DOMContentLoaded', autoLoad);
+</script>
+</body>
+</html>
