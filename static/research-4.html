@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: http:; font-src 'self' data:; connect-src 'self'; frame-src https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>國外學者來訪｜國立中央大學物理學系</title>
+<link rel="icon" type="image/webp" href="../files/NCUPHYS_Logo.webp">
+<link rel="apple-touch-icon" href="../files/NCUPHYS_Logo.webp">
+
+<style>
+/* ════ Variables ════ */
+:root{
+  --navy:#1a2a4a; --blue:#2563a8; --gold:#c8960c; --gold-text:#8a6608;
+  --light:#f4f7fb; --border:#dde4f0;
+  --text:#222; --muted:#5f6c86; --white:#fff;
+  --shadow:0 2px 12px rgba(37,99,168,.10);
+  --font-main:'Noto Serif TC','Songti TC','PMingLiU',Georgia,'Times New Roman',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-main);background:var(--light);color:var(--text);min-height:100vh}
+code,kbd,samp,button,input,select,textarea{font-family:inherit}
+
+/* ── 無障礙：跳躍連結（平時隱藏，鍵盤聚焦時顯示）── */
+.skip-links a{position:absolute;left:-9999px;top:0;z-index:9999;background:var(--navy);color:#fff;padding:10px 16px;border:2px solid var(--gold);border-radius:0 0 6px 0;text-decoration:none;font-size:.9rem}
+.skip-links a:focus{left:0}
+/* ── 無障礙：鍵盤聚焦明顯輪廓（滑鼠點擊不顯示）── */
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+/* 互動用 div 以 role=button 呈現時的鍵盤可及性 */
+[role="button"]{cursor:pointer}
+/* 螢幕報讀器專用（視覺隱藏但可被讀出） */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#noscript-msg{max-width:1100px;margin:24px auto;padding:18px 22px;background:#fff8e1;border-left:4px solid var(--gold);border-radius:4px;color:#7a5c00;line-height:1.8}
+/* ── 工具類 / Email 連結 ── */
+.mt-6{margin-top:6px}
+.mt-32{margin-top:36px}
+.eml-link{color:var(--blue);text-decoration:none}
+.eml-link:hover{text-decoration:underline}
+.eml-sep{color:var(--muted)}
+
+/* ── Top bar ── */
+#topbar{background:var(--navy);color:#b8c8e8;font-size:.8rem;padding:6px 32px;display:flex;justify-content:space-between;align-items:center}
+#topbar a{color:#b8c8e8;text-decoration:none;margin-left:12px}
+#topbar a:hover{color:#fff}
+
+/* ── Header ── */
+#site-header{background:#fff;border-bottom:3px solid var(--gold);padding:14px 32px;display:flex;align-items:center;gap:18px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.logo-img{width:52px;height:52px;object-fit:contain}
+.logo-text h1{font-size:1.15rem;color:var(--navy);font-weight:700;line-height:1.3}
+.logo-text p{font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+#version-badge{margin-left:auto;background:var(--navy);color:#7af0a0;border:1px solid #3a6;border-radius:6px;padding:5px 14px;font-size:.78rem;white-space:nowrap;display:flex;align-items:center;gap:6px}
+
+/* ── Main nav ── */
+#main-nav{background:var(--navy)}
+#main-nav ul{list-style:none;display:flex;padding:0 24px}
+#main-nav>ul>li{position:relative}
+#main-nav>ul>li>a{display:block;color:#d4e0f5;font-size:.9rem;padding:14px 18px;text-decoration:none;border-bottom:3px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
+#main-nav>ul>li>a:hover,#main-nav>ul>li.active>a{color:#fff;border-bottom-color:var(--gold)}
+#main-nav>ul>li>ul{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);min-width:180px;box-shadow:0 6px 20px rgba(0,0,0,.13);z-index:200}
+#main-nav>ul>li:hover>ul{display:block}
+#main-nav>ul>li>ul>li>a{display:block;color:var(--navy);font-size:.85rem;padding:10px 18px;text-decoration:none;border-left:3px solid transparent;transition:background .15s,border-color .15s}
+#main-nav>ul>li>ul>li>a:hover{background:var(--light);border-left-color:var(--gold);color:var(--blue)}
+
+/* ── 行動版漢堡選單 + 抽屜式網頁目錄（桌機隱藏，≤780px 啟用）── */
+#nav-toggle{display:none;align-items:center;gap:9px;background:none;border:none;color:#fff;font-family:inherit;font-size:.95rem;padding:13px 20px;cursor:pointer}
+.hb-icon{display:inline-flex;flex-direction:column;justify-content:center;gap:4px;width:22px;height:16px}
+.hb-icon span{display:block;height:2px;background:#fff;border-radius:2px}
+#mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:998}
+#mobile-nav-overlay.open{display:block}
+#mobile-nav{display:none;position:fixed;top:0;left:0;height:100%;width:min(84vw,340px);background:#fff;z-index:999;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:2px 0 18px rgba(0,0,0,.28);transform:translateX(-100%);visibility:hidden;transition:transform .28s ease,visibility 0s .28s}
+#mobile-nav.open{transform:translateX(0);visibility:visible;transition:transform .28s ease,visibility 0s 0s}
+#mobile-nav-head{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--navy);color:#fff;padding:15px 18px;font-size:1.05rem;font-weight:700;position:sticky;top:0}
+#mobile-nav-close{background:none;border:none;color:#fff;font-size:1.4rem;line-height:1;padding:4px 8px;cursor:pointer}
+#mobile-nav-body{padding:4px 0 32px}
+.mnav-sec{border-bottom:1px solid var(--border)}
+.mnav-sec-title{display:block;width:100%;text-align:left;background:none;border:none;font-family:inherit;font-size:1rem;font-weight:700;color:var(--navy);padding:14px 18px 6px;cursor:pointer}
+.mnav-sub{list-style:none}
+.mnav-sub li a{display:block;padding:11px 18px 11px 32px;color:var(--text);text-decoration:none;font-size:.95rem;border-left:3px solid transparent}
+.mnav-sub li a:active,.mnav-sub li a.active{background:var(--light);border-left-color:var(--gold);color:var(--blue)}
+body.nav-open{overflow:hidden}
+@media(max-width:780px){
+  /* 移除手機版橫列選單（提高優先級以蓋過 #main-nav ul{display:flex}） */
+  #main-nav #main-menu{display:none}
+  /* 空的導覽列收合，不留藍色空條 */
+  #main-nav{padding:0;min-height:0;background:transparent}
+  /* 漢堡鈕固定在畫面右上角，不隨捲動 */
+  #nav-toggle{display:inline-flex;position:fixed;top:8px;right:10px;z-index:1001;
+    background:var(--navy);border:1px solid rgba(255,255,255,.28);border-radius:8px;
+    padding:9px 13px;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+  body.nav-open #nav-toggle{display:none}   /* 抽屜開啟時隱藏浮動鈕（用抽屜內的 ✕ 關閉） */
+  #topbar{padding-right:64px}               /* 讓出右上角，避免蓋到 EN/Facebook */
+  #mobile-nav,#mobile-nav-overlay{display:flex}
+  #mobile-nav-overlay{display:none}
+  #mobile-nav-overlay.open{display:block}
+}
+
+/* ── Hero ── */
+#hero{position:relative;height:200px;background:linear-gradient(135deg,var(--navy),var(--blue));display:flex;align-items:flex-end;padding:0 40px 30px;overflow:hidden}
+#hero-bg{position:absolute;inset:0;background:center/cover no-repeat;opacity:.22}
+.hero-text{position:relative;z-index:2}
+.hero-text h2{font-size:2rem;color:#fff;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.hero-text p{font-size:.95rem;color:#b8d4f0;letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+
+/* ── Breadcrumb ── */
+#breadcrumb{background:#fff;border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+#breadcrumb span{color:var(--blue)}
+
+/* ── Sub-nav ── */
+#sub-nav{background:#fff;border-bottom:2px solid var(--border);padding:0 32px;display:flex;gap:4px;overflow-x:auto}
+#sub-nav button,#sub-nav a{border:none;background:none;font-family:inherit;font-size:.88rem;color:var(--muted);padding:12px 18px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s;text-decoration:none;display:inline-block}
+#sub-nav button:hover,#sub-nav a:hover{color:var(--blue)}
+#sub-nav button.active,#sub-nav a.active{color:var(--blue);border-bottom-color:var(--gold);font-weight:600}
+
+/* ── Content ── */
+#content{max-width:1100px;margin:0 auto;padding:36px 24px;min-height:400px}
+
+/* ── Loading / Error ── */
+.loading{text-align:center;padding:80px;color:var(--muted);font-size:1rem}
+.loading::after{content:'';display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin-left:10px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-msg{background:#fff8e1;border-left:4px solid var(--gold);padding:16px 20px;border-radius:4px;font-size:.9rem;color:#7a5c00}
+
+/* ── Section heading ── */
+.section-heading{font-size:1.3rem;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.section-count{font-size:.8rem;color:var(--muted);font-weight:normal}
+.mt-24{margin-top:24px}
+
+/* ── Text ── */
+.text-content{line-height:1.9;font-size:.97rem}
+/* 水平時間線（由左至右，上下交錯，可橫向捲動） */
+.tl-legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:18px}
+.tl-legend-item{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted)}
+.tl-legend-item i{width:11px;height:11px;border-radius:50%;display:inline-block}
+/* 歷史頁：依時期左右對列，左時間線 + 右時期卡片 */
+.tl-grid{display:grid;grid-template-columns:300px 1fr;gap:0 32px;align-items:stretch;position:relative}
+/* 貫穿左欄的時間軸縱線 */
+.tl-grid::before{content:"";position:absolute;left:9px;top:6px;bottom:18px;width:2px;background:var(--border)}
+.tlg-left{display:flex;flex-direction:column;justify-content:space-around;padding:18px 0;min-width:0}
+.tlg-right{padding-bottom:24px;min-width:0}
+.tlv-item{position:relative;display:flex;gap:14px}
+.tlv-marker{position:relative;flex:0 0 auto;width:14px;display:flex;justify-content:center}
+.tlv-dot{position:relative;z-index:1;width:13px;height:13px;border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 3px rgba(37,99,168,.18);margin-top:14px}
+.tlv-content{flex:1 1 auto;min-width:0}
+.tlv-year{font-size:2.7rem;font-weight:700;margin-bottom:2px;line-height:1.15}
+.tlv-title{font-size:.92rem;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:3px}
+.tlv-note{font-size:.8rem;color:var(--muted);line-height:1.55}
+@media(max-width:760px){
+  .tl-grid{grid-template-columns:1fr;gap:0}
+  .tl-grid::before{display:none}
+  .tlg-left{justify-content:flex-start;gap:18px;padding:8px 0 16px;border-left:2px solid var(--border);margin-left:9px;padding-left:8px}
+  .tlg-right{margin-bottom:24px}
+}
+/* 各時期長文段落卡片 */
+.tl-era{background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow);padding:18px 22px;height:100%}
+.tl-era-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.tl-era-icon{font-size:1.1rem}
+.tl-era-title{font-size:1.15rem;font-weight:700;color:var(--navy)}
+.tl-era-sub{font-size:.85rem;color:var(--muted);letter-spacing:.04em}
+.tl-era-body{font-size:.95rem;line-height:1.95}
+.tl-era-body p{margin:0 0 12px}
+.tl-era-body p:last-child{margin-bottom:0}
+.text-content p{margin-bottom:1.2em}
+
+/* ── 歷屆系主任 ── */
+.chair-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.chair-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);content-visibility:auto;contain-intrinsic-size:0 340px}
+.chair-photo-wrap{width:90px;height:90px;margin:20px auto 0}
+.chair-photo-wrap img{width:90px;height:90px;border-radius:50%;border:3px solid var(--border);object-fit:cover;object-position:top;display:block}
+.chair-no-photo{width:90px;height:90px;border-radius:50%;border:3px solid var(--border);background:linear-gradient(135deg,#dce6f8,#c0d0e8);display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#8aafda}
+.chair-body{padding:14px 16px 18px;text-align:center}
+.chair-body h3{font-size:1.05rem;color:var(--navy);margin-bottom:6px}
+.chair-dates{font-size:.78rem;color:var(--muted);margin-bottom:6px}
+.chair-edu{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.chair-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.chair-tag{background:#e8eef8;color:var(--blue);font-size:.7rem;padding:2px 8px;border-radius:20px}
+
+/* ── Faculty cards ── */
+.faculty-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:20px}
+.faculty-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;content-visibility:auto;contain-intrinsic-size:0 420px}
+.faculty-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,168,.18)}
+.fc-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;background:var(--light)}
+.fc-no-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#dce6f8,#c0d0e8);display:flex;align-items:center;justify-content:center;font-size:3rem;color:#8aafda}
+.fc-info{padding:14px}
+.fc-info h3{font-size:1rem;color:var(--navy)}
+.fc-title{font-size:.78rem;color:var(--blue);margin-top:3px}
+.fc-area{font-size:.73rem;color:var(--muted);margin-top:5px;line-height:1.5}
+.fc-email{font-size:.73rem;color:var(--muted);margin-top:4px}
+
+/* ── Faculty detail page ── */
+#detail-view{display:none}
+.fd-back{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-size:.88rem;cursor:pointer;margin-bottom:28px;background:none;border:none;font-family:inherit;padding:0}
+.fd-back:hover{text-decoration:underline}
+.fd-layout{display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:start}
+.fd-sidebar{position:sticky;top:120px}
+.fd-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--border);display:block;background:var(--light)}
+.fd-no-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#dce6f8,#c0d0e8);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#8aafda}
+.fd-contact{margin-top:16px;font-size:.82rem;color:var(--muted);line-height:2}
+.fd-contact a{color:var(--blue);text-decoration:none}
+.fd-contact a:hover{text-decoration:underline}
+.fd-main h1{font-size:2rem;color:var(--navy);font-weight:700}
+.fd-rank{font-size:1rem;color:var(--blue);margin-top:6px}
+.fd-divider{border:none;border-top:2px solid var(--gold);margin:18px 0}
+.fd-section{margin-bottom:28px}
+.fd-section h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-text);margin-bottom:10px;border-bottom:1px solid var(--border);padding-bottom:5px}
+.fd-section p,.fd-section li{font-size:.9rem;line-height:1.9;color:var(--text)}
+.fd-section ul{padding-left:1.2em}
+.fd-section a{color:var(--blue);text-decoration:none}
+.fd-section a:hover{text-decoration:underline}
+.fd-tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:20px}
+.fd-tab-btn{border:none;background:none;font-family:inherit;font-size:.9rem;color:var(--muted);padding:10px 18px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .2s,border-color .2s}
+.fd-tab-btn.active{color:var(--blue);border-bottom-color:var(--gold);font-weight:600}
+.pub-item{padding:11px 0;border-bottom:1px solid var(--border)}
+.pub-item:last-child{border-bottom:none}
+.pub-title{font-size:.88rem;font-weight:600;line-height:1.5}
+.pub-meta{font-size:.78rem;color:var(--muted);margin-top:3px}
+.proj-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.proj-table th{background:var(--navy);color:#fff;padding:8px 12px;text-align:left;font-size:.8rem}
+.proj-table td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.proj-table tr:nth-child(even) td{background:#f8fafd}
+
+/* ── Data table ── */
+.table-wrap{overflow-x:auto;border-radius:8px;box-shadow:var(--shadow)}
+.data-table{width:100%;border-collapse:collapse;font-size:.87rem}
+/* 小年會：合照（上）＋ 組員表格（下） */
+.ameet-row{display:block;margin-bottom:8px}
+.ameet-photo{margin:0 0 16px}
+.ameet-photo img{width:100%;max-width:640px;height:auto;border-radius:10px;box-shadow:var(--shadow);display:block}
+.ameet-table{width:100%}
+@media(max-width:768px){.ameet-photo img{max-width:100%}}
+.data-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:.82rem;letter-spacing:.04em}
+.data-table td{padding:10px 14px;border-bottom:1px solid var(--border);line-height:1.5}
+.data-table tr:nth-child(even) td{background:#f8fafd}
+.data-table tr:hover td{background:#eef3fc}
+.data-table a{color:var(--blue);text-decoration:none}
+.data-table a:hover{text-decoration:underline}
+.visitor-table{table-layout:fixed}
+.visitor-table th{white-space:nowrap}
+.visitor-table td:last-child{white-space:nowrap}
+.visitor-table td{overflow-wrap:break-word}
+/* 表頭與內容一律不換行：欄寬依最長內容自動配置，過寬時由 .table-wrap 水平捲動 */
+.nowrap-table{width:auto;min-width:100%;table-layout:auto}
+.nowrap-table th,.nowrap-table td{white-space:nowrap}
+/* 最長內容欄：允許換行，吸收剩餘寬度，避免表格過寬需水平捲動 */
+.nowrap-table td.wrap-col{white-space:normal;overflow-wrap:break-word;min-width:24em;width:99%}
+
+/* ── Research cards ── */
+.research-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.research-card{background:#fff;border-radius:10px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;content-visibility:auto;contain-intrinsic-size:0 320px}
+.research-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,99,168,.16)}
+.rc-img{width:100%;height:170px;object-fit:cover;display:block;background:var(--light)}
+.rc-no-img{width:100%;height:170px;background:linear-gradient(135deg,#e4ecf8,#d0dff4);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#8aafda}
+.rc-body{padding:16px}
+.rc-journal{font-size:.75rem;color:var(--gold-text);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.rc-title{font-size:.95rem;color:var(--navy);font-weight:600;margin-top:6px;line-height:1.5}
+.rc-authors{font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.4}
+
+/* ── Research modal ── */
+#modal-overlay{position:fixed;inset:0;background:rgba(10,20,40,.55);z-index:500;display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto}
+#modal-overlay.open{display:flex}
+#modal-box{background:#fff;border-radius:12px;width:100%;max-width:820px;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden;margin:auto;position:relative}
+#modal-close{position:absolute;top:14px;right:18px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:var(--muted);z-index:10;line-height:1}
+.rmodal-head{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:28px 32px}
+.rmodal-head .rj{font-size:.8rem;color:#aac8f0;text-transform:uppercase;letter-spacing:.06em}
+.rmodal-head h2{font-size:1.3rem;margin-top:6px;line-height:1.5}
+.rmodal-head .ra{font-size:.85rem;opacity:.8;margin-top:8px}
+.rmodal-body{padding:28px 32px;max-height:60vh;overflow-y:auto}
+.rmodal-body img{width:100%;max-height:260px;object-fit:contain;border-radius:6px;margin-bottom:12px;background:var(--light)}
+.rmodal-caption{font-size:.8rem;color:var(--muted);margin-bottom:16px}
+.rmodal-desc{font-size:.9rem;line-height:1.8;margin-bottom:16px}
+.rmodal-link{display:inline-block;background:var(--blue);color:#fff;padding:8px 20px;border-radius:4px;font-size:.85rem;text-decoration:none}
+.rmodal-link:hover{background:var(--navy)}
+
+/* ── 系所規章 / 活動 ── */
+.reg-wrap{margin-bottom:32px}
+.reg-cat-title{font-size:1rem;font-weight:700;color:var(--navy);border-left:4px solid var(--gold);padding:6px 12px;background:var(--light)}
+.reg-list{list-style:none}
+.reg-item{display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid var(--border);font-size:.87rem;flex-wrap:wrap}
+.reg-item:last-child{border-bottom:none}
+.reg-item a{color:var(--text);text-decoration:none}
+.reg-item a:hover{color:var(--blue);text-decoration:underline}
+.reg-item .name{color:var(--text)}
+
+/* ── Badges ── */
+.badge{font-size:.7rem;padding:2px 7px;border-radius:3px;font-weight:700;flex-shrink:0;white-space:nowrap}
+.b-pdf{background:#fee2e2;color:#b91c1c}
+.b-doc{background:#dbeafe;color:#1d4ed8}
+.b-yt{background:#fee2e2;color:#dc2626}
+.b-link{background:#e0f2fe;color:#0369a1}
+.b-other{background:#fef9c3;color:#92400e}
+.b-sub{background:#ede9fe;color:#6d28d9;font-size:.7rem;padding:2px 7px;border-radius:3px;font-weight:600;flex-shrink:0;white-space:nowrap}
+
+/* ── Core competency ── */
+.comp-group{margin-bottom:28px}
+.comp-group h3{font-size:1.05rem;color:var(--navy);background:var(--light);border-left:4px solid var(--blue);padding:8px 14px;margin-bottom:10px;border-radius:0 4px 4px 0}
+.comp-row{display:flex;gap:16px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.88rem}
+.comp-row:last-child{border-bottom:none}
+.comp-zh{font-weight:600;color:var(--navy);min-width:120px}
+.comp-en{color:var(--blue);min-width:180px;font-style:italic}
+.comp-desc{color:var(--text)}
+
+/* ── Student: course badges ── */
+.req-badge{font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:3px}
+.req-must{background:#fee2e2;color:#b91c1c}
+.req-elec{background:#dbeafe;color:#1d4ed8}
+.cat-inline{font-size:.68rem;padding:1px 7px;border-radius:10px;font-weight:600;vertical-align:middle;white-space:nowrap}
+/* 大學部課程表：固定欄寬，統一各年級分頁版面 */
+.ug-course-table{table-layout:fixed;width:100%}
+.ug-course-table .ug-c-cat{width:6.5em;text-align:center}
+.ug-course-table .ug-c-course{width:32%}
+.ug-course-table .ug-c-code{width:8.5em;white-space:nowrap}
+.ug-course-table .ug-c-term{width:5em;text-align:center}
+.ug-course-table td,.ug-course-table th{overflow-wrap:break-word}
+.emi-section-block{margin-top:36px}
+.emi-section-title{font-size:1rem;color:var(--navy);background:var(--light);border-left:4px solid var(--gold);padding:8px 14px;margin-bottom:12px;border-radius:0 4px 4px 0;display:flex;align-items:center;gap:10px}
+.emi-section-subtitle{font-size:.78rem;color:var(--muted);font-weight:400;letter-spacing:.04em}
+.emi-note{font-size:.78rem;color:var(--muted);margin-top:10px;padding:8px 12px;background:var(--light);border-radius:4px;line-height:1.7}
+
+/* ── Tab system (student pages) ── */
+.tab-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tab-btn{border:1px solid var(--border);background:#fff;color:var(--muted);font-size:.83rem;padding:6px 14px;border-radius:20px;cursor:pointer;font-family:inherit;transition:all .2s}
+.tab-btn:hover{color:var(--blue)}
+.tab-btn.tab-navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tab-btn.tab-blue{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ── Annual meeting ── */
+.meeting-desc{font-size:.95rem;line-height:1.9;background:#fff;padding:20px 24px;border-radius:8px;box-shadow:var(--shadow);margin-bottom:24px}
+
+/* ── Scholarship link cards ── */
+.link-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.link-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;box-shadow:var(--shadow);display:block;transition:transform .2s,box-shadow .2s;color:var(--text);text-decoration:none}
+.link-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,168,.15)}
+.lc-title{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.lc-desc{font-size:.82rem;color:var(--muted)}
+
+/* ── Student spaces ── */
+.spaces-grid{display:flex;flex-direction:column;gap:28px}
+.space-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.sp-header{background:linear-gradient(135deg,var(--navy),#2a3f6a);padding:16px 20px}
+.sp-name{font-size:1.05rem;font-weight:700;color:#fff}
+.sp-meta{display:flex;gap:16px;margin-top:5px;flex-wrap:wrap}
+.sp-loc,.sp-hours{font-size:.8rem;color:#b8d4f0}
+.sp-desc{padding:16px 20px;font-size:.88rem;line-height:1.85}
+
+/* ── Carousel ── */
+.carousel{position:relative;overflow:hidden;border-radius:8px;box-shadow:var(--shadow);background:#eee;height:clamp(240px,42vw,60vh)}
+.carousel[id^="cs-alb"]{height:clamp(316.8px,55.44vw,79.2vh)}
+.cs-track{position:relative;width:100%;height:100%}
+.cs-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s}
+.cs-slide.cs-active{opacity:1}
+.cs-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.cs-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;font-size:2rem;width:44px;height:44px;border-radius:50%;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.cs-btn:hover{background:rgba(0,0,0,.7)}
+.cs-prev{left:12px}.cs-next{right:12px}
+.cs-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:5}
+.cs-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .2s}
+.cs-dot.active{background:#fff}
+
+/* ── Journals ── */
+.journal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:20px}
+.journal-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.jc-cover{width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:3rem}
+.jc-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.jc-body{padding:12px}
+.jc-issue{font-size:.95rem;font-weight:700;color:var(--navy)}
+.jc-year{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.jc-links{display:flex;flex-wrap:wrap;gap:6px}
+.jc-btn{font-size:.75rem;background:var(--blue);color:#fff;padding:4px 10px;border-radius:3px;display:inline-block;text-decoration:none}
+.jc-btn:hover{background:var(--navy)}
+.jc-yt{background:#dc2626}
+
+/* ── Programs ── */
+.program-list{display:flex;flex-direction:column;gap:12px}
+.prog-row{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.prog-name{font-size:.97rem;font-weight:600;color:var(--navy);min-width:80px}
+.prog-desc{font-size:.85rem;color:var(--muted);flex:1;line-height:1.7}
+.prog-link{font-size:.82rem;background:var(--navy);color:#fff;padding:5px 14px;border-radius:4px;text-decoration:none;white-space:nowrap}
+.prog-link:hover{background:var(--blue)}
+
+/* ── Degree badges ── */
+.deg-badge{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;white-space:nowrap;display:inline-block}
+.badge-phd{background:#ede9fe;color:#5b21b6}
+.badge-ms{background:#dbeafe;color:#1e40af}
+.purpose-cell{font-size:.82rem}
+
+/* ── EMI 專區 ── */
+.emi-wrap{padding:4px 0}
+.emi-cat-section{margin-bottom:2.8rem}
+.emi-cat-title{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+.emi-cat-div{height:2px;border-radius:1px;margin-bottom:1.2rem}
+.emi-cat-teacher .emi-cat-title{color:#1f6fa8}
+.emi-cat-teacher .emi-cat-div{background:linear-gradient(90deg,#1f6fa8,transparent)}
+.emi-cat-student .emi-cat-title{color:#375623}
+.emi-cat-student .emi-cat-div{background:linear-gradient(90deg,#375623,transparent)}
+.emi-cat-ta .emi-cat-title{color:#7d5800}
+.emi-cat-ta .emi-cat-div{background:linear-gradient(90deg,#7d5800,transparent)}
+.emi-cat-resource .emi-cat-title{color:#7b2c2c}
+.emi-cat-resource .emi-cat-div{background:linear-gradient(90deg,#7b2c2c,transparent)}
+.emi-links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem}
+.emi-link-card{display:flex;flex-direction:column;justify-content:space-between;gap:.5rem;padding:1.2rem 1.3rem;border-radius:12px;text-decoration:none;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow);transition:box-shadow .18s,transform .15s,border-color .18s;min-height:76px}
+.emi-link-card:hover{box-shadow:0 6px 24px rgba(31,78,121,.15);transform:translateY(-3px)}
+.emi-cat-teacher .emi-link-card:hover{border-color:#1f6fa8}
+.emi-cat-student .emi-link-card:hover{border-color:#375623}
+.emi-cat-ta      .emi-link-card:hover{border-color:#7d5800}
+.emi-cat-resource .emi-link-card:hover{border-color:#7b2c2c}
+.emi-link-name{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.4}
+.emi-link-arrow{font-size:.75rem;color:var(--muted);transition:transform .15s;display:inline-block}
+.emi-link-card:hover .emi-link-arrow{transform:translateX(4px)}
+
+/* ── 所有公告 ── */
+.news-toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;align-items:center}
+.news-year-sel{font-family:inherit;font-size:.85rem;padding:8px 10px;border:1px solid var(--border);border-radius:6px;outline:none;background:#fff;color:var(--text)}
+.news-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.news-tab{border:1px solid var(--border);background:#fff;color:var(--muted);font-size:.82rem;padding:6px 14px;border-radius:20px;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap}
+.news-tab:hover{color:var(--blue);border-color:var(--blue)}
+.news-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.news-tab .n{font-size:.7rem;opacity:.7;margin-left:3px}
+.news-item{background:#eaf1f8;border:1px solid #d4e0ee;border-radius:6px;margin-bottom:8px;overflow:hidden}
+.news-item-row{display:flex;align-items:center;gap:12px;padding:10px 16px;cursor:pointer;user-select:none;flex-wrap:wrap}
+.news-item-row:hover{background:rgba(0,0,0,.04)}
+.news-item-title{flex:1;font-size:.92rem;color:var(--navy);font-weight:600;min-width:200px}
+.news-item-date{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.news-badge{font-size:.68rem;font-weight:700;padding:2px 9px;border-radius:99px;white-space:nowrap;background:#fbe5e2;color:#b03a2e}
+.news-item-body{display:none;background:#fff;border-top:1px solid #d4e0ee;padding:18px 22px}
+.news-item.open .news-item-body{display:block}
+.news-body-text{font-size:.9rem;line-height:1.85;white-space:pre-wrap;word-break:break-word;margin-bottom:10px}
+.news-meta-line{color:var(--muted);font-size:.8rem;margin-bottom:10px}
+.news-links-block{margin-top:12px;padding-top:10px;border-top:1px dashed var(--border)}
+.news-links-block a{display:block;font-size:.88rem;margin-bottom:5px;color:var(--blue);text-decoration:none;word-break:break-all}
+.news-links-block a:hover{text-decoration:underline}
+.news-src-link{margin-top:12px;text-align:right}
+.news-src-link a{font-size:.82rem;color:var(--blue);text-decoration:none}
+.news-src-link a:hover{text-decoration:underline}
+.news-more-btn{display:block;margin:18px auto;font-size:.88rem;font-family:inherit;padding:9px 28px;border-radius:6px;border:1px solid var(--blue);background:#fff;color:var(--blue);cursor:pointer;transition:all .15s}
+.news-more-btn:hover{background:var(--blue);color:#fff}
+.news-count-info{text-align:center;color:var(--muted);font-size:.82rem;margin:14px 0 4px}
+.news-empty{text-align:center;color:var(--muted);padding:60px 20px;font-size:.95rem}
+
+/* ── 高中生專區 ── */
+.portal-video{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;margin:0;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:#000}
+.portal-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid-block{display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:start;margin:0 auto 36px;max-width:1100px}
+.vid-list{list-style:none;margin:0;padding:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.vid-item{padding:14px 18px;font-size:.95rem;color:var(--text);cursor:pointer;border-bottom:1px solid var(--border);transition:background .15s,color .15s;line-height:1.5}
+.vid-item:last-child{border-bottom:0}
+.vid-item:hover{background:var(--light)}
+.vid-item.active{background:var(--navy);color:#fff;font-weight:600}
+.vid-player{min-width:0}
+.vid-player .portal-video{margin:0}
+@media(max-width:680px){.vid-block{grid-template-columns:1fr}}
+.vid-block.vid-single{grid-template-columns:1fr;max-width:820px}
+.portal-about{background:#fff;border-radius:10px;box-shadow:var(--shadow);padding:24px 28px;font-size:.95rem;line-height:1.95;margin-bottom:32px}
+/* 畢業出路：數據條 */
+.career-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:0 0 24px}
+.career-stat{background:linear-gradient(135deg,#1a2a4a,#2563a8);color:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:var(--shadow)}
+.career-stat-num{font-size:1.9rem;font-weight:800;line-height:1.1;letter-spacing:-.01em}
+.career-stat-label{font-size:.86rem;font-weight:700;color:var(--gold-soft);margin-top:6px}
+.career-stat-note{font-size:.72rem;color:#c5d6ee;line-height:1.5;margin-top:6px}
+/* 畢業出路：方向卡 */
+.career-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0 0 36px}
+.career-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 22px;transition:transform .2s,box-shadow .2s}
+.career-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(37,99,168,.16)}
+.career-icon{font-size:1.8rem;margin-bottom:8px}
+.career-title{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.career-note{font-size:.85rem;color:var(--muted);line-height:1.7}
+@media(max-width:520px){.career-stats{grid-template-columns:1fr 1fr}.career-stat-num{font-size:1.6rem}}
+/* 升學深造領域 比例條 */
+.career-subhead{font-size:1.05rem;font-weight:700;color:var(--navy);margin:0 0 14px}
+.major-bars{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 24px;margin:0 0 28px}
+.major-row{display:grid;grid-template-columns:120px 1fr 56px;align-items:center;gap:12px;margin-bottom:4px}
+.major-name{font-size:.88rem;font-weight:600;color:var(--text);text-align:right}
+.major-track{background:var(--light);border-radius:20px;height:18px;overflow:hidden}
+.major-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--blue),var(--gold));transition:width .6s ease}
+.major-pct{font-size:.86rem;font-weight:700;color:var(--blue)}
+.major-note{font-size:.76rem;color:var(--muted);line-height:1.5;margin:0 0 14px 132px}
+.major-note:last-child{margin-bottom:0}
+@media(max-width:520px){.major-row{grid-template-columns:84px 1fr 48px;gap:8px}.major-name{font-size:.8rem}.major-note{margin-left:0}}
+/* 碩博 vs 大學部 雙色對照長條 */
+.career-lead{font-size:.86rem;color:var(--muted);line-height:1.7;margin:0 0 14px}
+.cmp-legend{display:flex;gap:18px;margin:0 0 12px}
+.cmp-key{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted)}
+.cmp-key i{width:13px;height:13px;border-radius:3px;display:inline-block}
+.cmp-pg{background:var(--gold)}
+.cmp-ug{background:var(--blue)}
+.cmp-row{display:grid;grid-template-columns:140px 1fr;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid var(--light)}
+.cmp-row:last-child{border-bottom:0}
+.cmp-name{font-size:.84rem;font-weight:600;color:var(--text);text-align:right;line-height:1.35}
+.cmp-bars{display:flex;flex-direction:column;gap:5px}
+.cmp-line{display:flex;align-items:center;gap:8px}
+.cmp-fill{height:13px;border-radius:20px;min-width:2px;transition:width .6s ease}
+i.cmp-pg,.cmp-fill.cmp-pg{background:var(--gold)}
+i.cmp-ug,.cmp-fill.cmp-ug{background:var(--blue)}
+.cmp-val{font-size:.74rem;font-weight:700;color:var(--muted);white-space:nowrap}
+@media(max-width:520px){.cmp-row{grid-template-columns:90px 1fr;gap:8px}.cmp-name{font-size:.76rem}}
+/* 雙軌學程課程地圖：水平三節點時間線 */
+.cmap-track{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:14px;position:relative;margin:0 0 22px}
+.cmap-track::before{content:"";position:absolute;top:8px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--gold),var(--blue),#1d9e75);border-radius:3px;z-index:0}
+.cmap-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+.cmap-dot{width:16px;height:16px;border-radius:50%;background:var(--navy);border:3px solid var(--white);box-shadow:0 0 0 3px rgba(37,99,168,.18);flex:0 0 auto}
+.cmap-stem{width:2px;height:22px;background:var(--border);flex:0 0 auto}
+.cmap-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:16px 14px;text-align:center;width:100%}
+.cmap-year{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.cmap-courses{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.cmap-course{font-size:.78rem;background:var(--light);color:var(--blue);border-radius:6px;padding:4px 9px;font-weight:600;line-height:1.4}
+/* 小年會等事件節點：金色強調 */
+.cmap-event .cmap-dot{background:var(--gold)}
+.cmap-event .cmap-stem{background:var(--gold)}
+.cmap-event .cmap-card{border-color:var(--gold);background:#fffaf0}
+.cmap-event .cmap-course{background:rgba(200,150,12,.14);color:#8a6d1f}
+.cmap-event-title{font-size:.92rem;font-weight:700;color:#8a6d1f;margin-bottom:6px}
+.cmap-event-note{font-size:.76rem;color:var(--muted);line-height:1.55}
+/* 雙軌對照卡 */
+.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 36px}
+.track-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 22px;border-top:4px solid var(--gold)}
+.track-card.track-b{border-top-color:#1d9e75}
+.track-name{font-size:1.15rem;font-weight:800;color:var(--navy);margin-bottom:4px}
+.track-who{font-size:.84rem;color:var(--blue);font-weight:600;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.track-list{margin:0;padding-left:18px}
+.track-list li{font-size:.88rem;color:var(--text);line-height:1.85}
+@media(max-width:560px){.cmap-track{grid-auto-flow:row;grid-auto-columns:auto;gap:10px}.cmap-track::before{display:none}.cmap-node{flex-direction:row;gap:0;align-items:flex-start}.cmap-dot{margin-top:6px}.cmap-stem{width:14px;height:2px;margin-top:13px}.cmap-card{text-align:left}.cmap-courses{justify-content:flex-start}.track-grid{grid-template-columns:1fr}}
+/* 常見問題 Q&A 手風琴 */
+.faq-list{display:flex;flex-direction:column;gap:10px;margin:0 0 36px}
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+.faq-q{cursor:pointer;list-style:none;padding:16px 48px 16px 20px;font-size:.96rem;font-weight:700;color:var(--navy);position:relative;transition:background .15s}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q:hover{background:var(--light)}
+.faq-q::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:1.3rem;font-weight:400;color:var(--blue);transition:transform .2s}
+.faq-item[open] .faq-q::after{content:"\2212"}
+.faq-item[open] .faq-q{color:var(--blue);border-bottom:1px solid var(--border)}
+.faq-a{padding:16px 20px;font-size:.9rem;line-height:1.85;color:var(--text)}
+.faq-a a{color:var(--blue);text-decoration:underline;word-break:break-all}
+/* 數據亮點卡（為什麼選中央物理） */
+.stat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:0 0 36px}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:18px 12px;text-align:center;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;min-width:0}
+.stat-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--blue))}
+.stat-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(37,99,168,.16)}
+.stat-num{font-size:1.55rem;font-weight:800;line-height:1.25;color:var(--navy);letter-spacing:-.01em;white-space:nowrap}
+.stat-label{font-size:.84rem;font-weight:700;color:var(--blue);margin-top:7px}
+.stat-note{font-size:.72rem;color:var(--muted);line-height:1.55;margin-top:7px}
+/* 中螢幕：3 欄；小螢幕：2 欄 */
+@media(max-width:900px){.stat-grid{grid-template-columns:repeat(3,1fr)}.stat-num{font-size:1.7rem}}
+@media(max-width:520px){.stat-grid{grid-template-columns:repeat(2,1fr);gap:10px}.stat-num{font-size:1.6rem;white-space:normal}}
+.portal-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.portal-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;justify-content:space-between;min-height:96px;text-decoration:none;color:var(--text);cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.portal-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,168,.16);border-color:var(--blue)}
+.portal-card-title{font-size:1rem;font-weight:700;color:var(--navy);line-height:1.5}
+.portal-card-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+.portal-card-arrow{font-size:.78rem;color:var(--muted);transition:transform .15s;align-self:flex-end}
+.portal-card:hover .portal-card-arrow{transform:translateX(4px);color:var(--blue)}
+
+/* ── Footer ── */
+footer{background:var(--navy);color:#8a9fc0;text-align:center;padding:24px;font-size:.82rem;margin-top:60px}
+footer a{color:#8a9fc0}
+
+@media(max-width:780px){
+  #site-header{padding:10px 14px;flex-wrap:wrap}
+  #content{padding:20px 12px}
+  .fd-layout{grid-template-columns:1fr}
+  .fd-sidebar{position:static}
+}
+
+/* === 無 JS 降級樣式 === */
+summary.news-summary{list-style:none;cursor:pointer}
+summary.news-summary::-webkit-details-marker{display:none}
+.news-item>summary .news-item-row::after{content:'＋';margin-left:auto;color:var(--blue);font-weight:700;align-self:center}
+.news-item[open]>summary .news-item-row::after{content:'－'}
+details.news-item[open] .news-item-body{display:block}
+.tab-bar{display:none!important}
+.tab-panel{display:block!important}
+.nojs-tab-h{font-weight:600;color:var(--navy);margin:16px 0 8px;padding:6px 14px;background:#eef2f7;border-radius:20px;display:inline-block;font-size:.9rem}
+/* 跑馬燈 → 無 JS 可左右滑動的輪播（CSS scroll-snap） */
+.carousel{position:static!important;overflow:visible!important;height:auto!important;background:transparent!important;box-shadow:none!important;margin:6px 0}
+.carousel .cs-track{position:static!important;display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;gap:8px;height:auto!important;border-radius:8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--blue) #e5e9ef}
+.carousel .cs-track::-webkit-scrollbar{height:8px}
+.carousel .cs-track::-webkit-scrollbar-track{background:#e5e9ef;border-radius:4px}
+.carousel .cs-track::-webkit-scrollbar-thumb{background:var(--blue);border-radius:4px}
+.carousel .cs-track:focus{outline:2px solid var(--blue);outline-offset:2px}
+.carousel .cs-slide{position:static!important;inset:auto!important;opacity:1!important;flex:0 0 88%!important;width:auto!important;height:clamp(240px,52vw,460px)!important;scroll-snap-align:center;background:#000;border-radius:8px}
+.carousel .cs-slide img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:8px;display:block}
+.carousel .cs-btn,.carousel .cs-dots{display:none!important}
+.nojs-cs-hint{text-align:center;color:var(--muted);font-size:.8rem;margin:6px 0 2px;user-select:none}
+.nojs-empty{color:var(--muted);font-size:.88rem;padding:12px}
+</style>
+</head>
+<body>
+
+<div class="skip-links">
+  <a href="#main-nav" accesskey="U" title="上方功能區塊">:::上方導覽區（Alt+U）</a>
+  <a href="#content" accesskey="C" title="中央內容區塊">:::主要內容區（Alt+C）</a>
+  <a href="#footer-nav" accesskey="H" title="下方功能區塊">:::下方功能區（Alt+H）</a>
+</div>
+
+
+
+<div id="topbar">
+  <span>國立中央大學物理學系 Department of Physics, NCU</span>
+  <div>
+    <a href="https://www.facebook.com/NCUphy" target="_blank" rel="noopener noreferrer">Facebook</a>
+  </div>
+</div>
+
+<header id="site-header" role="banner">
+  <img class="logo-img" src="../files/NCUPHYS_Logo.webp" alt="國立中央大學物理學系系徽" data-onerr="hide">
+  <div class="logo-text">
+    <h1>國立中央大學物理學系</h1>
+    <p>Department of Physics · National Central University</p>
+  </div>
+  <div id="version-badge"><span>✓</span><span id="vb-text"></span></div>
+</header>
+
+<nav id="main-nav" role="navigation" aria-label="主要導覽">
+  
+  <ul id="main-menu"><li><a href="index.html">系所簡介</a><ul><li><a href="index.html">歷史</a></li><li><a href="intro-2.html">歷屆系主任</a></li><li><a href="intro-3.html">教育目標與核心能力</a></li><li><a href="intro-4.html">系所規章</a></li><li><a href="intro-5.html">系所活動</a></li></ul></li><li><a href="faculty-1.html">系所人員</a><ul><li><a href="faculty-1.html">專任師資</a></li><li><a href="faculty-2.html">訪問學者</a></li><li><a href="faculty-3.html">兼任師資</a></li><li><a href="faculty-4.html">合聘師資</a></li><li><a href="faculty-5.html">退休師資</a></li><li><a href="faculty-6.html">博士後研究員</a></li><li><a href="faculty-7.html">系辦公室人員</a></li><li><a href="faculty-8.html">助理人員</a></li><li><a href="faculty-9.html">在學博士生</a></li></ul></li><li><a href="research-1.html">學術成果</a><ul><li><a href="research-1.html">研究成果</a></li><li><a href="research-2.html">實驗室</a></li><li><a href="research-3.html">教師獲獎紀錄</a></li><li><a href="research-4.html">國外學者來訪</a></li></ul></li><li><a href="student-1.html">學生專區</a><ul><li><a href="student-1.html">大學部課程</a></li><li><a href="student-2.html">研究所課程</a></li><li><a href="student-3.html">物理小年會</a></li><li><a href="student-4.html">獎學金</a></li><li><a href="student-5.html">學生活動空間</a></li><li><a href="student-6.html">學生獲獎紀錄</a></li><li><a href="student-7.html">研究生論文</a></li><li><a href="student-8.html">學生國外差旅</a></li><li><a href="student-9.html">相關學程</a></li><li><a href="student-10.html">物理系刊</a></li></ul></li><li><a href="emi-1.html">EMI專區</a><ul><li><a href="emi-1.html">EMI專區</a></li></ul></li><li><a href="highschool-1.html">高中生專區</a><ul><li><a href="highschool-1.html">高中生專區</a></li><li><a href="highschool-2.html">申請入學資訊</a></li><li><a href="highschool-3.html">特殊選才資訊</a></li></ul></li><li><a href="news-1.html">所有公告</a><ul><li><a href="news-1.html">所有公告</a></li></ul></li></ul>
+</nav>
+
+
+
+<div id="hero">
+  <div id="hero-bg" style="background-image: url(&quot;http://140.114.78.40/wp-content/uploads/2020/09/研究成果-scaled.jpg&quot;);"></div>
+  <div class="hero-text">
+    <h2 id="hero-title">國外學者來訪</h2>
+    <p id="hero-sub">International Visitors</p>
+  </div>
+</div>
+
+<div id="breadcrumb">首頁 › <a href="research-1.html">學術成果</a> › <span>國外學者來訪</span></div>
+<nav id="sub-nav" aria-label="子頁籤"><a href="research-1.html">研究成果</a><a href="research-2.html">實驗室</a><a href="research-3.html">教師獲獎紀錄</a><a href="research-4.html" class="active" aria-current="page">國外學者來訪</a></nav>
+
+<div id="content" role="main" tabindex="-1">
+  <div id="list-view"><h2 class="section-heading">國外學者來訪 <span class="section-count">438 筆</span></h2><div class="table-wrap"><table class="data-table visitor-table"><colgroup><col style="width:20%"><col style="width:10%"><col style="width:10%"><col style="width:34%"><col style="width:11%"><col style="width:15%"></colgroup><thead><tr><th>來訪者</th><th>來訪國家</th><th>職稱</th><th>來訪單位</th><th>邀請人</th><th>日期</th></tr></thead><tbody><tr><td>Michel Nuevo</td><td>美國</td><td>研究員</td><td>NASA Ames Research Center</td><td>陳俞融</td><td>115.04.20-115.05.03</td></tr><tr><td>Guillermo Muñoz Caro</td><td>西班牙</td><td>研究員</td><td>Center of Astrobiology, INTA/CSIC</td><td>陳俞融</td><td>114.11.05-114.11.11</td></tr><tr><td>Antonio Jimenez-Escobar</td><td>義大利</td><td>研究員</td><td>Osservatorio Astronomico di Palermo, INAF</td><td>陳俞融</td><td>114.10.20-114.11.11</td></tr><tr><td>Cesare Cecchi-Pestellini</td><td>義大利</td><td>教授</td><td>Osservatorio Astronomico di Palermo,</td><td>陳俞融</td><td>114.10.20-114.11.11</td></tr><tr><td>wei-xiang Chew 周偉翔</td><td>Spain</td><td>Senior Postdoctoral Researcher</td><td>Quantitative Cell Biology Department, Centre for Genomic Regulation, Spain</td><td>陳俞融</td><td>114.10.31</td></tr><tr><td>黄國瑋</td><td>UK</td><td>Research Fellow</td><td>School of Mathematical Sciences and STAG Research Centre University of Southampton</td><td>陳俞融</td><td>114.10.29</td></tr><tr><td>Mashimo Taro</td><td>日本</td><td>助理教授</td><td>Chuo University, Japan</td><td>鄭王曜</td><td>114.08.20-114.09.10</td></tr><tr><td>Nan Jiang</td><td></td><td>教授</td><td>Department of Chemistry&amp;Department of Physics,University of Illinois Chicago</td><td>羅夢凡</td><td>114.07.17</td></tr><tr><td>Lee Lindblom</td><td></td><td>教授</td><td>University of California at San Diego</td><td>陳江梅</td><td>114.04.06-114.04.26</td></tr><tr><td>林韋辰</td><td></td><td>博士後研究</td><td>Pusan National University</td><td>陳江梅</td><td>114.03.03-114.03.07</td></tr><tr><td>Nobuyoshi Ohta</td><td></td><td>教授</td><td>Kindai University</td><td>陳江梅</td><td>114.02.25-114.03.25</td></tr><tr><td>Teodora Kirova</td><td></td><td>Senior Researcher</td><td>University of Latvia</td><td>廖文德</td><td>113.10.14-113.11.15</td></tr><tr><td>Nobuyoshi Ohta</td><td></td><td>教授</td><td>Kindai University</td><td>陳江梅</td><td>113.11.05-113.11.13</td></tr><tr><td>Sang Pyo Kim</td><td></td><td>教授</td><td>Kunsan National University</td><td>陳江梅</td><td>113.12.25-114.02.08</td></tr><tr><td>Tomohiro Harada</td><td></td><td>教授</td><td>Rikkyo University</td><td>陳江梅</td><td>113.11.20-113.12.19</td></tr><tr><td>Tatsuo Shibata</td><td></td><td>研究員</td><td>RIKEN (理化學研究所)</td><td>温福來</td><td>113.08.29-113.09.04</td></tr><tr><td>Nishant Agarwal</td><td></td><td>Associate Professor</td><td>Department of Physics and Applied Physics, University of Massachusetts Lowell</td><td>瞿怡仁</td><td>113.10.09-113.10.19</td></tr><tr><td>JONG-BONG Lee</td><td></td><td>教授</td><td>POSTECH</td><td>田溶根</td><td>113.01.22-113.01.27</td></tr><tr><td>Lee Lindblom</td><td></td><td>教授</td><td>University of California at San Diego</td><td>陳江梅</td><td>112.11.20-112.12.19</td></tr><tr><td>Sang Pyo Kim</td><td></td><td>教授</td><td>Kunsan National University</td><td>陳江梅</td><td>112.12.22-113.02.21</td></tr><tr><td>Ekaterina Krasnopeeva</td><td></td><td>博士後研究</td><td>Institute of Science and Technology Austria (ISTA)</td><td>羅健榮</td><td>111.11.11-111.12.11</td></tr><tr><td>Tiem Leong Yoon</td><td></td><td>副教授</td><td>Universiti Sains Malaysia</td><td>賴山強</td><td>112.03.09-112.03.18</td></tr><tr><td>Thong Leng Lim</td><td></td><td>Senior Lecturer</td><td>Multimedia University, Malaysia</td><td>賴山強</td><td>112.03.09-112.03.18</td></tr><tr><td>Michel Nuevo</td><td></td><td>研究員</td><td>NASA Ames Research Center, USA</td><td>陳俞融</td><td>111.05.30-111.06.20</td></tr><tr><td>Koichiro Umemoto</td><td>日本</td><td>研究員</td><td>東京工業大學</td><td>徐翰</td><td>109.02.10-109.02.17</td></tr><tr><td>Sang Pyo Kim</td><td>韓國</td><td>教授</td><td>Kunsan National University</td><td>陳江梅</td><td>109.01.12-109.01.18</td></tr><tr><td>Antonio Jimeńez-Escobar</td><td>義大利</td><td>研究員</td><td>INAF-Osservatorio Astronomico di Parlamento, Italy</td><td>陳俞融</td><td>108.10.04-108.11.27</td></tr><tr><td>Angela Ciaravella</td><td>義大利</td><td>研究員</td><td>INAF-Osservatorio Astronomico di Parlamento, Italy</td><td>陳俞融</td><td>108.10.04-108.11.27</td></tr><tr><td>Jaehee Lee</td><td>Korea</td><td>博士生</td><td>Korea Advanced Institute of Science and Technology (KAIST),Korea</td><td>田溶根</td><td>108.09.16-109.03.15</td></tr><tr><td>Klaountia Pasmatsiou</td><td></td><td>博士生</td><td>Case Western Reserve University,USA</td><td>瞿怡仁</td><td>108.05.25-108.06.21</td></tr><tr><td>陳光宇</td><td></td><td>教授</td><td>香港大學化學系</td><td>賴山強</td><td>108.11.28-108.11.29</td></tr><tr><td>Thong Leng Lim</td><td></td><td>Senior Lecturer</td><td>Multimedia University, Malaysia</td><td>賴山強</td><td>108.04.05-108.04.19</td></tr><tr><td>Richard Woodard</td><td></td><td>教授</td><td>Department of Physics， University of Florida</td><td>瞿怡仁</td><td>108.05.28-108.05.29</td></tr><tr><td>Michel Nuevo</td><td></td><td>研究員</td><td>NASA Ames Research Center, USA</td><td>陳俞融</td><td>108.03.17-108.04.03</td></tr><tr><td>梁茂昌</td><td></td><td>研究員</td><td>中研院地科所</td><td>陳俞融</td><td>108.02.15-108.02.16</td></tr><tr><td>Lars Andreas Johansson</td><td></td><td>研究員</td><td>Nanoscience Center, University of Jyväskylä, Finland</td><td>溫偉源</td><td>108.03.01-108.03.14</td></tr><tr><td>Suzana Bedic</td><td></td><td>碩士生</td><td>University of Rome, Sapienza</td><td>江祖永</td><td>109.01.18-109.04.14</td></tr><tr><td>Suzana Bedic</td><td></td><td>碩士生</td><td>University of Rome, Sapienza</td><td>江祖永</td><td>108.01.12-108.04.09</td></tr><tr><td>Takumi Minami</td><td>日本</td><td>博士生</td><td>日本大阪大學</td><td>溫偉源</td><td>108.11.12-108.12.03</td></tr><tr><td>藏滿康浩</td><td>日本</td><td>教授</td><td>日本大阪大學</td><td>溫偉源</td><td>108.11.12-108.11.17</td></tr><tr><td>藏滿康浩</td><td></td><td>助理教授</td><td>日本大阪大學</td><td>朱旭新</td><td>107.07.26-107.07.28</td></tr><tr><td>藏滿康浩</td><td></td><td>助理教授</td><td>日本大阪大學</td><td>朱旭新</td><td>106.12.06-107.12.09</td></tr><tr><td>Sohyun Park</td><td></td><td>博士後</td><td>Institute of Physics, Czech Academy of Sciences, CEICO</td><td>瞿怡仁</td><td>107.12.25-108.01.15</td></tr><tr><td>Sohyun Park</td><td></td><td>博士後</td><td>Institute of Physics, Czech Academy of Sciences, CEICO</td><td>瞿怡仁</td><td>107.08.07-107.08.26</td></tr><tr><td>吳小寧</td><td></td><td>副研究員</td><td>中國科學院數學研究所</td><td>陳江梅</td><td>108.01.13</td></tr><tr><td>Nishant Agarwal</td><td></td><td>助理教授</td><td>University of Massachusetts Lowell</td><td>瞿怡仁</td><td>108.01.06-108.01.16</td></tr><tr><td>Pascal Silberzan</td><td>France</td><td>教授</td><td>Institut Curie, France</td><td>陳宣毅</td><td>108.10.01-108.10.07</td></tr><tr><td>Cesare Cecchi-Pestellini</td><td>義大利</td><td>教授</td><td>INAF-Osservatorio Astronomico di Parlamento, Italy</td><td>陳俞融</td><td>108.10.04-108.11.27</td></tr><tr><td>Cesare Cecchi-Pestellini</td><td></td><td>教授</td><td>INAF-Osservatorio Astronomico di Parlamento, Italy</td><td>陳俞融</td><td>107.10.12-107.11.29</td></tr><tr><td>Angela Ciaravella</td><td></td><td>研究員</td><td>INAF-Osservatorio Astronomico di Parlamento, Italy</td><td>陳俞融</td><td>107.10.12-107.11.29</td></tr><tr><td>Cristóbal González Díaz</td><td></td><td>研究員</td><td>Centro de Astrobiologia,INTA-CSIC, Spain</td><td>陳俞融</td><td>107.10.30-107.11.09</td></tr><tr><td>Jeffrey W Lynn</td><td>USA</td><td>研究員</td><td>National Institute of Standards and Technology, USA</td><td>李文献</td><td>108.11.16-108.11.22</td></tr><tr><td>Guillermo M. Muñoz Caro</td><td>Spain</td><td>研究員</td><td>Centro de Astrobiología (CSIC/INTA), Spain</td><td>陳俞融</td><td>108.10.30-108.11.08</td></tr><tr><td>Guillermo M. Muñoz Caro</td><td></td><td>研究員</td><td>Centro de Astrobiologia,INTA-CSIC, Spain</td><td>陳俞融</td><td>107.10.30-107.11.09</td></tr><tr><td>Michel Nuevo</td><td></td><td>研究員</td><td>NASA Ames Research Center, USA</td><td>陳俞融</td><td>108.10.14-108.10.29</td></tr><tr><td>Michel Nuevo</td><td></td><td>研究員</td><td>NASA Ames Research Center, USA</td><td>陳俞融</td><td>107.10.15-107.10.30</td></tr><tr><td>Andrew Nelson</td><td></td><td>儀器科學家</td><td>Australian NuclearScience and Technology Organization</td><td>李文獻</td><td>107.10.18-107.10.23</td></tr><tr><td>Hyuk－Kyu Pak</td><td></td><td>教授</td><td>Physics and IBS，UNIST，Korea</td><td>田溶根</td><td>107.09.30-107.10.03</td></tr><tr><td>Hector Carrascosa</td><td></td><td>研究員</td><td>Center of Astrobiology, INTA/CSIC, Spain</td><td>陳俞融</td><td>107.06.29-107.08.17</td></tr><tr><td>Ildoo Kim</td><td></td><td>博士後研究</td><td>Brown University, Providence, RI, USA</td><td>田溶根</td><td>107.05.06-107.05.07</td></tr><tr><td>GLENN STARKMAN</td><td></td><td>教授</td><td>CASE WESTERN RESERVE UNIVERSITY</td><td>瞿怡仁</td><td>107.02.20-107.02.25</td></tr><tr><td>Sang Pyo Kim</td><td></td><td>教授</td><td>Kunsan National University, Korea</td><td>陳江梅</td><td>106.11.24-106.11.25</td></tr><tr><td>Cesare Cecchi-Pestellini</td><td></td><td>教授</td><td>INAF – Osservatorio Astronomico di Parlamento, Italy</td><td>陳俞融</td><td>106.10.02-106.10.28</td></tr><tr><td>Michel Nuevo</td><td></td><td>研究員</td><td>NASA Ames Research Center, USA</td><td>陳俞融</td><td>106.11.20-106.12.04</td></tr><tr><td>Guillermo M. Muñoz Caro</td><td></td><td>研究員</td><td>Center of Astrobiology, INTA-CSIC, Spain</td><td>陳俞融</td><td>106.10.24-106.11.02</td></tr><tr><td>張遠波</td><td></td><td>教授</td><td>復旦大學物理系</td><td>溫偉源</td><td>106.11.05-106.11.09</td></tr><tr><td>Tjonnie Li</td><td></td><td>教授</td><td>香港中文大學</td><td>陳江梅</td><td>106.07.16-106.07.19</td></tr><tr><td>瞿怡仁</td><td></td><td>博士後</td><td>University of Minnesota, Duluth</td><td>陳宣毅</td><td>106.07.25-106.07.31</td></tr><tr><td>Tetsuya Okihara</td><td></td><td>博士生</td><td>Graduate School of Energy Science, Kyoto University</td><td>藏滿康浩</td><td>106.06.26-106.07.12</td></tr><tr><td>Masato Ota</td><td></td><td>碩士生</td><td>Institute of Laser Engineering, Osaka University</td><td>藏滿康浩</td><td>106.07.03-106.07.12</td></tr><tr><td>Yuji Fukuda</td><td></td><td>Senior Researcher</td><td>KPSI/ QST, Japan</td><td>藏滿康浩</td><td>106.06.26-106.07.12</td></tr><tr><td>Rajesh Kumar</td><td></td><td>博士生</td><td>Institute of Laser Engineering, Osaka University</td><td>藏滿康浩</td><td>106.06.26-106.07.12</td></tr><tr><td>Ashley Nord</td><td></td><td>博士後</td><td>法國國家科學研究中心</td><td>羅健榮</td><td>106.06.13-106.06.16</td></tr><tr><td>Jasmine Nirody</td><td></td><td>博士後</td><td>英國牛津大學萬靈學院</td><td>羅健榮</td><td>106.06.13-106.06.15</td></tr><tr><td>Koh Pin Wai</td><td></td><td>博士生</td><td>Universiti Sains Malaysia</td><td>賴山強</td><td>106.03.14-106.04.05</td></tr><tr><td>Lian Ming Huei</td><td></td><td>博士生</td><td>Universiti Sains Malaysia</td><td>賴山強</td><td>106.03.14-106.04.05</td></tr><tr><td>KAWAKATSU Toshihiro</td><td></td><td>教授</td><td>Tohoku University</td><td>賴山強</td><td>106.04.25-106.04.27</td></tr><tr><td>Arnaldo Rapallo</td><td></td><td>研究員</td><td>CNR ISMAC</td><td>賴山強</td><td>106.05.01-106.05.31</td></tr><tr><td>Alessio Morace</td><td></td><td>助理教授</td><td>Institute of Laser Engineering, Osaka University</td><td>藏滿康浩</td><td>106.03.08-106.03.14</td></tr><tr><td>Richard Savage</td><td></td><td>研究員</td><td>California Institute of Technology</td><td>張元翰</td><td>106.01.15-106.01.22</td></tr><tr><td>Takaaki Kajita</td><td></td><td>教授</td><td>University of Tokyo</td><td>張元翰</td><td>106.01.14-106.01.17</td></tr><tr><td>Megan T. Valentine</td><td></td><td>副教授</td><td>University of California,Santa Barbara</td><td>羅健榮</td><td>106.06.12-106.06.26</td></tr><tr><td>Takuma Hoshino</td><td></td><td>博士生</td><td>Tokyo Metropolitan University</td><td>陳宣毅</td><td>105.12.25-106.02.25</td></tr><tr><td>LEONARD NIKOLAS KONSTANTIN DÖHL</td><td></td><td>博士生</td><td>University of York, UK</td><td>藏滿康浩</td><td>106.03.06-106.05.07</td></tr><tr><td>BOUDENNE Jean-Michel</td><td></td><td>Mechanical engineer</td><td>CNRS, France</td><td>藏滿康浩</td><td>106.03.12-106.03.18</td></tr><tr><td>Michel KOENIG</td><td></td><td>Researcher</td><td>CNRS, France</td><td>藏滿康浩</td><td>106.03.12-106.03.18</td></tr><tr><td>Jinno, Satoshi</td><td></td><td>助理教授</td><td>東京大學大學院工學系研究科 原子力専攻 共同利用管理本部</td><td>藏滿康浩</td><td>106.02.27-106.03.03</td></tr><tr><td>Youichi Sakawa</td><td></td><td>副教授</td><td>Institute of Laser Engineering, Osaka University</td><td>藏滿康浩</td><td>106.03.08-106.03.14</td></tr><tr><td>Yuji Fukuda</td><td></td><td>Senior Researcher</td><td>KPSI/ QST, Japan</td><td>藏滿康浩</td><td>106.03.13-106.03.16</td></tr><tr><td>Rajesh Kumar</td><td></td><td>博士生</td><td>Institute of Laser Engineering, Osaka University</td><td>藏滿康浩</td><td>106.02.20-106.03.16</td></tr><tr><td>Youichi Sakawa</td><td></td><td>副教授</td><td>Institute of Laser Engineering, Osaka University</td><td>藏滿康浩</td><td>106.02.20-106.02.25</td></tr><tr><td>Yuji Fukuda</td><td></td><td>Senior Researcher</td><td>KPSI/ QST, Japan</td><td>藏滿康浩</td><td>106.02.20-106.03.03</td></tr><tr><td>Shuta TANAKA</td><td></td><td>博士後</td><td>Dept. of Physics, Faculty of Science and Engineering, Konan University</td><td>藏滿康浩</td><td>106.02.13-106.02.27</td></tr><tr><td>Michel Nuevo</td><td></td><td>Research Scientist</td><td>BAER Institute,NASA Ames Research Center</td><td>陳俞融</td><td>105.11.20-105.12.06</td></tr><tr><td>M. Iwamatsu</td><td></td><td>教授</td><td>Tokyo City University</td><td>賴山強</td><td>105.11.02-105.11.07</td></tr><tr><td>Eunseong Kim</td><td></td><td>副教授</td><td>Department of Physics, Korea Advanced Institute of Science and Technology (KAIST)</td><td>田溶根</td><td>105.11.30-105.12.02</td></tr><tr><td>張若筠</td><td></td><td>教授</td><td>南京大學物理學院</td><td>陳江梅</td><td>105.10.04-105.10.05</td></tr><tr><td>Guillermo M. Muñoz Caro</td><td></td><td>研究員</td><td>Centro de Astrobiologa, INTA/CSIC, Spain</td><td>陳俞融</td><td>105.11.20-105.12.02</td></tr><tr><td>Cesare Cecchi-Pestellini</td><td></td><td>教授</td><td>INAF – Osservatorio Astronomico di Parlamento, Italy</td><td>陳俞融</td><td>105.10.05-105.11.14</td></tr><tr><td>Vladimir Bubanja</td><td></td><td>Scientist</td><td>Measurement Standards Laboratory of New Zealand</td><td>陳永富</td><td>105.08.01-105.08.04</td></tr><tr><td>Ralf Kaiser</td><td></td><td>教授</td><td>Department of Chemistry, University of Hawaii</td><td>陳俞融</td><td>105.06.24-105.06.25</td></tr><tr><td>Jerome Lasne</td><td></td><td>Research Associate</td><td>School of Engineering and Physical Sciences,Heriot-Watt University, Scotland (UK)</td><td>陳俞融</td><td>105.07.28-105.08.04</td></tr><tr><td>Toseo Moritaka</td><td></td><td>助理教授</td><td>日本(NIFS)National Institute for Fusion Science，Department of Helical Plasma Research</td><td>藏滿康浩</td><td>105.06.23</td></tr><tr><td>Ralf Kaiser</td><td></td><td>教授</td><td>Department of Chemistry, University of Hawaii</td><td>陳俞融</td><td>105.06.24-105.06.25</td></tr><tr><td>Thong Leng Lim</td><td></td><td>Senior Lecturer</td><td>馬來西亞Multimedia University</td><td>賴山強</td><td>105.08.10-105.08.18</td></tr><tr><td>Eung Jin Chun</td><td></td><td>教授</td><td>KIAS</td><td>蔣正偉</td><td>105.05.22-105.05.25</td></tr><tr><td>Mudit Rai</td><td></td><td>大學部學生</td><td>印度理工學院</td><td>江祖永</td><td>105.05.06-105.07.15</td></tr><tr><td>Michael Ramsey-Musolf</td><td></td><td>教授</td><td>University of Massachusetts-Amherst, USA</td><td>蔣正偉</td><td>105.05.15-105.05.21</td></tr><tr><td>Koji Tsumura</td><td></td><td>助理教授</td><td>Kyoto University, Japan</td><td>蔣正偉</td><td>105.03.28-105.03.30</td></tr><tr><td>Hanna Salman</td><td></td><td>副教授</td><td>University of Pittsburgh</td><td>陳宣毅</td><td>104.09.21-104.09.24</td></tr><tr><td>Cesare Cecchi-Pestellini</td><td></td><td>教授</td><td>INAF – Osservatorio Astronomico di Palermo, Italy</td><td>陳俞融</td><td>104.11.14-104.12.13</td></tr><tr><td>Angela Ciaravella</td><td></td><td>研究員</td><td>INAF – Osservatorio Astronomico di Palermo, Italy</td><td>陳俞融</td><td>104.11.14-104.12.13</td></tr><tr><td>Koji Tsumura</td><td></td><td>助理教授</td><td>Kyoto University</td><td>蔣正偉</td><td>104.11.15-104.11.20</td></tr><tr><td>Guillermo Manuel Munoz Caro</td><td></td><td>研究員</td><td>Centro de Astrobiologi?a, DepartamentodeAstrofi?sica, Instituto Nacional de Te?cnica Aeroespacial, S</td><td>陳俞融</td><td>104.11.20-104.11.29</td></tr><tr><td>Donald A MacLaren</td><td></td><td>講師</td><td>University of Glasgow, UK</td><td>羅夢凡</td><td>104.11.22-104.11.28</td></tr><tr><td>DZHU Shiwei</td><td></td><td>博士後研究</td><td>Nagoya University</td><td>羅健榮</td><td>104.12.07-104.12.15</td></tr><tr><td>Masahiro Ibe</td><td></td><td>副教授</td><td>University of Tokyo</td><td>蔣正偉</td><td>104.12.20-104.12.31</td></tr><tr><td>Toshinori Matsui</td><td></td><td>博士生</td><td>U. Toyama, Japan</td><td>蔣正偉</td><td>105.01.03-105.01.05</td></tr><tr><td>Mariko Kikuchi</td><td></td><td>博士生</td><td>U. Toyama, Japan</td><td>蔣正偉</td><td>105.01.03-105.01.05</td></tr><tr><td>Dong-Won Jung</td><td></td><td>研究員</td><td>韓國KIAS</td><td>江祖永</td><td>105.01.03-105.01.09</td></tr><tr><td>Yonggun Jun</td><td></td><td>研究員</td><td>University of California at San Diego</td><td>黎璧賢</td><td>105.01.05-105.01.31</td></tr><tr><td>Leonardo Mancini</td><td></td><td>博士生</td><td>愛丁堡大學合成生物學與系統生物學中心</td><td>羅健榮</td><td>105.01.24-105.01.30</td></tr><tr><td>Ekaterina Krasnopeeva</td><td></td><td>博士生</td><td>愛丁堡大學合成生物學與系統生物學中心</td><td>羅健榮</td><td>105.01.24-105.01.30</td></tr><tr><td>Teuta Pilizota</td><td></td><td>助理教授</td><td>愛丁堡大學合成生物學與系統生物學中心</td><td>羅健榮</td><td>105.01.24-105.01.30</td></tr><tr><td>李穎星</td><td></td><td>博士生</td><td>北京大學生物動態光學成像中心</td><td>羅健榮</td><td>105.01.24-105.01.30</td></tr><tr><td>趙梓伊</td><td></td><td>博士生</td><td>北京大學生物動態光學成像中心</td><td>羅健榮</td><td>105.01.24-105.01.30</td></tr><tr><td>普穎穎</td><td></td><td>博士後研究</td><td>北京大學生物動態光學成像中心</td><td>羅健榮</td><td>105.01.24-105.01.30</td></tr><tr><td>白凡</td><td></td><td>副研究員</td><td>北京大學生物動態光學成像中心</td><td>羅健榮</td><td>105.01.24-105.01.30</td></tr><tr><td>Michel Nuevo</td><td></td><td>研究員</td><td>NASA Ames Research Center</td><td>陳俞融</td><td>105.02.24-105.02.26</td></tr><tr><td>Kaori Fuyuto</td><td></td><td>博士生</td><td>Nagoya University, Japan</td><td>蔣正偉</td><td>105.02.25-105.03.13</td></tr><tr><td>Shinya Kanemura</td><td></td><td>副教授</td><td>U. Toyama, Japan</td><td>蔣正偉</td><td>105.03.24-105.03.31</td></tr><tr><td>Mariko Kikuchi</td><td></td><td>博士生</td><td>U. Toyama, Japan</td><td>蔣正偉</td><td>105.03.24-105.03.31</td></tr><tr><td>Nariya Uchida</td><td>助理教授</td><td></td><td>東北大學物理系</td><td>溫偉源</td><td>105.02.29-105.03.02</td></tr><tr><td>Hirofumi Wada</td><td>副教授</td><td></td><td>立命館大學物理系</td><td>陳宣毅</td><td>105.03.17-105.03.19</td></tr><tr><td>Hoang Thi Kieu Trang</td><td></td><td></td><td>University of Science， National Vietnam University at Ho Chi Minh</td><td>賴山強</td><td>104.09.02</td></tr><tr><td>葉芳</td><td></td><td></td><td>University of Wisconsin at Madison</td><td>蔣正偉</td><td>104.08.14-104.08.21</td></tr><tr><td>Youichi Sakawa</td><td></td><td></td><td>Osaka University</td><td>藏滿康浩</td><td>104.03.25-104.03.30</td></tr><tr><td>Michel KOENIG</td><td></td><td></td><td>法國CNRS</td><td>藏滿康浩</td><td>104.09.13-104.09.20</td></tr><tr><td>馬曉光</td><td></td><td></td><td>香港科技大學</td><td>黎璧賢</td><td>104.06.22-104.06.27</td></tr><tr><td>Kaori Fuyuto</td><td></td><td></td><td>Nagoya University, Japan</td><td>蔣正偉</td><td>104.09.13-104.09.20</td></tr><tr><td>Ma. Carlota B. Decena 等14人</td><td></td><td></td><td>菲律賓UST大學Department of Mathematics and Physics</td><td>羅夢凡</td><td>104.07.13</td></tr><tr><td>鄭波等8人</td><td></td><td></td><td>浙江大學物理系</td><td>羅夢凡</td><td>104.06.20-104.06.26</td></tr><tr><td>華劍飛</td><td></td><td></td><td>北京清華大學</td><td>汪治平</td><td>104.07.20-104.08.30</td></tr><tr><td>張超杰 吳益鵬 郭博 程智 李飛 萬揚</td><td></td><td></td><td>合作研究</td><td>汪治平</td><td>104.04.01-104.09.30</td></tr><tr><td>葉慶好</td><td></td><td></td><td>上海交通大學</td><td>易台生</td><td>102.10.01-102.10.04</td></tr><tr><td>Eung Jin Chun</td><td></td><td></td><td>KIAS</td><td>蔣正偉</td><td>103.12.28-104.01.03</td></tr><tr><td>Koji Tsumura</td><td></td><td></td><td>Kyoto University</td><td>蔣正偉</td><td>103.12.30-104.01.05</td></tr><tr><td>Prof. Lowen</td><td></td><td></td><td>Institut f?r Theoretische Physik II - Soft Matter Heinrich-Heine-Universit?t D?sseldorf, Germany</td><td>陳宣毅</td><td>103.11.24-103.11.28</td></tr><tr><td>Dr. Tatsuo Shibata</td><td></td><td></td><td>Laboratory head, Laboratory for Physical Biology, RIKEN Center for Developmental Biology, Japan</td><td>陳宣毅</td><td>103.11.24-103.11.28</td></tr><tr><td>Kentarou Tomita</td><td></td><td></td><td>日本九州大學Kyushu University</td><td>藏滿康浩</td><td>103.10.15-103.10.18</td></tr><tr><td>Shuichi Matsukiyo</td><td></td><td></td><td>日本九州大學Kyushu University</td><td>藏滿康浩</td><td>103.10.15-103.10.18</td></tr><tr><td>Ong Yee Pin</td><td></td><td></td><td>馬來西亞理科大學(Universiti Sains Malaysia）</td><td>賴山強</td><td>103.10.02-103.10.30</td></tr><tr><td>Soon Yee Yeen</td><td></td><td></td><td>馬來西亞理科大學(Universiti Sains Malaysia）</td><td>賴山強</td><td>103.10.02-103.10.30</td></tr><tr><td>Koh Wee Shing</td><td></td><td></td><td>Institute of High Performance Computing, Singapore</td><td>陳仕宏</td><td>103.07.05-103.07.15</td></tr><tr><td>MASAO IWAMATSU</td><td></td><td></td><td>Tokyo City University</td><td>賴山強</td><td>103.01.11-103.01.14</td></tr><tr><td>Teuta Pilizota</td><td></td><td></td><td>愛丁堡大學</td><td>羅健榮</td><td>103.02.09-103.03.01</td></tr><tr><td>普穎穎</td><td></td><td></td><td>北京大學</td><td>羅健榮</td><td>103.02.25-103.03.22</td></tr><tr><td>徐寄遙</td><td></td><td></td><td>中國科學院空間科學與應用研究中心</td><td>倪簡白</td><td>102.09.16-102.09.20</td></tr><tr><td>Peter Kroll</td><td></td><td></td><td>University of Wuppertal</td><td>陳鎰鋒</td><td>101.10.01-101.10.05</td></tr><tr><td>Stanley J. Brodsky</td><td></td><td></td><td>Stanford University</td><td>陳鎰鋒</td><td>101.10.01-101.10.05</td></tr><tr><td>丁肇中</td><td></td><td></td><td>Massachusetts Institute of Technology</td><td>張元翰</td><td>100.08.07-100.08.12</td></tr><tr><td>Yongshang Han</td><td></td><td></td><td>Auburn University</td><td>林清誠</td><td>102.01.29</td></tr><tr><td>Tung-Chang Liu</td><td></td><td></td><td>University of Marland</td><td>陳仕宏</td><td>102.01.16</td></tr><tr><td>Yong Tang</td><td></td><td></td><td>國家理論科學研究中心</td><td>蔣正偉</td><td>102.01.10</td></tr><tr><td>Plamen Ch Ivanov</td><td></td><td></td><td>Boston University Physics</td><td>陳宣毅</td><td>102.03.13-102.03.14</td></tr><tr><td>洪禮祺</td><td></td><td></td><td>SUTT</td><td>陳仕宏</td><td>102.03.05-102.03.07</td></tr><tr><td>Alexander Mikhailov</td><td></td><td></td><td>Fritz-Harber Institute</td><td>陳宣毅</td><td>102.03.02-102.03.17</td></tr><tr><td>方向</td><td></td><td></td><td>Kansas State University</td><td>林欽誠</td><td>100.10.26-101.02.29</td></tr><tr><td>Wei-Chi Yang</td><td></td><td></td><td>Radford University</td><td>林欽誠</td><td>100.12.15-100.12.23</td></tr><tr><td>伍火熊</td><td></td><td></td><td>廈門大學</td><td>李明憶</td><td>100.12.24-101.01.13</td></tr><tr><td>Carsten Rott</td><td></td><td></td><td>The Ohio State University</td><td>蔣正偉</td><td>100.11.22-100.11.24</td></tr><tr><td>Yoshitsugu Kabeya</td><td></td><td></td><td>Department of Mathematical Siences, Osaka Prefecture University, Japan</td><td>陳建隆</td><td>100.12.14-100.12.18</td></tr><tr><td>Toshio Mikami</td><td></td><td></td><td>Osaka University</td><td>許順吉</td><td>100.11.21-100.11.26</td></tr><tr><td>Postdoc Neil Christensen</td><td></td><td></td><td>Univ. of Pittsburgh</td><td>蔣正偉</td><td>101.02.15-101.02.28</td></tr><tr><td>Sagawa</td><td></td><td></td><td>Kyoto University</td><td>黎璧賢</td><td>101.01.11-101.01.12</td></tr><tr><td>徐磊</td><td></td><td></td><td>香港中文大學</td><td>陳宣毅</td><td>101.01.14-101.01.20</td></tr><tr><td>Hidemitsu Wadade</td><td></td><td></td><td>Waseda University</td><td>陳建隆</td><td>101.02.11-101.02.18</td></tr><tr><td>韓永生</td><td></td><td></td><td>University of Maryland USA</td><td>林欽誠</td><td>101.03.15-101.04.30</td></tr><tr><td>Yuji Omura</td><td></td><td></td><td>KIAS</td><td>蔣正偉</td><td>101.01.08-101.01.20</td></tr><tr><td>Mikhailov</td><td></td><td></td><td>Fritz-Harber Institute</td><td>陳宣毅</td><td>101.02.20-101.03.07</td></tr><tr><td>Wada Hirofumi</td><td></td><td></td><td>University of Kyoto</td><td>陳宣毅</td><td>101.03.12-101.03.15</td></tr><tr><td>Lim Thong Leng</td><td></td><td></td><td>Multimedia University</td><td>賴山強</td><td>101.02.22-101.02.29</td></tr><tr><td>Eiji Yanagidu</td><td></td><td></td><td>Tokyo Institute of Techology</td><td>陳建隆</td><td>101.02.17-101.02.24</td></tr><tr><td>T.Kawakatsu</td><td></td><td></td><td>Tohoku University</td><td>賴山強</td><td>101.03.03-101.03.06</td></tr><tr><td>Naoyuki Ichihara</td><td></td><td></td><td>Hiroshima University</td><td>許順吉</td><td>101.03.15-101.03.25</td></tr><tr><td>Akira Hasegawa</td><td></td><td></td><td>Osaka University</td><td>陳仕宏</td><td>101.04.09-101.04.13</td></tr><tr><td>K. Hoshino</td><td></td><td></td><td>Hiroshima University</td><td>賴山強</td><td>101.05.10-101.05.13</td></tr><tr><td>Niall O Morchadha</td><td></td><td></td><td>University College Cork</td><td>陳江梅</td><td>101.06.06-101.06.09</td></tr><tr><td>許祖斌</td><td></td><td></td><td>國立成功大學</td><td>陳江梅</td><td>101.06.06</td></tr><tr><td>余海禮</td><td></td><td></td><td>中研院</td><td>陳江梅</td><td>101.06.06</td></tr><tr><td>Arnaldo Rapallo</td><td></td><td></td><td>Istituto per lo Studio delle Macromelecole</td><td>賴山強</td><td>101.11.01-101.11.30</td></tr><tr><td>Wada</td><td></td><td></td><td>University of Kyoto</td><td>陳宣毅</td><td>100.10.23-100.10.27</td></tr><tr><td>Mikhailov</td><td></td><td></td><td>Fritz-Harber Institute</td><td>陳宣毅</td><td>100.11.19-100.12.05</td></tr><tr><td>Hiroaki Hata</td><td></td><td></td><td>Shizuoka University</td><td>許順吉</td><td>100.08.20-100.09.04</td></tr><tr><td>Hiroaki Hata</td><td></td><td></td><td>Institute of High Performance Computing</td><td>許順吉</td><td>100.10.17-100.10.25</td></tr><tr><td>許偉勳</td><td></td><td></td><td>Institute of High Performance Computing</td><td>陳仕宏</td><td>100.10.17-100.10.25</td></tr><tr><td>Hidemitsu Wadade</td><td></td><td></td><td>Waseda University,</td><td>陳建隆</td><td>100.10.01-100.10.31</td></tr><tr><td>Eiji Yanagidu</td><td></td><td></td><td>Tokyo Institute of Techology,</td><td>陳建隆</td><td>100.09.01-100.09.04</td></tr><tr><td>烏蘭哈斯</td><td></td><td></td><td>汕頭大學</td><td>林欽誠</td><td>100.09.01-100.10.05</td></tr><tr><td>Lee Hwee Kuan</td><td></td><td></td><td>Bioinformatics Institute Singapore</td><td>賴山強</td><td>100.09.18-100.09.20</td></tr><tr><td>Sitabhra Sinha</td><td></td><td></td><td>The Institute of Mathematical Sciences</td><td>黎壁賢</td><td>100.07.25-100.07.29</td></tr><tr><td>W. K. Liu</td><td></td><td></td><td>The Institute of Mathematical Sciences</td><td>蔣正偉</td><td>100.07.14-100.07.20</td></tr><tr><td>W. K. Liu</td><td></td><td></td><td>University of Waterloo, Canada</td><td>賴山強</td><td>100.08.05-100.08.06</td></tr><tr><td>Debajyoti Choudhury</td><td></td><td></td><td>University of Dehli</td><td>蔣正偉</td><td>100.07.14-100.07.20</td></tr><tr><td>Dinesh Thakur</td><td></td><td></td><td>University of Arizona</td><td>數學系</td><td>100.07.04-100.07.08</td></tr><tr><td>William T. Trotter</td><td></td><td></td><td>Georgia Institute of Technology, School of Math</td><td>林欽誠</td><td>100.06.19-100.07.02</td></tr><tr><td>Wai-Yee Keung</td><td></td><td></td><td></td><td>蔣正偉</td><td>100.06.02-100.06.09</td></tr><tr><td>Danny Marfatia</td><td></td><td></td><td></td><td>蔣正偉</td><td>100.06.02-100.06.14</td></tr><tr><td>方向</td><td></td><td></td><td>Kansas State University</td><td>數學系</td><td>100.06.01-100.07.31</td></tr><tr><td>Naveen Gaur</td><td></td><td></td><td>Oehli, India</td><td>蔣正偉</td><td>100.06.01-100.06.21</td></tr><tr><td>Yasushi Ishikawa</td><td></td><td></td><td>Ehime University</td><td>管理者</td><td>100.05.03-100.05.08</td></tr><tr><td>李兵</td><td></td><td></td><td>華南理工大學</td><td>許正雄</td><td>100.06.03-100.07.02</td></tr><tr><td>Xingfu Zou</td><td></td><td></td><td>University of Western Ontario</td><td>許正雄</td><td>100.05.06-100.05.12</td></tr><tr><td>韓永生</td><td></td><td></td><td></td><td>林欽誠</td><td>100.03.15-100.05.01</td></tr><tr><td>Sergey Ivanovich</td><td></td><td></td><td>Bastrukov</td><td>黎壁賢</td><td>100.04.10-100.06.01</td></tr><tr><td>陳騮</td><td></td><td></td><td></td><td>陳仕宏</td><td>100.04.26-100.05.09</td></tr><tr><td>Prof. Masao Doi</td><td></td><td></td><td>The University of Tokyo</td><td>黎壁賢</td><td>100.03.02-100.03.03</td></tr><tr><td>陳俊仲(NCTS)</td><td></td><td></td><td></td><td>黎壁賢</td><td>100.02.24</td></tr><tr><td>Jose-Lius Jaramillo</td><td></td><td></td><td></td><td>陳江梅</td><td>100.02.15-100.02.20</td></tr><tr><td>Mahesh M. Bandi</td><td></td><td></td><td>India(Harvard University)</td><td>賴山強</td><td>100.02.23-100.03.02</td></tr><tr><td>Alexander Mikhailov</td><td></td><td></td><td>Germany</td><td>陳宣毅</td><td>100.03.10-100.03.25</td></tr><tr><td>Jayanta K. Bhattacharjee</td><td></td><td></td><td>India</td><td>陳世宏</td><td>100.03.07-100.03.20</td></tr><tr><td>Javier Duoandikoetxea</td><td></td><td></td><td>Spain</td><td>林欽誠</td><td>100.02.10-100.02.23</td></tr><tr><td>謝納慶</td><td></td><td></td><td>復旦大學</td><td>陳江梅</td><td>100.01.22-100.01.31</td></tr><tr><td>Hiroshi Endo</td><td></td><td></td><td>Tokyo University</td><td>賴山強</td><td>100.09.26-100.09.27</td></tr><tr><td>Krzysztof Stempak</td><td></td><td></td><td>Poland</td><td>林欽誠</td><td>100.01.09-100.01.28</td></tr><tr><td>謝納慶</td><td></td><td></td><td>復旦大學數學科學學院</td><td>James M. Nester</td><td>100.01.22-100.01.31</td></tr><tr><td>Krzysztof Stempak</td><td></td><td></td><td>Instytut Matematyki i Informatyki Politechnika Wroclawska,Poland</td><td>林欽誠</td><td>099.01.09-099.01.29</td></tr><tr><td>江孟蓉</td><td></td><td></td><td>國立成功大學數學系</td><td>姚美琳</td><td>100.01.10-100.02.09</td></tr><tr><td>Hailiang Liu</td><td></td><td></td><td>Iowa State University 數學系</td><td>洪盟凱</td><td>099.12.27-100.01.09</td></tr><tr><td>Jiahong Wu</td><td></td><td></td><td>Oklahoma State University 數學系</td><td>洪盟凱</td><td>099.12.15-100.12.28</td></tr><tr><td>楊瑋琦</td><td></td><td></td><td>Department of Mathematics and Statistics Radford University</td><td>林欽誠</td><td>099.12.13-099.12.14</td></tr><tr><td>陳斌</td><td></td><td></td><td>北京大學物理學院</td><td>陳江梅</td><td>099.12.12-099.12.21</td></tr><tr><td>袁添亮</td><td></td><td></td><td>檳城理科大學</td><td>賴山強</td><td>099.11.20-099.11.25</td></tr><tr><td>Qingying Bu</td><td></td><td></td><td>University of Mississippi</td><td>王雅書</td><td>099.11.17-099.11.18</td></tr><tr><td>Naoyuki Ichihara</td><td></td><td></td><td>Hiroshima University,Japan</td><td>許順吉</td><td>099.09.21-099.12.21</td></tr><tr><td>VO LUONG Hong Phuoc</td><td></td><td></td><td>Physics Faculty in Ho Chi Minh University of Science</td><td>賴山強</td><td>099.09.25-099.09.26</td></tr><tr><td>Gaber Younes Mohamed Faisel</td><td></td><td></td><td>Egyptian Center for Theoretical Physics,MTI Modern University,Egypt</td><td>江祖永</td><td>099.09.13-099.10.12</td></tr><tr><td>Elliot Gilbert</td><td></td><td></td><td>澳洲ANSTO</td><td>李文献</td><td>096.11.07-096.11.11</td></tr><tr><td>Jill Trewhella</td><td></td><td></td><td>澳洲USYD</td><td>李文献</td><td>096.11.07-096.11.11</td></tr><tr><td>Chun Ken Loong</td><td></td><td></td><td>CSNS and CARR,China</td><td>李文献</td><td>098.02.22-098.02.25</td></tr><tr><td>Kye Hong Lee</td><td></td><td></td><td>韓國KAIST</td><td>李文献</td><td>098.02.22-098.02.25</td></tr><tr><td>Ki Bong Lee</td><td></td><td></td><td>韓國KAIST</td><td>李文献</td><td>098.02.22-098.02.25</td></tr><tr><td>Sung-Min Choi</td><td></td><td></td><td>韓國KAIST</td><td>李文献</td><td>098.02.22-098.02.25</td></tr><tr><td>Mahn Won Kim</td><td></td><td></td><td>韓國KAIST</td><td>李文献</td><td>098.02.22-098.02.25</td></tr><tr><td>Brendan Kennedy</td><td></td><td></td><td>澳洲ANSTO</td><td>李文献</td><td>098.02.22-098.02.25</td></tr><tr><td>Rob Robinson</td><td></td><td></td><td>澳洲ANSTO</td><td>李文献</td><td>098.02.22-098.02.25</td></tr><tr><td>John White</td><td></td><td></td><td>ANU, Australian</td><td>李文献</td><td>098.02.22-098.02.25</td></tr><tr><td>Yasuhiko Fujii</td><td></td><td></td><td>日本JAEA</td><td>李文献</td><td>098.02.22-098.02.25</td></tr><tr><td>Kazuyoshi Yamada</td><td></td><td></td><td>Tohoku University, Japan</td><td>李文献</td><td>098.02.22-098.02.25</td></tr><tr><td>Masatoshi Arai</td><td></td><td></td><td>日本JAEA</td><td>李文献</td><td>098.02.22-098.02.25</td></tr><tr><td>Jiri Kulda</td><td></td><td></td><td>歐洲ILL</td><td>李文献</td><td>096.06.06-096.06.13</td></tr><tr><td>Kazu Kakurai</td><td></td><td></td><td>日本JAERI</td><td>李文献</td><td>096.06.06-096.06.13</td></tr><tr><td>Wiels Christensen</td><td></td><td></td><td>PSI, Sweden</td><td>李文献</td><td>096.06.06-096.06.13</td></tr><tr><td>Jeffrey Lynn</td><td></td><td></td><td>美國NIST</td><td>李文献</td><td>096.06.06-096.06.13</td></tr><tr><td>Elliot Gilbert</td><td></td><td></td><td>澳洲ANSTO</td><td>李文献</td><td>096.06.06-096.06.13</td></tr><tr><td>Michael James</td><td></td><td></td><td>澳洲ANSTO</td><td>李文献</td><td>096.06.06-096.06.13</td></tr><tr><td>Don Kearley</td><td></td><td></td><td>澳洲ANSTO</td><td>李文献</td><td>096.06.06-096.06.13</td></tr><tr><td>Mohana Yethiraj</td><td></td><td></td><td>澳洲ANSTO</td><td>李文献</td><td>096.06.06-096.06.13</td></tr><tr><td>Shane Kennedy</td><td></td><td></td><td>澳洲ANSTO</td><td>李文献</td><td>096.06.06-096.06.13</td></tr><tr><td>Robert Robinson</td><td></td><td></td><td>澳洲ANSTO</td><td>李文献</td><td>096.06.06-096.06.13</td></tr><tr><td>束立生</td><td></td><td></td><td>安徽師範大學</td><td>林欽誠</td><td>099.07.09-099.07.22</td></tr><tr><td>Kazo Yabuta</td><td></td><td></td><td>Kwansei Gakuin university</td><td>林欽誠</td><td>099.07.11-099.07.16</td></tr><tr><td>Marcin Bownik</td><td></td><td></td><td>University of Oregon</td><td>林欽誠</td><td>099.07.11-099.07.16</td></tr><tr><td>韓永生</td><td></td><td></td><td>Auburn University</td><td>林欽誠</td><td>099.07.05-099.08.07</td></tr><tr><td>Jong-Guk Bak</td><td></td><td></td><td>Pohang University of Science and Technology</td><td>林欽誠</td><td>099.07.05-099.07.09</td></tr><tr><td>黃建平</td><td></td><td></td><td>中國蘭州大學</td><td>倪簡白</td><td>099.06.21-099.06.26</td></tr><tr><td>洪理祺</td><td></td><td></td><td>新加坡南洋理工大學</td><td>陳仕宏</td><td>099.06.10-099.06.17</td></tr><tr><td>Chau Van Tao</td><td></td><td></td><td>University of Science at Ho Chi Minh</td><td>賴山強</td><td>099.06.20-099.06.24</td></tr><tr><td>Douglas D. Osheroff</td><td></td><td></td><td>Stanford University</td><td>黎璧賢</td><td>099.06.05-099.06.11</td></tr><tr><td>Alexander S. Mikhailov</td><td></td><td></td><td>Fritz-Haber-Institut der Max-Planck-Gesellschaft</td><td>陳宣毅</td><td>099.05.18-099.05.20</td></tr><tr><td>楊義清</td><td></td><td></td><td>台東大學</td><td>陳江梅</td><td>099.04.18-099.04.20</td></tr><tr><td>李躍先</td><td></td><td></td><td>University of British Columbia</td><td>黎璧賢</td><td>099.04.11-099.04.17</td></tr><tr><td>Padma-Kent-Shukla</td><td></td><td></td><td>德國魯爾大學</td><td>伊林</td><td>098.12.06-098.12.12</td></tr><tr><td>喀蔚波</td><td></td><td></td><td>北京大學</td><td>黎璧賢</td><td>099.03.19-099.03.30</td></tr><tr><td>喀興林</td><td></td><td></td><td>北京師範大學</td><td>黎璧賢</td><td>099.03.19-099.03.30</td></tr><tr><td>趙凱華</td><td></td><td></td><td>北京大學</td><td>黎璧賢</td><td>099.03.19-099.03.30</td></tr><tr><td>吳思誠</td><td></td><td></td><td>北京大學</td><td>黎璧賢</td><td>099.03.19-099.03.30</td></tr><tr><td>秦克誠</td><td></td><td></td><td>北京大學</td><td>黎璧賢</td><td>099.03.19-099.03.30</td></tr><tr><td>Maurice van Putten</td><td></td><td></td><td>Le Studium IAS, Orleans, France</td><td>陳江梅</td><td>099.03.03-099.03.04</td></tr><tr><td>Jonathan Rosner</td><td></td><td></td><td>University of Chicago</td><td>蔣正偉</td><td>099.04.06-099.04.16</td></tr><tr><td>Chris Quigg</td><td></td><td></td><td>Fermilab, USA</td><td>蔣正偉</td><td>099.03.28-099.03.29</td></tr><tr><td>韓永生</td><td></td><td></td><td>Auburn University</td><td>林欽誠</td><td>099.03.14-099.05.01</td></tr><tr><td>Mario Liu</td><td></td><td></td><td>University of Tubingen</td><td>黎璧賢</td><td>099.02.22-099.03.22</td></tr><tr><td>伍火熊</td><td></td><td></td><td>廈門大學</td><td>李明憶</td><td>098.12.18-098.12.25</td></tr><tr><td>Myoung Chu Oh</td><td></td><td></td><td>University of Seoul</td><td>江祖永</td><td>098.12.24-099.01.13</td></tr><tr><td>許偉勳</td><td></td><td></td><td>Institute of High Performance Computing</td><td>陳仕宏</td><td>098.11.08-098.11.14</td></tr><tr><td>宋偉</td><td></td><td></td><td>哈佛大學</td><td>陳江梅</td><td>098.12.14-098.12.26</td></tr><tr><td>Hong Lu</td><td></td><td></td><td>China Institute of Advanced Study</td><td>陳江梅</td><td>098.10.05-098.10.06</td></tr><tr><td>龐大偉</td><td></td><td></td><td>Sogan University</td><td>陳江梅</td><td>098.10.18-098.11.01</td></tr><tr><td>Jiahong Wu</td><td></td><td></td><td>Oklahoma State University</td><td>洪盟凱</td><td>098.08.05-098.08.11</td></tr><tr><td>江惠坤</td><td></td><td></td><td>南京大學數學系</td><td>林欽誠</td><td>098.07.01-098.07.31</td></tr><tr><td>蕭杰</td><td></td><td></td><td>Memorial University of Newfoundland</td><td>林欽誠</td><td>098.06.21-098.06.28</td></tr><tr><td>費少明</td><td></td><td></td><td>首都師範大學數學系</td><td>林留玉仁</td><td>097.10.28-097.10.29</td></tr><tr><td>王曉鋼</td><td></td><td></td><td>北京大學</td><td>陳培亮</td><td>098.08.10-098.08.22</td></tr><tr><td>Martin Zuckermann</td><td></td><td></td><td>Simon Fraser University</td><td>黎璧賢</td><td>098.07.10-098.07.31</td></tr><tr><td>C. Y. R. Wu</td><td></td><td></td><td>University of Southern California</td><td>易台生</td><td>098.03.24</td></tr><tr><td>Ziyou Li</td><td></td><td></td><td>英國University of Birmingham</td><td>羅夢凡</td><td>098.05.07-098.05.14</td></tr><tr><td>陳騮</td><td></td><td></td><td>Dept. of Physics &amp; Astronomy, University of California, Irvine</td><td>林留玉仁</td><td>098.04.27-098.05.07</td></tr><tr><td>韓永生</td><td></td><td></td><td>Auburn University</td><td>林欽誠</td><td>098.03.15-098.05.31</td></tr><tr><td>Friedrich Hehl</td><td></td><td></td><td>University of Cologne</td><td>陳江梅</td><td>098.03.12-098.04.04</td></tr><tr><td>白姍</td><td></td><td></td><td>中國科學院</td><td>陳江梅</td><td>098.03.17-098.03.22</td></tr><tr><td>Doochul Kim</td><td></td><td></td><td>National Seoul University</td><td>黎璧賢</td><td>098.03.01-098.03.09</td></tr><tr><td>江府峻</td><td></td><td></td><td>Bern University</td><td>林留玉仁</td><td>098.02.23-098.02.24</td></tr><tr><td>李躍先</td><td></td><td></td><td>University of British Columbia</td><td>黎璧賢</td><td>098.01.15-098.01.18</td></tr><tr><td>陳隆基</td><td></td><td></td><td>Oregon State University</td><td>林欽誠</td><td>097.12.18-097.12.26</td></tr><tr><td>Christopher-B.-Gorman</td><td></td><td></td><td>North Carolina State University, Raleigh, NC USA</td><td>羅夢凡</td><td>097.10.19-097.10.24</td></tr><tr><td>Wax Jean-Francois</td><td></td><td></td><td>University of Metz</td><td>賴山強</td><td>097.11.25-097.12.24</td></tr><tr><td>Seungwon Baek</td><td></td><td></td><td>Korea University</td><td>蔣正偉</td><td>097.08.17-097.08.31</td></tr><tr><td>于秋明</td><td></td><td></td><td>美國華盛頓大學</td><td>陳宣毅</td><td>097.08.01-097.08.05</td></tr><tr><td>I&amp;ntilde;aki Garay</td><td></td><td></td><td>Universidad Autonoma de Madrid</td><td>陳江梅</td><td>097.07.04-097.07.07</td></tr><tr><td>許祖斌</td><td></td><td></td><td>國立成功大學</td><td>聶斯特</td><td>097.06.24-097.06.27</td></tr><tr><td>Michael Ramsey-Musolf</td><td></td><td></td><td>美國威斯康辛大學</td><td>蔣正偉</td><td>097.06.23-097.06.25</td></tr><tr><td>姜偉宜</td><td></td><td></td><td>美國伊利諾大學</td><td>陳江梅</td><td>097.06.11-097.06.13</td></tr><tr><td>曹周鍵</td><td></td><td></td><td>中國科學院</td><td>陳江梅</td><td>097.05.26-097.05.27</td></tr><tr><td>Yohannes Shiferaw</td><td></td><td></td><td>Dept. of Physics and Astronomy, California State University, Northridge</td><td>陳仕宏</td><td>097.05.26-097.05.31</td></tr><tr><td>Peter Messmer</td><td></td><td></td><td>Space Applications Group, Tech-X Corporation, Boulder, CO, USA</td><td>陳仕宏</td><td>097.05.18-097.05.23</td></tr><tr><td>許偉勳</td><td></td><td></td><td>Institute of High Performance Computing</td><td>陳仕宏</td><td>097.05.17-097.05.31</td></tr><tr><td>許人丰</td><td></td><td></td><td>中研院物理所</td><td>蔣正偉</td><td>097.05.12-097.05.16</td></tr><tr><td>Dang Van Soa</td><td></td><td></td><td>Hanoi University of Education</td><td>蔣正偉</td><td>097.04.10-097.06.10</td></tr><tr><td>Hyun-Seok Yang</td><td></td><td></td><td>KIAS</td><td>陳江梅</td><td>097.04.21-097.05.03</td></tr><tr><td>L&amp;aacute;szl&amp;oacute; Ben&amp;ouml; Szabados</td><td></td><td></td><td>Research Institute for Particle and Nuclear Physics of Hungarian Academy of Sciences</td><td>聶斯特</td><td>097.04.10-097.04.27</td></tr><tr><td>陳騮</td><td></td><td></td><td>University of California, Irvine</td><td>林留玉仁</td><td>097.03.30-097.04.06</td></tr><tr><td>christ Green</td><td></td><td></td><td>JILA</td><td>倪簡白</td><td>097.05.14</td></tr><tr><td>Chung Yung Wu</td><td></td><td></td><td>University of Southern California, USA</td><td>易台生</td><td>097.03.24-097.04.26</td></tr><tr><td>Hyoung-Jin Choi</td><td></td><td></td><td>Inha University</td><td>黎璧賢</td><td>097.03.18-097.03.19</td></tr><tr><td>禹東川</td><td></td><td></td><td>青島大學</td><td>黎璧賢</td><td>096.08.01-096.10.27</td></tr><tr><td>C.-P.Yuan</td><td></td><td></td><td>Department of Physics and Astronomy, Michigan State University, U.S.A.</td><td>江祖永</td><td>096.07.27-096.07.28</td></tr><tr><td>Gary Shiu</td><td></td><td></td><td>Department of Physics,Universiy of Wisconsin at Madison</td><td>蔣正偉</td><td>096.04.04-096.04.05</td></tr><tr><td>Toshiaki Tanaka</td><td></td><td></td><td>NCTS; Department of Physics,National Cheng-Kung University</td><td>江祖永</td><td>095.12.12-095.12.13</td></tr><tr><td>陳智泓</td><td></td><td></td><td>東京大學</td><td>陳培亮</td><td>097.03.06</td></tr><tr><td>Kingshuk Ghosh</td><td></td><td></td><td>加州大學</td><td>陳培亮</td><td>097.02.24-097.02.27</td></tr><tr><td>羅健榮</td><td></td><td></td><td>牛津大學</td><td>陳培亮</td><td>097.02.21</td></tr><tr><td>吳國安</td><td></td><td></td><td>西北大學</td><td>陳培亮</td><td>097.02.20</td></tr><tr><td>Takao Ohta</td><td></td><td></td><td>京都大學</td><td>黎璧賢</td><td>097.02.18-097.02.20</td></tr><tr><td>Shengpang Zhang, Gordon Shepherd</td><td></td><td></td><td>York University, Canada</td><td>倪簡白</td><td>096.09-096.12</td></tr><tr><td>Christopher C. Bernido</td><td></td><td></td><td>Central Visayan Institute Foundation</td><td>黎璧賢</td><td>097.01.27-097.02.03</td></tr><tr><td>Yeong Gyun Kim</td><td></td><td></td><td>KAIST</td><td>李在植</td><td>097.01.21-097.01.27</td></tr><tr><td>Giacomo Polesello</td><td></td><td></td><td>ATLAS</td><td>薄書梅</td><td>097.01.13-097.01.19</td></tr><tr><td>Marko Djordjevic</td><td></td><td></td><td>Mathematical Biosciences Institute, The Ohio State University</td><td>陳培亮</td><td>097.01.09-097.01.12</td></tr><tr><td>周宇峰</td><td></td><td></td><td>KIAS</td><td>蔣正偉</td><td>096.12.24-097.01.12</td></tr><tr><td>Ho-Ung Yee</td><td></td><td></td><td>Abdus Salam International Center for Theoretical Physics</td><td>薄書梅</td><td>096.12.24-096.12.29</td></tr><tr><td>Masao Iwamatsu</td><td></td><td></td><td>Musashi Institute of Technology</td><td>賴山強</td><td>096.12.21-096.12.26</td></tr><tr><td>成田誠</td><td></td><td></td><td>台灣大學</td><td>陳江梅</td><td>096.12.18-096.12.25</td></tr><tr><td>杜蕙慈</td><td></td><td></td><td>University of California, Irvine, USA</td><td>蔣正偉</td><td>096.12.17-096.12.18</td></tr><tr><td>Moira L. Steyn-Ross</td><td></td><td></td><td>University of Waikato</td><td>黎璧賢</td><td>096.12.07-096.12.18</td></tr><tr><td>D. Alistair Steyn-Ross</td><td></td><td></td><td>University of Waikato</td><td>黎璧賢</td><td>096.12.07-096.12.18</td></tr><tr><td>Toshifumi Yamashita</td><td></td><td></td><td>Osaka University</td><td>薄書梅</td><td>096.12.02-096.12.09</td></tr><tr><td>Jae-Sik Lee</td><td></td><td></td><td>KEK</td><td>江祖永</td><td>096.12.01-096.12.09</td></tr><tr><td>Nobuhito Maru</td><td></td><td></td><td>Kobe University</td><td>薄書梅</td><td>096.12.02-096.12.07</td></tr><tr><td>Gordon G. Shepherd</td><td></td><td></td><td>York University., Canada</td><td>倪簡白</td><td>096.11.18-096.11.25</td></tr><tr><td>李元斌</td><td></td><td></td><td>Department of Mathematics, University of Utah</td><td>王金龍</td><td>096.11.19-096.12.09</td></tr><tr><td>Stefano Scopel</td><td></td><td></td><td>Korea Institute of Advanced Study (KIAS)</td><td>薄書梅</td><td>096.11.12-096.11.24</td></tr><tr><td>王昆湶</td><td></td><td></td><td>花蓮教育大學</td><td>林欽誠</td><td>096.08.21-096.09.20</td></tr><tr><td>陳騮</td><td></td><td></td><td>University of California, Irvine</td><td>林留玉仁</td><td>096.09.12-096.09.18</td></tr><tr><td>Takashi Torii</td><td></td><td></td><td>大阪工業大學</td><td>陳江梅</td><td>096.09.10-096.09.12</td></tr><tr><td>南樹鉉</td><td></td><td></td><td>成功大學</td><td>蔣正偉</td><td>096.08.13-096.08.14</td></tr><tr><td>劉芳</td><td></td><td></td><td>青島大學</td><td>黎璧賢</td><td>096.08.01-096.10.27</td></tr><tr><td>Tetsuo Shindou</td><td></td><td></td><td>SISSA</td><td>薄書梅</td><td>096.07.28-096.08.03</td></tr><tr><td>陳騮</td><td></td><td></td><td>Dept. of Physics &amp; Astronomy, University of California, Irvine</td><td>林留玉仁</td><td>096.07.02-096.07.03</td></tr><tr><td>Hyoung-Jin Choi</td><td></td><td></td><td>Department of Polymer Science and Engineering</td><td>黎璧賢</td><td>096.05.24-096.05.25</td></tr><tr><td>王志偉</td><td></td><td></td><td>University of South California</td><td>陳江梅</td><td>096.11.01-096.12.31</td></tr><tr><td>Akihiro Ishibashi</td><td></td><td></td><td>KEK</td><td>陳江梅</td><td>096.10.18-096.11.03</td></tr><tr><td>Dong-Won Jung</td><td></td><td></td><td>Korea Institute for Advanced Study School of Physics</td><td>江祖永</td><td>096.06.11-096.06.23</td></tr><tr><td>C.N. Leung</td><td></td><td></td><td>Univ. of Delaware</td><td>江祖永</td><td>093</td></tr><tr><td>Bei-Lok Hu</td><td></td><td></td><td>Univ. of Maryland</td><td>江祖永</td><td>094</td></tr><tr><td>Pran Nath</td><td></td><td></td><td>Northeastern Univ.</td><td>江祖永</td><td>091</td></tr><tr><td>Kaoru Hagiwara</td><td></td><td></td><td>KEK Theory Group</td><td>江祖永</td><td>091</td></tr><tr><td>Jonathan Feng</td><td></td><td></td><td>Mass. Inst. of Tech.</td><td>江祖永</td><td>091</td></tr><tr><td>童若軒</td><td></td><td></td><td>上海師範大學</td><td>聶斯特</td><td>096.05.07-096.05.27</td></tr><tr><td>Jenifer Thewalt</td><td></td><td></td><td>Depts. of Molecular Biology &amp; Biochemistry and Physics, Simon Fraser University</td><td>薛雅薇</td><td>096.05.04-096.05.11</td></tr><tr><td>Kenjiro Yanagi</td><td></td><td></td><td>Yamaguchi University</td><td>趙一峰</td><td>096.06.04-096.06.06</td></tr><tr><td>李志光</td><td></td><td></td><td>Department of Mathematics, College of William &amp; Mary</td><td>高華隆</td><td>096.04.15-096.04.21</td></tr><tr><td>Baohua Fu</td><td></td><td></td><td>法國CNRS</td><td>王金龍</td><td>096.04.02-096.04.08</td></tr><tr><td>燕敦驗</td><td></td><td></td><td>中國科學院</td><td>林欽誠</td><td>096.05.18-096.06.16</td></tr><tr><td>Ahmad Al-Salman</td><td></td><td></td><td>Yarmouk University, Jordan</td><td>林欽誠</td><td>096.01.25-096.02.03</td></tr><tr><td>Joseph H. Silverman</td><td></td><td></td><td>Brown University,U.S.A.</td><td>夏良忠</td><td>095.10.23-095.10.28</td></tr><tr><td>Yasuhiro Okada</td><td></td><td></td><td>KEK</td><td>蔣正偉</td><td>096.03.29-096.03.31</td></tr><tr><td>Mizumoto, Ohishi</td><td></td><td></td><td>日本國家天文台</td><td>高仲明</td><td>094.06</td></tr><tr><td>Prof. Vladimir Dogiel</td><td></td><td></td><td>P.N. Lebedev Physical Institute, Russian Academy of Sciences</td><td>高仲明</td><td>095.01.04</td></tr><tr><td>Prof. Vladimir Dogiel</td><td></td><td></td><td>P.N. Lebedev Physical Institute, Russian Academy of Sciences</td><td>高仲明</td><td>092.11.05-093.02.15</td></tr><tr><td>Ikaros Bigi</td><td></td><td></td><td>Notre Dame Univ.</td><td>江祖永</td><td>094</td></tr><tr><td>K. Nishikawa</td><td></td><td></td><td>Kyoto Univ.</td><td>江祖永</td><td>094</td></tr><tr><td>Samoil Bilenky</td><td></td><td></td><td>SISSA / JINR</td><td>江祖永</td><td>094</td></tr><tr><td>Antonio Maserio</td><td></td><td></td><td>Padova Univ.</td><td>江祖永</td><td>094</td></tr><tr><td>周海軍</td><td></td><td></td><td>中國科學院</td><td>黎璧賢</td><td>096.05.14-096.06.15</td></tr><tr><td>Carlos Wagner</td><td></td><td></td><td>ANL/Univ. of Chiago</td><td>江祖永</td><td>094</td></tr><tr><td>Helen Quinn</td><td></td><td></td><td>SLAC</td><td>江祖永</td><td>094</td></tr><tr><td>Andre de Gouvea</td><td></td><td></td><td>Department of Physics, Northwestern University</td><td>蔣正偉</td><td>096.03.29-096.03.31</td></tr><tr><td>Xerxes Tata</td><td></td><td></td><td>Department of Physics, Hawaii University</td><td>蔣正偉、江祖永</td><td>096.03.27-096.03.31</td></tr><tr><td>Jae-Sik Lee</td><td></td><td></td><td>Center of Theoretical Physics, Seoul National University, Korea</td><td>蔣正偉、江祖永</td><td>096.03.26-096.04.07</td></tr><tr><td>Dr. William Allison</td><td></td><td></td><td>Cavendish Laborotory, University of Cambridge</td><td>羅夢凡</td><td>096.04.08-096.04.15</td></tr><tr><td>Michael-James</td><td></td><td></td><td>澳洲ANSTO</td><td>李文献</td><td>095.07.22-095.07.26</td></tr><tr><td>歐陽頎</td><td></td><td></td><td>北京大學物理系</td><td>黎璧賢</td><td>096.01.20-096.01.26</td></tr><tr><td>Kouji Nakamura</td><td></td><td></td><td>National Astronomical Observatory of Japan</td><td>陳江梅</td><td>096.01.16-096.01.23</td></tr><tr><td>劉潤球</td><td></td><td></td><td>中科院應數所</td><td>陳江梅</td><td>096.01.10-096.01.12</td></tr><tr><td>D. V. Gal'tsov</td><td></td><td></td><td>Department of Theoretical Physics of the Lomonosov Moscow State University</td><td>陳江梅</td><td>096.01.05-096.02.02</td></tr><tr><td>歐陽頎</td><td></td><td></td><td>北京大學物理系</td><td>黎璧賢</td><td>095.12.25-095.12.29</td></tr><tr><td>Toshifumi Yamashita</td><td></td><td></td><td>SISSA</td><td>江祖永</td><td>095.12.21-095.12.25</td></tr><tr><td>Vipin Kumar Tripathi</td><td></td><td></td><td>Physics Department, IIT Delhi , India</td><td>劉全生</td><td>095.12.18-095.12.31</td></tr><tr><td>Joe Sato</td><td></td><td></td><td>Department of Physics, Saitama University</td><td>薄書梅</td><td>096.06.03-096.06.09</td></tr><tr><td>Kin-ya Oda</td><td></td><td></td><td>RIKEN , Japan</td><td>江祖永</td><td>095.12.03-095.12.08</td></tr><tr><td>楊彤</td><td></td><td></td><td>香港城市大學數學系</td><td>許正雄/洪盟凱</td><td>095.11.22-095.11.25</td></tr><tr><td>童若軒</td><td></td><td></td><td>上海師範大學</td><td>陳江梅</td><td>095.11.05-095.11.28</td></tr><tr><td>Hideki Maeda</td><td></td><td></td><td>Waseda University, Japan</td><td>陳江梅</td><td>095.10.31-095.11.12</td></tr><tr><td>Ａlex Levine</td><td></td><td></td><td>University of California, Los Angeles</td><td>陳宣毅</td><td>095.09.20-095.09.24</td></tr><tr><td>Francesca M. Borzumati</td><td></td><td></td><td>International Centre for Theoretical Physics(ICTP), ,Italy</td><td>江祖永</td><td>095.09.30-095.10.04</td></tr><tr><td>Norisuke Sakai</td><td></td><td></td><td>Tokyo Institute of Technology</td><td>江祖永</td><td>095.09.19-095.09.20</td></tr><tr><td>EI-Hang</td><td></td><td></td><td>韓國INHA大學</td><td>彭保仁</td><td>095.04</td></tr><tr><td>G.V.Osipov, O.I.Kanakov, and O.V.Drugova</td><td></td><td></td><td>Nizhny Novogorod University, Russia</td><td>黎璧賢/陳志強</td><td>095.01.11</td></tr><tr><td>Hyoung-Jin Choi&amp;nbsp;</td><td></td><td></td><td>Inha University</td><td>黎璧賢</td><td>095.05.05-095.05.07</td></tr><tr><td>Penger Tong</td><td></td><td></td><td>Hong Kong U of Science &amp; Tech</td><td>黎璧賢</td><td>095.05.05-095.05.07</td></tr><tr><td>夏克青</td><td></td><td></td><td>Chinese U of Hong Kong</td><td>黎璧賢</td><td>095.05.05-095.05.07</td></tr><tr><td>Yoon-Hwae Hwang , Hyuk-Kyu Pak</td><td></td><td></td><td>Pusan National U</td><td>黎璧賢</td><td>095</td></tr><tr><td></td><td></td><td></td><td>U Tokyo</td><td>黎璧賢</td><td>095</td></tr><tr><td>A. J. M Medved</td><td></td><td></td><td>U of Witwatersrand, South Africa</td><td>陳江梅</td><td>096.05.21-096.06.02</td></tr><tr><td>D. V. Gal'tsov</td><td></td><td></td><td>Moscow State University, Russia</td><td>陳江梅</td><td>094.11.18-094.12.14</td></tr><tr><td>Jose G. Pereira</td><td></td><td></td><td>Instituto de F&amp;iacute;sica Te&amp;oacute;rica, Universidade Estadual Paulista, S&amp;atilde;o Paulo, Brazil</td><td>聶斯特</td><td>095.11.18-095.12.06</td></tr><tr><td>L&amp;aacute;szl&amp;oacute; B. Szabados</td><td></td><td></td><td>Research Institute for Particle and Nuclear Physics of the Hungarian Academy of Sciences ,Hungary</td><td>聶斯特</td><td>095.11.05-095.11.23</td></tr><tr><td>Nobuyoshi Ohta</td><td></td><td></td><td>Kinki University, Japan</td><td>陳江梅</td><td>096.01.27-096.01.30</td></tr><tr><td>Ying Xu（徐鷹）</td><td></td><td></td><td>University of Georgia</td><td>李弘謙</td><td>094</td></tr><tr><td>Chung Kao</td><td></td><td></td><td>Univ. of Olkahoma</td><td>江祖永</td><td>093</td></tr><tr><td>Ashok Das</td><td></td><td></td><td>Univ. of Rochester</td><td>江祖永</td><td>094</td></tr><tr><td>Paul Frampton</td><td></td><td></td><td>Univ. of North Carolina at Chapel Hill</td><td>江祖永</td><td>094</td></tr><tr><td>Y.K.Lau</td><td></td><td></td><td>Chinese Academy of Sciences, B</td><td>聶斯特</td><td>092、094</td></tr><tr><td>F.W.Hehl</td><td></td><td></td><td>University of Cologne</td><td>聶斯特</td><td>092</td></tr><tr><td></td><td></td><td></td><td>Tokyo Metropolitan University</td><td>陳培亮</td><td>094</td></tr><tr><td>Martin Zuckermann</td><td></td><td></td><td>Simon Fraser University</td><td>薛雅薇</td><td>094</td></tr><tr><td>Andrew Torda</td><td></td><td></td><td>University of Hamburg</td><td>李弘謙</td><td>094</td></tr><tr><td>Jack Tuszynsri</td><td></td><td></td><td>University of Alberta</td><td>李弘謙</td><td>094</td></tr><tr><td>Dominique Chu</td><td></td><td></td><td>University of Birmingham</td><td>李弘謙</td><td>094</td></tr><tr><td></td><td></td><td></td><td>Dartmouth College</td><td>李弘謙</td><td>094</td></tr><tr><td>Bo Zheng（鄭波）</td><td></td><td></td><td>Zhejiang University</td><td>李弘謙</td><td>094</td></tr><tr><td>S. C. Wang（王孫崇）</td><td></td><td></td><td>University of Toronto</td><td>李弘謙</td><td>094</td></tr><tr><td>厚美瑛（M-Hou）</td><td></td><td></td><td>Chinese Academy of Sciences</td><td>黎璧賢</td><td>094</td></tr><tr><td>Meerson</td><td></td><td></td><td>Hebrew University</td><td>黎璧賢</td><td>094</td></tr><tr><td>K.Opisov&amp;O.Kanarov&amp;O</td><td></td><td></td><td>Novogorod University, Russia</td><td>黎璧賢/陳志強</td><td>094</td></tr><tr><td>S.Bastuleov</td><td></td><td></td><td>Joint Institute for Nuclear Re</td><td>黎璧賢</td><td>094</td></tr></tbody></table></div></div>
+  <div id="detail-view"></div>
+</div>
+
+
+
+<footer id="footer-nav" role="contentinfo">
+  <p>© 國立中央大學物理學系 · 桃園市中壢區中大路300號</p>
+  <p class="mt-6">Tel: 03-4227151 ext 65300 · <a href="https://www.phy.ncu.edu.tw">www.phy.ncu.edu.tw</a></p>
+</footer>
+
+
+
+
+</body></html>
