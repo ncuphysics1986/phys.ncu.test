@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: http:; font-src 'self' data:; connect-src 'self'; frame-src https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>系所活動｜國立中央大學物理學系</title>
+<link rel="icon" type="image/webp" href="../files/NCUPHYS_Logo.webp">
+<link rel="apple-touch-icon" href="../files/NCUPHYS_Logo.webp">
+
+<style>
+/* ════ Variables ════ */
+:root{
+  --navy:#1a2a4a; --blue:#2563a8; --gold:#c8960c; --gold-text:#8a6608;
+  --light:#f4f7fb; --border:#dde4f0;
+  --text:#222; --muted:#5f6c86; --white:#fff;
+  --shadow:0 2px 12px rgba(37,99,168,.10);
+  --font-main:'Noto Serif TC','Songti TC','PMingLiU',Georgia,'Times New Roman',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-main);background:var(--light);color:var(--text);min-height:100vh}
+code,kbd,samp,button,input,select,textarea{font-family:inherit}
+
+/* ── 無障礙：跳躍連結（平時隱藏，鍵盤聚焦時顯示）── */
+.skip-links a{position:absolute;left:-9999px;top:0;z-index:9999;background:var(--navy);color:#fff;padding:10px 16px;border:2px solid var(--gold);border-radius:0 0 6px 0;text-decoration:none;font-size:.9rem}
+.skip-links a:focus{left:0}
+/* ── 無障礙：鍵盤聚焦明顯輪廓（滑鼠點擊不顯示）── */
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+/* 互動用 div 以 role=button 呈現時的鍵盤可及性 */
+[role="button"]{cursor:pointer}
+/* 螢幕報讀器專用（視覺隱藏但可被讀出） */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#noscript-msg{max-width:1100px;margin:24px auto;padding:18px 22px;background:#fff8e1;border-left:4px solid var(--gold);border-radius:4px;color:#7a5c00;line-height:1.8}
+/* ── 工具類 / Email 連結 ── */
+.mt-6{margin-top:6px}
+.mt-32{margin-top:36px}
+.eml-link{color:var(--blue);text-decoration:none}
+.eml-link:hover{text-decoration:underline}
+.eml-sep{color:var(--muted)}
+
+/* ── Top bar ── */
+#topbar{background:var(--navy);color:#b8c8e8;font-size:.8rem;padding:6px 32px;display:flex;justify-content:space-between;align-items:center}
+#topbar a{color:#b8c8e8;text-decoration:none;margin-left:12px}
+#topbar a:hover{color:#fff}
+
+/* ── Header ── */
+#site-header{background:#fff;border-bottom:3px solid var(--gold);padding:14px 32px;display:flex;align-items:center;gap:18px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.logo-img{width:52px;height:52px;object-fit:contain}
+.logo-text h1{font-size:1.15rem;color:var(--navy);font-weight:700;line-height:1.3}
+.logo-text p{font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+#version-badge{margin-left:auto;background:var(--navy);color:#7af0a0;border:1px solid #3a6;border-radius:6px;padding:5px 14px;font-size:.78rem;white-space:nowrap;display:flex;align-items:center;gap:6px}
+
+/* ── Main nav ── */
+#main-nav{background:var(--navy)}
+#main-nav ul{list-style:none;display:flex;padding:0 24px}
+#main-nav>ul>li{position:relative}
+#main-nav>ul>li>a{display:block;color:#d4e0f5;font-size:.9rem;padding:14px 18px;text-decoration:none;border-bottom:3px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
+#main-nav>ul>li>a:hover,#main-nav>ul>li.active>a{color:#fff;border-bottom-color:var(--gold)}
+#main-nav>ul>li>ul{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);min-width:180px;box-shadow:0 6px 20px rgba(0,0,0,.13);z-index:200}
+#main-nav>ul>li:hover>ul{display:block}
+#main-nav>ul>li>ul>li>a{display:block;color:var(--navy);font-size:.85rem;padding:10px 18px;text-decoration:none;border-left:3px solid transparent;transition:background .15s,border-color .15s}
+#main-nav>ul>li>ul>li>a:hover{background:var(--light);border-left-color:var(--gold);color:var(--blue)}
+
+/* ── 行動版漢堡選單 + 抽屜式網頁目錄（桌機隱藏，≤780px 啟用）── */
+#nav-toggle{display:none;align-items:center;gap:9px;background:none;border:none;color:#fff;font-family:inherit;font-size:.95rem;padding:13px 20px;cursor:pointer}
+.hb-icon{display:inline-flex;flex-direction:column;justify-content:center;gap:4px;width:22px;height:16px}
+.hb-icon span{display:block;height:2px;background:#fff;border-radius:2px}
+#mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:998}
+#mobile-nav-overlay.open{display:block}
+#mobile-nav{display:none;position:fixed;top:0;left:0;height:100%;width:min(84vw,340px);background:#fff;z-index:999;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:2px 0 18px rgba(0,0,0,.28);transform:translateX(-100%);visibility:hidden;transition:transform .28s ease,visibility 0s .28s}
+#mobile-nav.open{transform:translateX(0);visibility:visible;transition:transform .28s ease,visibility 0s 0s}
+#mobile-nav-head{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--navy);color:#fff;padding:15px 18px;font-size:1.05rem;font-weight:700;position:sticky;top:0}
+#mobile-nav-close{background:none;border:none;color:#fff;font-size:1.4rem;line-height:1;padding:4px 8px;cursor:pointer}
+#mobile-nav-body{padding:4px 0 32px}
+.mnav-sec{border-bottom:1px solid var(--border)}
+.mnav-sec-title{display:block;width:100%;text-align:left;background:none;border:none;font-family:inherit;font-size:1rem;font-weight:700;color:var(--navy);padding:14px 18px 6px;cursor:pointer}
+.mnav-sub{list-style:none}
+.mnav-sub li a{display:block;padding:11px 18px 11px 32px;color:var(--text);text-decoration:none;font-size:.95rem;border-left:3px solid transparent}
+.mnav-sub li a:active,.mnav-sub li a.active{background:var(--light);border-left-color:var(--gold);color:var(--blue)}
+body.nav-open{overflow:hidden}
+@media(max-width:780px){
+  /* 移除手機版橫列選單（提高優先級以蓋過 #main-nav ul{display:flex}） */
+  #main-nav #main-menu{display:none}
+  /* 空的導覽列收合，不留藍色空條 */
+  #main-nav{padding:0;min-height:0;background:transparent}
+  /* 漢堡鈕固定在畫面右上角，不隨捲動 */
+  #nav-toggle{display:inline-flex;position:fixed;top:8px;right:10px;z-index:1001;
+    background:var(--navy);border:1px solid rgba(255,255,255,.28);border-radius:8px;
+    padding:9px 13px;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+  body.nav-open #nav-toggle{display:none}   /* 抽屜開啟時隱藏浮動鈕（用抽屜內的 ✕ 關閉） */
+  #topbar{padding-right:64px}               /* 讓出右上角，避免蓋到 EN/Facebook */
+  #mobile-nav,#mobile-nav-overlay{display:flex}
+  #mobile-nav-overlay{display:none}
+  #mobile-nav-overlay.open{display:block}
+}
+
+/* ── Hero ── */
+#hero{position:relative;height:200px;background:linear-gradient(135deg,var(--navy),var(--blue));display:flex;align-items:flex-end;padding:0 40px 30px;overflow:hidden}
+#hero-bg{position:absolute;inset:0;background:center/cover no-repeat;opacity:.22}
+.hero-text{position:relative;z-index:2}
+.hero-text h2{font-size:2rem;color:#fff;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.hero-text p{font-size:.95rem;color:#b8d4f0;letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+
+/* ── Breadcrumb ── */
+#breadcrumb{background:#fff;border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+#breadcrumb span{color:var(--blue)}
+
+/* ── Sub-nav ── */
+#sub-nav{background:#fff;border-bottom:2px solid var(--border);padding:0 32px;display:flex;gap:4px;overflow-x:auto}
+#sub-nav button,#sub-nav a{border:none;background:none;font-family:inherit;font-size:.88rem;color:var(--muted);padding:12px 18px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s;text-decoration:none;display:inline-block}
+#sub-nav button:hover,#sub-nav a:hover{color:var(--blue)}
+#sub-nav button.active,#sub-nav a.active{color:var(--blue);border-bottom-color:var(--gold);font-weight:600}
+
+/* ── Content ── */
+#content{max-width:1100px;margin:0 auto;padding:36px 24px;min-height:400px}
+
+/* ── Loading / Error ── */
+.loading{text-align:center;padding:80px;color:var(--muted);font-size:1rem}
+.loading::after{content:'';display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin-left:10px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-msg{background:#fff8e1;border-left:4px solid var(--gold);padding:16px 20px;border-radius:4px;font-size:.9rem;color:#7a5c00}
+
+/* ── Section heading ── */
+.section-heading{font-size:1.3rem;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.section-count{font-size:.8rem;color:var(--muted);font-weight:normal}
+.mt-24{margin-top:24px}
+
+/* ── Text ── */
+.text-content{line-height:1.9;font-size:.97rem}
+/* 水平時間線（由左至右，上下交錯，可橫向捲動） */
+.tl-legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:18px}
+.tl-legend-item{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted)}
+.tl-legend-item i{width:11px;height:11px;border-radius:50%;display:inline-block}
+/* 歷史頁：依時期左右對列，左時間線 + 右時期卡片 */
+.tl-grid{display:grid;grid-template-columns:300px 1fr;gap:0 32px;align-items:stretch;position:relative}
+/* 貫穿左欄的時間軸縱線 */
+.tl-grid::before{content:"";position:absolute;left:9px;top:6px;bottom:18px;width:2px;background:var(--border)}
+.tlg-left{display:flex;flex-direction:column;justify-content:space-around;padding:18px 0;min-width:0}
+.tlg-right{padding-bottom:24px;min-width:0}
+.tlv-item{position:relative;display:flex;gap:14px}
+.tlv-marker{position:relative;flex:0 0 auto;width:14px;display:flex;justify-content:center}
+.tlv-dot{position:relative;z-index:1;width:13px;height:13px;border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 3px rgba(37,99,168,.18);margin-top:14px}
+.tlv-content{flex:1 1 auto;min-width:0}
+.tlv-year{font-size:2.7rem;font-weight:700;margin-bottom:2px;line-height:1.15}
+.tlv-title{font-size:.92rem;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:3px}
+.tlv-note{font-size:.8rem;color:var(--muted);line-height:1.55}
+@media(max-width:760px){
+  .tl-grid{grid-template-columns:1fr;gap:0}
+  .tl-grid::before{display:none}
+  .tlg-left{justify-content:flex-start;gap:18px;padding:8px 0 16px;border-left:2px solid var(--border);margin-left:9px;padding-left:8px}
+  .tlg-right{margin-bottom:24px}
+}
+/* 各時期長文段落卡片 */
+.tl-era{background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow);padding:18px 22px;height:100%}
+.tl-era-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.tl-era-icon{font-size:1.1rem}
+.tl-era-title{font-size:1.15rem;font-weight:700;color:var(--navy)}
+.tl-era-sub{font-size:.85rem;color:var(--muted);letter-spacing:.04em}
+.tl-era-body{font-size:.95rem;line-height:1.95}
+.tl-era-body p{margin:0 0 12px}
+.tl-era-body p:last-child{margin-bottom:0}
+.text-content p{margin-bottom:1.2em}
+
+/* ── 歷屆系主任 ── */
+.chair-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.chair-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);content-visibility:auto;contain-intrinsic-size:0 340px}
+.chair-photo-wrap{width:90px;height:90px;margin:20px auto 0}
+.chair-photo-wrap img{width:90px;height:90px;border-radius:50%;border:3px solid var(--border);object-fit:cover;object-position:top;display:block}
+.chair-no-photo{width:90px;height:90px;border-radius:50%;border:3px solid var(--border);background:linear-gradient(135deg,#dce6f8,#c0d0e8);display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#8aafda}
+.chair-body{padding:14px 16px 18px;text-align:center}
+.chair-body h3{font-size:1.05rem;color:var(--navy);margin-bottom:6px}
+.chair-dates{font-size:.78rem;color:var(--muted);margin-bottom:6px}
+.chair-edu{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.chair-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.chair-tag{background:#e8eef8;color:var(--blue);font-size:.7rem;padding:2px 8px;border-radius:20px}
+
+/* ── Faculty cards ── */
+.faculty-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:20px}
+.faculty-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;content-visibility:auto;contain-intrinsic-size:0 420px}
+.faculty-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,168,.18)}
+.fc-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;background:var(--light)}
+.fc-no-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#dce6f8,#c0d0e8);display:flex;align-items:center;justify-content:center;font-size:3rem;color:#8aafda}
+.fc-info{padding:14px}
+.fc-info h3{font-size:1rem;color:var(--navy)}
+.fc-title{font-size:.78rem;color:var(--blue);margin-top:3px}
+.fc-area{font-size:.73rem;color:var(--muted);margin-top:5px;line-height:1.5}
+.fc-email{font-size:.73rem;color:var(--muted);margin-top:4px}
+
+/* ── Faculty detail page ── */
+#detail-view{display:none}
+.fd-back{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-size:.88rem;cursor:pointer;margin-bottom:28px;background:none;border:none;font-family:inherit;padding:0}
+.fd-back:hover{text-decoration:underline}
+.fd-layout{display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:start}
+.fd-sidebar{position:sticky;top:120px}
+.fd-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--border);display:block;background:var(--light)}
+.fd-no-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#dce6f8,#c0d0e8);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#8aafda}
+.fd-contact{margin-top:16px;font-size:.82rem;color:var(--muted);line-height:2}
+.fd-contact a{color:var(--blue);text-decoration:none}
+.fd-contact a:hover{text-decoration:underline}
+.fd-main h1{font-size:2rem;color:var(--navy);font-weight:700}
+.fd-rank{font-size:1rem;color:var(--blue);margin-top:6px}
+.fd-divider{border:none;border-top:2px solid var(--gold);margin:18px 0}
+.fd-section{margin-bottom:28px}
+.fd-section h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-text);margin-bottom:10px;border-bottom:1px solid var(--border);padding-bottom:5px}
+.fd-section p,.fd-section li{font-size:.9rem;line-height:1.9;color:var(--text)}
+.fd-section ul{padding-left:1.2em}
+.fd-section a{color:var(--blue);text-decoration:none}
+.fd-section a:hover{text-decoration:underline}
+.fd-tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:20px}
+.fd-tab-btn{border:none;background:none;font-family:inherit;font-size:.9rem;color:var(--muted);padding:10px 18px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .2s,border-color .2s}
+.fd-tab-btn.active{color:var(--blue);border-bottom-color:var(--gold);font-weight:600}
+.pub-item{padding:11px 0;border-bottom:1px solid var(--border)}
+.pub-item:last-child{border-bottom:none}
+.pub-title{font-size:.88rem;font-weight:600;line-height:1.5}
+.pub-meta{font-size:.78rem;color:var(--muted);margin-top:3px}
+.proj-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.proj-table th{background:var(--navy);color:#fff;padding:8px 12px;text-align:left;font-size:.8rem}
+.proj-table td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.proj-table tr:nth-child(even) td{background:#f8fafd}
+
+/* ── Data table ── */
+.table-wrap{overflow-x:auto;border-radius:8px;box-shadow:var(--shadow)}
+.data-table{width:100%;border-collapse:collapse;font-size:.87rem}
+/* 小年會：合照（上）＋ 組員表格（下） */
+.ameet-row{display:block;margin-bottom:8px}
+.ameet-photo{margin:0 0 16px}
+.ameet-photo img{width:100%;max-width:640px;height:auto;border-radius:10px;box-shadow:var(--shadow);display:block}
+.ameet-table{width:100%}
+@media(max-width:768px){.ameet-photo img{max-width:100%}}
+.data-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:.82rem;letter-spacing:.04em}
+.data-table td{padding:10px 14px;border-bottom:1px solid var(--border);line-height:1.5}
+.data-table tr:nth-child(even) td{background:#f8fafd}
+.data-table tr:hover td{background:#eef3fc}
+.data-table a{color:var(--blue);text-decoration:none}
+.data-table a:hover{text-decoration:underline}
+.visitor-table{table-layout:fixed}
+.visitor-table th{white-space:nowrap}
+.visitor-table td:last-child{white-space:nowrap}
+.visitor-table td{overflow-wrap:break-word}
+/* 表頭與內容一律不換行：欄寬依最長內容自動配置，過寬時由 .table-wrap 水平捲動 */
+.nowrap-table{width:auto;min-width:100%;table-layout:auto}
+.nowrap-table th,.nowrap-table td{white-space:nowrap}
+/* 最長內容欄：允許換行，吸收剩餘寬度，避免表格過寬需水平捲動 */
+.nowrap-table td.wrap-col{white-space:normal;overflow-wrap:break-word;min-width:24em;width:99%}
+
+/* ── Research cards ── */
+.research-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.research-card{background:#fff;border-radius:10px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;content-visibility:auto;contain-intrinsic-size:0 320px}
+.research-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,99,168,.16)}
+.rc-img{width:100%;height:170px;object-fit:cover;display:block;background:var(--light)}
+.rc-no-img{width:100%;height:170px;background:linear-gradient(135deg,#e4ecf8,#d0dff4);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#8aafda}
+.rc-body{padding:16px}
+.rc-journal{font-size:.75rem;color:var(--gold-text);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.rc-title{font-size:.95rem;color:var(--navy);font-weight:600;margin-top:6px;line-height:1.5}
+.rc-authors{font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.4}
+
+/* ── Research modal ── */
+#modal-overlay{position:fixed;inset:0;background:rgba(10,20,40,.55);z-index:500;display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto}
+#modal-overlay.open{display:flex}
+#modal-box{background:#fff;border-radius:12px;width:100%;max-width:820px;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden;margin:auto;position:relative}
+#modal-close{position:absolute;top:14px;right:18px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:var(--muted);z-index:10;line-height:1}
+.rmodal-head{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:28px 32px}
+.rmodal-head .rj{font-size:.8rem;color:#aac8f0;text-transform:uppercase;letter-spacing:.06em}
+.rmodal-head h2{font-size:1.3rem;margin-top:6px;line-height:1.5}
+.rmodal-head .ra{font-size:.85rem;opacity:.8;margin-top:8px}
+.rmodal-body{padding:28px 32px;max-height:60vh;overflow-y:auto}
+.rmodal-body img{width:100%;max-height:260px;object-fit:contain;border-radius:6px;margin-bottom:12px;background:var(--light)}
+.rmodal-caption{font-size:.8rem;color:var(--muted);margin-bottom:16px}
+.rmodal-desc{font-size:.9rem;line-height:1.8;margin-bottom:16px}
+.rmodal-link{display:inline-block;background:var(--blue);color:#fff;padding:8px 20px;border-radius:4px;font-size:.85rem;text-decoration:none}
+.rmodal-link:hover{background:var(--navy)}
+
+/* ── 系所規章 / 活動 ── */
+.reg-wrap{margin-bottom:32px}
+.reg-cat-title{font-size:1rem;font-weight:700;color:var(--navy);border-left:4px solid var(--gold);padding:6px 12px;background:var(--light)}
+.reg-list{list-style:none}
+.reg-item{display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid var(--border);font-size:.87rem;flex-wrap:wrap}
+.reg-item:last-child{border-bottom:none}
+.reg-item a{color:var(--text);text-decoration:none}
+.reg-item a:hover{color:var(--blue);text-decoration:underline}
+.reg-item .name{color:var(--text)}
+
+/* ── Badges ── */
+.badge{font-size:.7rem;padding:2px 7px;border-radius:3px;font-weight:700;flex-shrink:0;white-space:nowrap}
+.b-pdf{background:#fee2e2;color:#b91c1c}
+.b-doc{background:#dbeafe;color:#1d4ed8}
+.b-yt{background:#fee2e2;color:#dc2626}
+.b-link{background:#e0f2fe;color:#0369a1}
+.b-other{background:#fef9c3;color:#92400e}
+.b-sub{background:#ede9fe;color:#6d28d9;font-size:.7rem;padding:2px 7px;border-radius:3px;font-weight:600;flex-shrink:0;white-space:nowrap}
+
+/* ── Core competency ── */
+.comp-group{margin-bottom:28px}
+.comp-group h3{font-size:1.05rem;color:var(--navy);background:var(--light);border-left:4px solid var(--blue);padding:8px 14px;margin-bottom:10px;border-radius:0 4px 4px 0}
+.comp-row{display:flex;gap:16px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.88rem}
+.comp-row:last-child{border-bottom:none}
+.comp-zh{font-weight:600;color:var(--navy);min-width:120px}
+.comp-en{color:var(--blue);min-width:180px;font-style:italic}
+.comp-desc{color:var(--text)}
+
+/* ── Student: course badges ── */
+.req-badge{font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:3px}
+.req-must{background:#fee2e2;color:#b91c1c}
+.req-elec{background:#dbeafe;color:#1d4ed8}
+.cat-inline{font-size:.68rem;padding:1px 7px;border-radius:10px;font-weight:600;vertical-align:middle;white-space:nowrap}
+/* 大學部課程表：固定欄寬，統一各年級分頁版面 */
+.ug-course-table{table-layout:fixed;width:100%}
+.ug-course-table .ug-c-cat{width:6.5em;text-align:center}
+.ug-course-table .ug-c-course{width:32%}
+.ug-course-table .ug-c-code{width:8.5em;white-space:nowrap}
+.ug-course-table .ug-c-term{width:5em;text-align:center}
+.ug-course-table td,.ug-course-table th{overflow-wrap:break-word}
+.emi-section-block{margin-top:36px}
+.emi-section-title{font-size:1rem;color:var(--navy);background:var(--light);border-left:4px solid var(--gold);padding:8px 14px;margin-bottom:12px;border-radius:0 4px 4px 0;display:flex;align-items:center;gap:10px}
+.emi-section-subtitle{font-size:.78rem;color:var(--muted);font-weight:400;letter-spacing:.04em}
+.emi-note{font-size:.78rem;color:var(--muted);margin-top:10px;padding:8px 12px;background:var(--light);border-radius:4px;line-height:1.7}
+
+/* ── Tab system (student pages) ── */
+.tab-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tab-btn{border:1px solid var(--border);background:#fff;color:var(--muted);font-size:.83rem;padding:6px 14px;border-radius:20px;cursor:pointer;font-family:inherit;transition:all .2s}
+.tab-btn:hover{color:var(--blue)}
+.tab-btn.tab-navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tab-btn.tab-blue{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ── Annual meeting ── */
+.meeting-desc{font-size:.95rem;line-height:1.9;background:#fff;padding:20px 24px;border-radius:8px;box-shadow:var(--shadow);margin-bottom:24px}
+
+/* ── Scholarship link cards ── */
+.link-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.link-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;box-shadow:var(--shadow);display:block;transition:transform .2s,box-shadow .2s;color:var(--text);text-decoration:none}
+.link-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,168,.15)}
+.lc-title{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.lc-desc{font-size:.82rem;color:var(--muted)}
+
+/* ── Student spaces ── */
+.spaces-grid{display:flex;flex-direction:column;gap:28px}
+.space-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.sp-header{background:linear-gradient(135deg,var(--navy),#2a3f6a);padding:16px 20px}
+.sp-name{font-size:1.05rem;font-weight:700;color:#fff}
+.sp-meta{display:flex;gap:16px;margin-top:5px;flex-wrap:wrap}
+.sp-loc,.sp-hours{font-size:.8rem;color:#b8d4f0}
+.sp-desc{padding:16px 20px;font-size:.88rem;line-height:1.85}
+
+/* ── Carousel ── */
+.carousel{position:relative;overflow:hidden;border-radius:8px;box-shadow:var(--shadow);background:#eee;height:clamp(240px,42vw,60vh)}
+.carousel[id^="cs-alb"]{height:clamp(316.8px,55.44vw,79.2vh)}
+.cs-track{position:relative;width:100%;height:100%}
+.cs-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s}
+.cs-slide.cs-active{opacity:1}
+.cs-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.cs-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;font-size:2rem;width:44px;height:44px;border-radius:50%;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.cs-btn:hover{background:rgba(0,0,0,.7)}
+.cs-prev{left:12px}.cs-next{right:12px}
+.cs-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:5}
+.cs-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .2s}
+.cs-dot.active{background:#fff}
+
+/* ── Journals ── */
+.journal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:20px}
+.journal-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.jc-cover{width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:3rem}
+.jc-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.jc-body{padding:12px}
+.jc-issue{font-size:.95rem;font-weight:700;color:var(--navy)}
+.jc-year{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.jc-links{display:flex;flex-wrap:wrap;gap:6px}
+.jc-btn{font-size:.75rem;background:var(--blue);color:#fff;padding:4px 10px;border-radius:3px;display:inline-block;text-decoration:none}
+.jc-btn:hover{background:var(--navy)}
+.jc-yt{background:#dc2626}
+
+/* ── Programs ── */
+.program-list{display:flex;flex-direction:column;gap:12px}
+.prog-row{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.prog-name{font-size:.97rem;font-weight:600;color:var(--navy);min-width:80px}
+.prog-desc{font-size:.85rem;color:var(--muted);flex:1;line-height:1.7}
+.prog-link{font-size:.82rem;background:var(--navy);color:#fff;padding:5px 14px;border-radius:4px;text-decoration:none;white-space:nowrap}
+.prog-link:hover{background:var(--blue)}
+
+/* ── Degree badges ── */
+.deg-badge{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;white-space:nowrap;display:inline-block}
+.badge-phd{background:#ede9fe;color:#5b21b6}
+.badge-ms{background:#dbeafe;color:#1e40af}
+.purpose-cell{font-size:.82rem}
+
+/* ── EMI 專區 ── */
+.emi-wrap{padding:4px 0}
+.emi-cat-section{margin-bottom:2.8rem}
+.emi-cat-title{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+.emi-cat-div{height:2px;border-radius:1px;margin-bottom:1.2rem}
+.emi-cat-teacher .emi-cat-title{color:#1f6fa8}
+.emi-cat-teacher .emi-cat-div{background:linear-gradient(90deg,#1f6fa8,transparent)}
+.emi-cat-student .emi-cat-title{color:#375623}
+.emi-cat-student .emi-cat-div{background:linear-gradient(90deg,#375623,transparent)}
+.emi-cat-ta .emi-cat-title{color:#7d5800}
+.emi-cat-ta .emi-cat-div{background:linear-gradient(90deg,#7d5800,transparent)}
+.emi-cat-resource .emi-cat-title{color:#7b2c2c}
+.emi-cat-resource .emi-cat-div{background:linear-gradient(90deg,#7b2c2c,transparent)}
+.emi-links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem}
+.emi-link-card{display:flex;flex-direction:column;justify-content:space-between;gap:.5rem;padding:1.2rem 1.3rem;border-radius:12px;text-decoration:none;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow);transition:box-shadow .18s,transform .15s,border-color .18s;min-height:76px}
+.emi-link-card:hover{box-shadow:0 6px 24px rgba(31,78,121,.15);transform:translateY(-3px)}
+.emi-cat-teacher .emi-link-card:hover{border-color:#1f6fa8}
+.emi-cat-student .emi-link-card:hover{border-color:#375623}
+.emi-cat-ta      .emi-link-card:hover{border-color:#7d5800}
+.emi-cat-resource .emi-link-card:hover{border-color:#7b2c2c}
+.emi-link-name{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.4}
+.emi-link-arrow{font-size:.75rem;color:var(--muted);transition:transform .15s;display:inline-block}
+.emi-link-card:hover .emi-link-arrow{transform:translateX(4px)}
+
+/* ── 所有公告 ── */
+.news-toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;align-items:center}
+.news-year-sel{font-family:inherit;font-size:.85rem;padding:8px 10px;border:1px solid var(--border);border-radius:6px;outline:none;background:#fff;color:var(--text)}
+.news-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.news-tab{border:1px solid var(--border);background:#fff;color:var(--muted);font-size:.82rem;padding:6px 14px;border-radius:20px;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap}
+.news-tab:hover{color:var(--blue);border-color:var(--blue)}
+.news-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.news-tab .n{font-size:.7rem;opacity:.7;margin-left:3px}
+.news-item{background:#eaf1f8;border:1px solid #d4e0ee;border-radius:6px;margin-bottom:8px;overflow:hidden}
+.news-item-row{display:flex;align-items:center;gap:12px;padding:10px 16px;cursor:pointer;user-select:none;flex-wrap:wrap}
+.news-item-row:hover{background:rgba(0,0,0,.04)}
+.news-item-title{flex:1;font-size:.92rem;color:var(--navy);font-weight:600;min-width:200px}
+.news-item-date{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.news-badge{font-size:.68rem;font-weight:700;padding:2px 9px;border-radius:99px;white-space:nowrap;background:#fbe5e2;color:#b03a2e}
+.news-item-body{display:none;background:#fff;border-top:1px solid #d4e0ee;padding:18px 22px}
+.news-item.open .news-item-body{display:block}
+.news-body-text{font-size:.9rem;line-height:1.85;white-space:pre-wrap;word-break:break-word;margin-bottom:10px}
+.news-meta-line{color:var(--muted);font-size:.8rem;margin-bottom:10px}
+.news-links-block{margin-top:12px;padding-top:10px;border-top:1px dashed var(--border)}
+.news-links-block a{display:block;font-size:.88rem;margin-bottom:5px;color:var(--blue);text-decoration:none;word-break:break-all}
+.news-links-block a:hover{text-decoration:underline}
+.news-src-link{margin-top:12px;text-align:right}
+.news-src-link a{font-size:.82rem;color:var(--blue);text-decoration:none}
+.news-src-link a:hover{text-decoration:underline}
+.news-more-btn{display:block;margin:18px auto;font-size:.88rem;font-family:inherit;padding:9px 28px;border-radius:6px;border:1px solid var(--blue);background:#fff;color:var(--blue);cursor:pointer;transition:all .15s}
+.news-more-btn:hover{background:var(--blue);color:#fff}
+.news-count-info{text-align:center;color:var(--muted);font-size:.82rem;margin:14px 0 4px}
+.news-empty{text-align:center;color:var(--muted);padding:60px 20px;font-size:.95rem}
+
+/* ── 高中生專區 ── */
+.portal-video{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;margin:0;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:#000}
+.portal-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid-block{display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:start;margin:0 auto 36px;max-width:1100px}
+.vid-list{list-style:none;margin:0;padding:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.vid-item{padding:14px 18px;font-size:.95rem;color:var(--text);cursor:pointer;border-bottom:1px solid var(--border);transition:background .15s,color .15s;line-height:1.5}
+.vid-item:last-child{border-bottom:0}
+.vid-item:hover{background:var(--light)}
+.vid-item.active{background:var(--navy);color:#fff;font-weight:600}
+.vid-player{min-width:0}
+.vid-player .portal-video{margin:0}
+@media(max-width:680px){.vid-block{grid-template-columns:1fr}}
+.vid-block.vid-single{grid-template-columns:1fr;max-width:820px}
+.portal-about{background:#fff;border-radius:10px;box-shadow:var(--shadow);padding:24px 28px;font-size:.95rem;line-height:1.95;margin-bottom:32px}
+/* 畢業出路：數據條 */
+.career-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:0 0 24px}
+.career-stat{background:linear-gradient(135deg,#1a2a4a,#2563a8);color:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:var(--shadow)}
+.career-stat-num{font-size:1.9rem;font-weight:800;line-height:1.1;letter-spacing:-.01em}
+.career-stat-label{font-size:.86rem;font-weight:700;color:var(--gold-soft);margin-top:6px}
+.career-stat-note{font-size:.72rem;color:#c5d6ee;line-height:1.5;margin-top:6px}
+/* 畢業出路：方向卡 */
+.career-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0 0 36px}
+.career-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 22px;transition:transform .2s,box-shadow .2s}
+.career-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(37,99,168,.16)}
+.career-icon{font-size:1.8rem;margin-bottom:8px}
+.career-title{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.career-note{font-size:.85rem;color:var(--muted);line-height:1.7}
+@media(max-width:520px){.career-stats{grid-template-columns:1fr 1fr}.career-stat-num{font-size:1.6rem}}
+/* 升學深造領域 比例條 */
+.career-subhead{font-size:1.05rem;font-weight:700;color:var(--navy);margin:0 0 14px}
+.major-bars{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 24px;margin:0 0 28px}
+.major-row{display:grid;grid-template-columns:120px 1fr 56px;align-items:center;gap:12px;margin-bottom:4px}
+.major-name{font-size:.88rem;font-weight:600;color:var(--text);text-align:right}
+.major-track{background:var(--light);border-radius:20px;height:18px;overflow:hidden}
+.major-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--blue),var(--gold));transition:width .6s ease}
+.major-pct{font-size:.86rem;font-weight:700;color:var(--blue)}
+.major-note{font-size:.76rem;color:var(--muted);line-height:1.5;margin:0 0 14px 132px}
+.major-note:last-child{margin-bottom:0}
+@media(max-width:520px){.major-row{grid-template-columns:84px 1fr 48px;gap:8px}.major-name{font-size:.8rem}.major-note{margin-left:0}}
+/* 碩博 vs 大學部 雙色對照長條 */
+.career-lead{font-size:.86rem;color:var(--muted);line-height:1.7;margin:0 0 14px}
+.cmp-legend{display:flex;gap:18px;margin:0 0 12px}
+.cmp-key{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted)}
+.cmp-key i{width:13px;height:13px;border-radius:3px;display:inline-block}
+.cmp-pg{background:var(--gold)}
+.cmp-ug{background:var(--blue)}
+.cmp-row{display:grid;grid-template-columns:140px 1fr;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid var(--light)}
+.cmp-row:last-child{border-bottom:0}
+.cmp-name{font-size:.84rem;font-weight:600;color:var(--text);text-align:right;line-height:1.35}
+.cmp-bars{display:flex;flex-direction:column;gap:5px}
+.cmp-line{display:flex;align-items:center;gap:8px}
+.cmp-fill{height:13px;border-radius:20px;min-width:2px;transition:width .6s ease}
+i.cmp-pg,.cmp-fill.cmp-pg{background:var(--gold)}
+i.cmp-ug,.cmp-fill.cmp-ug{background:var(--blue)}
+.cmp-val{font-size:.74rem;font-weight:700;color:var(--muted);white-space:nowrap}
+@media(max-width:520px){.cmp-row{grid-template-columns:90px 1fr;gap:8px}.cmp-name{font-size:.76rem}}
+/* 雙軌學程課程地圖：水平三節點時間線 */
+.cmap-track{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:14px;position:relative;margin:0 0 22px}
+.cmap-track::before{content:"";position:absolute;top:8px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--gold),var(--blue),#1d9e75);border-radius:3px;z-index:0}
+.cmap-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+.cmap-dot{width:16px;height:16px;border-radius:50%;background:var(--navy);border:3px solid var(--white);box-shadow:0 0 0 3px rgba(37,99,168,.18);flex:0 0 auto}
+.cmap-stem{width:2px;height:22px;background:var(--border);flex:0 0 auto}
+.cmap-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:16px 14px;text-align:center;width:100%}
+.cmap-year{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.cmap-courses{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.cmap-course{font-size:.78rem;background:var(--light);color:var(--blue);border-radius:6px;padding:4px 9px;font-weight:600;line-height:1.4}
+/* 小年會等事件節點：金色強調 */
+.cmap-event .cmap-dot{background:var(--gold)}
+.cmap-event .cmap-stem{background:var(--gold)}
+.cmap-event .cmap-card{border-color:var(--gold);background:#fffaf0}
+.cmap-event .cmap-course{background:rgba(200,150,12,.14);color:#8a6d1f}
+.cmap-event-title{font-size:.92rem;font-weight:700;color:#8a6d1f;margin-bottom:6px}
+.cmap-event-note{font-size:.76rem;color:var(--muted);line-height:1.55}
+/* 雙軌對照卡 */
+.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 36px}
+.track-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 22px;border-top:4px solid var(--gold)}
+.track-card.track-b{border-top-color:#1d9e75}
+.track-name{font-size:1.15rem;font-weight:800;color:var(--navy);margin-bottom:4px}
+.track-who{font-size:.84rem;color:var(--blue);font-weight:600;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.track-list{margin:0;padding-left:18px}
+.track-list li{font-size:.88rem;color:var(--text);line-height:1.85}
+@media(max-width:560px){.cmap-track{grid-auto-flow:row;grid-auto-columns:auto;gap:10px}.cmap-track::before{display:none}.cmap-node{flex-direction:row;gap:0;align-items:flex-start}.cmap-dot{margin-top:6px}.cmap-stem{width:14px;height:2px;margin-top:13px}.cmap-card{text-align:left}.cmap-courses{justify-content:flex-start}.track-grid{grid-template-columns:1fr}}
+/* 常見問題 Q&A 手風琴 */
+.faq-list{display:flex;flex-direction:column;gap:10px;margin:0 0 36px}
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+.faq-q{cursor:pointer;list-style:none;padding:16px 48px 16px 20px;font-size:.96rem;font-weight:700;color:var(--navy);position:relative;transition:background .15s}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q:hover{background:var(--light)}
+.faq-q::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:1.3rem;font-weight:400;color:var(--blue);transition:transform .2s}
+.faq-item[open] .faq-q::after{content:"\2212"}
+.faq-item[open] .faq-q{color:var(--blue);border-bottom:1px solid var(--border)}
+.faq-a{padding:16px 20px;font-size:.9rem;line-height:1.85;color:var(--text)}
+.faq-a a{color:var(--blue);text-decoration:underline;word-break:break-all}
+/* 數據亮點卡（為什麼選中央物理） */
+.stat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:0 0 36px}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:18px 12px;text-align:center;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;min-width:0}
+.stat-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--blue))}
+.stat-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(37,99,168,.16)}
+.stat-num{font-size:1.55rem;font-weight:800;line-height:1.25;color:var(--navy);letter-spacing:-.01em;white-space:nowrap}
+.stat-label{font-size:.84rem;font-weight:700;color:var(--blue);margin-top:7px}
+.stat-note{font-size:.72rem;color:var(--muted);line-height:1.55;margin-top:7px}
+/* 中螢幕：3 欄；小螢幕：2 欄 */
+@media(max-width:900px){.stat-grid{grid-template-columns:repeat(3,1fr)}.stat-num{font-size:1.7rem}}
+@media(max-width:520px){.stat-grid{grid-template-columns:repeat(2,1fr);gap:10px}.stat-num{font-size:1.6rem;white-space:normal}}
+.portal-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.portal-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;justify-content:space-between;min-height:96px;text-decoration:none;color:var(--text);cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.portal-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,168,.16);border-color:var(--blue)}
+.portal-card-title{font-size:1rem;font-weight:700;color:var(--navy);line-height:1.5}
+.portal-card-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+.portal-card-arrow{font-size:.78rem;color:var(--muted);transition:transform .15s;align-self:flex-end}
+.portal-card:hover .portal-card-arrow{transform:translateX(4px);color:var(--blue)}
+
+/* ── Footer ── */
+footer{background:var(--navy);color:#8a9fc0;text-align:center;padding:24px;font-size:.82rem;margin-top:60px}
+footer a{color:#8a9fc0}
+
+@media(max-width:780px){
+  #site-header{padding:10px 14px;flex-wrap:wrap}
+  #content{padding:20px 12px}
+  .fd-layout{grid-template-columns:1fr}
+  .fd-sidebar{position:static}
+}
+
+/* === 無 JS 降級樣式 === */
+summary.news-summary{list-style:none;cursor:pointer}
+summary.news-summary::-webkit-details-marker{display:none}
+.news-item>summary .news-item-row::after{content:'＋';margin-left:auto;color:var(--blue);font-weight:700;align-self:center}
+.news-item[open]>summary .news-item-row::after{content:'－'}
+details.news-item[open] .news-item-body{display:block}
+.tab-bar{display:none!important}
+.tab-panel{display:block!important}
+.nojs-tab-h{font-weight:600;color:var(--navy);margin:16px 0 8px;padding:6px 14px;background:#eef2f7;border-radius:20px;display:inline-block;font-size:.9rem}
+/* 跑馬燈 → 無 JS 可左右滑動的輪播（CSS scroll-snap） */
+.carousel{position:static!important;overflow:visible!important;height:auto!important;background:transparent!important;box-shadow:none!important;margin:6px 0}
+.carousel .cs-track{position:static!important;display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;gap:8px;height:auto!important;border-radius:8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--blue) #e5e9ef}
+.carousel .cs-track::-webkit-scrollbar{height:8px}
+.carousel .cs-track::-webkit-scrollbar-track{background:#e5e9ef;border-radius:4px}
+.carousel .cs-track::-webkit-scrollbar-thumb{background:var(--blue);border-radius:4px}
+.carousel .cs-track:focus{outline:2px solid var(--blue);outline-offset:2px}
+.carousel .cs-slide{position:static!important;inset:auto!important;opacity:1!important;flex:0 0 100%!important;width:100%!important;height:clamp(240px,42vw,60vh)!important;scroll-snap-align:center;background:#000;border-radius:8px}
+.carousel[id^="cs-alb"] .cs-slide{height:clamp(316.8px,55.44vw,79.2vh)!important}
+.carousel .cs-slide img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:8px;display:block}
+.carousel .cs-btn,.carousel .cs-dots{display:none!important}
+.nojs-cs-hint{text-align:center;color:var(--muted);font-size:.8rem;margin:6px 0 2px;user-select:none}
+.nojs-empty{color:var(--muted);font-size:.88rem;padding:12px}
+a.faculty-card-a{display:block;text-decoration:none;color:inherit}
+.fd-back-link{display:inline-block;margin:0 0 16px;color:var(--blue);text-decoration:none;font-size:.9rem}
+.fd-back-link:hover{text-decoration:underline}
+.year-acc{border:1px solid var(--border);border-radius:8px;margin:8px 0;overflow:hidden;background:#fff}
+summary.year-acc-sum{list-style:none;cursor:pointer;padding:12px 16px;font-weight:600;color:var(--navy);font-size:1.05rem;background:#f6f9fc;display:flex;align-items:center}
+summary.year-acc-sum::-webkit-details-marker{display:none}
+summary.year-acc-sum::after{content:'＋';margin-left:auto;color:var(--blue);font-weight:700}
+.year-acc[open] summary.year-acc-sum::after{content:'－'}
+.year-acc[open] summary.year-acc-sum{border-bottom:1px solid var(--border)}
+.year-acc-body{padding:14px 16px}
+.vid-item-linked{padding:0!important}
+a.vid-item-link{display:block;padding:14px 18px;color:inherit;text-decoration:none}
+.vid-item:not(.active) a.vid-item-link:hover{background:var(--light)}
+.vid-stack{display:flex;flex-direction:column;gap:24px;max-width:880px;margin:0 auto 36px}
+.vid-stack-title{font-weight:600;color:var(--navy);margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<div class="skip-links">
+  <a href="#main-nav" accesskey="U" title="上方功能區塊">:::上方導覽區（Alt+U）</a>
+  <a href="#content" accesskey="C" title="中央內容區塊">:::主要內容區（Alt+C）</a>
+  <a href="#footer-nav" accesskey="H" title="下方功能區塊">:::下方功能區（Alt+H）</a>
+</div>
+
+
+
+<div id="topbar">
+  <span>國立中央大學物理學系 Department of Physics, NCU</span>
+  <div>
+    <a href="https://www.facebook.com/NCUphy" target="_blank" rel="noopener noreferrer">Facebook</a>
+  </div>
+</div>
+
+<header id="site-header" role="banner">
+  <img class="logo-img" src="../files/NCUPHYS_Logo.webp" alt="國立中央大學物理學系系徽" data-onerr="hide">
+  <div class="logo-text">
+    <h1>國立中央大學物理學系</h1>
+    <p>Department of Physics · National Central University</p>
+  </div>
+  <div id="version-badge"><span>✓</span><span id="vb-text"></span></div>
+</header>
+
+<nav id="main-nav" role="navigation" aria-label="主要導覽">
+  
+  <ul id="main-menu"><li><a href="index.html">系所簡介</a><ul><li><a href="index.html">歷史</a></li><li><a href="intro-2.html">歷屆系主任</a></li><li><a href="intro-3.html">教育目標與核心能力</a></li><li><a href="intro-4.html">系所規章</a></li><li><a href="intro-5.html">系所活動</a></li></ul></li><li><a href="faculty-1.html">系所人員</a><ul><li><a href="faculty-1.html">專任師資</a></li><li><a href="faculty-2.html">訪問學者</a></li><li><a href="faculty-3.html">兼任師資</a></li><li><a href="faculty-4.html">合聘師資</a></li><li><a href="faculty-5.html">退休師資</a></li><li><a href="faculty-6.html">博士後研究員</a></li><li><a href="faculty-7.html">系辦公室人員</a></li><li><a href="faculty-8.html">助理人員</a></li><li><a href="faculty-9.html">在學博士生</a></li></ul></li><li><a href="research-1.html">學術成果</a><ul><li><a href="research-1.html">研究成果</a></li><li><a href="research-2.html">實驗室</a></li><li><a href="research-3.html">教師獲獎紀錄</a></li><li><a href="research-4.html">國外學者來訪</a></li></ul></li><li><a href="student-1.html">學生專區</a><ul><li><a href="student-1.html">大學部課程</a></li><li><a href="student-2.html">研究所課程</a></li><li><a href="student-3.html">物理小年會</a></li><li><a href="student-4.html">獎學金</a></li><li><a href="student-5.html">學生活動空間</a></li><li><a href="student-6.html">學生獲獎紀錄</a></li><li><a href="student-7.html">研究生論文</a></li><li><a href="student-8.html">學生國外差旅</a></li><li><a href="student-9.html">相關學程</a></li><li><a href="student-10.html">物理系刊</a></li></ul></li><li><a href="emi-1.html">EMI專區</a><ul><li><a href="emi-1.html">EMI專區</a></li></ul></li><li><a href="highschool-1.html">高中生專區</a><ul><li><a href="highschool-1.html">高中生專區</a></li><li><a href="highschool-2.html">申請入學資訊</a></li><li><a href="highschool-3.html">特殊選才資訊</a></li></ul></li><li><a href="news-1.html">所有公告</a><ul><li><a href="news-1.html">所有公告</a></li></ul></li></ul>
+</nav>
+
+
+
+<div id="hero">
+  <div id="hero-bg" style="background-image: url(&quot;http://140.114.78.40/wp-content/uploads/2020/09/g-scaled.jpg&quot;);"></div>
+  <div class="hero-text">
+    <h2 id="hero-title">系所活動</h2>
+    <p id="hero-sub">Events &amp; Gallery</p>
+  </div>
+</div>
+
+<div id="breadcrumb">首頁 › <span>系所簡介</span> › <span>系所活動</span></div>
+<nav id="sub-nav" aria-label="子頁籤"><a href="index.html">歷史</a><a href="intro-2.html">歷屆系主任</a><a href="intro-3.html">教育目標與核心能力</a><a href="intro-4.html">系所規章</a><a href="intro-5.html" class="active" aria-current="page">系所活動</a></nav>
+
+<div id="content" role="main" tabindex="-1">
+  <div id="list-view"><h2 class="section-heading">系所活動</h2><div class="reg-wrap"><div class="reg-cat-title">50週年系慶</div><ul class="reg-list"><li class="reg-item"><span class="badge b-yt">YouTube</span><a href="https://youtu.be/abN7WVs-COc" target="_blank" rel="noopener noreferrer">中大物理五十週年系慶~劉全生校長演講(國立中央大學前校長暨物理系教授)</a></li><li class="reg-item"><span class="badge b-yt">YouTube</span><a href="https://youtu.be/7sauJ1s1OjQ" target="_blank" rel="noopener noreferrer">中大物理五十週年系慶~張博增董事長演講(Global Graphene Group, Inc.)</a></li><li class="reg-item"><span class="badge b-yt">YouTube</span><a href="https://youtu.be/R5rWX11JkGI" target="_blank" rel="noopener noreferrer">中大物理五十週年系慶~林雲峰教授演講(新加坡管理大學工業管理系)</a></li><li class="reg-item"><span class="badge b-yt">YouTube</span><a href="https://youtu.be/F4H7t3xckug" target="_blank" rel="noopener noreferrer">中大物理五十周年系慶~懷舊照片~</a></li><li class="reg-item"><span class="badge b-yt">YouTube</span><a href="https://youtu.be/1UB8SIPSPzE" target="_blank" rel="noopener noreferrer">中大物理五十周年系慶~歡迎回來~1</a></li><li class="reg-item"><span class="badge b-yt">YouTube</span><a href="https://youtu.be/1cU8IgbM9yg" target="_blank" rel="noopener noreferrer">中大物理五十周年系慶~歡迎回來~2</a></li><li class="reg-item"><span class="badge b-yt">YouTube</span><a href="https://www.youtube.com/watch?v=aFsra9wSt8Y&amp;amp;feature=youtu.be" target="_blank" rel="noopener noreferrer">中大物理五十周年系慶~印象深刻篇~</a></li><li class="reg-item"><span class="badge b-yt">YouTube</span><a href="https://youtu.be/WpjtiMOrQPY" target="_blank" rel="noopener noreferrer">中大物理五十週年系慶~建議篇~</a></li><li class="reg-item"><span class="badge b-yt">YouTube</span><a href="https://youtu.be/x2ZOiQT-_H8" target="_blank" rel="noopener noreferrer">研究領域</a></li><li class="reg-item"><span class="badge b-yt">YouTube</span><a href="https://youtu.be/rD9S-hYHVOk" target="_blank" rel="noopener noreferrer">物理小年會</a></li><li class="reg-item"><span class="badge b-yt">YouTube</span><a href="https://youtu.be/0LEWESRELkY" target="_blank" rel="noopener noreferrer">20180603物理小年會</a></li></ul></div><div class="reg-wrap"><div class="reg-cat-title">物理小年會</div><ul class="reg-list"><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.google.com/share/AF1QipM4Dm3HuTZt9TOulHGrHWBLIdx7eZQOt-7IJbEvd69oXcae7dJrguUuhw-9P0NQYw?key=Sm5pUXdrT2JsanF5NmdybG1IZUk0c2JzQ3RPV3Nn" target="_blank" rel="noopener noreferrer">114年06月08日-2025物理小年會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.google.com/share/AF1QipONJIzhh1uFh2g92uuDxs9ocPERvgvuwscMCSOUCH_xCiDm528aGkw56T6E8sGkkQ?key=YXhMdUl6bUZTNlhzRDVWNWFOdG9NRnNtVmdUNlln" target="_blank" rel="noopener noreferrer">113年06月01日-2024物理小年會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.google.com/share/AF1QipN5QBv1VUGocIgtQtNQJZtqagS4tbJDo2IW5TLK1UB_yi3jMWxUoSyiWTsfPLZqLw?key=Z3E4alVYVksybW9WWkNZY0VTdzhpeHZ6U05KQ2N3" target="_blank" rel="noopener noreferrer">112年06月03日-2023物理小年會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/RrQr8zhfoVk6btrQ8" target="_blank" rel="noopener noreferrer">報到</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/uKFvAaHghYm5XJyD8" target="_blank" rel="noopener noreferrer">實驗專題壁報發表</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/QQLHSnYouKWs9F2W9" target="_blank" rel="noopener noreferrer">系友演講經驗分享</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/Jk2A195nT3kMmsWx7" target="_blank" rel="noopener noreferrer">校內外得獎表揚</a></li><li class="reg-item"><span class="badge b-link">連結</span><a href="https://ncuphyam.wixsite.com/2021ncuphy-am" target="_blank" rel="noopener noreferrer">110年06月26日-2021物理小年會</a></li></ul></div><div class="reg-wrap"><div class="reg-cat-title">畢業照及畢業典禮</div><ul class="reg-list"><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/62r9vPB1bRnMBghS7" target="_blank" rel="noopener noreferrer">115年05月23日-114學年度畢業照及畢業典禮</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/xDNzWXAiHafBa9tLA" target="_blank" rel="noopener noreferrer">114年05月24日-113學年度畢業照及畢業典禮</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.google.com/share/AF1QipN7MM2eAxvCoQqxV6wL9_EsHYMOZFLOPWyZ73Ly0AfDk3JuJ9keAPsAIWr8CzjHdQ?key=eWc3S055SmREOFlDVVZrTkU4ejJGdTEwSVNfMS13" target="_blank" rel="noopener noreferrer">113年05月25日-112學年度畢業照及畢業典禮</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/SqpMDwvcMg4GMNDu6" target="_blank" rel="noopener noreferrer">112年05月27日-111學年度畢業照及畢業典禮</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/Gw4i1Pem7vx9zBRr7" target="_blank" rel="noopener noreferrer">111年06月11日-110學年度畢業照及畢業典禮</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/mawMUkQygzKhHakc8" target="_blank" rel="noopener noreferrer">113年12月11日-62級系友返校五十週年同學會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/ECAtaDtmzQq7WqJq6" target="_blank" rel="noopener noreferrer">113年12月11日陳滌清何崇媺教授夫婦紀念書房開幕典禮</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/GAUrVvGz3cf8VLK18" target="_blank" rel="noopener noreferrer">112年5月27日-78級系友返校同學會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/b3oCY7NFVZZhRU8L7" target="_blank" rel="noopener noreferrer">108年05月25日-77級系友三十重聚</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/7AsC2cSzZxX7MQh28" target="_blank" rel="noopener noreferrer">Colloquium-1072</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/0Yo1DUv3jGoPEqXt2" target="_blank" rel="noopener noreferrer">107年05月04日-66級系友返校同學會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://goo.gl/photos/GuYX7ynADPazxHny7" target="_blank" rel="noopener noreferrer">103年10月25日-62級系友畢業四十週年同學會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/W7NEuqO0JA7Z46tg1" target="_blank" rel="noopener noreferrer">103年06月10日-退休老師茶會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://goo.gl/photos/gK7BbZfhM9dSTurh9" target="_blank" rel="noopener noreferrer">102年10月1-4日上海交通大學來臺訪問</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/eCw33mOQcsksrJJl2" target="_blank" rel="noopener noreferrer">102年01月15日-系尾牙&amp;退休老師歡送會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/26CWRBMuGT5vj5MS2" target="_blank" rel="noopener noreferrer">101年12月10日-吳健雄百歲紀念會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/1RWPI1KjJs4p5rcf1" target="_blank" rel="noopener noreferrer">101年04月15日-72級畢業系友返校同學會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/AgHccVJDT5Tuf2k73" target="_blank" rel="noopener noreferrer">100年06月04日-三十週年69級系友回娘家</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/nBQDD2kf6gjHcz3m1" target="_blank" rel="noopener noreferrer">100年05月14日-物理人的挑戰</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/XQqFNkhj8gWrYtG23" target="_blank" rel="noopener noreferrer">96年12月28日-第一屆物理系友返校</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/DU0eZmqgJFHAyket2" target="_blank" rel="noopener noreferrer">97年11月19日-竹山高中參訪</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/EeDRCLohVdFznBIv2" target="_blank" rel="noopener noreferrer">97年11月18日-演講諾貝爾物理獎得主Douglas D. Osheroff</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/AG9AGCEwuJttfuXi2" target="_blank" rel="noopener noreferrer">97年11月17日-諾貝爾物理獎得主Douglas D. Osheroff 與研究生對談</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/5P66JKMamNpkaBs12" target="_blank" rel="noopener noreferrer">97年09月27日中央大學物理系40週年慶祝活動</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/y14lLyrWQu26pPpY2" target="_blank" rel="noopener noreferrer">97年05月31日-77級畢業系友同學會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/OLcaoQZiOFjEpzu83" target="_blank" rel="noopener noreferrer">97年05月03日-97年度物理系友返校活動</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/ph0Rfs57XcoNeUwX2" target="_blank" rel="noopener noreferrer">97年02月21日-台灣聯合大學系統溫世仁學術卓越講座 Alan Jay Heeger 教授</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/OzJT0cYe00TyoZ0t2" target="_blank" rel="noopener noreferrer">96年08月08日-諾貝爾物理獎得主Douglas D. Osheroff來訪</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/wbcWMI56KvdVYh063" target="_blank" rel="noopener noreferrer">96年06月09日-理學院教學館開幕</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/HSANP594lS4JYkYj2" target="_blank" rel="noopener noreferrer">96年04月28-29日宜蘭棲蘭、太平山二日遊</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/rtlwCLO8Wer1Y3y73" target="_blank" rel="noopener noreferrer">96年04月17日-荷蘭葛洛寧恩大學來訪</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/6dxjgbnOFaEil3R13" target="_blank" rel="noopener noreferrer">96年04月14-15日大學部學生推薦入學考試</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/6PrtAfWJEAGVQnHz2" target="_blank" rel="noopener noreferrer">96年04月13日-碩士班招生說明會暨報到作業</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/U6pPnnogh5FN2FYE2" target="_blank" rel="noopener noreferrer">96年01月23-25日-2007年中華民國物理年會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/W3DjHBDVHFSJJ4012" target="_blank" rel="noopener noreferrer">95年11月24日-運動會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/gyFdzrDWL0CNTMPl2" target="_blank" rel="noopener noreferrer">95年08月19日-95年度系友回娘家活動</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/Rc9O62OBibjzVNAX2" target="_blank" rel="noopener noreferrer">95年03月01日-李冠卿教授榮退研討會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/XQw6DMjibICdFGwH3" target="_blank" rel="noopener noreferrer">95年01月09日-劉全生校長榮退研討會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/6mc3oMcqL9tEGFiA2" target="_blank" rel="noopener noreferrer">94年11月22-23日-運動會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/N0jfscJv0K1m9ENz1" target="_blank" rel="noopener noreferrer">94年07月09日-校友回娘家活動</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/yZVJSzZ8KW7FFLPC2" target="_blank" rel="noopener noreferrer">91年12月25日-91學年度親師座談會</a></li><li class="reg-item"><span class="badge b-other">Google相簿</span><a href="https://photos.app.goo.gl/I5eSyGBslOSM2Ot73" target="_blank" rel="noopener noreferrer">91年05月25日-林松福系友演講</a></li></ul></div></div>
+  <div id="detail-view"></div>
+</div>
+
+
+
+<footer id="footer-nav" role="contentinfo">
+  <p>© 國立中央大學物理學系 · 桃園市中壢區中大路300號</p>
+  <p class="mt-6">Tel: 03-4227151 ext 65300 · <a href="https://www.phy.ncu.edu.tw">www.phy.ncu.edu.tw</a></p>
+</footer>
+
+
+
+
+</body></html>
