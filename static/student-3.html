@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: http:; font-src 'self' data:; connect-src 'self'; frame-src https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物理小年會｜國立中央大學物理學系</title>
+<link rel="icon" type="image/webp" href="../files/NCUPHYS_Logo.webp">
+<link rel="apple-touch-icon" href="../files/NCUPHYS_Logo.webp">
+
+<style>
+/* ════ Variables ════ */
+:root{
+  --navy:#1a2a4a; --blue:#2563a8; --gold:#c8960c; --gold-text:#8a6608;
+  --light:#f4f7fb; --border:#dde4f0;
+  --text:#222; --muted:#5f6c86; --white:#fff;
+  --shadow:0 2px 12px rgba(37,99,168,.10);
+  --font-main:'Noto Serif TC','Songti TC','PMingLiU',Georgia,'Times New Roman',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-main);background:var(--light);color:var(--text);min-height:100vh}
+code,kbd,samp,button,input,select,textarea{font-family:inherit}
+
+/* ── 無障礙：跳躍連結（平時隱藏，鍵盤聚焦時顯示）── */
+.skip-links a{position:absolute;left:-9999px;top:0;z-index:9999;background:var(--navy);color:#fff;padding:10px 16px;border:2px solid var(--gold);border-radius:0 0 6px 0;text-decoration:none;font-size:.9rem}
+.skip-links a:focus{left:0}
+/* ── 無障礙：鍵盤聚焦明顯輪廓（滑鼠點擊不顯示）── */
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+/* 互動用 div 以 role=button 呈現時的鍵盤可及性 */
+[role="button"]{cursor:pointer}
+/* 螢幕報讀器專用（視覺隱藏但可被讀出） */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#noscript-msg{max-width:1100px;margin:24px auto;padding:18px 22px;background:#fff8e1;border-left:4px solid var(--gold);border-radius:4px;color:#7a5c00;line-height:1.8}
+/* ── 工具類 / Email 連結 ── */
+.mt-6{margin-top:6px}
+.mt-32{margin-top:36px}
+.eml-link{color:var(--blue);text-decoration:none}
+.eml-link:hover{text-decoration:underline}
+.eml-sep{color:var(--muted)}
+
+/* ── Top bar ── */
+#topbar{background:var(--navy);color:#b8c8e8;font-size:.8rem;padding:6px 32px;display:flex;justify-content:space-between;align-items:center}
+#topbar a{color:#b8c8e8;text-decoration:none;margin-left:12px}
+#topbar a:hover{color:#fff}
+
+/* ── Header ── */
+#site-header{background:#fff;border-bottom:3px solid var(--gold);padding:14px 32px;display:flex;align-items:center;gap:18px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.logo-img{width:52px;height:52px;object-fit:contain}
+.logo-text h1{font-size:1.15rem;color:var(--navy);font-weight:700;line-height:1.3}
+.logo-text p{font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+#version-badge{margin-left:auto;background:var(--navy);color:#7af0a0;border:1px solid #3a6;border-radius:6px;padding:5px 14px;font-size:.78rem;white-space:nowrap;display:flex;align-items:center;gap:6px}
+
+/* ── Main nav ── */
+#main-nav{background:var(--navy)}
+#main-nav ul{list-style:none;display:flex;padding:0 24px}
+#main-nav>ul>li{position:relative}
+#main-nav>ul>li>a{display:block;color:#d4e0f5;font-size:.9rem;padding:14px 18px;text-decoration:none;border-bottom:3px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
+#main-nav>ul>li>a:hover,#main-nav>ul>li.active>a{color:#fff;border-bottom-color:var(--gold)}
+#main-nav>ul>li>ul{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);min-width:180px;box-shadow:0 6px 20px rgba(0,0,0,.13);z-index:200}
+#main-nav>ul>li:hover>ul{display:block}
+#main-nav>ul>li>ul>li>a{display:block;color:var(--navy);font-size:.85rem;padding:10px 18px;text-decoration:none;border-left:3px solid transparent;transition:background .15s,border-color .15s}
+#main-nav>ul>li>ul>li>a:hover{background:var(--light);border-left-color:var(--gold);color:var(--blue)}
+
+/* ── 行動版漢堡選單 + 抽屜式網頁目錄（桌機隱藏，≤780px 啟用）── */
+#nav-toggle{display:none;align-items:center;gap:9px;background:none;border:none;color:#fff;font-family:inherit;font-size:.95rem;padding:13px 20px;cursor:pointer}
+.hb-icon{display:inline-flex;flex-direction:column;justify-content:center;gap:4px;width:22px;height:16px}
+.hb-icon span{display:block;height:2px;background:#fff;border-radius:2px}
+#mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:998}
+#mobile-nav-overlay.open{display:block}
+#mobile-nav{display:none;position:fixed;top:0;left:0;height:100%;width:min(84vw,340px);background:#fff;z-index:999;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:2px 0 18px rgba(0,0,0,.28);transform:translateX(-100%);visibility:hidden;transition:transform .28s ease,visibility 0s .28s}
+#mobile-nav.open{transform:translateX(0);visibility:visible;transition:transform .28s ease,visibility 0s 0s}
+#mobile-nav-head{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--navy);color:#fff;padding:15px 18px;font-size:1.05rem;font-weight:700;position:sticky;top:0}
+#mobile-nav-close{background:none;border:none;color:#fff;font-size:1.4rem;line-height:1;padding:4px 8px;cursor:pointer}
+#mobile-nav-body{padding:4px 0 32px}
+.mnav-sec{border-bottom:1px solid var(--border)}
+.mnav-sec-title{display:block;width:100%;text-align:left;background:none;border:none;font-family:inherit;font-size:1rem;font-weight:700;color:var(--navy);padding:14px 18px 6px;cursor:pointer}
+.mnav-sub{list-style:none}
+.mnav-sub li a{display:block;padding:11px 18px 11px 32px;color:var(--text);text-decoration:none;font-size:.95rem;border-left:3px solid transparent}
+.mnav-sub li a:active,.mnav-sub li a.active{background:var(--light);border-left-color:var(--gold);color:var(--blue)}
+body.nav-open{overflow:hidden}
+@media(max-width:780px){
+  /* 移除手機版橫列選單（提高優先級以蓋過 #main-nav ul{display:flex}） */
+  #main-nav #main-menu{display:none}
+  /* 空的導覽列收合，不留藍色空條 */
+  #main-nav{padding:0;min-height:0;background:transparent}
+  /* 漢堡鈕固定在畫面右上角，不隨捲動 */
+  #nav-toggle{display:inline-flex;position:fixed;top:8px;right:10px;z-index:1001;
+    background:var(--navy);border:1px solid rgba(255,255,255,.28);border-radius:8px;
+    padding:9px 13px;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+  body.nav-open #nav-toggle{display:none}   /* 抽屜開啟時隱藏浮動鈕（用抽屜內的 ✕ 關閉） */
+  #topbar{padding-right:64px}               /* 讓出右上角，避免蓋到 EN/Facebook */
+  #mobile-nav,#mobile-nav-overlay{display:flex}
+  #mobile-nav-overlay{display:none}
+  #mobile-nav-overlay.open{display:block}
+}
+
+/* ── Hero ── */
+#hero{position:relative;height:200px;background:linear-gradient(135deg,var(--navy),var(--blue));display:flex;align-items:flex-end;padding:0 40px 30px;overflow:hidden}
+#hero-bg{position:absolute;inset:0;background:center/cover no-repeat;opacity:.22}
+.hero-text{position:relative;z-index:2}
+.hero-text h2{font-size:2rem;color:#fff;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.hero-text p{font-size:.95rem;color:#b8d4f0;letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+
+/* ── Breadcrumb ── */
+#breadcrumb{background:#fff;border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+#breadcrumb span{color:var(--blue)}
+
+/* ── Sub-nav ── */
+#sub-nav{background:#fff;border-bottom:2px solid var(--border);padding:0 32px;display:flex;gap:4px;overflow-x:auto}
+#sub-nav button,#sub-nav a{border:none;background:none;font-family:inherit;font-size:.88rem;color:var(--muted);padding:12px 18px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s;text-decoration:none;display:inline-block}
+#sub-nav button:hover,#sub-nav a:hover{color:var(--blue)}
+#sub-nav button.active,#sub-nav a.active{color:var(--blue);border-bottom-color:var(--gold);font-weight:600}
+
+/* ── Content ── */
+#content{max-width:1100px;margin:0 auto;padding:36px 24px;min-height:400px}
+
+/* ── Loading / Error ── */
+.loading{text-align:center;padding:80px;color:var(--muted);font-size:1rem}
+.loading::after{content:'';display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin-left:10px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-msg{background:#fff8e1;border-left:4px solid var(--gold);padding:16px 20px;border-radius:4px;font-size:.9rem;color:#7a5c00}
+
+/* ── Section heading ── */
+.section-heading{font-size:1.3rem;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.section-count{font-size:.8rem;color:var(--muted);font-weight:normal}
+.mt-24{margin-top:24px}
+
+/* ── Text ── */
+.text-content{line-height:1.9;font-size:.97rem}
+/* 水平時間線（由左至右，上下交錯，可橫向捲動） */
+.tl-legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:18px}
+.tl-legend-item{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted)}
+.tl-legend-item i{width:11px;height:11px;border-radius:50%;display:inline-block}
+/* 歷史頁：依時期左右對列，左時間線 + 右時期卡片 */
+.tl-grid{display:grid;grid-template-columns:300px 1fr;gap:0 32px;align-items:stretch;position:relative}
+/* 貫穿左欄的時間軸縱線 */
+.tl-grid::before{content:"";position:absolute;left:9px;top:6px;bottom:18px;width:2px;background:var(--border)}
+.tlg-left{display:flex;flex-direction:column;justify-content:space-around;padding:18px 0;min-width:0}
+.tlg-right{padding-bottom:24px;min-width:0}
+.tlv-item{position:relative;display:flex;gap:14px}
+.tlv-marker{position:relative;flex:0 0 auto;width:14px;display:flex;justify-content:center}
+.tlv-dot{position:relative;z-index:1;width:13px;height:13px;border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 3px rgba(37,99,168,.18);margin-top:14px}
+.tlv-content{flex:1 1 auto;min-width:0}
+.tlv-year{font-size:2.7rem;font-weight:700;margin-bottom:2px;line-height:1.15}
+.tlv-title{font-size:.92rem;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:3px}
+.tlv-note{font-size:.8rem;color:var(--muted);line-height:1.55}
+@media(max-width:760px){
+  .tl-grid{grid-template-columns:1fr;gap:0}
+  .tl-grid::before{display:none}
+  .tlg-left{justify-content:flex-start;gap:18px;padding:8px 0 16px;border-left:2px solid var(--border);margin-left:9px;padding-left:8px}
+  .tlg-right{margin-bottom:24px}
+}
+/* 各時期長文段落卡片 */
+.tl-era{background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow);padding:18px 22px;height:100%}
+.tl-era-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.tl-era-icon{font-size:1.1rem}
+.tl-era-title{font-size:1.15rem;font-weight:700;color:var(--navy)}
+.tl-era-sub{font-size:.85rem;color:var(--muted);letter-spacing:.04em}
+.tl-era-body{font-size:.95rem;line-height:1.95}
+.tl-era-body p{margin:0 0 12px}
+.tl-era-body p:last-child{margin-bottom:0}
+.text-content p{margin-bottom:1.2em}
+
+/* ── 歷屆系主任 ── */
+.chair-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.chair-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);content-visibility:auto;contain-intrinsic-size:0 340px}
+.chair-photo-wrap{width:90px;height:90px;margin:20px auto 0}
+.chair-photo-wrap img{width:90px;height:90px;border-radius:50%;border:3px solid var(--border);object-fit:cover;object-position:top;display:block}
+.chair-no-photo{width:90px;height:90px;border-radius:50%;border:3px solid var(--border);background:linear-gradient(135deg,#dce6f8,#c0d0e8);display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#8aafda}
+.chair-body{padding:14px 16px 18px;text-align:center}
+.chair-body h3{font-size:1.05rem;color:var(--navy);margin-bottom:6px}
+.chair-dates{font-size:.78rem;color:var(--muted);margin-bottom:6px}
+.chair-edu{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.chair-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.chair-tag{background:#e8eef8;color:var(--blue);font-size:.7rem;padding:2px 8px;border-radius:20px}
+
+/* ── Faculty cards ── */
+.faculty-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:20px}
+.faculty-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;content-visibility:auto;contain-intrinsic-size:0 420px}
+.faculty-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,168,.18)}
+.fc-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;background:var(--light)}
+.fc-no-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#dce6f8,#c0d0e8);display:flex;align-items:center;justify-content:center;font-size:3rem;color:#8aafda}
+.fc-info{padding:14px}
+.fc-info h3{font-size:1rem;color:var(--navy)}
+.fc-title{font-size:.78rem;color:var(--blue);margin-top:3px}
+.fc-area{font-size:.73rem;color:var(--muted);margin-top:5px;line-height:1.5}
+.fc-email{font-size:.73rem;color:var(--muted);margin-top:4px}
+
+/* ── Faculty detail page ── */
+#detail-view{display:none}
+.fd-back{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-size:.88rem;cursor:pointer;margin-bottom:28px;background:none;border:none;font-family:inherit;padding:0}
+.fd-back:hover{text-decoration:underline}
+.fd-layout{display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:start}
+.fd-sidebar{position:sticky;top:120px}
+.fd-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--border);display:block;background:var(--light)}
+.fd-no-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#dce6f8,#c0d0e8);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#8aafda}
+.fd-contact{margin-top:16px;font-size:.82rem;color:var(--muted);line-height:2}
+.fd-contact a{color:var(--blue);text-decoration:none}
+.fd-contact a:hover{text-decoration:underline}
+.fd-main h1{font-size:2rem;color:var(--navy);font-weight:700}
+.fd-rank{font-size:1rem;color:var(--blue);margin-top:6px}
+.fd-divider{border:none;border-top:2px solid var(--gold);margin:18px 0}
+.fd-section{margin-bottom:28px}
+.fd-section h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-text);margin-bottom:10px;border-bottom:1px solid var(--border);padding-bottom:5px}
+.fd-section p,.fd-section li{font-size:.9rem;line-height:1.9;color:var(--text)}
+.fd-section ul{padding-left:1.2em}
+.fd-section a{color:var(--blue);text-decoration:none}
+.fd-section a:hover{text-decoration:underline}
+.fd-tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:20px}
+.fd-tab-btn{border:none;background:none;font-family:inherit;font-size:.9rem;color:var(--muted);padding:10px 18px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .2s,border-color .2s}
+.fd-tab-btn.active{color:var(--blue);border-bottom-color:var(--gold);font-weight:600}
+.pub-item{padding:11px 0;border-bottom:1px solid var(--border)}
+.pub-item:last-child{border-bottom:none}
+.pub-title{font-size:.88rem;font-weight:600;line-height:1.5}
+.pub-meta{font-size:.78rem;color:var(--muted);margin-top:3px}
+.proj-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.proj-table th{background:var(--navy);color:#fff;padding:8px 12px;text-align:left;font-size:.8rem}
+.proj-table td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.proj-table tr:nth-child(even) td{background:#f8fafd}
+
+/* ── Data table ── */
+.table-wrap{overflow-x:auto;border-radius:8px;box-shadow:var(--shadow)}
+.data-table{width:100%;border-collapse:collapse;font-size:.87rem}
+/* 小年會：合照（上）＋ 組員表格（下） */
+.ameet-row{display:block;margin-bottom:8px}
+.ameet-photo{margin:0 0 16px}
+.ameet-photo img{width:100%;max-width:640px;height:auto;border-radius:10px;box-shadow:var(--shadow);display:block}
+.ameet-table{width:100%}
+@media(max-width:768px){.ameet-photo img{max-width:100%}}
+.data-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:.82rem;letter-spacing:.04em}
+.data-table td{padding:10px 14px;border-bottom:1px solid var(--border);line-height:1.5}
+.data-table tr:nth-child(even) td{background:#f8fafd}
+.data-table tr:hover td{background:#eef3fc}
+.data-table a{color:var(--blue);text-decoration:none}
+.data-table a:hover{text-decoration:underline}
+.visitor-table{table-layout:fixed}
+.visitor-table th{white-space:nowrap}
+.visitor-table td:last-child{white-space:nowrap}
+.visitor-table td{overflow-wrap:break-word}
+/* 表頭與內容一律不換行：欄寬依最長內容自動配置，過寬時由 .table-wrap 水平捲動 */
+.nowrap-table{width:auto;min-width:100%;table-layout:auto}
+.nowrap-table th,.nowrap-table td{white-space:nowrap}
+/* 最長內容欄：允許換行，吸收剩餘寬度，避免表格過寬需水平捲動 */
+.nowrap-table td.wrap-col{white-space:normal;overflow-wrap:break-word;min-width:24em;width:99%}
+
+/* ── Research cards ── */
+.research-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.research-card{background:#fff;border-radius:10px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;content-visibility:auto;contain-intrinsic-size:0 320px}
+.research-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,99,168,.16)}
+.rc-img{width:100%;height:170px;object-fit:cover;display:block;background:var(--light)}
+.rc-no-img{width:100%;height:170px;background:linear-gradient(135deg,#e4ecf8,#d0dff4);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#8aafda}
+.rc-body{padding:16px}
+.rc-journal{font-size:.75rem;color:var(--gold-text);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.rc-title{font-size:.95rem;color:var(--navy);font-weight:600;margin-top:6px;line-height:1.5}
+.rc-authors{font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.4}
+
+/* ── Research modal ── */
+#modal-overlay{position:fixed;inset:0;background:rgba(10,20,40,.55);z-index:500;display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto}
+#modal-overlay.open{display:flex}
+#modal-box{background:#fff;border-radius:12px;width:100%;max-width:820px;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden;margin:auto;position:relative}
+#modal-close{position:absolute;top:14px;right:18px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:var(--muted);z-index:10;line-height:1}
+.rmodal-head{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:28px 32px}
+.rmodal-head .rj{font-size:.8rem;color:#aac8f0;text-transform:uppercase;letter-spacing:.06em}
+.rmodal-head h2{font-size:1.3rem;margin-top:6px;line-height:1.5}
+.rmodal-head .ra{font-size:.85rem;opacity:.8;margin-top:8px}
+.rmodal-body{padding:28px 32px;max-height:60vh;overflow-y:auto}
+.rmodal-body img{width:100%;max-height:260px;object-fit:contain;border-radius:6px;margin-bottom:12px;background:var(--light)}
+.rmodal-caption{font-size:.8rem;color:var(--muted);margin-bottom:16px}
+.rmodal-desc{font-size:.9rem;line-height:1.8;margin-bottom:16px}
+.rmodal-link{display:inline-block;background:var(--blue);color:#fff;padding:8px 20px;border-radius:4px;font-size:.85rem;text-decoration:none}
+.rmodal-link:hover{background:var(--navy)}
+
+/* ── 系所規章 / 活動 ── */
+.reg-wrap{margin-bottom:32px}
+.reg-cat-title{font-size:1rem;font-weight:700;color:var(--navy);border-left:4px solid var(--gold);padding:6px 12px;background:var(--light)}
+.reg-list{list-style:none}
+.reg-item{display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid var(--border);font-size:.87rem;flex-wrap:wrap}
+.reg-item:last-child{border-bottom:none}
+.reg-item a{color:var(--text);text-decoration:none}
+.reg-item a:hover{color:var(--blue);text-decoration:underline}
+.reg-item .name{color:var(--text)}
+
+/* ── Badges ── */
+.badge{font-size:.7rem;padding:2px 7px;border-radius:3px;font-weight:700;flex-shrink:0;white-space:nowrap}
+.b-pdf{background:#fee2e2;color:#b91c1c}
+.b-doc{background:#dbeafe;color:#1d4ed8}
+.b-yt{background:#fee2e2;color:#dc2626}
+.b-link{background:#e0f2fe;color:#0369a1}
+.b-other{background:#fef9c3;color:#92400e}
+.b-sub{background:#ede9fe;color:#6d28d9;font-size:.7rem;padding:2px 7px;border-radius:3px;font-weight:600;flex-shrink:0;white-space:nowrap}
+
+/* ── Core competency ── */
+.comp-group{margin-bottom:28px}
+.comp-group h3{font-size:1.05rem;color:var(--navy);background:var(--light);border-left:4px solid var(--blue);padding:8px 14px;margin-bottom:10px;border-radius:0 4px 4px 0}
+.comp-row{display:flex;gap:16px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.88rem}
+.comp-row:last-child{border-bottom:none}
+.comp-zh{font-weight:600;color:var(--navy);min-width:120px}
+.comp-en{color:var(--blue);min-width:180px;font-style:italic}
+.comp-desc{color:var(--text)}
+
+/* ── Student: course badges ── */
+.req-badge{font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:3px}
+.req-must{background:#fee2e2;color:#b91c1c}
+.req-elec{background:#dbeafe;color:#1d4ed8}
+.cat-inline{font-size:.68rem;padding:1px 7px;border-radius:10px;font-weight:600;vertical-align:middle;white-space:nowrap}
+/* 大學部課程表：固定欄寬，統一各年級分頁版面 */
+.ug-course-table{table-layout:fixed;width:100%}
+.ug-course-table .ug-c-cat{width:6.5em;text-align:center}
+.ug-course-table .ug-c-course{width:32%}
+.ug-course-table .ug-c-code{width:8.5em;white-space:nowrap}
+.ug-course-table .ug-c-term{width:5em;text-align:center}
+.ug-course-table td,.ug-course-table th{overflow-wrap:break-word}
+.emi-section-block{margin-top:36px}
+.emi-section-title{font-size:1rem;color:var(--navy);background:var(--light);border-left:4px solid var(--gold);padding:8px 14px;margin-bottom:12px;border-radius:0 4px 4px 0;display:flex;align-items:center;gap:10px}
+.emi-section-subtitle{font-size:.78rem;color:var(--muted);font-weight:400;letter-spacing:.04em}
+.emi-note{font-size:.78rem;color:var(--muted);margin-top:10px;padding:8px 12px;background:var(--light);border-radius:4px;line-height:1.7}
+
+/* ── Tab system (student pages) ── */
+.tab-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tab-btn{border:1px solid var(--border);background:#fff;color:var(--muted);font-size:.83rem;padding:6px 14px;border-radius:20px;cursor:pointer;font-family:inherit;transition:all .2s}
+.tab-btn:hover{color:var(--blue)}
+.tab-btn.tab-navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tab-btn.tab-blue{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ── Annual meeting ── */
+.meeting-desc{font-size:.95rem;line-height:1.9;background:#fff;padding:20px 24px;border-radius:8px;box-shadow:var(--shadow);margin-bottom:24px}
+
+/* ── Scholarship link cards ── */
+.link-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.link-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;box-shadow:var(--shadow);display:block;transition:transform .2s,box-shadow .2s;color:var(--text);text-decoration:none}
+.link-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,168,.15)}
+.lc-title{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.lc-desc{font-size:.82rem;color:var(--muted)}
+
+/* ── Student spaces ── */
+.spaces-grid{display:flex;flex-direction:column;gap:28px}
+.space-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.sp-header{background:linear-gradient(135deg,var(--navy),#2a3f6a);padding:16px 20px}
+.sp-name{font-size:1.05rem;font-weight:700;color:#fff}
+.sp-meta{display:flex;gap:16px;margin-top:5px;flex-wrap:wrap}
+.sp-loc,.sp-hours{font-size:.8rem;color:#b8d4f0}
+.sp-desc{padding:16px 20px;font-size:.88rem;line-height:1.85}
+
+/* ── Carousel ── */
+.carousel{position:relative;overflow:hidden;border-radius:8px;box-shadow:var(--shadow);background:#eee;height:clamp(240px,42vw,60vh)}
+.carousel[id^="cs-alb"]{height:clamp(316.8px,55.44vw,79.2vh)}
+.cs-track{position:relative;width:100%;height:100%}
+.cs-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s}
+.cs-slide.cs-active{opacity:1}
+.cs-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.cs-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;font-size:2rem;width:44px;height:44px;border-radius:50%;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.cs-btn:hover{background:rgba(0,0,0,.7)}
+.cs-prev{left:12px}.cs-next{right:12px}
+.cs-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:5}
+.cs-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .2s}
+.cs-dot.active{background:#fff}
+
+/* ── Journals ── */
+.journal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:20px}
+.journal-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.jc-cover{width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:3rem}
+.jc-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.jc-body{padding:12px}
+.jc-issue{font-size:.95rem;font-weight:700;color:var(--navy)}
+.jc-year{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.jc-links{display:flex;flex-wrap:wrap;gap:6px}
+.jc-btn{font-size:.75rem;background:var(--blue);color:#fff;padding:4px 10px;border-radius:3px;display:inline-block;text-decoration:none}
+.jc-btn:hover{background:var(--navy)}
+.jc-yt{background:#dc2626}
+
+/* ── Programs ── */
+.program-list{display:flex;flex-direction:column;gap:12px}
+.prog-row{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.prog-name{font-size:.97rem;font-weight:600;color:var(--navy);min-width:80px}
+.prog-desc{font-size:.85rem;color:var(--muted);flex:1;line-height:1.7}
+.prog-link{font-size:.82rem;background:var(--navy);color:#fff;padding:5px 14px;border-radius:4px;text-decoration:none;white-space:nowrap}
+.prog-link:hover{background:var(--blue)}
+
+/* ── Degree badges ── */
+.deg-badge{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;white-space:nowrap;display:inline-block}
+.badge-phd{background:#ede9fe;color:#5b21b6}
+.badge-ms{background:#dbeafe;color:#1e40af}
+.purpose-cell{font-size:.82rem}
+
+/* ── EMI 專區 ── */
+.emi-wrap{padding:4px 0}
+.emi-cat-section{margin-bottom:2.8rem}
+.emi-cat-title{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+.emi-cat-div{height:2px;border-radius:1px;margin-bottom:1.2rem}
+.emi-cat-teacher .emi-cat-title{color:#1f6fa8}
+.emi-cat-teacher .emi-cat-div{background:linear-gradient(90deg,#1f6fa8,transparent)}
+.emi-cat-student .emi-cat-title{color:#375623}
+.emi-cat-student .emi-cat-div{background:linear-gradient(90deg,#375623,transparent)}
+.emi-cat-ta .emi-cat-title{color:#7d5800}
+.emi-cat-ta .emi-cat-div{background:linear-gradient(90deg,#7d5800,transparent)}
+.emi-cat-resource .emi-cat-title{color:#7b2c2c}
+.emi-cat-resource .emi-cat-div{background:linear-gradient(90deg,#7b2c2c,transparent)}
+.emi-links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem}
+.emi-link-card{display:flex;flex-direction:column;justify-content:space-between;gap:.5rem;padding:1.2rem 1.3rem;border-radius:12px;text-decoration:none;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow);transition:box-shadow .18s,transform .15s,border-color .18s;min-height:76px}
+.emi-link-card:hover{box-shadow:0 6px 24px rgba(31,78,121,.15);transform:translateY(-3px)}
+.emi-cat-teacher .emi-link-card:hover{border-color:#1f6fa8}
+.emi-cat-student .emi-link-card:hover{border-color:#375623}
+.emi-cat-ta      .emi-link-card:hover{border-color:#7d5800}
+.emi-cat-resource .emi-link-card:hover{border-color:#7b2c2c}
+.emi-link-name{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.4}
+.emi-link-arrow{font-size:.75rem;color:var(--muted);transition:transform .15s;display:inline-block}
+.emi-link-card:hover .emi-link-arrow{transform:translateX(4px)}
+
+/* ── 所有公告 ── */
+.news-toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;align-items:center}
+.news-year-sel{font-family:inherit;font-size:.85rem;padding:8px 10px;border:1px solid var(--border);border-radius:6px;outline:none;background:#fff;color:var(--text)}
+.news-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.news-tab{border:1px solid var(--border);background:#fff;color:var(--muted);font-size:.82rem;padding:6px 14px;border-radius:20px;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap}
+.news-tab:hover{color:var(--blue);border-color:var(--blue)}
+.news-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.news-tab .n{font-size:.7rem;opacity:.7;margin-left:3px}
+.news-item{background:#eaf1f8;border:1px solid #d4e0ee;border-radius:6px;margin-bottom:8px;overflow:hidden}
+.news-item-row{display:flex;align-items:center;gap:12px;padding:10px 16px;cursor:pointer;user-select:none;flex-wrap:wrap}
+.news-item-row:hover{background:rgba(0,0,0,.04)}
+.news-item-title{flex:1;font-size:.92rem;color:var(--navy);font-weight:600;min-width:200px}
+.news-item-date{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.news-badge{font-size:.68rem;font-weight:700;padding:2px 9px;border-radius:99px;white-space:nowrap;background:#fbe5e2;color:#b03a2e}
+.news-item-body{display:none;background:#fff;border-top:1px solid #d4e0ee;padding:18px 22px}
+.news-item.open .news-item-body{display:block}
+.news-body-text{font-size:.9rem;line-height:1.85;white-space:pre-wrap;word-break:break-word;margin-bottom:10px}
+.news-meta-line{color:var(--muted);font-size:.8rem;margin-bottom:10px}
+.news-links-block{margin-top:12px;padding-top:10px;border-top:1px dashed var(--border)}
+.news-links-block a{display:block;font-size:.88rem;margin-bottom:5px;color:var(--blue);text-decoration:none;word-break:break-all}
+.news-links-block a:hover{text-decoration:underline}
+.news-src-link{margin-top:12px;text-align:right}
+.news-src-link a{font-size:.82rem;color:var(--blue);text-decoration:none}
+.news-src-link a:hover{text-decoration:underline}
+.news-more-btn{display:block;margin:18px auto;font-size:.88rem;font-family:inherit;padding:9px 28px;border-radius:6px;border:1px solid var(--blue);background:#fff;color:var(--blue);cursor:pointer;transition:all .15s}
+.news-more-btn:hover{background:var(--blue);color:#fff}
+.news-count-info{text-align:center;color:var(--muted);font-size:.82rem;margin:14px 0 4px}
+.news-empty{text-align:center;color:var(--muted);padding:60px 20px;font-size:.95rem}
+
+/* ── 高中生專區 ── */
+.portal-video{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;margin:0;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:#000}
+.portal-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid-block{display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:start;margin:0 auto 36px;max-width:1100px}
+.vid-list{list-style:none;margin:0;padding:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.vid-item{padding:14px 18px;font-size:.95rem;color:var(--text);cursor:pointer;border-bottom:1px solid var(--border);transition:background .15s,color .15s;line-height:1.5}
+.vid-item:last-child{border-bottom:0}
+.vid-item:hover{background:var(--light)}
+.vid-item.active{background:var(--navy);color:#fff;font-weight:600}
+.vid-player{min-width:0}
+.vid-player .portal-video{margin:0}
+@media(max-width:680px){.vid-block{grid-template-columns:1fr}}
+.vid-block.vid-single{grid-template-columns:1fr;max-width:820px}
+.portal-about{background:#fff;border-radius:10px;box-shadow:var(--shadow);padding:24px 28px;font-size:.95rem;line-height:1.95;margin-bottom:32px}
+/* 畢業出路：數據條 */
+.career-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:0 0 24px}
+.career-stat{background:linear-gradient(135deg,#1a2a4a,#2563a8);color:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:var(--shadow)}
+.career-stat-num{font-size:1.9rem;font-weight:800;line-height:1.1;letter-spacing:-.01em}
+.career-stat-label{font-size:.86rem;font-weight:700;color:var(--gold-soft);margin-top:6px}
+.career-stat-note{font-size:.72rem;color:#c5d6ee;line-height:1.5;margin-top:6px}
+/* 畢業出路：方向卡 */
+.career-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0 0 36px}
+.career-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 22px;transition:transform .2s,box-shadow .2s}
+.career-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(37,99,168,.16)}
+.career-icon{font-size:1.8rem;margin-bottom:8px}
+.career-title{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.career-note{font-size:.85rem;color:var(--muted);line-height:1.7}
+@media(max-width:520px){.career-stats{grid-template-columns:1fr 1fr}.career-stat-num{font-size:1.6rem}}
+/* 升學深造領域 比例條 */
+.career-subhead{font-size:1.05rem;font-weight:700;color:var(--navy);margin:0 0 14px}
+.major-bars{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 24px;margin:0 0 28px}
+.major-row{display:grid;grid-template-columns:120px 1fr 56px;align-items:center;gap:12px;margin-bottom:4px}
+.major-name{font-size:.88rem;font-weight:600;color:var(--text);text-align:right}
+.major-track{background:var(--light);border-radius:20px;height:18px;overflow:hidden}
+.major-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--blue),var(--gold));transition:width .6s ease}
+.major-pct{font-size:.86rem;font-weight:700;color:var(--blue)}
+.major-note{font-size:.76rem;color:var(--muted);line-height:1.5;margin:0 0 14px 132px}
+.major-note:last-child{margin-bottom:0}
+@media(max-width:520px){.major-row{grid-template-columns:84px 1fr 48px;gap:8px}.major-name{font-size:.8rem}.major-note{margin-left:0}}
+/* 碩博 vs 大學部 雙色對照長條 */
+.career-lead{font-size:.86rem;color:var(--muted);line-height:1.7;margin:0 0 14px}
+.cmp-legend{display:flex;gap:18px;margin:0 0 12px}
+.cmp-key{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted)}
+.cmp-key i{width:13px;height:13px;border-radius:3px;display:inline-block}
+.cmp-pg{background:var(--gold)}
+.cmp-ug{background:var(--blue)}
+.cmp-row{display:grid;grid-template-columns:140px 1fr;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid var(--light)}
+.cmp-row:last-child{border-bottom:0}
+.cmp-name{font-size:.84rem;font-weight:600;color:var(--text);text-align:right;line-height:1.35}
+.cmp-bars{display:flex;flex-direction:column;gap:5px}
+.cmp-line{display:flex;align-items:center;gap:8px}
+.cmp-fill{height:13px;border-radius:20px;min-width:2px;transition:width .6s ease}
+i.cmp-pg,.cmp-fill.cmp-pg{background:var(--gold)}
+i.cmp-ug,.cmp-fill.cmp-ug{background:var(--blue)}
+.cmp-val{font-size:.74rem;font-weight:700;color:var(--muted);white-space:nowrap}
+@media(max-width:520px){.cmp-row{grid-template-columns:90px 1fr;gap:8px}.cmp-name{font-size:.76rem}}
+/* 雙軌學程課程地圖：水平三節點時間線 */
+.cmap-track{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:14px;position:relative;margin:0 0 22px}
+.cmap-track::before{content:"";position:absolute;top:8px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--gold),var(--blue),#1d9e75);border-radius:3px;z-index:0}
+.cmap-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+.cmap-dot{width:16px;height:16px;border-radius:50%;background:var(--navy);border:3px solid var(--white);box-shadow:0 0 0 3px rgba(37,99,168,.18);flex:0 0 auto}
+.cmap-stem{width:2px;height:22px;background:var(--border);flex:0 0 auto}
+.cmap-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:16px 14px;text-align:center;width:100%}
+.cmap-year{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.cmap-courses{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.cmap-course{font-size:.78rem;background:var(--light);color:var(--blue);border-radius:6px;padding:4px 9px;font-weight:600;line-height:1.4}
+/* 小年會等事件節點：金色強調 */
+.cmap-event .cmap-dot{background:var(--gold)}
+.cmap-event .cmap-stem{background:var(--gold)}
+.cmap-event .cmap-card{border-color:var(--gold);background:#fffaf0}
+.cmap-event .cmap-course{background:rgba(200,150,12,.14);color:#8a6d1f}
+.cmap-event-title{font-size:.92rem;font-weight:700;color:#8a6d1f;margin-bottom:6px}
+.cmap-event-note{font-size:.76rem;color:var(--muted);line-height:1.55}
+/* 雙軌對照卡 */
+.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 36px}
+.track-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 22px;border-top:4px solid var(--gold)}
+.track-card.track-b{border-top-color:#1d9e75}
+.track-name{font-size:1.15rem;font-weight:800;color:var(--navy);margin-bottom:4px}
+.track-who{font-size:.84rem;color:var(--blue);font-weight:600;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.track-list{margin:0;padding-left:18px}
+.track-list li{font-size:.88rem;color:var(--text);line-height:1.85}
+@media(max-width:560px){.cmap-track{grid-auto-flow:row;grid-auto-columns:auto;gap:10px}.cmap-track::before{display:none}.cmap-node{flex-direction:row;gap:0;align-items:flex-start}.cmap-dot{margin-top:6px}.cmap-stem{width:14px;height:2px;margin-top:13px}.cmap-card{text-align:left}.cmap-courses{justify-content:flex-start}.track-grid{grid-template-columns:1fr}}
+/* 常見問題 Q&A 手風琴 */
+.faq-list{display:flex;flex-direction:column;gap:10px;margin:0 0 36px}
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+.faq-q{cursor:pointer;list-style:none;padding:16px 48px 16px 20px;font-size:.96rem;font-weight:700;color:var(--navy);position:relative;transition:background .15s}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q:hover{background:var(--light)}
+.faq-q::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:1.3rem;font-weight:400;color:var(--blue);transition:transform .2s}
+.faq-item[open] .faq-q::after{content:"\2212"}
+.faq-item[open] .faq-q{color:var(--blue);border-bottom:1px solid var(--border)}
+.faq-a{padding:16px 20px;font-size:.9rem;line-height:1.85;color:var(--text)}
+.faq-a a{color:var(--blue);text-decoration:underline;word-break:break-all}
+/* 數據亮點卡（為什麼選中央物理） */
+.stat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:0 0 36px}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:18px 12px;text-align:center;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;min-width:0}
+.stat-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--blue))}
+.stat-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(37,99,168,.16)}
+.stat-num{font-size:1.55rem;font-weight:800;line-height:1.25;color:var(--navy);letter-spacing:-.01em;white-space:nowrap}
+.stat-label{font-size:.84rem;font-weight:700;color:var(--blue);margin-top:7px}
+.stat-note{font-size:.72rem;color:var(--muted);line-height:1.55;margin-top:7px}
+/* 中螢幕：3 欄；小螢幕：2 欄 */
+@media(max-width:900px){.stat-grid{grid-template-columns:repeat(3,1fr)}.stat-num{font-size:1.7rem}}
+@media(max-width:520px){.stat-grid{grid-template-columns:repeat(2,1fr);gap:10px}.stat-num{font-size:1.6rem;white-space:normal}}
+.portal-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.portal-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;justify-content:space-between;min-height:96px;text-decoration:none;color:var(--text);cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.portal-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,168,.16);border-color:var(--blue)}
+.portal-card-title{font-size:1rem;font-weight:700;color:var(--navy);line-height:1.5}
+.portal-card-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+.portal-card-arrow{font-size:.78rem;color:var(--muted);transition:transform .15s;align-self:flex-end}
+.portal-card:hover .portal-card-arrow{transform:translateX(4px);color:var(--blue)}
+
+/* ── Footer ── */
+footer{background:var(--navy);color:#8a9fc0;text-align:center;padding:24px;font-size:.82rem;margin-top:60px}
+footer a{color:#8a9fc0}
+
+@media(max-width:780px){
+  #site-header{padding:10px 14px;flex-wrap:wrap}
+  #content{padding:20px 12px}
+  .fd-layout{grid-template-columns:1fr}
+  .fd-sidebar{position:static}
+}
+
+/* === 無 JS 降級樣式 === */
+summary.news-summary{list-style:none;cursor:pointer}
+summary.news-summary::-webkit-details-marker{display:none}
+.news-item>summary .news-item-row::after{content:'＋';margin-left:auto;color:var(--blue);font-weight:700;align-self:center}
+.news-item[open]>summary .news-item-row::after{content:'－'}
+details.news-item[open] .news-item-body{display:block}
+.tab-bar{display:none!important}
+.tab-panel{display:block!important}
+.nojs-tab-h{font-weight:600;color:var(--navy);margin:16px 0 8px;padding:6px 14px;background:#eef2f7;border-radius:20px;display:inline-block;font-size:.9rem}
+/* 跑馬燈 → 無 JS 可左右滑動的輪播（CSS scroll-snap） */
+.carousel{position:static!important;overflow:visible!important;height:auto!important;background:transparent!important;box-shadow:none!important;margin:6px 0}
+.carousel .cs-track{position:static!important;display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;gap:8px;height:auto!important;border-radius:8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--blue) #e5e9ef}
+.carousel .cs-track::-webkit-scrollbar{height:8px}
+.carousel .cs-track::-webkit-scrollbar-track{background:#e5e9ef;border-radius:4px}
+.carousel .cs-track::-webkit-scrollbar-thumb{background:var(--blue);border-radius:4px}
+.carousel .cs-track:focus{outline:2px solid var(--blue);outline-offset:2px}
+.carousel .cs-slide{position:static!important;inset:auto!important;opacity:1!important;flex:0 0 100%!important;width:100%!important;height:clamp(240px,42vw,60vh)!important;scroll-snap-align:center;background:#000;border-radius:8px}
+.carousel[id^="cs-alb"] .cs-slide{height:clamp(316.8px,55.44vw,79.2vh)!important}
+.carousel .cs-slide img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:8px;display:block}
+.carousel .cs-btn,.carousel .cs-dots{display:none!important}
+.nojs-cs-hint{text-align:center;color:var(--muted);font-size:.8rem;margin:6px 0 2px;user-select:none}
+.nojs-empty{color:var(--muted);font-size:.88rem;padding:12px}
+a.faculty-card-a{display:block;text-decoration:none;color:inherit}
+.fd-back-link{display:inline-block;margin:0 0 16px;color:var(--blue);text-decoration:none;font-size:.9rem}
+.fd-back-link:hover{text-decoration:underline}
+.year-acc{border:1px solid var(--border);border-radius:8px;margin:8px 0;overflow:hidden;background:#fff}
+summary.year-acc-sum{list-style:none;cursor:pointer;padding:12px 16px;font-weight:600;color:var(--navy);font-size:1.05rem;background:#f6f9fc;display:flex;align-items:center}
+summary.year-acc-sum::-webkit-details-marker{display:none}
+summary.year-acc-sum::after{content:'＋';margin-left:auto;color:var(--blue);font-weight:700}
+.year-acc[open] summary.year-acc-sum::after{content:'－'}
+.year-acc[open] summary.year-acc-sum{border-bottom:1px solid var(--border)}
+.year-acc-body{padding:14px 16px}
+.vid-item-linked{padding:0!important}
+a.vid-item-link{display:block;padding:14px 18px;color:inherit;text-decoration:none}
+.vid-item:not(.active) a.vid-item-link:hover{background:var(--light)}
+.vid-stack{display:flex;flex-direction:column;gap:24px;max-width:880px;margin:0 auto 36px}
+.vid-stack-title{font-weight:600;color:var(--navy);margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<div class="skip-links">
+  <a href="#main-nav" accesskey="U" title="上方功能區塊">:::上方導覽區（Alt+U）</a>
+  <a href="#content" accesskey="C" title="中央內容區塊">:::主要內容區（Alt+C）</a>
+  <a href="#footer-nav" accesskey="H" title="下方功能區塊">:::下方功能區（Alt+H）</a>
+</div>
+
+
+
+<div id="topbar">
+  <span>國立中央大學物理學系 Department of Physics, NCU</span>
+  <div>
+    <a href="https://www.facebook.com/NCUphy" target="_blank" rel="noopener noreferrer">Facebook</a>
+  </div>
+</div>
+
+<header id="site-header" role="banner">
+  <img class="logo-img" src="../files/NCUPHYS_Logo.webp" alt="國立中央大學物理學系系徽" data-onerr="hide">
+  <div class="logo-text">
+    <h1>國立中央大學物理學系</h1>
+    <p>Department of Physics · National Central University</p>
+  </div>
+  <div id="version-badge"><span>✓</span><span id="vb-text"></span></div>
+</header>
+
+<nav id="main-nav" role="navigation" aria-label="主要導覽">
+  
+  <ul id="main-menu"><li><a href="index.html">系所簡介</a><ul><li><a href="index.html">歷史</a></li><li><a href="intro-2.html">歷屆系主任</a></li><li><a href="intro-3.html">教育目標與核心能力</a></li><li><a href="intro-4.html">系所規章</a></li><li><a href="intro-5.html">系所活動</a></li></ul></li><li><a href="faculty-1.html">系所人員</a><ul><li><a href="faculty-1.html">專任師資</a></li><li><a href="faculty-2.html">訪問學者</a></li><li><a href="faculty-3.html">兼任師資</a></li><li><a href="faculty-4.html">合聘師資</a></li><li><a href="faculty-5.html">退休師資</a></li><li><a href="faculty-6.html">博士後研究員</a></li><li><a href="faculty-7.html">系辦公室人員</a></li><li><a href="faculty-8.html">助理人員</a></li><li><a href="faculty-9.html">在學博士生</a></li></ul></li><li><a href="research-1.html">學術成果</a><ul><li><a href="research-1.html">研究成果</a></li><li><a href="research-2.html">實驗室</a></li><li><a href="research-3.html">教師獲獎紀錄</a></li><li><a href="research-4.html">國外學者來訪</a></li></ul></li><li><a href="student-1.html">學生專區</a><ul><li><a href="student-1.html">大學部課程</a></li><li><a href="student-2.html">研究所課程</a></li><li><a href="student-3.html">物理小年會</a></li><li><a href="student-4.html">獎學金</a></li><li><a href="student-5.html">學生活動空間</a></li><li><a href="student-6.html">學生獲獎紀錄</a></li><li><a href="student-7.html">研究生論文</a></li><li><a href="student-8.html">學生國外差旅</a></li><li><a href="student-9.html">相關學程</a></li><li><a href="student-10.html">物理系刊</a></li></ul></li><li><a href="emi-1.html">EMI專區</a><ul><li><a href="emi-1.html">EMI專區</a></li></ul></li><li><a href="highschool-1.html">高中生專區</a><ul><li><a href="highschool-1.html">高中生專區</a></li><li><a href="highschool-2.html">申請入學資訊</a></li><li><a href="highschool-3.html">特殊選才資訊</a></li></ul></li><li><a href="news-1.html">所有公告</a><ul><li><a href="news-1.html">所有公告</a></li></ul></li></ul>
+</nav>
+
+
+
+<div id="hero">
+  <div id="hero-bg" style="background-image: url(&quot;https://www.phy.ncu.edu.tw/wp-content/uploads/2020/10/IMG_0239-scaled-e1603038390300.jpg&quot;);"></div>
+  <div class="hero-text">
+    <h2 id="hero-title">物理小年會</h2>
+    <p id="hero-sub">Annual Physics Meeting</p>
+  </div>
+</div>
+
+<div id="breadcrumb">首頁 › <a href="student-1.html">學生專區</a> › <span>物理小年會</span></div>
+<nav id="sub-nav" aria-label="子頁籤"><a href="student-1.html">大學部課程</a><a href="student-2.html">研究所課程</a><a href="student-3.html" class="active" aria-current="page">物理小年會</a><a href="student-4.html">獎學金</a><a href="student-5.html">學生活動空間</a><a href="student-6.html">學生獲獎紀錄</a><a href="student-7.html">研究生論文</a><a href="student-8.html">學生國外差旅</a><a href="student-9.html">相關學程</a><a href="student-10.html">物理系刊</a></nav>
+
+<div id="content" role="main" tabindex="-1">
+  <div id="list-view"><div class="meeting-desc">核心精神: 學術交流、凝聚、感恩
+本系向來注重學生之實作能力，設有兩學年的「實驗物理」必修課程，及兩學年的「實驗專題」選修課程。
+每年特別舉辦物理小年會，讓實驗物理班以及實驗專題生有發表成果之機會。
+本活動除作為學術交流外，亦以凝聚系上情感為目標，邀請畢業系友與在校生座談，以期在校生及系友之聯繫，並讓在校生了解未來職涯發展。
+亦注重「飲水思源」，除了讓實驗物理班及實驗專題生外，亦期畢業系友能一同參與感恩活動</div><div class="section-heading mt-24">活動相簿</div><div id="alb-0" class="tab-panel active" data-group="alb"><div class="nojs-tab-h">壁報分享</div><div class="carousel" id="cs-alb0"><div class="cs-track" tabindex="0" role="group" aria-label="照片輪播，可左右捲動瀏覽"><div class="cs-slide cs-active"><img src="../files/student/annualmeeting/poster/1.webp" data-base="../files/student/annualmeeting/poster/1" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/2.webp" data-base="../files/student/annualmeeting/poster/2" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/3.webp" data-base="../files/student/annualmeeting/poster/3" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/4.webp" data-base="../files/student/annualmeeting/poster/4" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/5.webp" data-base="../files/student/annualmeeting/poster/5" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/6.webp" data-base="../files/student/annualmeeting/poster/6" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/7.webp" data-base="../files/student/annualmeeting/poster/7" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/8.webp" data-base="../files/student/annualmeeting/poster/8" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/9.webp" data-base="../files/student/annualmeeting/poster/9" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/10.webp" data-base="../files/student/annualmeeting/poster/10" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/11.webp" data-base="../files/student/annualmeeting/poster/11" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/12.webp" data-base="../files/student/annualmeeting/poster/12" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/13.webp" data-base="../files/student/annualmeeting/poster/13" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/14.webp" data-base="../files/student/annualmeeting/poster/14" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/15.webp" data-base="../files/student/annualmeeting/poster/15" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/16.webp" data-base="../files/student/annualmeeting/poster/16" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/17.webp" data-base="../files/student/annualmeeting/poster/17" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/18.webp" data-base="../files/student/annualmeeting/poster/18" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/19.webp" data-base="../files/student/annualmeeting/poster/19" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/20.webp" data-base="../files/student/annualmeeting/poster/20" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/21.webp" data-base="../files/student/annualmeeting/poster/21" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/22.webp" data-base="../files/student/annualmeeting/poster/22" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/23.webp" data-base="../files/student/annualmeeting/poster/23" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/24.webp" data-base="../files/student/annualmeeting/poster/24" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/25.webp" data-base="../files/student/annualmeeting/poster/25" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/26.webp" data-base="../files/student/annualmeeting/poster/26" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/27.webp" data-base="../files/student/annualmeeting/poster/27" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/poster/28.webp" data-base="../files/student/annualmeeting/poster/28" data-fallback="1" loading="lazy" alt=""></div></div></div><div class="nojs-cs-hint">← 左右滑動瀏覽更多照片 →</div></div><div id="alb-1" class="tab-panel" data-group="alb"><div class="nojs-tab-h">口頭報告</div><div class="carousel" id="cs-alb1"><div class="cs-track" tabindex="0" role="group" aria-label="照片輪播，可左右捲動瀏覽"><div class="cs-slide cs-active"><img src="../files/student/annualmeeting/oral/1.webp" data-base="../files/student/annualmeeting/oral/1" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/2.webp" data-base="../files/student/annualmeeting/oral/2" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/3.webp" data-base="../files/student/annualmeeting/oral/3" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/4.webp" data-base="../files/student/annualmeeting/oral/4" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/5.webp" data-base="../files/student/annualmeeting/oral/5" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/6.webp" data-base="../files/student/annualmeeting/oral/6" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/7.webp" data-base="../files/student/annualmeeting/oral/7" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/8.webp" data-base="../files/student/annualmeeting/oral/8" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/9.webp" data-base="../files/student/annualmeeting/oral/9" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/10.webp" data-base="../files/student/annualmeeting/oral/10" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/11.webp" data-base="../files/student/annualmeeting/oral/11" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/12.webp" data-base="../files/student/annualmeeting/oral/12" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/13.webp" data-base="../files/student/annualmeeting/oral/13" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/14.webp" data-base="../files/student/annualmeeting/oral/14" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/15.webp" data-base="../files/student/annualmeeting/oral/15" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/16.webp" data-base="../files/student/annualmeeting/oral/16" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/17.webp" data-base="../files/student/annualmeeting/oral/17" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/18.webp" data-base="../files/student/annualmeeting/oral/18" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/19.webp" data-base="../files/student/annualmeeting/oral/19" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/20.webp" data-base="../files/student/annualmeeting/oral/20" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/21.webp" data-base="../files/student/annualmeeting/oral/21" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/22.webp" data-base="../files/student/annualmeeting/oral/22" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/23.webp" data-base="../files/student/annualmeeting/oral/23" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/24.webp" data-base="../files/student/annualmeeting/oral/24" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/25.webp" data-base="../files/student/annualmeeting/oral/25" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/26.webp" data-base="../files/student/annualmeeting/oral/26" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/27.webp" data-base="../files/student/annualmeeting/oral/27" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/oral/28.webp" data-base="../files/student/annualmeeting/oral/28" data-fallback="1" loading="lazy" alt=""></div></div></div><div class="nojs-cs-hint">← 左右滑動瀏覽更多照片 →</div></div><div id="alb-2" class="tab-panel" data-group="alb"><div class="nojs-tab-h">系友演講</div><div class="carousel" id="cs-alb2"><div class="cs-track" tabindex="0" role="group" aria-label="照片輪播，可左右捲動瀏覽"><div class="cs-slide cs-active"><img src="../files/student/annualmeeting/alumni/1.webp" data-base="../files/student/annualmeeting/alumni/1" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/alumni/2.webp" data-base="../files/student/annualmeeting/alumni/2" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/alumni/3.webp" data-base="../files/student/annualmeeting/alumni/3" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/alumni/4.webp" data-base="../files/student/annualmeeting/alumni/4" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/alumni/5.webp" data-base="../files/student/annualmeeting/alumni/5" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/alumni/6.webp" data-base="../files/student/annualmeeting/alumni/6" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/alumni/7.webp" data-base="../files/student/annualmeeting/alumni/7" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/alumni/8.webp" data-base="../files/student/annualmeeting/alumni/8" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/alumni/9.webp" data-base="../files/student/annualmeeting/alumni/9" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/alumni/10.webp" data-base="../files/student/annualmeeting/alumni/10" data-fallback="1" loading="lazy" alt=""></div></div></div><div class="nojs-cs-hint">← 左右滑動瀏覽更多照片 →</div></div><div id="alb-3" class="tab-panel" data-group="alb"><div class="nojs-tab-h">校內外得獎表揚</div><div class="carousel" id="cs-alb3"><div class="cs-track" tabindex="0" role="group" aria-label="照片輪播，可左右捲動瀏覽"><div class="cs-slide cs-active"><img src="../files/student/annualmeeting/award/1.webp" data-base="../files/student/annualmeeting/award/1" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/2.webp" data-base="../files/student/annualmeeting/award/2" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/3.webp" data-base="../files/student/annualmeeting/award/3" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/4.webp" data-base="../files/student/annualmeeting/award/4" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/5.webp" data-base="../files/student/annualmeeting/award/5" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/6.webp" data-base="../files/student/annualmeeting/award/6" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/7.webp" data-base="../files/student/annualmeeting/award/7" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/8.webp" data-base="../files/student/annualmeeting/award/8" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/9.webp" data-base="../files/student/annualmeeting/award/9" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/10.webp" data-base="../files/student/annualmeeting/award/10" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/11.webp" data-base="../files/student/annualmeeting/award/11" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/12.webp" data-base="../files/student/annualmeeting/award/12" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/13.webp" data-base="../files/student/annualmeeting/award/13" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/14.webp" data-base="../files/student/annualmeeting/award/14" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/15.webp" data-base="../files/student/annualmeeting/award/15" data-fallback="1" loading="lazy" alt=""></div><div class="cs-slide"><img src="../files/student/annualmeeting/award/16.webp" data-base="../files/student/annualmeeting/award/16" data-fallback="1" loading="lazy" alt=""></div></div></div><div class="nojs-cs-hint">← 左右滑動瀏覽更多照片 →</div></div><div class="section-heading mt-24">歷年小年會</div><details class="year-acc" open=""><summary class="year-acc-sum">2018</summary><div id="yr-2018" class="active year-acc-body" data-group="yr"><div id="cls-2018-0" class="tab-panel active" data-group="cls-2018"><div class="nojs-tab-h">伊林實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2018/伊林實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2018/伊林實驗班" loading="lazy" alt="2018 伊林實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>林顯洲 陳偉銘 黃仲齊</td><td>Constructing 3D Water Surface by Fourier Transform Profilometry</td></tr><tr><td>郭來翔 薛景文 王正陽</td><td>Visualizing Wave Scattering by Acoustically Levitated Particles through Schlieren Imaging</td></tr><tr><td>黃雅婷 丁泓安 陳則元</td><td>Shape of A Resonance Droplet on Faraday Wave</td></tr><tr><td>羅偉碩 卓志羿</td><td>Vortex Rings Collision with Phase Difference</td></tr><tr><td>邵詳崴 朱峻成 周季賢</td><td>Wave-Particle Interaction in 2D Faraday Wave</td></tr><tr><td>陳彥茹 何昕玫 張允瑄</td><td>Breaking Waves: The Role Played by the Wind</td></tr><tr><td>卜冠州 劉冠辰 粘德辰</td><td>Mode Propagation through Multi-Film Interaction</td></tr><tr><td>王國丞 郭凱丞</td><td>Structure Rearrangement of 2D Granular Bed Driven by Fluid Flow</td></tr></tbody></table></div></div><div id="cls-2018-1" class="tab-panel" data-group="cls-2018"><div class="nojs-tab-h">郭家銘實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2018/郭家銘實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2018/郭家銘實驗班" loading="lazy" alt="2018 郭家銘實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>呂昀修 林東璋</td><td>Seeing the invisable</td></tr><tr><td>郭孟翰 林子新</td><td>A simple way to determine particle size with dynamic light scattering</td></tr><tr><td>施承瑋 鄭信良</td><td>the attraction power of water column</td></tr><tr><td>呂致廣 蔡侑廷</td><td>The 3000NTD muon detector</td></tr><tr><td>陶鎮宇 林承毅</td><td>The coalescence of bubbles</td></tr><tr><td>蘇子翔 陳威澔</td><td>When the Balls hit the Fan: the Fluctuation Theorem</td></tr><tr><td>吳承翰 謝昕蒓</td><td>The fluctuation theorem with a pachinko-like setup</td></tr><tr><td>丘翊歆 林育汝</td><td>Measurement of the Planck constant with a watt balance</td></tr></tbody></table></div></div><div id="cls-2018-2" class="tab-panel" data-group="cls-2018"><div class="nojs-tab-h">羅健榮實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2018/羅健榮實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2018/羅健榮實驗班" loading="lazy" alt="2018 羅健榮實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>黃泓文 羅詠霖</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/06/ClassC-G01-Final-1.pdf" target="_blank" rel="noopener noreferrer">Relationship of Faraday Waves Pattern and Parameters</a></td></tr><tr><td>林柏翰 姜武誠</td><td>Brownian Motion</td></tr><tr><td>葉智翔 洪偉晟</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/06/ClassC-G03-Final.pdf" target="_blank" rel="noopener noreferrer">Ultrasound Transducers to Make Levitation System</a></td></tr><tr><td>邱莞芸 王偉如</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/06/ClassC-G04-Final.pdf" target="_blank" rel="noopener noreferrer">Swimming by Reciprocal and Nonreciprocal Motion at Low Reynolds Number</a></td></tr><tr><td>傅彥瑜 余曉欣</td><td>Pattern Formation and Defect Research of Granular Particles</td></tr><tr><td>廖育資 張呂臻</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/06/ClassC-G06-Final.pdf" target="_blank" rel="noopener noreferrer">Single Lens Microscope</a></td></tr><tr><td>黃彥棠 呂昊鈞</td><td>Dynamic Light Scattering</td></tr></tbody></table></div></div></div></details><details class="year-acc"><summary class="year-acc-sum">2019</summary><div id="yr-2019" class="year-acc-body" data-group="yr"><div id="cls-2019-0" class="tab-panel active" data-group="cls-2019"><div class="nojs-tab-h">羅夢凡實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2019/羅夢凡實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2019/羅夢凡實驗班" loading="lazy" alt="2019 羅夢凡實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>郭庭維 游家毓 鄒明諺</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA03.pdf" target="_blank" rel="noopener noreferrer">Experimental Observation of Von Karman Vortex Street</a></td></tr><tr><td>張家維 林鵬晉</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA04.pdf" target="_blank" rel="noopener noreferrer">Flame attached plastic dripping</a></td></tr><tr><td>徐健忠 郭弈翔 李岳瞬</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA07.pdf" target="_blank" rel="noopener noreferrer">Fluidization of Grains under Water</a></td></tr><tr><td>宋紫熙 林維恩 郭晏廷</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA08.pdf" target="_blank" rel="noopener noreferrer">The Climbing equation for the Leidenfrost droplet</a></td></tr><tr><td>呂威儒 宋家齊 陳胤廷</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA09.pdf" target="_blank" rel="noopener noreferrer">Wiffle Ball</a></td></tr><tr><td>王毓謙 梁宇辰 羅子軒</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA13.pdf" target="_blank" rel="noopener noreferrer">Observation of Candle Flame Oscillation Schlieren</a></td></tr><tr><td>陳柏宏 陳冠瑜</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EB01.pdf" target="_blank" rel="noopener noreferrer">Stability of object in Acoustic Field</a></td></tr></tbody></table></div></div><div id="cls-2019-1" class="tab-panel" data-group="cls-2019"><div class="nojs-tab-h">溫偉源實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2019/溫偉源實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2019/溫偉源實驗班" loading="lazy" alt="2019 溫偉源實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>洪浩哲 黃威瑀 朱禹暢</td><td>Tunneling effect about walking droplet</td></tr><tr><td>王品勳 張芷婷 趙建銘</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA10.pdf" target="_blank" rel="noopener noreferrer">The interaction of Two droplets confined within corrals</a></td></tr><tr><td>林宣瑋 周荻凱 林亭佑</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA12.pdf" target="_blank" rel="noopener noreferrer">Momentum transfer in viscoelastic medium</a></td></tr><tr><td>張芷瑛 吳怡靜</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA15.pdf" target="_blank" rel="noopener noreferrer">Renewable Energy Resolution in Taiwan</a></td></tr><tr><td>陳柄錞 江梓均</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA17.pdf" target="_blank" rel="noopener noreferrer">Shape-dependent rotation of acoustically levitated object</a></td></tr><tr><td>李韋霆 郭晉豪 王志嘉</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA18.pdf" target="_blank" rel="noopener noreferrer">Dead Water Phenomenon</a></td></tr></tbody></table></div></div><div id="cls-2019-2" class="tab-panel" data-group="cls-2019"><div class="nojs-tab-h">陳俞融實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2019/陳俞融實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2019/陳俞融實驗班" loading="lazy" alt="2019 陳俞融實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>楊維弘 黃楚均</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA01.pdf" target="_blank" rel="noopener noreferrer">Diffraction and Interference for bouncing drop</a></td></tr><tr><td>蘇倚恩 陳永恩</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA02.pdf" target="_blank" rel="noopener noreferrer">The influence of Inertia on Taylor column</a></td></tr><tr><td>麻凱傑 胡冠維</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA06.pdf" target="_blank" rel="noopener noreferrer">Liquid Film Motor</a></td></tr><tr><td>章詣欣 吳洺宏</td><td>Jumping of the non-Newtonian fluid on the speaker</td></tr><tr><td>謝宜軒 吳易恆</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA14.pdf" target="_blank" rel="noopener noreferrer">Ground effect</a></td></tr><tr><td>劉呈彥 何品緯</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EA16.pdf" target="_blank" rel="noopener noreferrer">Analysis of Flight Characteristic of Paper Plane in 2D</a></td></tr><tr><td>吳晉嘉 廖偉志</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EB02.pdf" target="_blank" rel="noopener noreferrer">Synchronization of Double Pendulums</a></td></tr><tr><td>莊宇正 廖政霖 沈聿陞</td><td><a href="http://www.phy.ncu.edu.tw/wp-content/uploads/2019/09/EB03.pdf" target="_blank" rel="noopener noreferrer">Spontaneous Knottingof An Agitated String</a></td></tr></tbody></table></div></div></div></details><details class="year-acc"><summary class="year-acc-sum">2020</summary><div id="yr-2020" class="year-acc-body" data-group="yr"><div id="cls-2020-0" class="tab-panel active" data-group="cls-2020"><div class="nojs-tab-h">伊林實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2020/伊林實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2020/伊林實驗班" loading="lazy" alt="2020 伊林實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>李智耀 施奕辰 陳佳恩</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_7907d1b1f6f246eb9996d8393b8f7ae5.pdf" target="_blank" rel="noopener noreferrer">Flag flapping induced by pressure gradient and shed vortex</a></td></tr><tr><td>曾義閔 周修麒</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_b8e78989cde4411fae1e71c92185fd14.pdf" target="_blank" rel="noopener noreferrer">Unstable Rivulet Meandering on an Inclined Plane</a></td></tr><tr><td>陳盈珊 張容誌</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_71c8a8dc52c64562844def9ed4347b49.pdf" target="_blank" rel="noopener noreferrer">Vortex dynamics in 2-dimensional soap film turbulence</a></td></tr><tr><td>李思杰 蕭晨妤</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_4dcbe7c80f154e1db70b76df30d018b9.pdf" target="_blank" rel="noopener noreferrer">Lagrangian dynamics in electromagnetically driven turbulence</a></td></tr><tr><td>陳映瑄 洪翊桓</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_9112c4eca9304641a7cdf9294c4f4075.pdf" target="_blank" rel="noopener noreferrer">Dynamics of twisting and releasing elastic filaments</a></td></tr><tr><td>林子婷 趙翊丞</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_cbd613ba581e4a1d8f882f84ba0bd753.pdf" target="_blank" rel="noopener noreferrer">Water wave turbulence driven by steady wind</a></td></tr></tbody></table></div></div><div id="cls-2020-1" class="tab-panel" data-group="cls-2020"><div class="nojs-tab-h">陳培亮實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2020/陳培亮實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2020/陳培亮實驗班" loading="lazy" alt="2020 陳培亮實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>黃禹超 吳洺宏</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_22398816b30c46239e1d21b32fe8f73a.pdf" target="_blank" rel="noopener noreferrer">Coupled Oscillation in plant shoots</a></td></tr><tr><td>葉家榕 侯廷翰</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_cbd613ba581e4a1d8f882f84ba0bd753.pdf" target="_blank" rel="noopener noreferrer">Hele-shaw flow</a></td></tr><tr><td>李奇 姚禹豪</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_e7981d19560742c0b9a3d348b4a433a3.pdf" target="_blank" rel="noopener noreferrer">Optical tweezer: construction and measurement of the trap force</a></td></tr><tr><td>林俊曄 章詣欣 劉鎮瑜</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_e4152cab64664222a5cfbba075c73b41.pdf" target="_blank" rel="noopener noreferrer">Ultrasound wave scattering</a></td></tr></tbody></table></div></div><div id="cls-2020-2" class="tab-panel" data-group="cls-2020"><div class="nojs-tab-h">郭家銘實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2020/郭家銘實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2020/郭家銘實驗班" loading="lazy" alt="2020 郭家銘實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>許航 謝慶霖 賴紹白</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_22398816b30c46239e1d21b32fe8f73a.pdf" target="_blank" rel="noopener noreferrer">Flying High! Drag force on the string</a></td></tr><tr><td>艾宗瀚 莊蕎蓁 林家宏</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_cbd613ba581e4a1d8f882f84ba0bd753.pdf" target="_blank" rel="noopener noreferrer">The bridge of microscopic and macroscopic world by little droplet</a></td></tr><tr><td>鄭羽瑄 張文庭 鹿仲均</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_e7981d19560742c0b9a3d348b4a433a3.pdf" target="_blank" rel="noopener noreferrer">CMS(Cosmic Muon Scanner)</a></td></tr><tr><td>彭奕翔 蕭宇翔 王禹絜</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_e4152cab64664222a5cfbba075c73b41.pdf" target="_blank" rel="noopener noreferrer">The Growth of Root in the Pebbles</a></td></tr><tr><td>陳冠宇 湯偉佑 王靖淳</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_22a0fd1a84cc49fcbe7298e209c147cb.pdf" target="_blank" rel="noopener noreferrer">Droplets Pincher by Acoustic Hand</a></td></tr><tr><td>徐嘉駿 張紘翔 黃信雯 江科熹</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_b043299ace92475bbfd1bb27efe8db0c.pdf" target="_blank" rel="noopener noreferrer">Lightning in the frame - the force chain in a compressed granular system</a></td></tr><tr><td>李俊逸 曾正泓 廖思涵</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_7bc8743c047145518551cf22485bc2a4.pdf" target="_blank" rel="noopener noreferrer">Making a donut in the water - vortex ring</a></td></tr><tr><td>葉爾翔 唐偉哲 周禹璇</td><td><a href="https://4012b938-d666-4efb-b46d-eb6fb949eecb.usrfiles.com/ugd/4012b9_8309c1378b2545ccac831267401136d2.pdf" target="_blank" rel="noopener noreferrer">Seize the weather with cosmic muons - Hexadecagon muon tracker(HMT)</a></td></tr></tbody></table></div></div></div></details><details class="year-acc"><summary class="year-acc-sum">2022</summary><div id="yr-2022" class="year-acc-body" data-group="yr"><div id="cls-2022-0" class="tab-panel active" data-group="cls-2022"><div class="nojs-tab-h">伊林實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2022/伊林實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2022/伊林實驗班" loading="lazy" alt="2022 伊林實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>彭柏瑋 賴孝誠</td><td><a href="https://drive.google.com/file/d/17GnSHbUrn21xSrE0efb-8DLIGcqOo64x/view?usp=sharing" target="_blank" rel="noopener noreferrer">Observation of Faraday waves on levitated liquid</a></td></tr><tr><td>黃品誠 許竣硯</td><td><a href="https://drive.google.com/file/d/1jFl3ZZvzEUr85iA3Nz8JTjuYbOFK6Rzr/view?usp=sharing" target="_blank" rel="noopener noreferrer">Droplet Dynamics on Hydrophobic Vibrating Surface</a></td></tr><tr><td>王睿宇 于大均</td><td><a href="https://drive.google.com/file/d/12mAHli1wfh5mUvkwNbeoMouBoZ92JKJr/view?usp=sharing" target="_blank" rel="noopener noreferrer">Dynamics of the Leidenfrost Droplet on Ratchets</a></td></tr><tr><td>黃鈺淇 王煒博</td><td><a href="https://drive.google.com/file/d/1icH8X7ehyLJ1qPhQCtH4w4GgZ0UnDPR2/view?usp=sharing" target="_blank" rel="noopener noreferrer">Oscillation and Collision of Leidenfrost Droplet</a></td></tr><tr><td>蔡瀚威 潘勤華</td><td><a href="https://drive.google.com/file/d/1Gg7eix-OCs-ZiVom2c4wALAcg1KJnpTq/view?usp=sharing" target="_blank" rel="noopener noreferrer">Oscillating Flow Field Induced Sinking and Piercing of Air Bubbles</a></td></tr><tr><td>陳姵慈 林坤義</td><td><a href="https://drive.google.com/file/d/1LFseVu2EhI4mwXGz8m7MkpKvoYleAjdX/view?usp=sharing" target="_blank" rel="noopener noreferrer">Rogue Waves in Faraday Waves Through Multiscale Low-frequency Couplings</a></td></tr><tr><td>江辰緯 呂宜儒</td><td><a href="https://drive.google.com/file/d/1fxe-53L9dIN34PJKTfjBtU8Sdwzkpqjs/view?usp=sharing" target="_blank" rel="noopener noreferrer">Dynamics of Surface Wave and Flow Field Generated by Cylinder</a></td></tr><tr><td>周鈺媛 邱譯萱</td><td><a href="https://drive.google.com/file/d/1rW7Sw6NU1PGhbP-fkkagSDOm1buG8M6F/view?usp=sharing" target="_blank" rel="noopener noreferrer">Effects of Swing Frequency and Amplitude on Swimming Efficiency</a></td></tr><tr><td>黃鈺淇 王煒博</td><td>Oscillation and Collision of Leidenfrost Droplet</td></tr><tr><td>王勝弘 汪師緯</td><td><a href="https://drive.google.com/file/d/1FEmIMbVCWnXdAzr37S4p7Glhe_Z-V6Rd/view?usp=sharing" target="_blank" rel="noopener noreferrer">Multi-state Transition of Vortices in Rayleigh–Bénard Convection</a></td></tr><tr><td>龐逸傑 施顏丞</td><td><a href="https://drive.google.com/file/d/1_6do2UHBf9IF21x34a9J3dR2UE7bF9F8/view?usp=sharing" target="_blank" rel="noopener noreferrer">Turbulence Onset in Rayleigh-Bénard Convection</a></td></tr></tbody></table></div></div><div id="cls-2022-1" class="tab-panel" data-group="cls-2022"><div class="nojs-tab-h">郭家銘實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2022/郭家銘實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2022/郭家銘實驗班" loading="lazy" alt="2022 郭家銘實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>鄭詮 黃俊智 曾舜琳</td><td><a href="https://drive.google.com/file/d/1y4t8P1oD0JyB5ZlcGOp0PcjHHpIGKW1I/view?usp=sharing" target="_blank" rel="noopener noreferrer">Quicksand During Earthquakesthe Effect of Horizontal Vibration on the Hopper</a></td></tr><tr><td>陳歆 林佳靜 魏宇森</td><td><a href="https://drive.google.com/file/d/1jmywfPDNSaNg6OBQfZ97X1TOHLtJqIO1/view?usp=sharing" target="_blank" rel="noopener noreferrer">Wave Blocking Phenomenon In A Water Paradise</a></td></tr><tr><td>林于軒 張睿孜 鄒宜庭 張寶容</td><td><a href="https://drive.google.com/file/d/1MlVOr_YW5cSXzU7IQ-fk0ljyPur6krbI/view?usp=sharing" target="_blank" rel="noopener noreferrer">Hansel and Gretel the Secret of the Gelatin Skyscraper</a></td></tr><tr><td>蔡⼒恆 劉康祈 呂紹揚</td><td><a href="https://drive.google.com/file/d/1MlVOr_YW5cSXzU7IQ-fk0ljyPur6krbI/view" target="_blank" rel="noopener noreferrer">Influences and Preventions of Granular flow</a></td></tr><tr><td>官劉翔 黃識修 陳駿逸</td><td><a href="https://drive.google.com/file/d/1En5MifU4LvTWv6cei7eqgpzzUJyzuaZp/view?usp=sharing" target="_blank" rel="noopener noreferrer">Wave-like Droplet on a Vibrating Bath</a></td></tr></tbody></table></div></div><div id="cls-2022-2" class="tab-panel" data-group="cls-2022"><div class="nojs-tab-h">汪治平實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2022/汪治平實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2022/汪治平實驗班" loading="lazy" alt="2022 汪治平實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>郭弘毅 陳祺翰</td><td>Measuring the Planck Constant</td></tr><tr><td>郭弘毅 陳祺翰</td><td><a href="https://drive.google.com/file/d/1VnvIRelN_C6cpGWE0u9IUBiok_A2WdsU/view?usp=sharing" target="_blank" rel="noopener noreferrer">Single Photon Interference</a></td></tr><tr><td>陳志勳 范廷魁 簡劭宇</td><td><a href="https://drive.google.com/file/d/1mHBLREGFMEUf0b8JIu-8htEJhOeg8ghj/view?usp=sharing" target="_blank" rel="noopener noreferrer">Measuring the Speed of Light</a></td></tr><tr><td>陳志勳 范廷魁 簡劭宇</td><td><a href="https://drive.google.com/file/d/1iaSy5D7k8D7nwzxlhRa-HZ-oZEpeQlhR/view?usp=sharing" target="_blank" rel="noopener noreferrer">Turning Around without External Torque</a></td></tr><tr><td>施凱文 廖宗祐 劉興勒</td><td>Laser Audio Transceiver</td></tr></tbody></table></div></div></div></details><details class="year-acc"><summary class="year-acc-sum">2023</summary><div id="yr-2023" class="year-acc-body" data-group="yr"><div id="cls-2023-0" class="tab-panel active" data-group="cls-2023"><div class="nojs-tab-h">田溶根實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2023/田溶根實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2023/田溶根實驗班" loading="lazy" alt="2023 田溶根實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>薛景宸 張民輝</td><td>Performance of Dye-Sensitized Solar Cell and its Relation with Light Quanta</td></tr><tr><td>杜德偉 周志奇</td><td><a href="https://drive.google.com/open?id=1fgOo_H3agplj-RxhKGP9bN8gDqX3I9YM" target="_blank" rel="noopener noreferrer">Droplet Dynamics on Hydrophobic Vibrating Surface</a></td></tr><tr><td>周子郡 白佳叡</td><td><a href="https://drive.google.com/open?id=1CfiAvU1IxwoAx8v9TRTH4OawBJ-fD2WW" target="_blank" rel="noopener noreferrer">Hyperactive water: droplet bouncing on hydrophobic surface</a></td></tr><tr><td>賴昱仁 蔡杰勳</td><td><a href="https://drive.google.com/open?id=1lPccdGjQYciYK-aYE4RktJFhhNxzUJXC" target="_blank" rel="noopener noreferrer">Shaking phenomenon on the soil by different earthquake level</a></td></tr><tr><td>陳柏翰 洪博益</td><td><a href="https://drive.google.com/open?id=1VOlKNV65TyHXTzQiH8nt8zegyqbfPLYn" target="_blank" rel="noopener noreferrer">Effect of Relative Thickness Number in Lift Force</a></td></tr><tr><td>陳昱安 王胤之</td><td><a href="https://drive.google.com/open?id=1WSq9sGPfo7ivGEQPZp0nK3mwAzsVOMAP" target="_blank" rel="noopener noreferrer">The climbing effect of viscoelastic fluid in swirling flow</a></td></tr></tbody></table></div></div><div id="cls-2023-1" class="tab-panel" data-group="cls-2023"><div class="nojs-tab-h">白植豪實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2023/白植豪實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2023/白植豪實驗班" loading="lazy" alt="2023 白植豪實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>郭子維 袁嘉佑</td><td><a href="https://drive.google.com/open?id=1xr-q30hOEAL1uDa3N0-DX0MyoQ84shP2" target="_blank" rel="noopener noreferrer">Different Behaviors of Ionized Air in Inertial-Electrostatic Confinement Device</a></td></tr><tr><td>楊博琛 楊芬瑜</td><td><a href="https://drive.google.com/file/d/1jmywfPDNSaNg6OBQfZ97X1TOHLtJqIO1/view?usp=sharing" target="_blank" rel="noopener noreferrer">Programmable Lens with Variable? Focal Distance for Fresne Diffraction Using Liquid Crystal Display</a></td></tr><tr><td>鄒孟倬 劉延栩</td><td><a href="https://drive.google.com/open?id=1jIwk6XQhFc4SkK-W7rU8J0o9zIFI5IFl" target="_blank" rel="noopener noreferrer">Observation of Worthington jet</a></td></tr><tr><td>蕭國佑 陳俊翰 張博智</td><td><a href="https://drive.google.com/file/d/1MlVOr_YW5cSXzU7IQ-fk0ljyPur6krbI/view" target="_blank" rel="noopener noreferrer">Use Spatial Light Modulator to Correct Wavefront</a></td></tr><tr><td>蘇千瑋 李居樸</td><td><a href="https://drive.google.com/open?id=1ATFyfQdYuN2hhTVzrA6_rv10pDGO9J-y" target="_blank" rel="noopener noreferrer">Generation and analysis of optical vortex with LCD</a></td></tr></tbody></table></div></div><div id="cls-2023-2" class="tab-panel" data-group="cls-2023"><div class="nojs-tab-h">陳俞融實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2023/陳俞融實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2023/陳俞融實驗班" loading="lazy" alt="2023 陳俞融實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>王維楨 葉育鴻</td><td><a href="https://drive.google.com/open?id=1x4sP3up97fefbbrGDjm88751TLfMqQDS" target="_blank" rel="noopener noreferrer">Dynamics analysis of Ponytail</a></td></tr><tr><td>林東誼 謝心舫</td><td><a href="https://drive.google.com/open?id=1TUJqL-rrh2qhF1-jq98E-zBXg8DeZXye" target="_blank" rel="noopener noreferrer">Oscillation in the Airflow: Quantifying Ping Pong Ball’s Behavior with a Mechanic Model</a></td></tr><tr><td>邱媛婕 夏槐澤 謝薰葶</td><td><a href="https://drive.google.com/file/d/1mHBLREGFMEUf0b8JIu-8htEJhOeg8ghj/view?usp=sharing" target="_blank" rel="noopener noreferrer">Ornithopter - An investigation into the variation of the lift and thrust waveform</a></td></tr><tr><td>陳戎祿 陳宇倫</td><td><a href="https://drive.google.com/open?id=1HHHECKpuwkaTE3r6M03NVyHSza3MfKfx" target="_blank" rel="noopener noreferrer">Bottle flipping</a></td></tr><tr><td>陳品攸 李沂融</td><td><a href="https://drive.google.com/open?id=1_WiiWBdi2drBRVB-r-bZYZaJ6DIrUH2C" target="_blank" rel="noopener noreferrer">Fluctuation Theorem for a Single Particle in a Moving Board with Different Rotation Frequency</a></td></tr><tr><td>詹欣憲 林自均 黃歆瑜</td><td><a href="https://drive.google.com/open?id=1_M2U10r-avVv-jGL5F1u0iRcvqQ6h3pg" target="_blank" rel="noopener noreferrer">Plasma Arc Speaker--Control Plasma to Transmit Pressure Waves</a></td></tr></tbody></table></div></div></div></details><details class="year-acc"><summary class="year-acc-sum">2024</summary><div id="yr-2024" class="year-acc-body" data-group="yr"><div id="cls-2024-0" class="tab-panel active" data-group="cls-2024"><div class="nojs-tab-h">伊林實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2024/伊林實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2024/伊林實驗班" loading="lazy" alt="2024 伊林實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>陳山榆 李蕎伊</td><td><a href="https://drive.google.com/file/d/1GRg1V2Dk1imqBHdK2GEJ2_zHiUYPYI21/view" target="_blank" rel="noopener noreferrer">Water condensation and droplet growth on cold substrates</a></td></tr><tr><td>蔣大為 吳晨榆</td><td><a href="https://drive.google.com/open?id=1sl3XjvSHXTq8kjSnWz_uSxzF74uk9cmJ" target="_blank" rel="noopener noreferrer">Coupled flapping flags under vortex shedding</a></td></tr><tr><td>洪琳喬 劉祥雲</td><td><a href="https://drive.google.com/open?id=1CK_IZ998FafPvYyaLOO1dYjdQqPxBLxR" target="_blank" rel="noopener noreferrer">Oscillon excitations from still surface of vertically vibrating water</a></td></tr><tr><td>林涵宸 張誠真</td><td><a href="https://drive.google.com/open?id=1PaH3jXV1y8iqtLDfb7WdoEa7S2uONfii" target="_blank" rel="noopener noreferrer">Freezing front propagation in water droplets under evaporative cooling</a></td></tr><tr><td>蔡承曄 柯立宸</td><td><a href="https://drive.google.com/open?id=1hXJLzx_CSDPTfMxXJmszZu2GKWmpRLiv" target="_blank" rel="noopener noreferrer">Dynamics of Faraday waves in a narrow annulus</a></td></tr><tr><td>鄭聿廷 温焌忠</td><td><a href="https://drive.google.com/open?id=1N_G4Um1qy1_zdPLPP6lSNzbPv82LjaUi" target="_blank" rel="noopener noreferrer">Sliding water droplets under DC electric field</a></td></tr></tbody></table></div></div><div id="cls-2024-1" class="tab-panel" data-group="cls-2024"><div class="nojs-tab-h">郭家銘實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2024/郭家銘實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2024/郭家銘實驗班" loading="lazy" alt="2024 郭家銘實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>吳家璇 林鼎荃 邱柏勳</td><td><a href="https://drive.google.com/open?id=1hsbXWL0Rs7wTiRba5qI8dUgJd72ucFUP" target="_blank" rel="noopener noreferrer">Effects of Colliding Objects with Sand on Crater Formation and Volume</a></td></tr><tr><td>朱珈聖 陳品毅 黃楷祐</td><td><a href="https://drive.google.com/open?id=1FTVbVqSUFNwxnxM9KNyu7-TGY4WCK2n5" target="_blank" rel="noopener noreferrer">Exploring the Nature of Muons</a></td></tr><tr><td>江偉綸 王柏翔 鄭丞麟</td><td><a href="https://drive.google.com/open?id=1W_huDDZrtKPAMnKr9KtkNzwlD5onJo7T" target="_blank" rel="noopener noreferrer">The Diode-Like Flow Characteristic of Multistage Tesla Valves</a></td></tr><tr><td>林志霖 蔡岳廷</td><td><a href="https://drive.google.com/file/d/1KBdV1GnVP_r2ihbpmxMNfWr1xj1iUaYQ/view?usp=sharing" target="_blank" rel="noopener noreferrer">Closing the Book and Kicking Off Physics</a></td></tr><tr><td>賴詳復 蔡子翔 林敬哲</td><td><a href="https://drive.google.com/open?id=1jVUJKDa8jjNLG-YqPS8Tv3-xltD_zOLg" target="_blank" rel="noopener noreferrer">Exploring Washboarding Phenomena Using a Motorized Plow</a></td></tr><tr><td>官佩瑩 梁瑄紜 陳禹安</td><td><a href="https://drive.google.com/open?id=1g0GjCuDgmyge93Ub9BCrXQeI0KFRPJrL" target="_blank" rel="noopener noreferrer">Mom's Homemade Magnetic Force Macroscope</a></td></tr></tbody></table></div></div><div id="cls-2024-2" class="tab-panel" data-group="cls-2024"><div class="nojs-tab-h">陳永富實驗班</div><div class="ameet-row"><div class="ameet-photo"><img src="../files/student/annualmeeting/previousmeeting/2024/陳永富實驗班.webp" data-base="../files/student/annualmeeting/previousmeeting/2024/陳永富實驗班" loading="lazy" alt="2024 陳永富實驗班"></div><table class="data-table ameet-table"><thead><tr><th>組員</th><th>專題題目</th></tr></thead><tbody><tr><td>楊智翔 吳宇翔 劉淙漢</td><td><a href="https://drive.google.com/open?id=1XS6cQLZfnVtpSzPCnkPgC-7J0FHwRFPH" target="_blank" rel="noopener noreferrer">Two-body problem under spacetime curvature analogized using elastic fabric</a></td></tr><tr><td>郭士綱 謝維倫 耿靖開</td><td><a href="https://drive.google.com/open?id=1Q23pmMr6vaoWOX-bu46Xfh04NSWIDi-6" target="_blank" rel="noopener noreferrer">Magnet Eccentric Rotation Induces Magnetic Levitation</a></td></tr><tr><td>劉斯羽 林友雄 林承怡</td><td><a href="https://drive.google.com/open?id=1wR6ZhdJVHdCXtgT5oKb2VxmUq03Sp44j" target="_blank" rel="noopener noreferrer">Plasma arc distribution with different frequencies &amp; distances</a></td></tr><tr><td>胡斌 李俊廣 陳囿任</td><td><a href="https://drive.google.com/open?id=1Awy2qGhKzKmsguh5IQEmYLwH0EneENOs" target="_blank" rel="noopener noreferrer">The bead on a rotating hoop</a></td></tr><tr><td>黃書彥 黃麒熏 黃浩綸</td><td><a href="https://drive.google.com/open?id=1d98ncQLbexBvZpXX3ogBs6yI6zEFjy39" target="_blank" rel="noopener noreferrer">Beer Tapping : Behavior after Mushroom cloud explosion</a></td></tr><tr><td>郭杰穎</td><td><a href="https://drive.google.com/open?id=1xom2x7HT5VezUFPuHFInvF1N9iQcE092" target="_blank" rel="noopener noreferrer">Rotational Analysis of Ellipsoid Brownian Motion</a></td></tr></tbody></table></div></div></div></details></div>
+  <div id="detail-view"></div>
+</div>
+
+
+
+<footer id="footer-nav" role="contentinfo">
+  <p>© 國立中央大學物理學系 · 桃園市中壢區中大路300號</p>
+  <p class="mt-6">Tel: 03-4227151 ext 65300 · <a href="https://www.phy.ncu.edu.tw">www.phy.ncu.edu.tw</a></p>
+</footer>
+
+
+
+
+</body></html>
