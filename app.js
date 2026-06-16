@@ -105,6 +105,13 @@ function isOn(v) {
   const s = String(v ?? '').trim().toUpperCase();
   return !(s === '' || s === 'FALSE' || s === '否' || s === '0' || s === 'N' || s === 'NO');
 }
+/* 人員工作頁的「啟用」顯示旗標：1=顯示、0/否/N/FALSE=隱藏、空白或整欄缺漏=顯示
+   （安全預設，與手冊「空=顯示」一致，避免新增列漏填而整批消失）。 */
+function rowEnabled(r) {
+  if (!('啟用' in r)) return true;
+  const v = String(r['啟用'] ?? '').trim();
+  return v === '' || isOn(v);
+}
 /* 統一的順序值 — 數字優先，缺值或非數字排最後（99） */
 function orderNum(v) {
   const n = parseFloat(v);
@@ -487,13 +494,19 @@ function renderFaculty(area, sheets, sheetName, sectionKey, page) {
   const visible = [];
   rows.forEach((r, idx) => {
     if (fcol && String(r[fcol] ?? '').trim() !== fval) return;
+    if (!rowEnabled(r)) return;
     visible.push({ r, idx });
   });
   const heading = (page && page.label) || sheetName;
+  // 只有「專任師資」頁的卡片可點開詳情；其餘師資頁（退休/訪問/兼任…）為純顯示卡（與靜態版一致）
+  const detailable = sectionKey === 'faculty' && (!page || page.id === 'faculty' || /專任/.test(page.label || ''));
   let html = `<h2 class="section-heading">${esc(heading)} <span class="section-count">${visible.length} 位</span></h2><div class="faculty-grid">`;
   visible.forEach(({ r, idx }) => {
     const photo = r['照片URL'] || '';
-    html += `<div class="faculty-card" role="button" tabindex="0" aria-label="${esc(r['姓名']||'')} 詳細資料" data-act="openFaculty" data-sec="${esc(sectionKey)}" data-idx="${idx}" data-sheet="${esc(sheetName)}">`;
+    const detailAttrs = detailable
+      ? ` role="button" tabindex="0" aria-label="${esc(r['姓名']||'')} 詳細資料" data-act="openFaculty" data-sec="${esc(sectionKey)}" data-idx="${idx}" data-sheet="${esc(sheetName)}"`
+      : '';
+    html += `<div class="faculty-card${detailable ? '' : ' faculty-card-static'}"${detailAttrs}>`;
     if (photo) {
       html += `<img class="fc-photo" loading="lazy" decoding="async" src="${esc(photo)}" alt="${esc(r['姓名']||'')}" data-onerr="hideflex">`;
       html += '<div class="fc-no-photo" style="display:none">👤</div>';
@@ -585,7 +598,7 @@ function switchFdTab(btn, tabId) {
 
 function renderStaff(area, sheets, sheetName) {
   const cols = ['姓名','職稱','辦公室','Email','辦公室電話','工作執掌'];
-  const rows = sheets[sheetName] || [];
+  const rows = (sheets[sheetName] || []).filter(rowEnabled);
   let html = `<h2 class="section-heading">${esc(sheetName)} <span class="section-count">${rows.length} 位</span></h2><div class="table-wrap"><table class="data-table"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>`;
   rows.forEach(r => {
     html += '<tr>' + cols.map(c => `<td>${c==='Email'?emailSpan(r[c]):esc(r[c]||'')}</td>`).join('') + '</tr>';
@@ -596,7 +609,7 @@ function renderStaff(area, sheets, sheetName) {
 function renderAssistant(area, sheets, sheetName) {
   const cols = ['姓名','職稱','辦公室','實驗室','Email','研究室電話','實驗室電話','實驗室 Laboratory'];
   const last = cols.length - 1;
-  const rows = sheets[sheetName] || [];
+  const rows = (sheets[sheetName] || []).filter(rowEnabled);
   let html = `<h2 class="section-heading">${esc(sheetName)} <span class="section-count">${rows.length} 位</span></h2><div class="table-wrap"><table class="data-table nowrap-table"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>`;
   rows.forEach(r => { html += '<tr>' + cols.map((c,i)=>`<td${i===last?' class="wrap-col"':''}>${c==='Email'?emailSpan(r[c]):esc(String(r[c]||''))}</td>`).join('') + '</tr>'; });
   area.innerHTML = html + '</tbody></table></div>';
@@ -604,7 +617,7 @@ function renderAssistant(area, sheets, sheetName) {
 
 function renderPhd(area, sheets, sheetName) {
   const cols = ['中文姓名','英文姓名','指導教授','研究室分機'];
-  const rows = sheets[sheetName] || [];
+  const rows = (sheets[sheetName] || []).filter(rowEnabled);
   let html = `<h2 class="section-heading">${esc(sheetName)} <span class="section-count">${rows.length} 位</span></h2><div class="table-wrap"><table class="data-table"><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>`;
   rows.forEach(r => { html += '<tr>' + cols.map(c=>`<td>${r[c]!==''?esc(String(r[c])):''}</td>`).join('') + '</tr>'; });
   area.innerHTML = html + '</tbody></table></div>';
