@@ -110,12 +110,12 @@ body.nav-open{overflow:hidden}
   #main-nav #main-menu{display:none}
   /* 空的導覽列收合，不留藍色空條 */
   #main-nav{padding:0;min-height:0;background:transparent}
-  /* 漢堡鈕固定在畫面右上角，不隨捲動 */
-  #nav-toggle{display:inline-flex;position:fixed;top:8px;right:10px;z-index:1001;
+  /* 漢堡鈕：絕對定位於 sticky 的 #site-header 內，垂直對齊 logo 中央（捲動時隨 logo 一起） */
+  #nav-toggle{display:inline-flex;position:absolute;top:36px;right:14px;transform:translateY(-50%);z-index:101;
     background:var(--navy);border:1px solid rgba(255,255,255,.28);border-radius:8px;
     padding:9px 13px;box-shadow:0 2px 10px rgba(0,0,0,.35)}
   body.nav-open #nav-toggle{display:none}   /* 抽屜開啟時隱藏浮動鈕（用抽屜內的 ✕ 關閉） */
-  #topbar{padding-right:64px}               /* 讓出右上角，避免蓋到 EN/Facebook */
+  .nav-toggle-label{display:none}           /* 手機版只留 ☰ 圖示，避免擠到標題／版本徽章 */
   #mobile-nav,#mobile-nav-overlay{display:flex}
   #mobile-nav-overlay{display:none}
   #mobile-nav-overlay.open{display:block}
@@ -585,7 +585,7 @@ footer{background:var(--navy);color:#8a9fc0;text-align:center;padding:24px;font-
 footer a{color:#8a9fc0}
 
 @media(max-width:780px){
-  #site-header{padding:10px 14px;flex-wrap:wrap}
+  #site-header{padding:10px 64px 10px 14px;flex-wrap:wrap}  /* 右側留 64px 給漢堡鈕 */
   #content{padding:20px 12px}
   .fd-layout{grid-template-columns:1fr}
   .fd-sidebar{position:static}
@@ -621,13 +621,13 @@ footer a{color:#8a9fc0}
     <p>Department of Physics · National Central University</p>
   </div>
   <div id="version-badge"><span>✓</span><span id="vb-text">載入中…</span></div>
-</header>
-
-<nav id="main-nav" role="navigation" aria-label="主要導覽">
   <button id="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="開啟網頁目錄">
     <span class="hb-icon" aria-hidden="true"><span></span><span></span><span></span></span>
     <span class="nav-toggle-label">目錄</span>
   </button>
+</header>
+
+<nav id="main-nav" role="navigation" aria-label="主要導覽">
   <ul id="main-menu"></ul>
 </nav>
 <div id="mobile-nav-overlay" hidden></div>
