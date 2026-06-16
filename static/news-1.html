@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: http:; font-src 'self' data:; connect-src 'self'; frame-src https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>所有公告｜國立中央大學物理學系</title>
+<link rel="icon" type="image/webp" href="../files/NCUPHYS_Logo.webp">
+<link rel="apple-touch-icon" href="../files/NCUPHYS_Logo.webp">
+
+<style>
+/* ════ Variables ════ */
+:root{
+  --navy:#1a2a4a; --blue:#2563a8; --gold:#c8960c; --gold-text:#8a6608;
+  --light:#f4f7fb; --border:#dde4f0;
+  --text:#222; --muted:#5f6c86; --white:#fff;
+  --shadow:0 2px 12px rgba(37,99,168,.10);
+  --font-main:'Noto Serif TC','Songti TC','PMingLiU',Georgia,'Times New Roman',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-main);background:var(--light);color:var(--text);min-height:100vh}
+code,kbd,samp,button,input,select,textarea{font-family:inherit}
+
+/* ── 無障礙：跳躍連結（平時隱藏，鍵盤聚焦時顯示）── */
+.skip-links a{position:absolute;left:-9999px;top:0;z-index:9999;background:var(--navy);color:#fff;padding:10px 16px;border:2px solid var(--gold);border-radius:0 0 6px 0;text-decoration:none;font-size:.9rem}
+.skip-links a:focus{left:0}
+/* ── 無障礙：鍵盤聚焦明顯輪廓（滑鼠點擊不顯示）── */
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+/* 互動用 div 以 role=button 呈現時的鍵盤可及性 */
+[role="button"]{cursor:pointer}
+/* 螢幕報讀器專用（視覺隱藏但可被讀出） */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#noscript-msg{max-width:1100px;margin:24px auto;padding:18px 22px;background:#fff8e1;border-left:4px solid var(--gold);border-radius:4px;color:#7a5c00;line-height:1.8}
+/* ── 工具類 / Email 連結 ── */
+.mt-6{margin-top:6px}
+.mt-32{margin-top:36px}
+.eml-link{color:var(--blue);text-decoration:none}
+.eml-link:hover{text-decoration:underline}
+.eml-sep{color:var(--muted)}
+
+/* ── Top bar ── */
+#topbar{background:var(--navy);color:#b8c8e8;font-size:.8rem;padding:6px 32px;display:flex;justify-content:space-between;align-items:center}
+#topbar a{color:#b8c8e8;text-decoration:none;margin-left:12px}
+#topbar a:hover{color:#fff}
+
+/* ── Header ── */
+#site-header{background:#fff;border-bottom:3px solid var(--gold);padding:14px 32px;display:flex;align-items:center;gap:18px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.logo-img{width:52px;height:52px;object-fit:contain}
+.logo-text h1{font-size:1.15rem;color:var(--navy);font-weight:700;line-height:1.3}
+.logo-text p{font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+#version-badge{margin-left:auto;background:var(--navy);color:#7af0a0;border:1px solid #3a6;border-radius:6px;padding:5px 14px;font-size:.78rem;white-space:nowrap;display:flex;align-items:center;gap:6px}
+
+/* ── Main nav ── */
+#main-nav{background:var(--navy)}
+#main-nav ul{list-style:none;display:flex;padding:0 24px}
+#main-nav>ul>li{position:relative}
+#main-nav>ul>li>a{display:block;color:#d4e0f5;font-size:.9rem;padding:14px 18px;text-decoration:none;border-bottom:3px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
+#main-nav>ul>li>a:hover,#main-nav>ul>li.active>a{color:#fff;border-bottom-color:var(--gold)}
+#main-nav>ul>li>ul{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);min-width:180px;box-shadow:0 6px 20px rgba(0,0,0,.13);z-index:200}
+#main-nav>ul>li:hover>ul{display:block}
+#main-nav>ul>li>ul>li>a{display:block;color:var(--navy);font-size:.85rem;padding:10px 18px;text-decoration:none;border-left:3px solid transparent;transition:background .15s,border-color .15s}
+#main-nav>ul>li>ul>li>a:hover{background:var(--light);border-left-color:var(--gold);color:var(--blue)}
+
+/* ── 行動版漢堡選單 + 抽屜式網頁目錄（桌機隱藏，≤780px 啟用）── */
+#nav-toggle{display:none;align-items:center;gap:9px;background:none;border:none;color:#fff;font-family:inherit;font-size:.95rem;padding:13px 20px;cursor:pointer}
+.hb-icon{display:inline-flex;flex-direction:column;justify-content:center;gap:4px;width:22px;height:16px}
+.hb-icon span{display:block;height:2px;background:#fff;border-radius:2px}
+#mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:998}
+#mobile-nav-overlay.open{display:block}
+#mobile-nav{display:none;position:fixed;top:0;left:0;height:100%;width:min(84vw,340px);background:#fff;z-index:999;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;box-shadow:2px 0 18px rgba(0,0,0,.28);transform:translateX(-100%);visibility:hidden;transition:transform .28s ease,visibility 0s .28s}
+#mobile-nav.open{transform:translateX(0);visibility:visible;transition:transform .28s ease,visibility 0s 0s}
+#mobile-nav-head{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--navy);color:#fff;padding:15px 18px;font-size:1.05rem;font-weight:700;position:sticky;top:0}
+#mobile-nav-close{background:none;border:none;color:#fff;font-size:1.4rem;line-height:1;padding:4px 8px;cursor:pointer}
+#mobile-nav-body{padding:4px 0 32px}
+.mnav-sec{border-bottom:1px solid var(--border)}
+.mnav-sec-title{display:block;width:100%;text-align:left;background:none;border:none;font-family:inherit;font-size:1rem;font-weight:700;color:var(--navy);padding:14px 18px 6px;cursor:pointer}
+.mnav-sub{list-style:none}
+.mnav-sub li a{display:block;padding:11px 18px 11px 32px;color:var(--text);text-decoration:none;font-size:.95rem;border-left:3px solid transparent}
+.mnav-sub li a:active,.mnav-sub li a.active{background:var(--light);border-left-color:var(--gold);color:var(--blue)}
+body.nav-open{overflow:hidden}
+@media(max-width:780px){
+  /* 移除手機版橫列選單（提高優先級以蓋過 #main-nav ul{display:flex}） */
+  #main-nav #main-menu{display:none}
+  /* 空的導覽列收合，不留藍色空條 */
+  #main-nav{padding:0;min-height:0;background:transparent}
+  /* 漢堡鈕：絕對定位於 sticky 的 #site-header 內，垂直對齊 logo 中央（捲動時隨 logo 一起） */
+  #nav-toggle{display:inline-flex;position:absolute;top:36px;right:14px;transform:translateY(-50%);z-index:101;
+    background:var(--navy);border:1px solid rgba(255,255,255,.28);border-radius:8px;
+    padding:9px 13px;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+  body.nav-open #nav-toggle{display:none}   /* 抽屜開啟時隱藏浮動鈕（用抽屜內的 ✕ 關閉） */
+  .nav-toggle-label{display:none}           /* 手機版只留 ☰ 圖示，避免擠到標題／版本徽章 */
+  #mobile-nav,#mobile-nav-overlay{display:flex}
+  #mobile-nav-overlay{display:none}
+  #mobile-nav-overlay.open{display:block}
+}
+
+/* ── Hero ── */
+#hero{position:relative;height:200px;background:linear-gradient(135deg,var(--navy),var(--blue));display:flex;align-items:flex-end;padding:0 40px 30px;overflow:hidden}
+#hero-bg{position:absolute;inset:0;background:center/cover no-repeat;opacity:.22}
+.hero-text{position:relative;z-index:2}
+.hero-text h2{font-size:2rem;color:#fff;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.hero-text p{font-size:.95rem;color:#b8d4f0;letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+
+/* ── Breadcrumb ── */
+#breadcrumb{background:#fff;border-bottom:1px solid var(--border);padding:10px 32px;font-size:.82rem;color:var(--muted)}
+#breadcrumb span{color:var(--blue)}
+#breadcrumb a{color:var(--blue);text-decoration:none}
+#breadcrumb a:hover{text-decoration:underline}
+
+/* ── Sub-nav ── */
+#sub-nav{background:#fff;border-bottom:2px solid var(--border);padding:0 32px;display:flex;gap:4px;overflow-x:auto}
+#sub-nav button,#sub-nav a{border:none;background:none;font-family:inherit;font-size:.88rem;color:var(--muted);padding:12px 18px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s;text-decoration:none;display:inline-block}
+#sub-nav button:hover,#sub-nav a:hover{color:var(--blue)}
+#sub-nav button.active,#sub-nav a.active{color:var(--blue);border-bottom-color:var(--gold);font-weight:600}
+
+/* ── Content ── */
+#content{max-width:1100px;margin:0 auto;padding:36px 24px;min-height:400px}
+
+/* ── Loading / Error ── */
+.loading{text-align:center;padding:80px;color:var(--muted);font-size:1rem}
+.loading::after{content:'';display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;margin-left:10px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-msg{background:#fff8e1;border-left:4px solid var(--gold);padding:16px 20px;border-radius:4px;font-size:.9rem;color:#7a5c00}
+
+/* ── Section heading ── */
+.section-heading{font-size:1.3rem;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.section-count{font-size:.8rem;color:var(--muted);font-weight:normal}
+.mt-24{margin-top:24px}
+
+/* ── Text ── */
+.text-content{line-height:1.9;font-size:.97rem}
+/* 水平時間線（由左至右，上下交錯，可橫向捲動） */
+.tl-legend{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:18px}
+.tl-legend-item{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted)}
+.tl-legend-item i{width:11px;height:11px;border-radius:50%;display:inline-block}
+/* 歷史頁：依時期左右對列，左時間線 + 右時期卡片 */
+.tl-grid{display:grid;grid-template-columns:300px 1fr;gap:0 32px;align-items:stretch;position:relative}
+/* 貫穿左欄的時間軸縱線 */
+.tl-grid::before{content:"";position:absolute;left:9px;top:6px;bottom:18px;width:2px;background:var(--border)}
+.tlg-left{display:flex;flex-direction:column;justify-content:space-around;padding:18px 0;min-width:0}
+.tlg-right{padding-bottom:24px;min-width:0}
+.tlv-item{position:relative;display:flex;gap:14px}
+.tlv-marker{position:relative;flex:0 0 auto;width:14px;display:flex;justify-content:center}
+.tlv-dot{position:relative;z-index:1;width:13px;height:13px;border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 3px rgba(37,99,168,.18);margin-top:14px}
+.tlv-content{flex:1 1 auto;min-width:0}
+.tlv-year{font-size:2.7rem;font-weight:700;margin-bottom:2px;line-height:1.15}
+.tlv-title{font-size:.92rem;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:3px}
+.tlv-note{font-size:.8rem;color:var(--muted);line-height:1.55}
+@media(max-width:760px){
+  .tl-grid{grid-template-columns:1fr;gap:0}
+  .tl-grid::before{display:none}
+  .tlg-left{justify-content:flex-start;gap:18px;padding:8px 0 16px;border-left:2px solid var(--border);margin-left:9px;padding-left:8px}
+  .tlg-right{margin-bottom:24px}
+}
+/* 各時期長文段落卡片 */
+.tl-era{background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow);padding:18px 22px;height:100%}
+.tl-era-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.tl-era-icon{font-size:1.1rem}
+.tl-era-title{font-size:1.15rem;font-weight:700;color:var(--navy)}
+.tl-era-sub{font-size:.85rem;color:var(--muted);letter-spacing:.04em}
+.tl-era-body{font-size:.95rem;line-height:1.95}
+.tl-era-body p{margin:0 0 12px}
+.tl-era-body p:last-child{margin-bottom:0}
+.text-content p{margin-bottom:1.2em}
+
+/* ── 歷屆系主任 ── */
+.chair-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.chair-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);content-visibility:auto;contain-intrinsic-size:0 340px}
+.chair-photo-wrap{width:90px;height:90px;margin:20px auto 0}
+.chair-photo-wrap img{width:90px;height:90px;border-radius:50%;border:3px solid var(--border);object-fit:cover;object-position:top;display:block}
+.chair-no-photo{width:90px;height:90px;border-radius:50%;border:3px solid var(--border);background:linear-gradient(135deg,#dce6f8,#c0d0e8);display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:#8aafda}
+.chair-body{padding:14px 16px 18px;text-align:center}
+.chair-body h3{font-size:1.05rem;color:var(--navy);margin-bottom:6px}
+.chair-dates{font-size:.78rem;color:var(--muted);margin-bottom:6px}
+.chair-edu{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.chair-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.chair-tag{background:#e8eef8;color:var(--blue);font-size:.7rem;padding:2px 8px;border-radius:20px}
+
+/* ── Faculty cards ── */
+.faculty-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:20px}
+.faculty-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;content-visibility:auto;contain-intrinsic-size:0 420px}
+.faculty-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,168,.18)}
+.faculty-card-static{cursor:default}
+.faculty-card-static:hover{transform:none;box-shadow:var(--shadow)}
+.fc-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;background:var(--light)}
+.fc-no-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#dce6f8,#c0d0e8);display:flex;align-items:center;justify-content:center;font-size:3rem;color:#8aafda}
+.fc-info{padding:14px}
+.fc-info h3{font-size:1rem;color:var(--navy)}
+.fc-title{font-size:.78rem;color:var(--blue);margin-top:3px}
+.fc-area{font-size:.73rem;color:var(--muted);margin-top:5px;line-height:1.5}
+.fc-email{font-size:.73rem;color:var(--muted);margin-top:4px}
+
+/* ── Faculty detail page ── */
+#detail-view{display:none}
+.fd-back{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-size:.88rem;cursor:pointer;margin-bottom:28px;background:none;border:none;font-family:inherit;padding:0}
+.fd-back:hover{text-decoration:underline}
+.fd-layout{display:grid;grid-template-columns:220px 1fr;gap:36px;align-items:start}
+.fd-sidebar{position:sticky;top:120px}
+.fd-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--border);display:block;background:var(--light)}
+.fd-no-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#dce6f8,#c0d0e8);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#8aafda}
+.fd-contact{margin-top:16px;font-size:.82rem;color:var(--muted);line-height:2}
+.fd-contact a{color:var(--blue);text-decoration:none}
+.fd-contact a:hover{text-decoration:underline}
+.fd-main h1{font-size:2rem;color:var(--navy);font-weight:700}
+.fd-rank{font-size:1rem;color:var(--blue);margin-top:6px}
+.fd-divider{border:none;border-top:2px solid var(--gold);margin:18px 0}
+.fd-section{margin-bottom:28px}
+.fd-section h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-text);margin-bottom:10px;border-bottom:1px solid var(--border);padding-bottom:5px}
+.fd-section p,.fd-section li{font-size:.9rem;line-height:1.9;color:var(--text)}
+.fd-section ul{padding-left:1.2em}
+.fd-section a{color:var(--blue);text-decoration:none}
+.fd-section a:hover{text-decoration:underline}
+.fd-tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:20px}
+.fd-tab-btn{border:none;background:none;font-family:inherit;font-size:.9rem;color:var(--muted);padding:10px 18px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .2s,border-color .2s}
+.fd-tab-btn.active{color:var(--blue);border-bottom-color:var(--gold);font-weight:600}
+.pub-item{padding:11px 0;border-bottom:1px solid var(--border)}
+.pub-item:last-child{border-bottom:none}
+.pub-title{font-size:.88rem;font-weight:600;line-height:1.5}
+.pub-meta{font-size:.78rem;color:var(--muted);margin-top:3px}
+.proj-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.proj-table th{background:var(--navy);color:#fff;padding:8px 12px;text-align:left;font-size:.8rem}
+.proj-table td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.proj-table tr:nth-child(even) td{background:#f8fafd}
+
+/* ── Data table ── */
+.table-wrap{overflow-x:auto;border-radius:8px;box-shadow:var(--shadow)}
+.data-table{width:100%;border-collapse:collapse;font-size:.87rem}
+/* 小年會：合照（上）＋ 組員表格（下） */
+.ameet-row{display:block;margin-bottom:8px}
+.ameet-photo{margin:0 0 16px}
+.ameet-photo img{width:100%;max-width:640px;height:auto;border-radius:10px;box-shadow:var(--shadow);display:block}
+.ameet-table{width:100%}
+@media(max-width:768px){.ameet-photo img{max-width:100%}}
+.data-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:.82rem;letter-spacing:.04em}
+.data-table td{padding:10px 14px;border-bottom:1px solid var(--border);line-height:1.5}
+.data-table tr:nth-child(even) td{background:#f8fafd}
+.data-table tr:hover td{background:#eef3fc}
+.data-table a{color:var(--blue);text-decoration:none}
+.data-table a:hover{text-decoration:underline}
+.visitor-table{table-layout:fixed}
+.visitor-table th{white-space:nowrap}
+.visitor-table td:last-child{white-space:nowrap}
+.visitor-table td{overflow-wrap:break-word}
+/* 表頭與內容一律不換行：欄寬依最長內容自動配置，過寬時由 .table-wrap 水平捲動 */
+.nowrap-table{width:auto;min-width:100%;table-layout:auto}
+.nowrap-table th,.nowrap-table td{white-space:nowrap}
+/* 最長內容欄：允許換行，吸收剩餘寬度，避免表格過寬需水平捲動 */
+.nowrap-table td.wrap-col{white-space:normal;overflow-wrap:break-word;min-width:24em;width:99%}
+
+/* ── Research cards ── */
+.research-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.research-card{background:#fff;border-radius:10px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;content-visibility:auto;contain-intrinsic-size:0 320px}
+.research-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,99,168,.16)}
+.rc-img{width:100%;height:170px;object-fit:cover;display:block;background:var(--light)}
+.rc-no-img{width:100%;height:170px;background:linear-gradient(135deg,#e4ecf8,#d0dff4);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#8aafda}
+.rc-body{padding:16px}
+.rc-journal{font-size:.75rem;color:var(--gold-text);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.rc-title{font-size:.95rem;color:var(--navy);font-weight:600;margin-top:6px;line-height:1.5}
+.rc-authors{font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.4}
+
+/* ── Research modal ── */
+#modal-overlay{position:fixed;inset:0;background:rgba(10,20,40,.55);z-index:500;display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto}
+#modal-overlay.open{display:flex}
+#modal-box{background:#fff;border-radius:12px;width:100%;max-width:820px;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden;margin:auto;position:relative}
+#modal-close{position:absolute;top:14px;right:18px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:var(--muted);z-index:10;line-height:1}
+.rmodal-head{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:28px 32px}
+.rmodal-head .rj{font-size:.8rem;color:#aac8f0;text-transform:uppercase;letter-spacing:.06em}
+.rmodal-head h2{font-size:1.3rem;margin-top:6px;line-height:1.5}
+.rmodal-head .ra{font-size:.85rem;opacity:.8;margin-top:8px}
+.rmodal-body{padding:28px 32px;max-height:60vh;overflow-y:auto}
+.rmodal-body img{width:100%;max-height:260px;object-fit:contain;border-radius:6px;margin-bottom:12px;background:var(--light)}
+.rmodal-caption{font-size:.8rem;color:var(--muted);margin-bottom:16px}
+.rmodal-desc{font-size:.9rem;line-height:1.8;margin-bottom:16px}
+.rmodal-link{display:inline-block;background:var(--blue);color:#fff;padding:8px 20px;border-radius:4px;font-size:.85rem;text-decoration:none}
+.rmodal-link:hover{background:var(--navy)}
+
+/* ── 系所規章 / 活動 ── */
+.reg-wrap{margin-bottom:32px}
+.reg-cat-title{font-size:1rem;font-weight:700;color:var(--navy);border-left:4px solid var(--gold);padding:6px 12px;background:var(--light)}
+.reg-list{list-style:none}
+.reg-item{display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid var(--border);font-size:.87rem;flex-wrap:wrap}
+.reg-item:last-child{border-bottom:none}
+.reg-item a{color:var(--text);text-decoration:none}
+.reg-item a:hover{color:var(--blue);text-decoration:underline}
+.reg-item .name{color:var(--text)}
+
+/* ── Badges ── */
+.badge{font-size:.7rem;padding:2px 7px;border-radius:3px;font-weight:700;flex-shrink:0;white-space:nowrap}
+.b-pdf{background:#fee2e2;color:#b91c1c}
+.b-doc{background:#dbeafe;color:#1d4ed8}
+.b-yt{background:#fee2e2;color:#dc2626}
+.b-link{background:#e0f2fe;color:#0369a1}
+.b-other{background:#fef9c3;color:#92400e}
+.b-sub{background:#ede9fe;color:#6d28d9;font-size:.7rem;padding:2px 7px;border-radius:3px;font-weight:600;flex-shrink:0;white-space:nowrap}
+
+/* ── Core competency ── */
+.comp-group{margin-bottom:28px}
+.comp-group h3{font-size:1.05rem;color:var(--navy);background:var(--light);border-left:4px solid var(--blue);padding:8px 14px;margin-bottom:10px;border-radius:0 4px 4px 0}
+.comp-row{display:flex;gap:16px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.88rem}
+.comp-row:last-child{border-bottom:none}
+.comp-zh{font-weight:600;color:var(--navy);min-width:120px}
+.comp-en{color:var(--blue);min-width:180px;font-style:italic}
+.comp-desc{color:var(--text)}
+
+/* ── Student: course badges ── */
+.req-badge{font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:3px}
+.req-must{background:#fee2e2;color:#b91c1c}
+.req-elec{background:#dbeafe;color:#1d4ed8}
+.cat-inline{font-size:.68rem;padding:1px 7px;border-radius:10px;font-weight:600;vertical-align:middle;white-space:nowrap}
+/* 大學部課程表：固定欄寬，統一各年級分頁版面 */
+.ug-course-table{table-layout:fixed;width:100%}
+.ug-course-table .ug-c-cat{width:6.5em;text-align:center}
+.ug-course-table .ug-c-course{width:32%}
+.ug-course-table .ug-c-code{width:8.5em;white-space:nowrap}
+.ug-course-table .ug-c-term{width:5em;text-align:center}
+.ug-course-table td,.ug-course-table th{overflow-wrap:break-word}
+.emi-section-block{margin-top:36px}
+.emi-section-title{font-size:1rem;color:var(--navy);background:var(--light);border-left:4px solid var(--gold);padding:8px 14px;margin-bottom:12px;border-radius:0 4px 4px 0;display:flex;align-items:center;gap:10px}
+.emi-section-subtitle{font-size:.78rem;color:var(--muted);font-weight:400;letter-spacing:.04em}
+.emi-note{font-size:.78rem;color:var(--muted);margin-top:10px;padding:8px 12px;background:var(--light);border-radius:4px;line-height:1.7}
+
+/* ── Tab system (student pages) ── */
+.tab-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tab-btn{border:1px solid var(--border);background:#fff;color:var(--muted);font-size:.83rem;padding:6px 14px;border-radius:20px;cursor:pointer;font-family:inherit;transition:all .2s}
+.tab-btn:hover{color:var(--blue)}
+.tab-btn.tab-navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tab-btn.tab-blue{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* ── Annual meeting ── */
+.meeting-desc{font-size:.95rem;line-height:1.9;background:#fff;padding:20px 24px;border-radius:8px;box-shadow:var(--shadow);margin-bottom:24px}
+
+/* ── Scholarship link cards ── */
+.link-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.link-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;box-shadow:var(--shadow);display:block;transition:transform .2s,box-shadow .2s;color:var(--text);text-decoration:none}
+.link-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,168,.15)}
+.lc-title{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.lc-desc{font-size:.82rem;color:var(--muted)}
+
+/* ── Student spaces ── */
+.spaces-grid{display:flex;flex-direction:column;gap:28px}
+.space-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.sp-header{background:linear-gradient(135deg,var(--navy),#2a3f6a);padding:16px 20px}
+.sp-name{font-size:1.05rem;font-weight:700;color:#fff}
+.sp-meta{display:flex;gap:16px;margin-top:5px;flex-wrap:wrap}
+.sp-loc,.sp-hours{font-size:.8rem;color:#b8d4f0}
+.sp-desc{padding:16px 20px;font-size:.88rem;line-height:1.85}
+
+/* ── Carousel ── */
+.carousel{position:relative;overflow:hidden;border-radius:8px;box-shadow:var(--shadow);background:#eee;height:clamp(240px,42vw,60vh)}
+.carousel[id^="cs-alb"]{height:clamp(316.8px,55.44vw,79.2vh)}
+.cs-track{position:relative;width:100%;height:100%}
+.cs-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s}
+.cs-slide.cs-active{opacity:1}
+.cs-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.cs-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;font-size:2rem;width:44px;height:44px;border-radius:50%;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.cs-btn:hover{background:rgba(0,0,0,.7)}
+.cs-prev{left:12px}.cs-next{right:12px}
+.cs-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:5}
+.cs-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .2s}
+.cs-dot.active{background:#fff}
+
+/* ── Journals ── */
+.journal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:20px}
+.journal-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:var(--shadow)}
+.jc-cover{width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:3rem}
+.jc-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.jc-body{padding:12px}
+.jc-issue{font-size:.95rem;font-weight:700;color:var(--navy)}
+.jc-year{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.jc-links{display:flex;flex-wrap:wrap;gap:6px}
+.jc-btn{font-size:.75rem;background:var(--blue);color:#fff;padding:4px 10px;border-radius:3px;display:inline-block;text-decoration:none}
+.jc-btn:hover{background:var(--navy)}
+.jc-yt{background:#dc2626}
+
+/* ── Programs ── */
+.program-list{display:flex;flex-direction:column;gap:12px}
+.prog-row{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.prog-name{font-size:.97rem;font-weight:600;color:var(--navy);min-width:80px}
+.prog-desc{font-size:.85rem;color:var(--muted);flex:1;line-height:1.7}
+.prog-link{font-size:.82rem;background:var(--navy);color:#fff;padding:5px 14px;border-radius:4px;text-decoration:none;white-space:nowrap}
+.prog-link:hover{background:var(--blue)}
+
+/* ── Degree badges ── */
+.deg-badge{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;white-space:nowrap;display:inline-block}
+.badge-phd{background:#ede9fe;color:#5b21b6}
+.badge-ms{background:#dbeafe;color:#1e40af}
+.purpose-cell{font-size:.82rem}
+
+/* ── EMI 專區 ── */
+.emi-wrap{padding:4px 0}
+.emi-cat-section{margin-bottom:2.8rem}
+.emi-cat-title{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+.emi-cat-div{height:2px;border-radius:1px;margin-bottom:1.2rem}
+.emi-cat-teacher .emi-cat-title{color:#1f6fa8}
+.emi-cat-teacher .emi-cat-div{background:linear-gradient(90deg,#1f6fa8,transparent)}
+.emi-cat-student .emi-cat-title{color:#375623}
+.emi-cat-student .emi-cat-div{background:linear-gradient(90deg,#375623,transparent)}
+.emi-cat-ta .emi-cat-title{color:#7d5800}
+.emi-cat-ta .emi-cat-div{background:linear-gradient(90deg,#7d5800,transparent)}
+.emi-cat-resource .emi-cat-title{color:#7b2c2c}
+.emi-cat-resource .emi-cat-div{background:linear-gradient(90deg,#7b2c2c,transparent)}
+.emi-links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem}
+.emi-link-card{display:flex;flex-direction:column;justify-content:space-between;gap:.5rem;padding:1.2rem 1.3rem;border-radius:12px;text-decoration:none;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow);transition:box-shadow .18s,transform .15s,border-color .18s;min-height:76px}
+.emi-link-card:hover{box-shadow:0 6px 24px rgba(31,78,121,.15);transform:translateY(-3px)}
+.emi-cat-teacher .emi-link-card:hover{border-color:#1f6fa8}
+.emi-cat-student .emi-link-card:hover{border-color:#375623}
+.emi-cat-ta      .emi-link-card:hover{border-color:#7d5800}
+.emi-cat-resource .emi-link-card:hover{border-color:#7b2c2c}
+.emi-link-name{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.4}
+.emi-link-arrow{font-size:.75rem;color:var(--muted);transition:transform .15s;display:inline-block}
+.emi-link-card:hover .emi-link-arrow{transform:translateX(4px)}
+
+/* ── 所有公告 ── */
+.news-toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;align-items:center}
+.news-year-sel{font-family:inherit;font-size:.85rem;padding:8px 10px;border:1px solid var(--border);border-radius:6px;outline:none;background:#fff;color:var(--text)}
+.news-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.news-tab{border:1px solid var(--border);background:#fff;color:var(--muted);font-size:.82rem;padding:6px 14px;border-radius:20px;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap}
+.news-tab:hover{color:var(--blue);border-color:var(--blue)}
+.news-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.news-tab .n{font-size:.7rem;opacity:.7;margin-left:3px}
+.news-item{background:#eaf1f8;border:1px solid #d4e0ee;border-radius:6px;margin-bottom:8px;overflow:hidden}
+.news-item-row{display:flex;align-items:center;gap:12px;padding:10px 16px;cursor:pointer;user-select:none;flex-wrap:wrap}
+.news-item-row:hover{background:rgba(0,0,0,.04)}
+.news-item-title{flex:1;font-size:.92rem;color:var(--navy);font-weight:600;min-width:200px}
+.news-item-date{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.news-badge{font-size:.68rem;font-weight:700;padding:2px 9px;border-radius:99px;white-space:nowrap;background:#fbe5e2;color:#b03a2e}
+.news-item-body{display:none;background:#fff;border-top:1px solid #d4e0ee;padding:18px 22px}
+.news-item.open .news-item-body{display:block}
+.news-body-text{font-size:.9rem;line-height:1.85;white-space:pre-wrap;word-break:break-word;margin-bottom:10px}
+.news-meta-line{color:var(--muted);font-size:.8rem;margin-bottom:10px}
+.news-links-block{margin-top:12px;padding-top:10px;border-top:1px dashed var(--border)}
+.news-links-block a{display:block;font-size:.88rem;margin-bottom:5px;color:var(--blue);text-decoration:none;word-break:break-all}
+.news-links-block a:hover{text-decoration:underline}
+.news-src-link{margin-top:12px;text-align:right}
+.news-src-link a{font-size:.82rem;color:var(--blue);text-decoration:none}
+.news-src-link a:hover{text-decoration:underline}
+.news-more-btn{display:block;margin:18px auto;font-size:.88rem;font-family:inherit;padding:9px 28px;border-radius:6px;border:1px solid var(--blue);background:#fff;color:var(--blue);cursor:pointer;transition:all .15s}
+.news-more-btn:hover{background:var(--blue);color:#fff}
+.news-count-info{text-align:center;color:var(--muted);font-size:.82rem;margin:14px 0 4px}
+.news-empty{text-align:center;color:var(--muted);padding:60px 20px;font-size:.95rem}
+
+/* ── 高中生專區 ── */
+.portal-video{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;margin:0;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:#000}
+.portal-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid-block{display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:start;margin:0 auto 36px;max-width:1100px}
+.vid-list{list-style:none;margin:0;padding:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.vid-item{padding:14px 18px;font-size:.95rem;color:var(--text);cursor:pointer;border-bottom:1px solid var(--border);transition:background .15s,color .15s;line-height:1.5}
+.vid-item:last-child{border-bottom:0}
+.vid-item:hover{background:var(--light)}
+.vid-item.active{background:var(--navy);color:#fff;font-weight:600}
+.vid-player{min-width:0}
+.vid-player .portal-video{margin:0}
+@media(max-width:680px){.vid-block{grid-template-columns:1fr}}
+.vid-block.vid-single{grid-template-columns:1fr;max-width:820px}
+.portal-about{background:#fff;border-radius:10px;box-shadow:var(--shadow);padding:24px 28px;font-size:.95rem;line-height:1.95;margin-bottom:32px}
+/* 畢業出路：數據條 */
+.career-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:0 0 24px}
+.career-stat{background:linear-gradient(135deg,#1a2a4a,#2563a8);color:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:var(--shadow)}
+.career-stat-num{font-size:1.9rem;font-weight:800;line-height:1.1;letter-spacing:-.01em}
+.career-stat-label{font-size:.86rem;font-weight:700;color:var(--gold-soft);margin-top:6px}
+.career-stat-note{font-size:.72rem;color:#c5d6ee;line-height:1.5;margin-top:6px}
+/* 畢業出路：方向卡 */
+.career-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0 0 36px}
+.career-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 22px;transition:transform .2s,box-shadow .2s}
+.career-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(37,99,168,.16)}
+.career-icon{font-size:1.8rem;margin-bottom:8px}
+.career-title{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.career-note{font-size:.85rem;color:var(--muted);line-height:1.7}
+@media(max-width:520px){.career-stats{grid-template-columns:1fr 1fr}.career-stat-num{font-size:1.6rem}}
+/* 升學深造領域 比例條 */
+.career-subhead{font-size:1.05rem;font-weight:700;color:var(--navy);margin:0 0 14px}
+.major-bars{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 24px;margin:0 0 28px}
+.major-row{display:grid;grid-template-columns:120px 1fr 56px;align-items:center;gap:12px;margin-bottom:4px}
+.major-name{font-size:.88rem;font-weight:600;color:var(--text);text-align:right}
+.major-track{background:var(--light);border-radius:20px;height:18px;overflow:hidden}
+.major-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--blue),var(--gold));transition:width .6s ease}
+.major-pct{font-size:.86rem;font-weight:700;color:var(--blue)}
+.major-note{font-size:.76rem;color:var(--muted);line-height:1.5;margin:0 0 14px 132px}
+.major-note:last-child{margin-bottom:0}
+@media(max-width:520px){.major-row{grid-template-columns:84px 1fr 48px;gap:8px}.major-name{font-size:.8rem}.major-note{margin-left:0}}
+/* 碩博 vs 大學部 雙色對照長條 */
+.career-lead{font-size:.86rem;color:var(--muted);line-height:1.7;margin:0 0 14px}
+.cmp-legend{display:flex;gap:18px;margin:0 0 12px}
+.cmp-key{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;color:var(--muted)}
+.cmp-key i{width:13px;height:13px;border-radius:3px;display:inline-block}
+.cmp-pg{background:var(--gold)}
+.cmp-ug{background:var(--blue)}
+.cmp-row{display:grid;grid-template-columns:140px 1fr;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid var(--light)}
+.cmp-row:last-child{border-bottom:0}
+.cmp-name{font-size:.84rem;font-weight:600;color:var(--text);text-align:right;line-height:1.35}
+.cmp-bars{display:flex;flex-direction:column;gap:5px}
+.cmp-line{display:flex;align-items:center;gap:8px}
+.cmp-fill{height:13px;border-radius:20px;min-width:2px;transition:width .6s ease}
+i.cmp-pg,.cmp-fill.cmp-pg{background:var(--gold)}
+i.cmp-ug,.cmp-fill.cmp-ug{background:var(--blue)}
+.cmp-val{font-size:.74rem;font-weight:700;color:var(--muted);white-space:nowrap}
+@media(max-width:520px){.cmp-row{grid-template-columns:90px 1fr;gap:8px}.cmp-name{font-size:.76rem}}
+/* 雙軌學程課程地圖：水平三節點時間線 */
+.cmap-track{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:14px;position:relative;margin:0 0 22px}
+.cmap-track::before{content:"";position:absolute;top:8px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--gold),var(--blue),#1d9e75);border-radius:3px;z-index:0}
+.cmap-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+.cmap-dot{width:16px;height:16px;border-radius:50%;background:var(--navy);border:3px solid var(--white);box-shadow:0 0 0 3px rgba(37,99,168,.18);flex:0 0 auto}
+.cmap-stem{width:2px;height:22px;background:var(--border);flex:0 0 auto}
+.cmap-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:16px 14px;text-align:center;width:100%}
+.cmap-year{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.cmap-courses{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.cmap-course{font-size:.78rem;background:var(--light);color:var(--blue);border-radius:6px;padding:4px 9px;font-weight:600;line-height:1.4}
+/* 小年會等事件節點：金色強調 */
+.cmap-event .cmap-dot{background:var(--gold)}
+.cmap-event .cmap-stem{background:var(--gold)}
+.cmap-event .cmap-card{border-color:var(--gold);background:#fffaf0}
+.cmap-event .cmap-course{background:rgba(200,150,12,.14);color:#8a6d1f}
+.cmap-event-title{font-size:.92rem;font-weight:700;color:#8a6d1f;margin-bottom:6px}
+.cmap-event-note{font-size:.76rem;color:var(--muted);line-height:1.55}
+/* 雙軌對照卡 */
+.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 36px}
+.track-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:20px 22px;border-top:4px solid var(--gold)}
+.track-card.track-b{border-top-color:#1d9e75}
+.track-name{font-size:1.15rem;font-weight:800;color:var(--navy);margin-bottom:4px}
+.track-who{font-size:.84rem;color:var(--blue);font-weight:600;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.track-list{margin:0;padding-left:18px}
+.track-list li{font-size:.88rem;color:var(--text);line-height:1.85}
+@media(max-width:560px){.cmap-track{grid-auto-flow:row;grid-auto-columns:auto;gap:10px}.cmap-track::before{display:none}.cmap-node{flex-direction:row;gap:0;align-items:flex-start}.cmap-dot{margin-top:6px}.cmap-stem{width:14px;height:2px;margin-top:13px}.cmap-card{text-align:left}.cmap-courses{justify-content:flex-start}.track-grid{grid-template-columns:1fr}}
+/* 常見問題 Q&A 手風琴 */
+.faq-list{display:flex;flex-direction:column;gap:10px;margin:0 0 36px}
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+.faq-q{cursor:pointer;list-style:none;padding:16px 48px 16px 20px;font-size:.96rem;font-weight:700;color:var(--navy);position:relative;transition:background .15s}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q:hover{background:var(--light)}
+.faq-q::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:1.3rem;font-weight:400;color:var(--blue);transition:transform .2s}
+.faq-item[open] .faq-q::after{content:"\2212"}
+.faq-item[open] .faq-q{color:var(--blue);border-bottom:1px solid var(--border)}
+.faq-a{padding:16px 20px;font-size:.9rem;line-height:1.85;color:var(--text)}
+.faq-a a{color:var(--blue);text-decoration:underline;word-break:break-all}
+/* 數據亮點卡（為什麼選中央物理） */
+.stat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:0 0 36px}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);padding:18px 12px;text-align:center;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;min-width:0}
+.stat-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--blue))}
+.stat-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(37,99,168,.16)}
+.stat-num{font-size:1.55rem;font-weight:800;line-height:1.25;color:var(--navy);letter-spacing:-.01em;white-space:nowrap}
+.stat-label{font-size:.84rem;font-weight:700;color:var(--blue);margin-top:7px}
+.stat-note{font-size:.72rem;color:var(--muted);line-height:1.55;margin-top:7px}
+/* 中螢幕：3 欄；小螢幕：2 欄 */
+@media(max-width:900px){.stat-grid{grid-template-columns:repeat(3,1fr)}.stat-num{font-size:1.7rem}}
+@media(max-width:520px){.stat-grid{grid-template-columns:repeat(2,1fr);gap:10px}.stat-num{font-size:1.6rem;white-space:normal}}
+.portal-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.portal-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;justify-content:space-between;min-height:96px;text-decoration:none;color:var(--text);cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.portal-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,168,.16);border-color:var(--blue)}
+.portal-card-title{font-size:1rem;font-weight:700;color:var(--navy);line-height:1.5}
+.portal-card-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+.portal-card-arrow{font-size:.78rem;color:var(--muted);transition:transform .15s;align-self:flex-end}
+.portal-card:hover .portal-card-arrow{transform:translateX(4px);color:var(--blue)}
+
+/* ── Footer ── */
+footer{background:var(--navy);color:#8a9fc0;text-align:center;padding:24px;font-size:.82rem;margin-top:60px}
+footer a{color:#8a9fc0}
+
+@media(max-width:780px){
+  #site-header{padding:10px 64px 10px 14px;flex-wrap:wrap}  /* 右側留 64px 給漢堡鈕 */
+  #content{padding:20px 12px}
+  .fd-layout{grid-template-columns:1fr}
+  .fd-sidebar{position:static}
+}
+
+/* === 無 JS 降級樣式 === */
+summary.news-summary{list-style:none;cursor:pointer}
+summary.news-summary::-webkit-details-marker{display:none}
+.news-item>summary .news-item-row::after{content:'＋';margin-left:auto;color:var(--blue);font-weight:700;align-self:center}
+.news-item[open]>summary .news-item-row::after{content:'－'}
+details.news-item[open] .news-item-body{display:block}
+.tab-bar{display:none!important}
+.tab-panel{display:block!important}
+.nojs-tab-h{font-weight:600;color:var(--navy);margin:16px 0 8px;padding:6px 14px;background:#eef2f7;border-radius:20px;display:inline-block;font-size:.9rem}
+/* 跑馬燈 → 無 JS 可左右滑動的輪播（CSS scroll-snap） */
+.carousel{position:static!important;overflow:visible!important;height:auto!important;background:transparent!important;box-shadow:none!important;margin:6px 0}
+.carousel .cs-track{position:static!important;display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;gap:8px;height:auto!important;border-radius:8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--blue) #e5e9ef}
+.carousel .cs-track::-webkit-scrollbar{height:8px}
+.carousel .cs-track::-webkit-scrollbar-track{background:#e5e9ef;border-radius:4px}
+.carousel .cs-track::-webkit-scrollbar-thumb{background:var(--blue);border-radius:4px}
+.carousel .cs-track:focus{outline:2px solid var(--blue);outline-offset:2px}
+.carousel .cs-slide{position:static!important;inset:auto!important;opacity:1!important;flex:0 0 100%!important;width:100%!important;height:clamp(240px,42vw,60vh)!important;scroll-snap-align:center;background:#000;border-radius:8px}
+.carousel[id^="cs-alb"] .cs-slide{height:clamp(316.8px,55.44vw,79.2vh)!important}
+.carousel .cs-slide img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:8px;display:block}
+.carousel .cs-btn,.carousel .cs-dots{display:none!important}
+.nojs-cs-hint{text-align:center;color:var(--muted);font-size:.8rem;margin:6px 0 2px;user-select:none}
+.nojs-empty{color:var(--muted);font-size:.88rem;padding:12px}
+a.faculty-card-a{display:block;text-decoration:none;color:inherit}
+.fd-back-link{display:inline-block;margin:0 0 16px;color:var(--blue);text-decoration:none;font-size:.9rem}
+.fd-back-link:hover{text-decoration:underline}
+.year-acc{border:1px solid var(--border);border-radius:8px;margin:8px 0;overflow:hidden;background:#fff}
+summary.year-acc-sum{list-style:none;cursor:pointer;padding:12px 16px;font-weight:600;color:var(--navy);font-size:1.05rem;background:#f6f9fc;display:flex;align-items:center}
+summary.year-acc-sum::-webkit-details-marker{display:none}
+summary.year-acc-sum::after{content:'＋';margin-left:auto;color:var(--blue);font-weight:700}
+.year-acc[open] summary.year-acc-sum::after{content:'－'}
+.year-acc[open] summary.year-acc-sum{border-bottom:1px solid var(--border)}
+.year-acc-body{padding:14px 16px}
+.vid-item-linked{padding:0!important}
+a.vid-item-link{display:block;padding:14px 18px;color:inherit;text-decoration:none}
+.vid-item:not(.active) a.vid-item-link:hover{background:var(--light)}
+.vid-stack{display:flex;flex-direction:column;gap:24px;max-width:880px;margin:0 auto 36px}
+.vid-stack-title{font-weight:600;color:var(--navy);margin-bottom:8px}
+/* ===== 無 JS 手機版漢堡選單（<details>，免 JS、鍵盤/讀屏友善） ===== */
+.nav-burger{display:none}
+.nav-burger>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:9px;color:#fff;font-size:.95rem;font-weight:600;padding:9px 13px;background:var(--navy);border:1px solid rgba(255,255,255,.28);border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.35);-webkit-tap-highlight-color:transparent}
+.nav-burger>summary::-webkit-details-marker{display:none}
+.nav-burger>summary::marker{content:""}
+.nav-burger>summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.nav-burger .burger-icon{font-size:1.2rem;line-height:1;width:1.2rem;text-align:center}
+.nav-burger .burger-icon::before{content:"☰"}
+.nav-burger[open] .burger-icon::before{content:"✕"}
+.burger-menu{list-style:none;margin:0;padding:6px 0 10px;background:var(--navy);border:1px solid rgba(255,255,255,.14);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.42)}
+.burger-menu li{margin:0}
+.burger-menu>li>a{display:block;color:#fff;font-weight:600;font-size:.96rem;padding:12px 22px;text-decoration:none;border-top:1px solid rgba(255,255,255,.07)}
+.burger-menu>li>ul{list-style:none;margin:0;padding:2px 0 8px;background:rgba(0,0,0,.18)}
+.burger-menu>li>ul>li>a{display:block;color:#cdd9ee;font-size:.9rem;padding:10px 22px 10px 42px;text-decoration:none}
+.burger-menu a:hover{background:rgba(255,255,255,.12);color:#fff}
+.burger-menu a:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;background:rgba(255,255,255,.12);color:#fff}
+@media(max-width:780px){
+  #main-nav{background:transparent;padding:0;min-height:0}
+  /* 漢堡鈕：絕對定位於 sticky 的 #site-header 內，垂直對齊 logo 中央（與 SPA 版位置一致） */
+  .nav-burger{display:block;position:absolute;top:36px;right:14px;transform:translateY(-50%);z-index:101}
+  .nav-burger .burger-text{display:none}   /* 只留 ☰ 圖示 */
+  .burger-menu{position:absolute;top:calc(100% + 8px);right:0;width:min(84vw,320px);max-height:72vh;overflow:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="skip-links">
+  <a href="#main-nav" accesskey="U" title="上方功能區塊">:::上方導覽區（Alt+U）</a>
+  <a href="#content" accesskey="C" title="中央內容區塊">:::主要內容區（Alt+C）</a>
+  <a href="#footer-nav" accesskey="H" title="下方功能區塊">:::下方功能區（Alt+H）</a>
+</div>
+
+
+
+<div id="topbar">
+  <span>國立中央大學物理學系 Department of Physics, NCU</span>
+  <div>
+    <a href="https://www.facebook.com/NCUphy" target="_blank" rel="noopener noreferrer">Facebook</a>
+  </div>
+</div>
+
+<header id="site-header" role="banner">
+  <img class="logo-img" src="../files/NCUPHYS_Logo.webp" alt="國立中央大學物理學系系徽" data-onerr="hide">
+  <div class="logo-text">
+    <h1>國立中央大學物理學系</h1>
+    <p>Department of Physics · National Central University</p>
+  </div>
+  <div id="version-badge"><span>✓</span><span id="vb-text"></span></div>
+  
+<details class="nav-burger"><summary><span class="burger-icon" aria-hidden="true"></span><span class="burger-text">目錄</span></summary><ul class="burger-menu"><li><a href="index.html">系所簡介</a><ul><li><a href="index.html">歷史</a></li><li><a href="intro-2.html">歷屆系主任</a></li><li><a href="intro-3.html">教育目標與核心能力</a></li><li><a href="intro-4.html">系所規章</a></li><li><a href="intro-5.html">系所活動</a></li></ul></li><li><a href="faculty-1.html">系所人員</a><ul><li><a href="faculty-1.html">專任師資</a></li><li><a href="faculty-2.html">訪問學者</a></li><li><a href="faculty-3.html">兼任師資</a></li><li><a href="faculty-4.html">合聘師資</a></li><li><a href="faculty-5.html">退休師資</a></li><li><a href="faculty-6.html">博士後研究員</a></li><li><a href="faculty-7.html">系辦公室人員</a></li><li><a href="faculty-8.html">助理人員</a></li><li><a href="faculty-9.html">在學博士生</a></li></ul></li><li><a href="research-1.html">學術成果</a><ul><li><a href="research-1.html">研究成果</a></li><li><a href="research-2.html">實驗室</a></li><li><a href="research-3.html">教師獲獎紀錄</a></li><li><a href="research-4.html">國外學者來訪</a></li></ul></li><li><a href="student-1.html">學生專區</a><ul><li><a href="student-1.html">大學部課程</a></li><li><a href="student-2.html">研究所課程</a></li><li><a href="student-3.html">物理小年會</a></li><li><a href="student-4.html">獎學金</a></li><li><a href="student-5.html">學生活動空間</a></li><li><a href="student-6.html">學生獲獎紀錄</a></li><li><a href="student-7.html">研究生論文</a></li><li><a href="student-8.html">學生國外差旅</a></li><li><a href="student-9.html">相關學程</a></li><li><a href="student-10.html">物理系刊</a></li></ul></li><li><a href="emi-1.html">EMI專區</a><ul><li><a href="emi-1.html">EMI專區</a></li></ul></li><li><a href="highschool-1.html">高中生專區</a><ul><li><a href="highschool-1.html">高中生專區</a></li><li><a href="highschool-2.html">申請入學資訊</a></li><li><a href="highschool-3.html">特殊選才資訊</a></li></ul></li><li><a href="news-1.html">所有公告</a><ul><li><a href="news-1.html">所有公告</a></li></ul></li></ul></details></header>
+
+<nav id="main-nav" role="navigation" aria-label="主要導覽">
+  <ul id="main-menu"><li><a href="index.html">系所簡介</a><ul><li><a href="index.html">歷史</a></li><li><a href="intro-2.html">歷屆系主任</a></li><li><a href="intro-3.html">教育目標與核心能力</a></li><li><a href="intro-4.html">系所規章</a></li><li><a href="intro-5.html">系所活動</a></li></ul></li><li><a href="faculty-1.html">系所人員</a><ul><li><a href="faculty-1.html">專任師資</a></li><li><a href="faculty-2.html">訪問學者</a></li><li><a href="faculty-3.html">兼任師資</a></li><li><a href="faculty-4.html">合聘師資</a></li><li><a href="faculty-5.html">退休師資</a></li><li><a href="faculty-6.html">博士後研究員</a></li><li><a href="faculty-7.html">系辦公室人員</a></li><li><a href="faculty-8.html">助理人員</a></li><li><a href="faculty-9.html">在學博士生</a></li></ul></li><li><a href="research-1.html">學術成果</a><ul><li><a href="research-1.html">研究成果</a></li><li><a href="research-2.html">實驗室</a></li><li><a href="research-3.html">教師獲獎紀錄</a></li><li><a href="research-4.html">國外學者來訪</a></li></ul></li><li><a href="student-1.html">學生專區</a><ul><li><a href="student-1.html">大學部課程</a></li><li><a href="student-2.html">研究所課程</a></li><li><a href="student-3.html">物理小年會</a></li><li><a href="student-4.html">獎學金</a></li><li><a href="student-5.html">學生活動空間</a></li><li><a href="student-6.html">學生獲獎紀錄</a></li><li><a href="student-7.html">研究生論文</a></li><li><a href="student-8.html">學生國外差旅</a></li><li><a href="student-9.html">相關學程</a></li><li><a href="student-10.html">物理系刊</a></li></ul></li><li><a href="emi-1.html">EMI專區</a><ul><li><a href="emi-1.html">EMI專區</a></li></ul></li><li><a href="highschool-1.html">高中生專區</a><ul><li><a href="highschool-1.html">高中生專區</a></li><li><a href="highschool-2.html">申請入學資訊</a></li><li><a href="highschool-3.html">特殊選才資訊</a></li></ul></li><li><a href="news-1.html">所有公告</a><ul><li><a href="news-1.html">所有公告</a></li></ul></li></ul>
+</nav>
+
+
+
+<div id="hero">
+  <div id="hero-bg" style=""></div>
+  <div class="hero-text">
+    <h2 id="hero-title">所有公告</h2>
+    <p id="hero-sub">All Announcements</p>
+  </div>
+</div>
+
+<div id="breadcrumb">首頁 › <span>所有公告</span> › <span>所有公告</span></div>
+<nav id="sub-nav" aria-label="子頁籤"><a href="news-1.html" class="active" aria-current="page">所有公告</a></nav>
+
+<div id="content" role="main" tabindex="-1">
+  <div id="list-view">
+<h2 class="section-heading">所有公告 <span class="section-count" id="news-count">4014 則</span></h2>
+<div class="news-toolbar">
+  <select class="news-year-sel" id="news-year" aria-label="依年份篩選公告"><option value="">全部年份</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option></select>
+</div>
+<div class="news-tabs" id="news-tabs"><button class="news-tab active">全部<span class="n">4014</span></button><button class="news-tab">獎學金<span class="n">367</span></button><button class="news-tab">其他<span class="n">2416</span></button><button class="news-tab">招生<span class="n">302</span></button><button class="news-tab">研討會<span class="n">93</span></button><button class="news-tab">演講<span class="n">789</span></button><button class="news-tab">考試<span class="n">57</span></button><button class="news-tab">計畫<span class="n">31</span></button><button class="news-tab">高中生<span class="n">50</span></button></div>
+<div id="news-list"><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">獎學金</span>
+    <div class="news-item-title">NIMS Internship Program</div>
+    <div class="news-item-date">2026-06-05</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-06-05　📋 發布者：許慧君</div>
+    <div class="news-body-text">Provide undergraduate and graduate students with technical experience of cutting-edge research activities in the field of materials and science</div>
+    <div class="news-links-block"><a href="https://www.nims.go.jp/eng/hr-development/internship.html" target="_blank" rel="noopener">🔗 https://www.nims.go.jp/eng/hr-development/internship.html</a></div>
+    
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">獎學金</span>
+    <div class="news-item-title">教育部114學年度「大專校院學生雙語化學習計畫」出國補助申請審核結果公告(第二梯次)</div>
+    <div class="news-item-date">2026-06-02</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-06-02　📋 發布者：許慧君</div>
+    <div class="news-body-text">恭喜以下同學獲獎
+
+請獲補助同學留意Email通知，內有經費補助重要訊息。
+
+博士班 113282005 張容誌
+博士班 114282001 潘勤華
+學士班 111202505 陳山榆
+碩士班 114222020 陳俊翰</div>
+    
+    
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">國立中央大學-停水施工公告</div>
+    <div class="news-item-date">2026-06-12</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-06-12　📋 發布者：許慧君</div>
+    <div class="news-body-text">【緊急停水通知】
+
+因發生緊急停水狀況，請全體師生節約用水。待水塔儲水耗盡後，館內將全面停水，敬請預先因應。
+
+以下地點洗手台下方放置小型儲水桶備用：
+
+1～7樓女生廁所
+2樓、6樓、7樓男生廁所
+如有需要，歡迎少量取用，切勿浪費。
+
+感謝您的配合。
+
+事由：科學二館與友好之櫻中間道路幹管破裂漏水緊急搶修。
+
+各位師生：
+因科學二館與友好之櫻中間道路幹管突發破裂，導致供水受到影響，目前已由相關單位緊急搶修中。為維護生活品質，工程人員正全力處理，請大家耐心等候。造成不便，敬請見諒。
+施工中，不便之處敬祈見諒，施工中會停止供水，如遇有施工障礙或陣雨，可能延後供水。
+
+受影響區域：
+全校自來水、地下水停水(含中大新村)。
+
+施工位置：
+游泳池周邊自來水、地下水幹管。
+
+施工日期及時間：
+115年6月13日(星期六)。上午08：00至下午17:00。
+ 
+施工廠商：京融水電工程有限公司
+施工廠商電話：0932093643 
+營繕組電話：03-4227151#57307 謝先生
+總務處 啟</div>
+    
+    
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">招生</span>
+    <div class="news-item-title">『114學年國立中央大學物理學系五年取得學、碩士學位』獲推薦名單</div>
+    <div class="news-item-date">2026-05-26</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-26　📋 發布者：許慧君</div>
+    <div class="news-body-text">『114學年國立中央大學物理學系五年取得學、碩士學位』獲推薦名單(依學號排序)共12位：
+111409506、112202006、112202010、112202012
+112202013、112202017、112202028、112202501
+112202503、112202516、112202517、112203016
+注意事項：獲推薦之學生
+1.&nbsp;仍須報名下學年度本系碩士班甄試，報名時仍需依報名簡章規定，檢附包含指導教授在內至少兩封推薦書、專題研究報告(需符合註一之要求)與未來研究計畫等資料。
+2.&nbsp;如未能於大四取得學士學位即喪失資格。
+註一：專題研究報告格式要求：
+(1) 報告不得少於6頁。
+(2) 版面設定：A4紙，即長29.7公分，寬21公分。
+(3) 格式：中文打字規格為每行繕打（行間不另留間距），英文打字規格為Single Space。
+(4) 字體：以中英文撰寫均可。英文使用Times New Roman Font，中文使用標楷體，字體大小以12號為主。
+理學院物理系五年取得學碩士學位推薦辦法1120926系務會議通過Download</div>
+    <div class="news-links-block"><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/理學院物理系五年取得學碩士學位推薦辦法1120926系務會議通過.pdf" target="_blank" rel="noopener">🔗 理學院物理系五年取得學碩士學位推薦辦法1120926系務會議通過</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/理學院物理系五年取得學碩士學位推薦辦法1120926系務會議通過.pdf" target="_blank" rel="noopener">🔗 Download</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/%e3%80%8e114%e5%ad%b8%e5%b9%b4%e5%9c%8b%e7%ab%8b%e4%b8%ad%e5%a4%ae%e5%a4%a7%e5%ad%b8%e7%89%a9%e7%90%86%e5%ad%b8%e7%b3%bb%e4%ba%94%e5%b9%b4%e5%8f%96%e5%be%97%e5%ad%b8%e3%80%81%e7%a2%a9%e5%a3%ab-3/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">S4-717暫停開放公告</div>
+    <div class="news-item-date">2026-05-25</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-25　📋 發布者：許慧君</div>
+    <div class="news-body-text">05/26(二)Open House
+05/28(四)實驗物理課(陳俞融)
+06/03(三)理學院EMI助教交流會
+06/05(五)理學院英文演講比賽
+06/12(五)理學院外籍生交流會
+06/13(六)物理小年會
+06/14(日)物理系迎新輔訓
+非活動相關者請勿進入
+學生自習請改至 721 讀書室
+討論活動請多加利用各樓層電梯前討論區 及 627紀念書房
+造成不便，敬請見諒，謝謝合作。</div>
+    
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/s4-717%e6%9a%ab%e5%81%9c%e9%96%8b%e6%94%be%e5%85%ac%e5%91%8a-10/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">115年05月23日-114學年度畢業照及畢業典禮</div>
+    <div class="news-item-date">2026-05-25</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-25　📋 發布者：許慧君</div>
+    <div class="news-body-text">更多相片陸續更新中
+https://photos.app.goo.gl/62r9vPB1bRnMBghS7</div>
+    <div class="news-links-block"><a href="https://photos.app.goo.gl/62r9vPB1bRnMBghS7" target="_blank" rel="noopener">🔗 https://photos.app.goo.gl/62r9vPB1bRnMBghS7</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/115%e5%b9%b405%e6%9c%8823%e6%97%a5-114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%95%a2%e6%a5%ad%e7%85%a7%e5%8f%8a%e7%95%a2%e6%a5%ad%e5%85%b8%e7%a6%ae/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">115學年度第1學期課程教學助教志願調查1150525</div>
+    <div class="news-item-date">2026-05-25</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-25　📋 發布者：許慧君</div>
+    <div class="news-body-text">中央大學物理系公告-115學年度第1學期課程教學助教志願調查
+NCU Physics Departmental Notice-2026/2027 First Semester Teaching Assistant Application Form
+物理系研究生欲申請擔任課程教學助教者，請於115年5月31日前填寫『課程教學助教志願表』(https://forms.gle/ZbTYtMT5guR3wpvVA)。
+Physics Department graduate students who wish to serve as teaching assistants (TA), please fill in the TA Application Form before May 31, 2026 . (https://forms.gle/ZbTYtMT5guR3wpvVA)。
+依研究生修業規定，修業期間碩士生至少需擔任一學期（上下學期皆可）課程助教、博士生至少需擔任兩學期（上下學期各一）課程助教，方可畢業。
+The Graduate Student’s Course Regulations require master students to serve as TAs for at least one semester (once in either semester), while doctoral students must serve for at least two semesters (once in both semesters) as part of the criteria for graduation.
+115-1助教TADownload
+國立中央大學物理系研究生獎助學金辦法20210708系務會議通過Download</div>
+    <div class="news-links-block"><a href="https://forms.gle/ZbTYtMT5guR3wpvVA" target="_blank" rel="noopener">🔗 https://forms.gle/ZbTYtMT5guR3wpvVA</a><a href="https://forms.gle/ZbTYtMT5guR3wpvVA" target="_blank" rel="noopener">🔗 https://forms.gle/ZbTYtMT5guR3wpvVA</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/115-1助教TA.pdf" target="_blank" rel="noopener">🔗 115-1助教TA</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%ac%ac1%e5%ad%b8%e6%9c%9f%e8%aa%b2%e7%a8%8b%e6%95%99%e5%ad%b8%e5%8a%a9%e6%95%99%e5%bf%97%e9%a1%98%e8%aa%bf%e6%9f%a51150525/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">研討會</span>
+    <div class="news-item-title">CHiP International Gravitational Wave Summer School 2026</div>
+    <div class="news-item-date">2026-05-20</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-20　📋 發布者：許慧君</div>
+    <div class="news-body-text">Summer Chip poster A0 SIZE colorDownload</div>
+    <div class="news-links-block"><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/Summer-Chip-poster-A0-SIZE-color.pdf" target="_blank" rel="noopener">🔗 Summer Chip poster A0 SIZE color</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/Summer-Chip-poster-A0-SIZE-color.pdf" target="_blank" rel="noopener">🔗 Download</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/chip-international-gravitational-wave-summer-school-2026/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">重力波實驗室誠徵博士後研究員1名</div>
+    <div class="news-item-date">2026-05-20</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-20　📋 發布者：許慧君</div>
+    <div class="news-body-text">【徵才單位】：國立中央大學物理系重力波實驗室。
+【工作職缺】：博士後研究員1名。
+【薪資待遇】：依據國家科學及技術委員會薪資標準(有相關經驗可提敘)。
+【起聘時間】：2026/07/01~2026/07/31。
+【徵求條件】：具國內、外物理相關系所之博士學位
+【工作內容】：執行研究計畫，數據分析。
+【工作地點】：國立中央大學統物理系（桃園市中壢區中大路300號 健雄館）。
+【檢附資料】：履歷、自傳、博士論文及發表著作等相關資料
+【應徵方式】：
+1.應徵者請備妥電子資料，合併為一份 PDF 檔，檔名為「姓名_重力波實驗室博士後研究員」。資料審核通過者將通知面試時間,未通過者恕不通知。
+2.將相關應徵文件於2026/06/15前e-mail至林助理：vivianbabylin@gmail.com</div>
+    
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/%e9%87%8d%e5%8a%9b%e6%b3%a2%e5%af%a6%e9%a9%97%e5%ae%a4%e8%aa%a0%e5%be%b5%e5%8d%9a%e5%a3%ab%e5%be%8c%e7%a0%94%e7%a9%b6%e5%93%a11%e5%90%8d/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">演講</span>
+    <div class="news-item-title">Colloquium_20260526_Uncovering the Physical Principles of Life with Artificial Cells - Symmetry Breaking and Energy Conversion of Active Cytoskeleton</div>
+    <div class="news-item-date">2026-05-20</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-20　📋 發布者：許慧君</div>
+    <div class="news-body-text">Colloquium_20260526Download</div>
+    <div class="news-links-block"><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/Colloquium_20260526.pdf" target="_blank" rel="noopener">🔗 Colloquium_20260526</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/Colloquium_20260526.pdf" target="_blank" rel="noopener">🔗 Download</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/colloquium_20260526_uncovering-the-physical-principles-of-life-with-artificial-cells-symmetry-breaking-and-energy-conversion-of-active-cytoskeleton/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">獎學金</span>
+    <div class="news-item-title">臺北市健鼎關懷教育基金會大學特定科系獎學金</div>
+    <div class="news-item-date">2026-05-20</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-20　📋 發布者：許慧君</div>
+    <div class="news-body-text">健鼎基金會大學特定科系申請辦法(1150518更新)Download
+健鼎基金會大學特定科系申請辦法(1150518更新)Download</div>
+    <div class="news-links-block"><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/健鼎基金會大學特定科系申請辦法1150518更新.pdf" target="_blank" rel="noopener">🔗 健鼎基金會大學特定科系申請辦法(1150518更新)</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/健鼎基金會大學特定科系申請辦法1150518更新.pdf" target="_blank" rel="noopener">🔗 Download</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/健鼎基金會大學特定科系申請辦法1150518更新.doc" target="_blank" rel="noopener">🔗 健鼎基金會大學特定科系申請辦法(1150518更新)</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/%e8%87%ba%e5%8c%97%e5%b8%82%e5%81%a5%e9%bc%8e%e9%97%9c%e6%87%b7%e6%95%99%e8%82%b2%e5%9f%ba%e9%87%91%e6%9c%83%e5%a4%a7%e5%ad%b8%e7%89%b9%e5%ae%9a%e7%a7%91%e7%b3%bb%e7%8d%8e%e5%ad%b8%e9%87%91/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">演講</span>
+    <div class="news-item-title">碩士生學位考試公告（唐萬昇）</div>
+    <div class="news-item-date">2026-05-20</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-20　📋 發布者：許慧君</div>
+    <div class="news-body-text">姓名：唐萬昇
+學號：112222015
+口試日期：115/06/09&nbsp;
+時間：14:30-17:00
+借用地點：621
+論文題目：Atomic-Scale Anisotropy Competition in Cr-Intercalated CrTe2 Ultrathin Films: DFT-SOT-LLG Simulation</div>
+    
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/%e7%a2%a9%e5%a3%ab%e7%94%9f%e5%ad%b8%e4%bd%8d%e8%80%83%e8%a9%a6%e5%85%ac%e5%91%8a%ef%bc%88%e5%94%90%e8%90%ac%e6%98%87%ef%bc%89/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">演講</span>
+    <div class="news-item-title">5/27學術倫理講座</div>
+    <div class="news-item-date">2026-05-18</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-18　📋 發布者：許慧君</div>
+    <div class="news-body-text" style="color:var(--muted)">（無內文）</div>
+    
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/5-27%e5%ad%b8%e8%a1%93%e5%80%ab%e7%90%86%e8%ac%9b%e5%ba%a7/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">S4-717暫停開放公告</div>
+    <div class="news-item-date">2026-05-18</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-18　📋 發布者：許慧君</div>
+    <div class="news-body-text">05/19(二)12-17高能活動
+05/20(三)物理系個人申請
+05/21(四)理學院學士班個人申請
+05/23(六)理學院學士班畢業餐會
+05/26(二)物理系高中生open house
+06/03(三)理學院EMI助教交流會
+06/12(五)理學院外籍生交流會
+06/13(六)物理小年會
+非活動相關者請勿進入
+學生自習請改至 721 讀書室
+討論活動請多加利用各樓層電梯前討論區 及 627紀念書房
+造成不便，敬請見諒，謝謝合作。</div>
+    
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/s4-717%e6%9a%ab%e5%81%9c%e9%96%8b%e6%94%be%e5%85%ac%e5%91%8a-9/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">上傳論文不卡關--歡迎參加5月21日12:00-12:30「圖書館論文上傳繳交講習會」</div>
+    <div class="news-item-date">2026-05-18</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-18　📋 發布者：許慧君</div>
+    <div class="news-body-text">為了讓畢業生快速了解畢業論文各項上傳流程與注意事項，
+圖書館將於民國115年5月21日(四)12:00-12:30開設一場線上講習會，
+報名網址如下：https://cis.ncu.edu.tw/iNCU/messageNotice/activityManagement/activity/1782
+亦提供中英文版的網頁與教學影片，歡迎參考：
+1.中文版文字說明與教學影片： https://rapid.lib.ncu.edu.tw/libweek/guide/04-3.html
+2.英文版文字說明與教學影片： https://rapid.lib.ncu.edu.tw/libweek/guide/en/04-3.html
+國立中央大學圖書館 推廣服務組敬上
+ncu57407@ncu.edu.tw
+(03)422-7151#57407</div>
+    <div class="news-links-block"><a href="https://cis.ncu.edu.tw/iNCU/messageNotice/activityManagement/activity/1782" target="_blank" rel="noopener">🔗 https://cis.ncu.edu.tw/iNCU/messageNotice/activityManagement</a><a href="https://rapid.lib.ncu.edu.tw/libweek/guide/04-3.html" target="_blank" rel="noopener">🔗 https://rapid.lib.ncu.edu.tw/libweek/guide/04-3.html</a><a href="https://rapid.lib.ncu.edu.tw/libweek/guide/en/04-3.html" target="_blank" rel="noopener">🔗 https://rapid.lib.ncu.edu.tw/libweek/guide/en/04-3.html</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/%e4%b8%8a%e5%82%b3%e8%ab%96%e6%96%87%e4%b8%8d%e5%8d%a1%e9%97%9c-%e6%ad%a1%e8%bf%8e%e5%8f%83%e5%8a%a05%e6%9c%8821%e6%97%a51200-1230%e3%80%8c%e5%9c%96%e6%9b%b8%e9%a4%a8%e8%ab%96%e6%96%87%e4%b8%8a/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">強場物理與超快技術實驗室《誠徵雷射電漿工程師》</div>
+    <div class="news-item-date">2026-05-18</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-18　📋 發布者：許慧君</div>
+    <div class="news-body-text">本實驗室位於國立中央大學物理系，核心設施為100 TW超短脈衝雷射系統，並建有多座雷射電漿交互作用實驗站，研究方向涵蓋：
+高階諧波的產生
+雷射電漿電子與質子加速器
+實驗室內天文學
+強場雷射與超快光學診斷
+我們致力於發展新世代高能量密度科學與先進加速器技術，並持續擴充實驗設施。現誠徵專任雷射電漿工程師，歡迎對超快雷射、光學系統與大型科研設施有熱情的夥伴加入團隊。
+一、工作內容：
+1. 高功率超短脈衝雷射系統之日常操作與維護。
+2. 超快光學與雷射系統之優化與升級。
+3. 協助雷射電漿交互作用實驗的進行。
+4. 實驗室安全規範執行與環境管理。
+二、資格：
+物理、光電、電子/電機、機械工程等相關科系學士或碩士。具備光路架設、光學診斷經驗或對超快雷射系統有強烈興趣者尤佳。
+三、薪資待遇：底薪依本校計畫專任人員報酬標準表，如已有年資可面議
+學士級：36,300 元/月
+碩士級：41,545 元/月
+四、工作時間與福利：
+工作時間：AM 9:00 – PM 6:00或 AM 8:00 – PM 5:00，含中午休息。
+週休二日，國定假日比照政府行政機關。
+若遇緊急維修或大型實驗需加班，提供完整補休機制。
+依法辦理勞保、健保與退休／離職儲金
+五、工作地點：國立中央大學物理系 310實驗室 (桃園中壢)
+---
+應徵方式：
+請將個人履歷及相關資料，以電子郵件寄至 ckhuang@ncu.edu.tw 黃振崗老師收，信件主旨請註明：應徵雷射電漿工程師。
+截止日期：2026年8月9日
+實驗室網站： http://hfp.phy.ncu.edu.tw</div>
+    
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/%e5%bc%b7%e5%a0%b4%e7%89%a9%e7%90%86%e8%88%87%e8%b6%85%e5%bf%ab%e6%8a%80%e8%a1%93%e5%af%a6%e9%a9%97%e5%ae%a4%e3%80%8a%e8%aa%a0%e5%be%b5%e9%9b%b7%e5%b0%84%e9%9b%bb%e6%bc%bf%e5%b7%a5%e7%a8%8b%e5%b8%ab-2/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">招生</span>
+    <div class="news-item-title">115學年度博士班考試錄取名單</div>
+    <div class="news-item-date">2026-05-14</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-14　📋 發布者：許慧君</div>
+    <div class="news-body-text">https://admission.ncu.edu.tw/zh-TW/article/2026-05-14%2016:09:05/10
+錄取通知書及成績單5/15以限時掛號郵寄到通訊地址</div>
+    <div class="news-links-block"><a href="https://admission.ncu.edu.tw/zh-TW/article/2026-05-14%2016:09:05/10" target="_blank" rel="noopener">🔗 https://admission.ncu.edu.tw/zh-TW/article/2026-05-14%2016:0</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%8d%9a%e5%a3%ab%e7%8f%ad%e8%80%83%e8%a9%a6%e9%8c%84%e5%8f%96%e5%90%8d%e5%96%ae/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">113、114學年度應修科目表修訂通過公告-跨領域課程規定</div>
+    <div class="news-item-date">2026-05-14</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-14　📋 發布者：吳菁穗</div>
+    <div class="news-body-text">113、114學年度應修科目表業已於115.03.11經114學年度第二學期第一次校課程委員會議修訂通過以下規定，在學1、2年級學生適用之：
+備註二、2. 必須選修並通過外系課程6學分，不含通識中心、語言中心及體育室課程；課程名稱或課程內容與物理系課程相近者不予採認為跨領域課程。
+各年級完整應修科目表請參閱&nbsp;系網頁-系所簡介-系所規章-大學部相關規章
+https://pdc.adm.ncu.edu.tw/static/file/19/1019/img/237/816533531.pdf
+https://pdc.adm.ncu.edu.tw/static/file/19/1019/img/310/252941592.pdf</div>
+    <div class="news-links-block"><a href="https://www.phy.ncu.edu.tw/%e7%b3%bb%e6%89%80%e8%a6%8f%e7%ab%a0/" target="_blank" rel="noopener">🔗 系網頁-系所簡介-系所規章-大學部相關規章</a><a href="https://pdc.adm.ncu.edu.tw/static/file/19/1019/img/237/816533531.pdf" target="_blank" rel="noopener">🔗 https://pdc.adm.ncu.edu.tw/static/file/19/1019/img/237/81653</a><a href="https://pdc.adm.ncu.edu.tw/static/file/19/1019/img/310/252941592.pdf" target="_blank" rel="noopener">🔗 https://pdc.adm.ncu.edu.tw/static/file/19/1019/img/310/25294</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/113%e3%80%81114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e6%87%89%e4%bf%ae%e7%a7%91%e7%9b%ae%e8%a1%a8%e4%bf%ae%e8%a8%82%e9%80%9a%e9%81%8e%e5%85%ac%e5%91%8a-%e8%b7%a8%e9%a0%98%e5%9f%9f%e8%aa%b2%e7%a8%8b%e8%a6%8f/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">物理系 強場雷射實驗室 誠徵工讀助理</div>
+    <div class="news-item-date">2026-05-14</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-14　📋 發布者：許慧君</div>
+    <div class="news-body-text">人數需求： 1 名
+薪資: 時薪 300 元（依規定投保勞健保）。
+工讀時間: 每週 6 小時，可配合課表彈性排程。
+工讀地點： 科學四館 3 樓 310 室 (100 TW強場雷射實驗室)
+應徵條件：
+本校在學學生（不限系所），對光學實驗環境、儀器維護有興趣者優先錄取。
+需具備駕照與交通工具。
+工作內容：
+1. 實驗室環境維護、例行公安檢查。
+2. 儀器與零件盤點與採購。
+3. 實驗室硬體更新、修繕與行政支援。
+應徵方式：
+請將簡單個人履歷（包含姓名、系級、聯絡電話、一小段自我介紹或相關背景說明）寄至：白植豪教授 chpai@phy.ncu.edu.tw
+（郵件主旨請註明：應徵實驗室工讀生_系級_姓名）
+聯絡電話： 03-422-7151 Ext. 65315</div>
+    
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/%e7%89%a9%e7%90%86%e7%b3%bb-%e5%bc%b7%e5%a0%b4%e9%9b%b7%e5%b0%84%e5%af%a6%e9%a9%97%e5%ae%a4-%e8%aa%a0%e5%be%b5%e5%b7%a5%e8%ae%80%e5%8a%a9%e7%90%86/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">114學年度大學部乙類學生畢業~「論文口試注意事項」</div>
+    <div class="news-item-date">2026-05-13</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-13　📋 發布者：吳菁穗</div>
+    <div class="news-body-text">請詳閱「乙類學生論文口試注意事項」。
+各相關表單請用電腦繕打後印出（簽名除外）：
+表單下載路徑：系網頁(http://www.phy.ncu.edu.tw/)→系所簡介→系所規章→大學部相關規章
+本學期大學部領取畢業證書截止日為7/30(四)中午12點。
+請於離校前將論文pdf檔email至以下信箱： cswu@ncu.edu.tw
+Email 標題請註明：繳交學士論文(學號+姓名)。
+學士論文格式須比照“乙類學生論文格式條例”，未依格式或未繳交論文電子檔者不能畢業。
+乙類學生論文口試注意事項11403Download</div>
+    <div class="news-links-block"><a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.phy.ncu.edu.tw%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExRk5UbndWeFpUZENVOHloQ3NydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR41d1pWh3krVCkmBhiFYNtl1TzBSA7Iir7_e7W6dqQOId_ufCB71OyDprocZQ_aem_KfVB28ayPQa8JdDklCgk8g&amp;h=AUB4e5yoEx1Iiv7IhQ66Jdz77AIZOS6k8uXHlP8NECLwTxovnj6RALs9ctjwFTGLSTxfrwSw7lkiyDk8HFXS3LYpkgdP7xDe-dK-sAkm9bm70b-Jsy8GszZMwqHCS8ebyPDBCuRZLBmi_FM1kYs9rUFuZEpyhp2h&amp;__tn__=-UK-R&amp;c[0]=AUCJPgu6rVrRn-jrf0YMBr118QeaJ8hhB7VsXIqP9Em3H-xIfYpr6B1CXg9nAiFf8xjkuRIN2R2SQ2YsHIA2p9XhxhA9wo3FceS_URw1m2QqESZJcfOruVTVKR_Y5ZWcot8IkxbWvMgSFbUQvljPPYcXPpOpfCKR-La4m9g-QQ" target="_blank" rel="noopener">🔗 http://www.phy.ncu.edu.tw/</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/乙類學生論文口試注意事項11403.pdf" target="_blank" rel="noopener">🔗 乙類學生論文口試注意事項11403</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/乙類學生論文口試注意事項11403.pdf" target="_blank" rel="noopener">🔗 Download</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%a4%a7%e5%ad%b8%e9%83%a8%e4%b9%99%e9%a1%9e%e5%ad%b8%e7%94%9f%e7%95%a2%e6%a5%ad%e3%80%8c%e8%ab%96%e6%96%87%e5%8f%a3%e8%a9%a6%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a0%85/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">演講</span>
+    <div class="news-item-title">Colloquium_20260519_Superconductivity of topological states induced by proximity and Josephson coupling</div>
+    <div class="news-item-date">2026-05-13</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-13　📋 發布者：許慧君</div>
+    <div class="news-body-text">Colloquium_20260519Download</div>
+    <div class="news-links-block"><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/Colloquium_20260519.pdf" target="_blank" rel="noopener">🔗 Colloquium_20260519</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/Colloquium_20260519.pdf" target="_blank" rel="noopener">🔗 Download</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/colloquium_20260519_superconductivity-of-topological-states-induced-by-proximity-and-josephson-coupling/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">2026/05/23(六) 物理系撥穗典禮</div>
+    <div class="news-item-date">2026-05-12</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-12　📋 發布者：劉怡貞</div>
+    <div class="news-body-text"> 畢業餐會 11:50-13:10 (S4-625)
+ 理學院合照 13:25-13:30 (S1-1F廣場)
+ 撥穗典禮 13:50~16:00 (S4-209)
+ 系主任致詞
+ 撥穗儀式
+ 謝師禮
+ 師生合照 16:00-17:00 (S4-1F廣場)
+餐會備有豐盛美食，敬邀師長們與畢業生一同享用。
+歡迎各位老師前來撥穗觀禮合影留念。</div>
+    
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/2026-05-23%e5%85%ad-%e7%89%a9%e7%90%86%e7%b3%bb%e6%92%a5%e7%a9%97%e5%85%b8%e7%a6%ae/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">招生</span>
+    <div class="news-item-title">115學年度大學申請入學第二階段指定項目甄試【報到時間暨應試順序表】</div>
+    <div class="news-item-date">2026-05-12</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-12　📋 發布者：吳菁穗　🏷 次分類：高中生</div>
+    <div class="news-body-text">115學年度大學甄選申請入學第二階段指定項目甄試【報到時間表】如附件：
+115學年度申請入學面試報到時間及應試順序表Download
+甄試時間以115/05/20（三）當天實際進行的時間為主，請於指定報到時間內親自辦理報到。如預期會因故遲到者請務必事先告知，完成報到後將安排於最後一位考生之後遞補面試，不得異議。
+注意事項：
+請直接搭電梯到健雄館七樓717外辦理報到；報到時請攜帶「指定項目甄試通知函」及附照片之身分證件查驗。
+為顧及全體考生之權益及公平性，甄試時間公告後不得要求更改。
+當日家長汽車以車牌辨識入校，離校時請走人工車道(靠警衛室)並出示「指定項目甄試通知函」即可免繳停車費離校。
+面試當天安排四場課程說明會(09:00、11:00、13:50、15:50)、實驗物理展覽室參觀及(下午)實驗課程觀摩，參觀時間於當天公布於報到處（視現場考生人數調整），歡迎考生及家長參加。
+本系謹訂於115/05/26(二)舉辦OPEN HOUSE，誠摯邀請您參加，為統計參加人數及便當數量，請務必於5月24日(星期日)前完成報名表單提交。已填寫過表單者請勿重複提交。線上出席意願調查：https://forms.gle/UWgCtuhENMYRwSXE8
+邀請函Download
+*本系謹訂於6/13 (六)辦理物理小年會，此為本系「實驗物理」以及「實驗專題」修課學生成 果發表之平台。高中生觀展報名時程為即日起至6月1日，意者請於報名期間進入物理小年會網站(https://ncuphyannualmeetin.wixsite.com/website-1) 點選 「觀展報名」。</div>
+    <div class="news-links-block"><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/115學年度申請入學面試報到時間及應試順序表.pdf" target="_blank" rel="noopener">🔗 115學年度申請入學面試報到時間及應試順序表</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/115學年度申請入學面試報到時間及應試順序表.pdf" target="_blank" rel="noopener">🔗 Download</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/邀請函.pdf" target="_blank" rel="noopener">🔗 邀請函</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%a4%a7%e5%ad%b8%e7%94%b3%e8%ab%8b%e5%85%a5%e5%ad%b8%e7%ac%ac%e4%ba%8c%e9%9a%8e%e6%ae%b5%e6%8c%87%e5%ae%9a%e9%a0%85%e7%9b%ae%e7%94%84%e8%a9%a6%e3%80%90%e5%a0%b1/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">研討會</span>
+    <div class="news-item-title">2026物理小年會</div>
+    <div class="news-item-date">2026-05-11</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-11　📋 發布者：許慧君</div>
+    <div class="news-body-text">時間： 2026/06/13(六) 08:00 – 17:30
+地點：國立中央大學物理學系科學四館（健雄館）
+學生報名時程： 4/15 – 6/1
+繳交海報時程： 5/11 - 6/6
+詳細議程請見本會網站：
+https://ncuphyannualmeetin.wixsite.com/website-1</div>
+    <div class="news-links-block"><a href="https://ncuphyannualmeetin.wixsite.com/website-1" target="_blank" rel="noopener">🔗 https://ncuphyannualmeetin.wixsite.com/website-1</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/2026%e7%89%a9%e7%90%86%e5%b0%8f%e5%b9%b4%e6%9c%83/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">招生</span>
+    <div class="news-item-title">『114學年國立中央大學物理學系五年取得學、碩士學位』口試通知</div>
+    <div class="news-item-date">2026-05-11</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-11　📋 發布者：許慧君</div>
+    <div class="news-body-text">請申請同學至物理系辦公室(S4-629)領取口試通知單。
+口試序號標示於個人口試通知單上。
+114學年度五年學碩口試通知Download</div>
+    <div class="news-links-block"><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/114學年度五年學碩口試通知.pdf" target="_blank" rel="noopener">🔗 114學年度五年學碩口試通知</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/114學年度五年學碩口試通知.pdf" target="_blank" rel="noopener">🔗 Download</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/%e3%80%8e114%e5%ad%b8%e5%b9%b4%e5%9c%8b%e7%ab%8b%e4%b8%ad%e5%a4%ae%e5%a4%a7%e5%ad%b8%e7%89%a9%e7%90%86%e5%ad%b8%e7%b3%bb%e4%ba%94%e5%b9%b4%e5%8f%96%e5%be%97%e5%ad%b8%e3%80%81%e7%a2%a9%e5%a3%ab-2/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">物理系教室異動公告1150520-0521</div>
+    <div class="news-item-date">2026-05-11</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-11　📋 發布者：許慧君</div>
+    <div class="news-body-text">因應5/20(三)物理系個人申請招生、5/21(四)理學院學士班個人申請招生，教室異動，造成不便請見諒。
+原教室日期時間課程新教室
+S4-6235/20(三)13-18PH2030B-實驗物理與方法II(郭家銘)S4-202
+S4-6255/20(三)09-12PH6070*-非線性動力學(黎璧賢)S4-204
+S4-6255/20(三)14-17PH6012*-統計力學 Ｉ(陳炯豪)S4-204
+S4-6215/21(四)10-13PH7029*-高能物理I(江祖永)S4-208理論中心教室</div>
+    
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/%e7%89%a9%e7%90%86%e7%b3%bb%e6%95%99%e5%ae%a4%e7%95%b0%e5%8b%95%e5%85%ac%e5%91%8a1150520-0521/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">其他</span>
+    <div class="news-item-title">2026 台積電博士獎學金(第二梯次)即日起開放申請，2026年05月30日截止收件。</div>
+    <div class="news-item-date">2026-05-08</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-08　📋 發布者：劉怡貞</div>
+    <div class="news-body-text">獎助內容：
+博士修業期間每年獎助新台幣50萬元整，至多獎助五年
+由台積資深主管擔任業師，協助了解產業、技術發展階段與挑戰
+在學期間提供台積實習機會
+歡迎符合以下申請資格的同學們提出申請：
+預計於2026年攻讀國內大學半導體相關科系博士學位(含申請中)之學、碩士班，或是已入學之博士一年級，並經指導教授推薦者
+不限制已(欲)申請國家級或非營利機構獎學金者
+具中華民國國籍
+&nbsp;詳細資訊請參見台積官方連結：https://careers.tsmc.com/zh_TW/CampusPhD</div>
+    <div class="news-links-block"><a href="https://careers.tsmc.com/zh_TW/CampusPhD" target="_blank" rel="noopener">🔗 https://careers.tsmc.com/zh_TW/CampusPhD</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/2026-%e5%8f%b0%e7%a9%8d%e9%9b%bb%e5%8d%9a%e5%a3%ab%e7%8d%8e%e5%ad%b8%e9%87%91%e7%ac%ac%e4%ba%8c%e6%a2%af%e6%ac%a1%e5%8d%b3%e6%97%a5%e8%b5%b7%e9%96%8b%e6%94%be%e7%94%b3%e8%ab%8b%ef%bc%8c2026%e5%b9%b4/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">獎學金</span>
+    <div class="news-item-title">CTCI Foundation Overseas Student Employment in Taiwan Grant Application Information</div>
+    <div class="news-item-date">2026-05-06</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-06　📋 發布者：許慧君</div>
+    <div class="news-body-text">本獎助金申請相關資訊如下：
+中文說明：https://www.ctci.org.tw/8838/talent/46808/46809/46811/ 
+English Information：https://www.ctci.org.tw/8831/8838/talent_en/46819/ 
+申請相關文件（中文版）（皆可於上述網站下載）：
+• 2026年境外生留臺就業獎助金申請須知（中文版）
+• 2026年境外生留臺就業獎助金申請須知（英文版）
+• 2026年境外留臺就業獎助金－開放申請校系（所）一覽表
+• 2026年境外生留臺就業獎助金申請書－系（所）推薦
+• 2026年境外生留臺就業獎助金申請書－曾獲中技社「境外生研究獎學金」
+Application Documents (English Version)
+• Application Information for 2026 CTCI Foundation Overseas Student Employment in Taiwan Grant
+• Designated Departments/Institutes and Universities for 2026 CTCI Foundation Overseas Student Employment in Taiwan Grant
+• Application Form – Department or Institute-Nominated Applicant
+• Application Form – Former Recipients of the CTCI Foundation Research Scholarship for Overseas Graduate Students
+申請及送件說明：有意申請者請備妥申請文件電子檔及紙本文件，於2026年8月24日（一）中午12:00前送至物理系辦公室。
+Application and submission instructions: Interested applicants should prepare both electronic and hard copies of their application documents and submit them to the Department of Physics office before 12:00 noon on Monday, August 24, 2026.</div>
+    <div class="news-links-block"><a href="https://www.ctci.org.tw/8838/talent/46808/46809/46811/" target="_blank" rel="noopener">🔗 https://www.ctci.org.tw/8838/talent/46808/46809/46811/</a><a href="https://www.ctci.org.tw/8831/8838/talent_en/46819/" target="_blank" rel="noopener">🔗 https://www.ctci.org.tw/8831/8838/talent_en/46819/</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/ctci-foundation-overseas-student-employment-in-taiwan-grant-application-information/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">獎學金</span>
+    <div class="news-item-title">中技社「2026年境外生留臺就業獎助金」</div>
+    <div class="news-item-date">2026-05-06</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-06　📋 發布者：許慧君</div>
+    <div class="news-body-text">本獎助金申請相關資訊如下：
+中文說明：https://www.ctci.org.tw/8838/talent/46808/46809/46811/ 
+English Information：https://www.ctci.org.tw/8831/8838/talent_en/46819/ 
+申請相關文件（中文版）（皆可於上述網站下載）：
+• 2026年境外生留臺就業獎助金申請須知（中文版）
+• 2026年境外生留臺就業獎助金申請須知（英文版）
+• 2026年境外留臺就業獎助金－開放申請校系（所）一覽表
+• 2026年境外生留臺就業獎助金申請書－系（所）推薦
+• 2026年境外生留臺就業獎助金申請書－曾獲中技社「境外生研究獎學金」
+Application Documents (English Version)
+• Application Information for 2026 CTCI Foundation Overseas Student Employment in Taiwan Grant
+• Designated Departments/Institutes and Universities for 2026 CTCI Foundation Overseas Student Employment in Taiwan Grant
+• Application Form – Department or Institute-Nominated Applicant
+• Application Form – Former Recipients of the CTCI Foundation Research Scholarship for Overseas Graduate Students
+申請及送件說明：有意申請者請備妥申請文件電子檔及紙本文件，於2026年8月24日（一）中午12:00前送至物理系辦公室。
+Application and submission instructions: Interested applicants should prepare both electronic and hard copies of their application documents and submit them to the Department of Physics office before 12:00 noon on Monday, August 24, 2026.</div>
+    <div class="news-links-block"><a href="https://www.ctci.org.tw/8838/talent/46808/46809/46811/" target="_blank" rel="noopener">🔗 https://www.ctci.org.tw/8838/talent/46808/46809/46811/</a><a href="https://www.ctci.org.tw/8831/8838/talent_en/46819/" target="_blank" rel="noopener">🔗 https://www.ctci.org.tw/8831/8838/talent_en/46819/</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/%e4%b8%ad%e6%8a%80%e7%a4%be%e3%80%8c2026%e5%b9%b4%e5%a2%83%e5%a4%96%e7%94%9f%e7%95%99%e8%87%ba%e5%b0%b1%e6%a5%ad%e7%8d%8e%e5%8a%a9%e9%87%91%e3%80%8d/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><details class="news-item"><summary class="news-summary"><div class="news-item-row">
+    <span class="news-badge">演講</span>
+    <div class="news-item-title">Colloquium_20260512_Harnessing Metastable States for Next-Generation Quantum Sensors and Clocks</div>
+    <div class="news-item-date">2026-05-06</div>
+  </div></summary><div class="news-item-body">
+    <div class="news-meta-line">🗓 2026-05-06　📋 發布者：許慧君</div>
+    <div class="news-body-text">Colloquium_20260512Download</div>
+    <div class="news-links-block"><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/Colloquium_20260512-1.pdf" target="_blank" rel="noopener">🔗 Colloquium_20260512</a><a href="https://www.phy.ncu.edu.tw/wp-content/uploads/2026/05/Colloquium_20260512-1.pdf" target="_blank" rel="noopener">🔗 Download</a></div>
+    <div class="news-src-link"><a href="https://www.phy.ncu.edu.tw/news/colloquium_20260512_harnessing-metastable-states-for-next-generation-quantum-sensors-and-clocks/" target="_blank" rel="noopener">查看原始公告 →</a></div>
+  </div></details><button class="news-more-btn">載入更多（已顯示 30 / 4014 則）</button></div></div>
+  <div id="detail-view"></div>
+</div>
+
+
+
+<footer id="footer-nav" role="contentinfo">
+  <p>© 國立中央大學物理學系 · 桃園市中壢區中大路300號</p>
+  <p class="mt-6">Tel: 03-4227151 ext 65300 · <a href="https://www.phy.ncu.edu.tw">www.phy.ncu.edu.tw</a></p>
+</footer>
+
+
+
+
+</body></html>
