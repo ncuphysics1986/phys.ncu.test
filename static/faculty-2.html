@@ -33,7 +33,8 @@ code,kbd,samp,button,input,select,textarea{font-family:inherit}
 /* ── 工具類 / Email 連結 ── */
 .mt-6{margin-top:6px}
 .mt-32{margin-top:36px}
-.eml-link{color:var(--blue);text-decoration:none}
+/* 1.4.1 不單以顏色：內文連結預設加底線（導覽/卡片/按鈕等另有視覺線索，不在此列） */
+.eml-link{color:var(--blue);text-decoration:underline}
 .eml-link:hover{text-decoration:underline}
 .eml-sep{color:var(--muted)}
 
@@ -198,7 +199,7 @@ body.nav-open{overflow:hidden}
 .fd-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--border);display:block;background:var(--light)}
 .fd-no-photo{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#dce6f8,#c0d0e8);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#8aafda}
 .fd-contact{margin-top:16px;font-size:.82rem;color:var(--muted);line-height:2}
-.fd-contact a{color:var(--blue);text-decoration:none}
+.fd-contact a{color:var(--blue);text-decoration:underline}
 .fd-contact a:hover{text-decoration:underline}
 .fd-main h1{font-size:2rem;color:var(--navy);font-weight:700}
 .fd-rank{font-size:1rem;color:var(--blue);margin-top:6px}
@@ -207,7 +208,7 @@ body.nav-open{overflow:hidden}
 .fd-section h3{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-text);margin-bottom:10px;border-bottom:1px solid var(--border);padding-bottom:5px}
 .fd-section p,.fd-section li{font-size:.9rem;line-height:1.9;color:var(--text)}
 .fd-section ul{padding-left:1.2em}
-.fd-section a{color:var(--blue);text-decoration:none}
+.fd-section a{color:var(--blue);text-decoration:underline}
 .fd-section a:hover{text-decoration:underline}
 .fd-tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:20px}
 .fd-tab-btn{border:none;background:none;font-family:inherit;font-size:.9rem;color:var(--muted);padding:10px 18px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .2s,border-color .2s}
@@ -234,7 +235,7 @@ body.nav-open{overflow:hidden}
 .data-table td{padding:10px 14px;border-bottom:1px solid var(--border);line-height:1.5}
 .data-table tr:nth-child(even) td{background:#f8fafd}
 .data-table tr:hover td{background:#eef3fc}
-.data-table a{color:var(--blue);text-decoration:none}
+.data-table a{color:var(--blue);text-decoration:underline}
 .data-table a:hover{text-decoration:underline}
 .visitor-table{table-layout:fixed}
 .visitor-table th{white-space:nowrap}
@@ -279,7 +280,7 @@ body.nav-open{overflow:hidden}
 .reg-list{list-style:none}
 .reg-item{display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid var(--border);font-size:.87rem;flex-wrap:wrap}
 .reg-item:last-child{border-bottom:none}
-.reg-item a{color:var(--text);text-decoration:none}
+.reg-item a{color:var(--text);text-decoration:underline}
 .reg-item a:hover{color:var(--blue);text-decoration:underline}
 .reg-item .name{color:var(--text)}
 
@@ -430,7 +431,7 @@ body.nav-open{overflow:hidden}
 .news-body-text{font-size:.9rem;line-height:1.85;white-space:pre-wrap;word-break:break-word;margin-bottom:10px}
 .news-meta-line{color:var(--muted);font-size:.8rem;margin-bottom:10px}
 .news-links-block{margin-top:12px;padding-top:10px;border-top:1px dashed var(--border)}
-.news-links-block a{display:block;font-size:.88rem;margin-bottom:5px;color:var(--blue);text-decoration:none;word-break:break-all}
+.news-links-block a{display:block;font-size:.88rem;margin-bottom:5px;color:var(--blue);text-decoration:underline;word-break:break-all}
 .news-links-block a:hover{text-decoration:underline}
 .news-src-link{margin-top:12px;text-align:right}
 .news-src-link a{font-size:.82rem;color:var(--blue);text-decoration:none}
@@ -670,7 +671,7 @@ a.vid-item-link{display:block;padding:14px 18px;color:inherit;text-decoration:no
 <nav id="sub-nav" aria-label="子頁籤"><a href="faculty-1.html">專任師資</a><a href="faculty-2.html" class="active" aria-current="page">訪問學者</a><a href="faculty-3.html">兼任師資</a><a href="faculty-4.html">合聘師資</a><a href="faculty-5.html">退休師資</a><a href="faculty-6.html">博士後研究員</a><a href="faculty-7.html">系辦公室人員</a><a href="faculty-8.html">助理人員</a><a href="faculty-9.html">在學博士生</a></nav>
 
 <div id="content" role="main" tabindex="-1">
-  <div id="list-view"><h2 class="section-heading">訪問學者 <span class="section-count">5 位</span></h2><div class="faculty-grid"><div class="faculty-card" aria-label="江台章 詳細資料" data-sec="faculty" data-idx="0" data-sheet="訪問學者"><img class="fc-photo" loading="lazy" decoding="async" src="../files/faculty/訪問學者照片/江台章.webp" alt="江台章" data-onerr="hideflex"><div class="fc-no-photo" style="display:none">👤</div><div class="fc-info"><h3>江台章</h3><div class="fc-title">玉山學者</div><div class="fc-area">凝態物理</div><div class="fc-email"><span class="eml">✉ tcchiang<span class="eml-sep"> [at] </span>illinois.edu</span>illinois.edu</div></div></div><div class="faculty-card" aria-label="陳騮 詳細資料" data-sec="faculty" data-idx="1" data-sheet="訪問學者"><img class="fc-photo" loading="lazy" decoding="async" src="../files/faculty/訪問學者照片/陳騮.webp" alt="陳騮" data-onerr="hideflex"><div class="fc-no-photo" style="display:none">👤</div><div class="fc-info"><h3>陳騮</h3><div class="fc-title">玉山學者/國鼎講座教授</div><div class="fc-area">電漿物理</div><div class="fc-email"><span class="eml">✉ liuchen<span class="eml-sep"> [at] </span>uci.edu</span>uci.edu</div></div></div><div class="faculty-card" aria-label="彭仁傑 詳細資料" data-sec="faculty" data-idx="2" data-sheet="訪問學者"><img class="fc-photo" loading="lazy" decoding="async" src="../files/faculty/訪問學者照片/彭仁傑.webp" alt="彭仁傑" data-onerr="hideflex"><div class="fc-no-photo" style="display:none">👤</div><div class="fc-info"><h3>彭仁傑</h3><div class="fc-title">玉山學者</div><div class="fc-area">核子及粒子物理</div><div class="fc-email"><span class="eml">✉ jcpeng<span class="eml-sep"> [at] </span>illinois.edu</span>illinois.edu</div></div></div><div class="faculty-card" aria-label="劉全生 詳細資料" data-sec="faculty" data-idx="3" data-sheet="訪問學者"><img class="fc-photo" loading="lazy" decoding="async" src="../files/faculty/訪問學者照片/劉全生.webp" alt="劉全生" data-onerr="hideflex"><div class="fc-no-photo" style="display:none">👤</div><div class="fc-info"><h3>劉全生</h3><div class="fc-title">國鼎講座教授</div><div class="fc-area">電漿物理</div><div class="fc-email"><span class="eml">✉ chuanshengliu<span class="eml-sep"> [at] </span>gmail.com</span>gmail.com</div></div></div><div class="faculty-card" aria-label="羽澄昌史 詳細資料" data-sec="faculty" data-idx="4" data-sheet="訪問學者"><img class="fc-photo" loading="lazy" decoding="async" src="../files/faculty/訪問學者照片/羽澄昌史.webp" alt="羽澄昌史" data-onerr="hideflex"><div class="fc-no-photo" style="display:none">👤</div><div class="fc-info"><h3>羽澄昌史</h3><div class="fc-title">玉山學者/客座教授</div><div class="fc-area">高能物理</div><div class="fc-email"><span class="eml">✉ masashi.hazumi<span class="eml-sep"> [at] </span>phy.ncu.edu.tw</span>phy.ncu.edu.tw</div></div></div></div></div>
+  <div id="list-view"><h2 class="section-heading">訪問學者 <span class="section-count">5 位</span></h2><div class="faculty-grid"><div class="faculty-card faculty-card-static"><img class="fc-photo" loading="lazy" decoding="async" src="../files/faculty/訪問學者照片/江台章.webp" alt="江台章" data-onerr="hideflex"><div class="fc-no-photo" style="display:none">👤</div><div class="fc-info"><h3>江台章</h3><div class="fc-title">玉山學者</div><div class="fc-area">凝態物理</div><div class="fc-email"><span class="eml">✉ tcchiang<span class="eml-sep"> [at] </span>illinois.edu</span></div></div></div><div class="faculty-card faculty-card-static"><img class="fc-photo" loading="lazy" decoding="async" src="../files/faculty/訪問學者照片/陳騮.webp" alt="陳騮" data-onerr="hideflex"><div class="fc-no-photo" style="display:none">👤</div><div class="fc-info"><h3>陳騮</h3><div class="fc-title">玉山學者/國鼎講座教授</div><div class="fc-area">電漿物理</div><div class="fc-email"><span class="eml">✉ liuchen<span class="eml-sep"> [at] </span>uci.edu</span></div></div></div><div class="faculty-card faculty-card-static"><img class="fc-photo" loading="lazy" decoding="async" src="../files/faculty/訪問學者照片/彭仁傑.webp" alt="彭仁傑" data-onerr="hideflex"><div class="fc-no-photo" style="display:none">👤</div><div class="fc-info"><h3>彭仁傑</h3><div class="fc-title">玉山學者</div><div class="fc-area">核子及粒子物理</div><div class="fc-email"><span class="eml">✉ jcpeng<span class="eml-sep"> [at] </span>illinois.edu</span></div></div></div><div class="faculty-card faculty-card-static"><img class="fc-photo" loading="lazy" decoding="async" src="../files/faculty/訪問學者照片/劉全生.webp" alt="劉全生" data-onerr="hideflex"><div class="fc-no-photo" style="display:none">👤</div><div class="fc-info"><h3>劉全生</h3><div class="fc-title">國鼎講座教授</div><div class="fc-area">電漿物理</div><div class="fc-email"><span class="eml">✉ chuanshengliu<span class="eml-sep"> [at] </span>gmail.com</span></div></div></div><div class="faculty-card faculty-card-static"><img class="fc-photo" loading="lazy" decoding="async" src="../files/faculty/訪問學者照片/羽澄昌史.webp" alt="羽澄昌史" data-onerr="hideflex"><div class="fc-no-photo" style="display:none">👤</div><div class="fc-info"><h3>羽澄昌史</h3><div class="fc-title">玉山學者/客座教授</div><div class="fc-area">高能物理</div><div class="fc-email"><span class="eml">✉ masashi.hazumi<span class="eml-sep"> [at] </span>phy.ncu.edu.tw</span></div></div></div></div></div>
   <div id="detail-view"></div>
 </div>
 
