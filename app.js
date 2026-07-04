@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════════════
    國立中央大學物理學系網站 · 渲染引擎（app.js）· 單一權威版本
-   最後整理：2026-07-03（雙語引擎 Phase 2＋系友專區分類）
+   最後整理：2026-07-04（＋課程單表改版）
    ────────────────────────────────────────────────────────────────
    搭配 index.html（外殼＋CSS）與 8 個 *.xlsx（資料）。三者一起部署。
    ────────────────────────────────────────────────────────────────
@@ -139,6 +139,8 @@ const T_EN = {
   '辦公室':'Office','研究室':'Office phone','實驗室':'Lab phone',
   '計畫年度':'Year','計畫名稱':'Project','執行起迄':'Period',
   '分類':'Category','課程名稱':'Course Title','課號':'Code','全/半年':'Duration','必/選':'Type','學分':'Credits',
+  '一年級':'Year 1','二年級':'Year 2','三、四年級':'Years 3–4','全':'Full year','半':'One semester',
+  '理論物理':'Theoretical','實驗物理':'Experimental','數學課程':'Mathematics',
   '研究所課程':'Graduate Courses','實驗室 ':'Laboratories ','中文名稱':'Name (Chinese)','英文名稱':'Name (English)',
   '實驗室主持人':'Principal Investigator','實驗室網頁':'Website',
   '教師獲獎紀錄':'Faculty Awards','獲獎年度':'Year','主辦單位':'Organizer','榮譽名稱':'Award','獲獎人':'Recipient(s)',
@@ -892,27 +894,25 @@ function renderCourseUG(area, sheets, sheetName) {
   });
   const grades = [...new Set(gradeOrder)].filter(g => (gradeMap[g]||[]).length > 0);
 
-  let html = `<h2 class="section-heading">${t('大學部課程')}</h2><div class="tab-bar">`;
-  grades.forEach((g,i) => {
+  /* 2026-07-04 改版（依核准之課程單表預覽）：四年級合併單一表、無分頁按鈕；
+     年級以 rowgroup 標題列分組；課名依語言擇欄（中文=科目名／英文=Course，缺英名回退中文）；
+     「全/半」與分類值經 t() 翻譯（Full year／One semester、Theoretical…）。 */
+  let html = `<h2 class="section-heading">${t('大學部課程')}</h2><div class="table-wrap"><table class="data-table ug-course-table"><colgroup><col class="ug-c-cat"><col class="ug-c-name"><col class="ug-c-code"><col class="ug-c-term"></colgroup><thead><tr><th>${t('分類')}</th><th>${t('課程名稱')}</th><th>${t('課號')}</th><th>${t('全/半年')}</th></tr></thead><tbody>`;
+  grades.forEach(g => {
     const lbl = (g.includes('三')||g.includes('四')) ? '三、四年級' : g;
-    html += `<button class="tab-btn${i===0?' tab-navy':''}" data-group="ug" data-panel="ug-${i}">${esc(lbl)}</button>`;
-  });
-  html += '</div>';
-  grades.forEach((g,i) => {
-    html += `<div id="ug-${i}" class="tab-panel${i===0?' active':''}" data-group="ug"><div class="table-wrap"><table class="data-table ug-course-table"><colgroup><col class="ug-c-cat"><col class="ug-c-name"><col class="ug-c-course"><col class="ug-c-code"><col class="ug-c-term"></colgroup><thead><tr><th>${t('分類')}</th><th>${t('課程名稱')}</th><th>Course</th><th>${t('課號')}</th><th>${t('全/半年')}</th></tr></thead><tbody>`;
-      (gradeMap[g]||[]).forEach(r => {
-      const cat = r['分類']||'', cc = catColors[cat];
-      const catBadge = cc ? `<span class="cat-inline" style="background:${cc.bg};border:1px solid ${cc.border};color:${cc.text}">${esc(cat)}</span>` : '';
-      html += `<tr><td class="ug-c-cat">${catBadge}</td><td>${esc(r['科目名']||'')}</td><td>${esc(r['Course']||'')}</td><td><code>${esc(r['課號']||'')}</code></td><td class="ug-c-term">${esc(r['全/半年']||'')}</td></tr>`;
+    html += `<tr class="ug-grade-row"><th colspan="4" scope="rowgroup">${esc(t(lbl))}</th></tr>`;
+    (gradeMap[g]||[]).forEach(r => {
+      const cat = String(r['分類']||'').trim(), cc = catColors[cat];
+      const catBadge = cc ? `<span class="cat-inline" style="background:${cc.bg};border:1px solid ${cc.border};color:${cc.text}">${esc(t(cat))}</span>` : esc(t(cat));
+      const nameEn = String(r['Course']||'').trim();
+      const name = (LANG==='en' && nameEn) ? nameEn : String(r['科目名']||'');
+      html += `<tr><td class="ug-c-cat">${catBadge}</td><td>${esc(name)}</td><td><code>${esc(r['課號']||'')}</code></td><td class="ug-c-term">${esc(t(String(r['全/半年']||'').trim()))}</td></tr>`;
     });
-    html += '</tbody></table></div>';
-    html += '</div>';
   });
-  html += buildEmiSection(sheets['大學部EMI課程地圖'], '大學部 EMI 課程地圖');   // EMI 課程地圖移到全頁最下方（不再夾在一年級分頁內）
+  html += '</tbody></table></div>';
+  html += buildEmiSection(sheets['大學部EMI課程地圖'], '大學部 EMI 課程地圖');   // EMI 課程地圖維持頁尾
   area.innerHTML = html;
-  initTabs(area);
 }
-
 function renderCoursePG(area, sheets, sheetName) {
   const rows = sheets[sheetName]||[];
   let html = `<h2 class="section-heading">${t('研究所課程')}</h2><div class="table-wrap"><table class="data-table nowrap-table"><thead><tr><th>${t('課程名稱')}</th><th>Course</th><th>${t('課號')}</th><th>${t('必/選')}</th><th>${t('學分')}</th></tr></thead><tbody>`;
