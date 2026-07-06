@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- ════════════════════════════════════════════════════════════════
   國立中央大學物理學系網站 · 單一權威版本（index.html）
-  最後整理：2026-07-04（＋課程單表樣式）
+  最後整理：2026-07-04（＋課表緊湊卡片樣式）
   ────────────────────────────────────────────────────────────────
   檔案結構：
     index.html       ← HTML 外殼 + 內嵌 CSS（本檔）
@@ -346,6 +346,15 @@ body.nav-open{overflow:hidden}
 .cat-inline{font-size:.68rem;padding:1px 7px;border-radius:10px;font-weight:600;vertical-align:middle;white-space:nowrap}
 /* 大學部課程表：固定欄寬，統一各年級分頁版面 */
 .ug-grade-row th{background:var(--light);color:var(--navy);font-size:.95rem;letter-spacing:.12em;border-left:5px solid var(--gold);padding:9px 14px}
+.ugc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:18px;align-items:start;margin-top:6px}
+.ugc-card{border:1px solid var(--border);border-radius:10px;padding:14px 16px 8px;background:#fff}
+.ugc-wide{grid-column:1/-1}
+.ugc-grade{margin:0 0 10px;color:var(--navy);font-size:1.02rem;letter-spacing:.1em;border-left:5px solid var(--gold);padding-left:10px}
+.ugc-table{width:100%}
+.ugc-table th,.ugc-table td{padding:6px 9px;font-size:.9rem}
+.ugc-table th:first-child,.ugc-table td:first-child,.ugc-table th:nth-child(3),.ugc-table td:nth-child(3),.ugc-table th:nth-child(4),.ugc-table td:nth-child(4){width:1%;white-space:nowrap}
+.ugc-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:0 24px;align-items:start}
+.ugc-cols .table-wrap{margin:0}
 .ug-course-table{table-layout:fixed;width:100%}
 .ug-course-table .ug-c-cat{width:6.5em;text-align:center}
 .ug-course-table .ug-c-course{width:32%}
