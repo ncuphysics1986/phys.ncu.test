@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════════════
    國立中央大學物理學系網站 · 渲染引擎（app.js）· 單一權威版本
-   最後整理：2026-07-04（＋課程單表改版）
+   最後整理：2026-07-06b（研究成果摘要中英分流）
    ────────────────────────────────────────────────────────────────
    搭配 index.html（外殼＋CSS）與 8 個 *.xlsx（資料）。三者一起部署。
    ────────────────────────────────────────────────────────────────
@@ -135,6 +135,7 @@ const T_EN = {
   '（此頁面暫無內容）':'(No content on this page yet)','（此分類暫無照片）':'(No photos in this category yet)',
   '← 返回列表':'← Back to list','暫無研究計畫資料':'No research project records yet','暫無著作資料':'No publication records yet',
   '已更新':'Updated','已載入':'Loaded',
+  '查看完整內容':'View full article',
   '研究計畫':'Projects','研究著作':'Publications',
   '辦公室':'Office','研究室':'Office phone','實驗室':'Lab phone',
   '計畫年度':'Year','計畫名稱':'Project','執行起迄':'Period',
@@ -821,10 +822,13 @@ function openResearchModal(idx) {
 </div>
 <div class="rmodal-body">
   ${photo?`<img src="${esc(photo)}" alt="${esc(r['標題']||'')}" data-onerr="hide"><p class="rmodal-caption">${esc(r['圖說明']||'')}</p>`:''}
-  ${r['研究說明(中文)']?`<div class="rmodal-desc"><strong>摘要（中）</strong><br>${esc(r['研究說明(中文)'])}</div>`:''}
-  ${r['研究說明(英文)']?`<div class="rmodal-desc"><strong>Abstract</strong><br>${esc(r['研究說明(英文)'])}</div>`:''}
+  ${(()=>{ /* 摘要依語言分流：中文版=中文說明、英文版=英文摘要；缺文互為回退（2026-07-06b） */
+    const z=String(r['研究說明(中文)']||'').trim(), e2=String(r['研究說明(英文)']||'').trim();
+    const en=LANG==='en', ab=en?(e2||z):(z||e2);
+    return ab?`<div class="rmodal-desc"><strong>${en?'Abstract':'摘要'}</strong><br>${esc(ab)}</div>`:'';
+  })()}
   ${r['題目']?`<div class="rmodal-desc" style="font-style:italic">${esc(r['題目'])}</div>`:''}
-  ${r['網頁連結']?`<a class="rmodal-link" href="${esc(r['網頁連結'])}" target="_blank" rel="noopener noreferrer">🔗 查看完整內容</a>`:''}
+  ${r['網頁連結']?`<a class="rmodal-link" href="${esc(r['網頁連結'])}" target="_blank" rel="noopener noreferrer">🔗 ${t('查看完整內容')}</a>`:''}
 </div>`;
   document.getElementById('modal-overlay').classList.add('open');
 }
@@ -894,24 +898,25 @@ function renderCourseUG(area, sheets, sheetName) {
   });
   const grades = [...new Set(gradeOrder)].filter(g => (gradeMap[g]||[]).length > 0);
 
-  /* 2026-07-04 改版（依核准之課程單表預覽）：四年級合併單一表、無分頁按鈕；
-     年級以 rowgroup 標題列分組；課名依語言擇欄（中文=科目名／英文=Course，缺英名回退中文）；
-     「全/半」與分類值經 t() 翻譯（Full year／One semester、Theoretical…）。 */
-  let html = `<h2 class="section-heading">${t('大學部課程')}</h2><div class="table-wrap"><table class="data-table ug-course-table"><colgroup><col class="ug-c-cat"><col class="ug-c-name"><col class="ug-c-code"><col class="ug-c-term"></colgroup><thead><tr><th>${t('分類')}</th><th>${t('課程名稱')}</th><th>${t('課號')}</th><th>${t('全/半年')}</th></tr></thead><tbody>`;
-  grades.forEach(g => {
+  let html = `<h2 class="section-heading">${t('大學部課程')}</h2><div class="tab-bar">`;
+  grades.forEach((g,i) => {
     const lbl = (g.includes('三')||g.includes('四')) ? '三、四年級' : g;
-    html += `<tr class="ug-grade-row"><th colspan="4" scope="rowgroup">${esc(t(lbl))}</th></tr>`;
-    (gradeMap[g]||[]).forEach(r => {
-      const cat = String(r['分類']||'').trim(), cc = catColors[cat];
-      const catBadge = cc ? `<span class="cat-inline" style="background:${cc.bg};border:1px solid ${cc.border};color:${cc.text}">${esc(t(cat))}</span>` : esc(t(cat));
-      const nameEn = String(r['Course']||'').trim();
-      const name = (LANG==='en' && nameEn) ? nameEn : String(r['科目名']||'');
-      html += `<tr><td class="ug-c-cat">${catBadge}</td><td>${esc(name)}</td><td><code>${esc(r['課號']||'')}</code></td><td class="ug-c-term">${esc(t(String(r['全/半年']||'').trim()))}</td></tr>`;
-    });
+    html += `<button class="tab-btn${i===0?' tab-navy':''}" data-group="ug" data-panel="ug-${i}">${esc(t(lbl))}</button>`;
   });
-  html += '</tbody></table></div>';
-  html += buildEmiSection(sheets['大學部EMI課程地圖'], '大學部 EMI 課程地圖');   // EMI 課程地圖維持頁尾
+  html += '</div>';
+  grades.forEach((g,i) => {
+    html += `<div id="ug-${i}" class="tab-panel${i===0?' active':''}" data-group="ug"><div class="table-wrap"><table class="data-table ug-course-table"><colgroup><col class="ug-c-cat"><col class="ug-c-name"><col class="ug-c-course"><col class="ug-c-code"><col class="ug-c-term"></colgroup><thead><tr><th>${t('分類')}</th><th>${t('課程名稱')}</th><th>Course</th><th>${t('課號')}</th><th>${t('全/半年')}</th></tr></thead><tbody>`;
+      (gradeMap[g]||[]).forEach(r => {
+      const cat = r['分類']||'', cc = catColors[cat];
+      const catBadge = cc ? `<span class="cat-inline" style="background:${cc.bg};border:1px solid ${cc.border};color:${cc.text}">${esc(t(cat))}</span>` : '';
+      html += `<tr><td class="ug-c-cat">${catBadge}</td><td>${esc(r['科目名']||'')}</td><td>${esc(r['Course']||'')}</td><td><code>${esc(r['課號']||'')}</code></td><td class="ug-c-term">${esc(t(String(r['全/半年']||'').trim()))}</td></tr>`;
+    });
+    html += '</tbody></table></div>';
+    html += '</div>';
+  });
+  html += buildEmiSection(sheets['大學部EMI課程地圖'], '大學部 EMI 課程地圖');   // EMI 課程地圖移到全頁最下方（不再夾在一年級分頁內）
   area.innerHTML = html;
+  initTabs(area);
 }
 function renderCoursePG(area, sheets, sheetName) {
   const rows = sheets[sheetName]||[];
